@@ -63,6 +63,7 @@ export default function PortfolioPage() {
               totalMarginUsedChange={portfolioData.totalMarginUsedChange}
               openTrades={portfolioData.openTrades}
               openTradesChange={portfolioData.openTradesChange}
+              isPositive={portfolioData.totalBalanceChange >= 0}
             />
 
             <PnLOverviewChart />

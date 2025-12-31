@@ -49,7 +49,7 @@ const formatTooltipDate = (date: Date): string => {
   const displayHour = hours > 12 ? hours - 12 : hours || 12;
   const ampm = hours >= 12 ? "PM" : "AM";
   const minutesStr = minutes.toString().padStart(2, "0");
-  
+
   return `${day} ${month}, ${displayHour}:${minutesStr} ${ampm}`;
 };
 
@@ -69,9 +69,8 @@ const CustomTooltip = ({ active, payload }: TooltipProps) => {
         <div className="space-y-1">
           {dailyPnLValue !== undefined && (
             <div className="flex items-center gap-2">
-              <div className={`w-3 h-3 rounded-full flex items-center justify-center ${
-                isPositive ? "bg-[#2d9f75]" : "bg-[#df1c41]"
-              }`}>
+              <div className={`w-3 h-3 rounded-full flex items-center justify-center ${isPositive ? "bg-[#2d9f75]" : "bg-[#df1c41]"
+                }`}>
                 <div className="w-1.5 h-1.5 rounded-full bg-white"></div>
               </div>
               <p className="text-white text-xs font-medium">
@@ -195,13 +194,13 @@ const generateMockData = (timeRange: TimeRange): ChartDataPointT[] => {
       const month = currentDate.getMonth() + 1;
       const day = currentDate.getDate();
       dateString = `${month.toString().padStart(2, "0")}/${day.toString().padStart(2, "0")}`;
-      
+
       // For ALL, show month abbreviation for better readability
       if (timeRange === "ALL") {
         const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         dateString = `${monthNames[currentDate.getMonth()]}`;
       }
-      
+
       // Show label at intervals, but exclude the last data point
       if (i % labelInterval === 0 && i < totalDataPoints - 1) {
         dateLabel = dateString;
@@ -217,15 +216,15 @@ const generateMockData = (timeRange: TimeRange): ChartDataPointT[] => {
     // Target cumulative should trend within 10K-50K range
     const targetCumulative = targetMin + progress * targetRange * (0.6 + Math.sin(progress * Math.PI * 2) * 0.2);
     const deviation = targetCumulative - cumulative;
-    
+
     // Generate daily PnL that guides toward target but with natural variation
     const baseChange = deviation / Math.max(1, totalDataPoints - i) * (1 + Math.random() * 0.4);
-    
+
     // Add random variation - ensure we get both gains and losses
     // Make variation MORE dynamic for shorter timeframes to make bars more visible
     const randomValue = Math.random();
     let dailyPnL: number;
-    
+
     // Base variation amounts - larger for shorter timeframes to make bars visible
     let baseVariation: number;
     if (timeRange === "1H") {
@@ -241,7 +240,7 @@ const generateMockData = (timeRange: TimeRange): ChartDataPointT[] => {
       // For longer timeframes: standard variation
       baseVariation = Math.random() * 2000 + 300;
     }
-    
+
     if (randomValue < 0.45) {
       // 45% chance of negative (losses)
       dailyPnL = baseChange * 0.2 - baseVariation;
@@ -249,14 +248,14 @@ const generateMockData = (timeRange: TimeRange): ChartDataPointT[] => {
       // 55% chance of positive (gains)
       dailyPnL = baseChange * 0.2 + baseVariation;
     }
-    
+
     // Add some oscillation for visual interest
     const oscillation = Math.sin(i * 0.1) * (baseVariation * 0.3);
     dailyPnL += oscillation;
 
     // Update cumulative
     cumulative += dailyPnL;
-    
+
     // Soft clamp to keep within reasonable bounds (10K-50K with some margin)
     if (cumulative < targetMin - 3000) {
       cumulative = targetMin - 3000 + Math.random() * 2000;
@@ -387,55 +386,58 @@ export default function PnLOverviewChart({
         <h2 className="font-nohemi font-medium text-[14px] text-main tracking-[0.28px] leading-none">
           PnL Overview
         </h2>
-
-        {/* Time Range Selector */}
-        <div className="flex items-center overflow-x-auto -mx-[16px] px-[16px] md:mx-0 md:px-0">
-          {timeRanges.map((range) => (
-            <button
-              key={range}
-              onClick={() => setTimeRange(range)}
-              className={`flex gap-[4px] items-center justify-center p-[7.5px] rounded-[100px] relative transition-colors cursor-pointer shrink-0 ${
-                timeRange === range
-                  ? "bg-soft-gray shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.2),0px_4px_5px_0px_inset_rgba(255,255,255,0.05)]"
-                  : "hover:bg-neutral-50"
-              }`}
-            >
-              <p
-                className={`font-medium px-[3px] text-[13px] tracking-[-0.13px] leading-none ${
-                  timeRange === range ? "text-main" : "text-soft-400"
-                }`}
-              >
-                {range}
-              </p>
-            </button>
-          ))}
-        </div>
       </div>
 
       <div className="flex flex-col w-full p-[16px] md:p-5 gap-5">
-        <div className="flex flex-wrap gap-x-[16px] md:gap-x-[20px] gap-y-[12px] items-start">
-          {/* Daily Profit */}
-          <div className="flex gap-[6px] items-center">
-            <div className="bg-dark-green w-[2px] h-[9px]" />
-            <p className="font-medium text-[11px] md:text-[13px] text-main tracking-[-0.13px] leading-none whitespace-nowrap">
-              Daily Profit
-            </p>
-          </div>
+        <div className="flex flex-row items-center justify-between w-full">
+          <div className="flex flex-wrap gap-x-[16px] md:gap-x-[20px] gap-y-[12px] items-center">
+            {/* Daily Profit */}
+            <div className="flex gap-[6px] items-center border border-2 border-soft-500 rounded-[8px] p-[10px]">
+              <div className="bg-dark-green rounded-full w-[6px] h-[6px]" />
+              <p className="font-medium text-[11px] md:text-[13px] text-main tracking-[-0.13px] leading-none whitespace-nowrap">
+                Daily Profit
+              </p>
+            </div>
 
-          {/* Daily Lost */}
-          <div className="flex gap-[6px] items-center">
-            <div className="bg-base-red w-[2px] h-[9px]" />
-            <p className="font-medium text-[11px] md:text-[13px] text-main tracking-[-0.13px] leading-none whitespace-nowrap">
-              Daily Lost
-            </p>
-          </div>
+            {/* Daily Lost */}
+            <div className="flex gap-[6px] items-center border border-2 border-soft-500 rounded-[8px] p-[10px]">
+              <div className="bg-base-red rounded-full w-[6px] h-[6px]" />
+              <p className="font-medium text-[11px] md:text-[13px] text-main tracking-[-0.13px] leading-none whitespace-nowrap">
+                Daily Lost
+              </p>
+            </div>
 
-          {/* Cumulative PNL */}
-          <div className="flex gap-[6px] items-center font-medium text-[11px] md:text-[13px] tracking-[-0.13px] leading-none whitespace-nowrap">
-            <p className="text-main">Cumulative PNL</p>
-            <p className="text-dark-green">${finalCumulativePnL.toFixed(1)}K</p>
+            {/* Cumulative PNL */}
+            <div className="flex gap-[6px] items-center border border-2 border-soft-500 rounded-[8px] p-[6px]">
+              <div className="bg-base-blue rounded-full w-[6px] h-[6px]" />
+              <p className="font-medium text-[11px] md:text-[13px] text-main tracking-[-0.13px] leading-none whitespace-nowrap">
+                Cumulative PNL
+              </p>
+              <p className="text-dark-green">${finalCumulativePnL.toFixed(1)}K</p>
+            </div>
+          </div>
+          {/* Time Range Selector */}
+          <div className="flex items-center overflow-x-auto -mx-[16px] px-[16px] md:mx-0 md:px-0">
+            {timeRanges.map((range) => (
+              <button
+                key={range}
+                onClick={() => setTimeRange(range)}
+                className={`flex gap-[4px] items-center justify-center p-[7.5px] rounded-[100px] relative transition-colors cursor-pointer shrink-0 ${timeRange === range
+                    ? "bg-soft-gray shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.2),0px_4px_5px_0px_inset_rgba(255,255,255,0.05)]"
+                    : "hover:bg-neutral-50"
+                  }`}
+              >
+                <p
+                  className={`font-medium px-[3px] text-[13px] tracking-[-0.13px] leading-none ${timeRange === range ? "text-main" : "text-soft-400"
+                    }`}
+                >
+                  {range}
+                </p>
+              </button>
+            ))}
           </div>
         </div>
+
         {/* Chart */}
         <div className="w-full h-[250px] md:h-[300px] -mx-[8px] md:mx-0">
           <ResponsiveContainer width="100%" height="100%">
@@ -485,19 +487,19 @@ export default function PnLOverviewChart({
                   };
                   const { x = 0, y = 0, width = barSize, height = 0, payload } = barProps;
                   const color = getBarColor(payload.dailyPnL);
-                  
+
                   // Handle both positive and negative bars
                   // For negative bars, height is negative, so we adjust y position
                   const barHeight = Math.abs(height);
                   const barY = height < 0 ? y + height : y;
 
                   return (
-                    <rect 
-                      x={x} 
-                      y={barY} 
-                      width={width} 
-                      height={barHeight} 
-                      fill={color} 
+                    <rect
+                      x={x}
+                      y={barY}
+                      width={width}
+                      height={barHeight}
+                      fill={color}
                     />
                   );
                 }}

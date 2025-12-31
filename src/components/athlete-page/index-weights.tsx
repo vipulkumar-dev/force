@@ -87,41 +87,34 @@ export default function IndexWeights({
   metrics = defaultMetrics,
 }: IndexWeightsProps) {
   return (
-    <>
-      <Accordion type="single" collapsible>
-
-        <AccordionItem value="index-weight" className="border-0 bg-white rounded-[20px] p-[10px] sm:p-[14px] md:p-[16px] mb-[16px] md:mb-[24px] last:mb-0">
-          <AccordionTrigger className="text-main text-[16px] sm:text-[16px] font-medium leading-[100%] tracking-[-2%] hover:no-underline py-0">
-            Index Weight
-          </AccordionTrigger>
-          <AccordionContent className="pt-4 pb-0">
-            <div className="w-full overflow-x-auto rounded-[20px] bg-page-background px-2">
-              <Table className="border-separate border-spacing-y-2 w-full min-w-full table-auto">
-                <TableHeader>
-                  <TableRow className="border-0">
-                    <TableHead className="text-muted-foreground text-[12px] font-medium leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">Time</TableHead>
-                    <TableHead className="text-muted-foreground text-[12px] leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">Play</TableHead>
-                    <TableHead className="text-muted-foreground text-[12px] leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">Weight</TableHead>
-                    <TableHead className="text-muted-foreground text-[12px] leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">Current</TableHead>
-                    <TableHead className="text-muted-foreground text-[12px] leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">Trend</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {metrics.map((metric, index) => (
-                    <TableRow key={index} className="bg-white font-medium text-[12px]x border-0 mb-2 rounded-[14px] hover:bg-white hover:cursor-pointer transition-colors duration-200 ease-out overflow-hidden">
-                      <TableCell className="bg-white px-4 py-3 rounded-tl-[14px] rounded-bl-[14px]">{metric.metric}</TableCell>
-                      <TableCell className="bg-white px-4 py-3 text-soft-400 font-mediumxs">{metric.description}</TableCell>
-                      <TableCell className="bg-white px-4 py-3">{metric.weight}</TableCell>
-                      <TableCell className="bg-white px-4 py-3">{metric.current}</TableCell>
-                      <TableCell className="bg-white px-4 py-3 text-light-green rounded-tr-[14px] rounded-br-[14px]"><div className="flex flex-row items-center gap-1"><ArrowUp className="w-[15px] h-[20px] text-light-green" />{metric.trend}%</div></TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+    <>           
+    <div className="flex flex-col gap-4 bg-white rounded-[20px] p-[10px] sm:p-[14px] md:p-[16px] mb-[16px] md:mb-[24px] last:mb-0">
+      <h1 className="font-medium text-[16px] text-main tracking-[0.28px] px-4 pt-2 leading-none">Index Weight</h1>
+      <div className="w-full overflow-x-auto mt-4 rounded-[20px] bg-page-background px-2">
+        <Table className="border-separate border-spacing-y-2 w-full min-w-full table-auto">
+          <TableHeader>
+            <TableRow className="border-0">
+              <TableHead className="text-muted-foreground text-[12px] font-medium leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">Time</TableHead>
+              <TableHead className="text-muted-foreground text-[12px] leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">Play</TableHead>
+              <TableHead className="text-muted-foreground text-[12px] leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">Weight</TableHead>
+              <TableHead className="text-muted-foreground text-[12px] leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">Current</TableHead>
+              <TableHead className="text-muted-foreground text-[12px] leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">Trend</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {metrics.map((metric, index) => (
+              <TableRow key={index} className="bg-white font-medium text-[12px]x border-0 mb-2 rounded-[14px] hover:bg-white hover:cursor-pointer transition-colors duration-200 ease-out overflow-hidden">
+                <TableCell className="bg-white px-4 py-3 rounded-tl-[14px] rounded-bl-[14px]">{metric.metric}</TableCell>
+                <TableCell className="bg-white px-4 py-3 text-soft-400 font-mediumxs">{metric.description}</TableCell>
+                <TableCell className="bg-white px-4 py-3">{metric.weight}</TableCell>
+                <TableCell className="bg-white px-4 py-3">{metric.current}</TableCell>
+                <TableCell className="bg-white px-4 py-3 text-light-green rounded-tr-[14px] rounded-br-[14px]"><div className="flex flex-row items-center gap-1"><ArrowUp className="w-[15px] h-[20px] text-light-green" />{metric.trend}%</div></TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
+    </div>
     </>
     // <div className="backdrop-blur-[22px] bg-white rounded-[10px] flex flex-col w-full">
     //   {/* Header */}

@@ -88,7 +88,6 @@ export default function AthletePage() {
 
   return (
     <>
-      <AthletePageTour />
       <AnimatePresence mode="wait">
         <motion.div
           key="athlete"

@@ -66,9 +66,9 @@ export default function AthleteStatsCards({
         />
       </div>
       <div className="flex flex-col bg-white w-full lg:w-[360px] flex-shrink-0 rounded-[14px] p-[16px] sm:p-[18px] md:p-[20px] gap-[24px] sm:gap-[32px] md:gap-[46px]">
-        <p className="text-[12px] sm:text-[14px] text-soft-400 font-medium">Market Index</p>
+        <p className="text-[12px] sm:text-[14px] text-soft-400 font-medium">Multiple</p>
         <span className="flex flex-row items-center gap-1">
-          <h1 className="text-main text-[24px] sm:text-[28px] md:text-[32px] font-medium">{marketIndex}</h1>
+          <h1 className="text-main text-[24px] sm:text-[28px] md:text-[32px] font-medium">{marketIndex}x</h1>
           {marketIndexChange >= 0 ? (
             <ArrowUp className="w-[12px] h-[16px] sm:w-[14px] sm:h-[18px] md:w-[15px] md:h-[20px] text-light-green" />
           ) : (

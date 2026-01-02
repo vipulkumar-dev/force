@@ -11,6 +11,7 @@ import ActivePositions, {
 import TradingPanel from "@/components/athlete-page/trading-panel";
 import AthletePageTour from "@/components/athlete-page/athlete-page-tour";
 import AppFooter from "@/components/app-footer";
+import PriceChart from "@/components/athlete-page/price-chart";
 // Mock data - In production, this would come from an API based on the athlete ID
 const getAthleteData = (id: string) => ({
   id,
@@ -34,7 +35,7 @@ const getAthleteData = (id: string) => ({
   performanceChange: 31,
   leagueRank: 27,
   leagueRankChange: 3.0,
-  marketIndex: 500,
+  marketIndex: 1.8,
   marketIndexChange: 31,
   marketIndexName: "VIBX",
   // Chart data
@@ -120,11 +121,10 @@ export default function AthletePage() {
                 />
               </div>
             </div>
-
-
             {/* Tables in Accordion */}
             <div className="w-full flex justify-center mb-10 px-[16px] sm:px-[20px] md:px-[24px] lg:px-[40px]">
               <div className="max-w-[1276px] w-full flex flex-col gap-[16px] md:gap-[24px]">
+              <PriceChart />
                 <IndexWeights />
                 <ActivePositions />
               </div>

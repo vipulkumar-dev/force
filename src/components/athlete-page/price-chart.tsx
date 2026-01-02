@@ -12,6 +12,14 @@ import {
   ResponsiveContainer,
   ReferenceLine,
 } from "recharts";
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell,
+} from "@/components/ui/table";
 
 interface PriceChartProps {
   indexValue?: number;
@@ -39,6 +47,7 @@ interface ChartEvent {
 interface PlayData {
   time: string;
   play: string;
+  playUpdate: string;
   teamLogo: string;
   score1: number;
   score2: number;
@@ -52,28 +61,32 @@ const checkIcon = "/images/icons/check-icon.svg";
 const playByPlayData: PlayData[] = [
   {
     time: "12:00",
-    play: "Jalen Duren vs. Jarrett Allen (Evan Mobley gains possession)",
+    play: "Jalen Duren vs. Jarrett Allen",
+    playUpdate: "Evan Mobley gains possession",
     teamLogo: lakersLogo,
     score1: 0,
     score2: 0,
   },
   {
     time: "12:00",
-    play: "Sam Merrill bad pass (Ausar Thompson steals)",
+    play: "Sam Merrill bad pass",
+    playUpdate: "Ausar Thompson steals",
     teamLogo: warriorsLogo,
     score1: 0,
     score2: 0,
   },
   {
     time: "12:00",
-    play: "Jalen Duren vs. Jarrett Allen (Evan Mobley gains possession)",
+    play: "Jalen Duren vs. Jarrett Allen",
+    playUpdate: "Evan Mobley gains possession",
     teamLogo: lakersLogo,
     score1: 0,
     score2: 0,
   },
   {
     time: "12:00",
-    play: "Sam Merrill bad pass (Ausar Thompson steals)",
+    play: "Sam Merrill bad pass",
+    playUpdate: "Ausar Thompson steals",
     teamLogo: warriorsLogo,
     score1: 0,
     score2: 0,
@@ -659,11 +672,10 @@ export default function PriceChart({
                 key={tab}
                 id={`price-chart-tab-${tab.toLowerCase().replace(" ", "-")}`}
                 onClick={() => setActiveTab(tab)}
-                className={`flex flex-col gap-[14px] h-full items-start justify-center px-[10px] sm:px-[15px] md:px-[19px] cursor-pointer ${
-                  activeTab === tab
-                    ? "border-b border-main font-semibold text-[12px] sm:text-[13px] md:text-[14px] text-main tracking-[-0.14px] leading-none"
-                    : "font-medium text-[12px] sm:text-[13px] md:text-[14px] text-soft-400 tracking-[-0.14px] leading-none"
-                }`}
+                className={`flex flex-col gap-[14px] h-full items-start justify-center px-[10px] sm:px-[15px] md:px-[19px] cursor-pointer ${activeTab === tab
+                  ? "border-b border-soft-500 font-medium text-[12px] sm:text-[13px] md:text-[14px] text-main tracking-[-0.14px] leading-none"
+                  : "font-medium text-[12px] sm:text-[13px] md:text-[14px] text-soft-400 tracking-[-0.14px] leading-none"
+                  }`}
               >
                 {tab}
               </button>
@@ -700,32 +712,18 @@ export default function PriceChart({
 
           {/* Top Section - Badges and Time Range */}
           <div className="flex flex-col sm:flex-row gap-[8px] sm:gap-0 items-start sm:items-center justify-between w-full relative z-10">
-            {/* Left - Badges */}
-            <div className="flex gap-[4px] sm:gap-[6px] items-center flex-wrap">
-              {/* Route Badge */}
-              <div className="bg-neutral-100 border border-neutral-100 rounded-[40px] px-[8px] sm:px-[10px] py-[6px] sm:py-[7.5px] flex items-center gap-[3px] sm:gap-[4px]">
-                <Info className="w-[11px] h-[11px] sm:w-[13px] sm:h-[13px] text-main" />
-                <p className="font-normal text-[11px] sm:text-[13px] text-main tracking-[-0.13px] leading-none">
-                  Route:
-                </p>
-                <p className="font-normal text-[11px] sm:text-[13px] text-main tracking-[-0.13px] leading-none">
-                  {routeName}
-                </p>
-              </div>
+            <div className="flex gap-[4px] items-center font-bold text-[40px] md:text-[40px] tracking-[-0.13px] leading-none whitespace-nowrap">
+              <p className="text-main">{indexValue}</p>
 
-              {/* Earning Badge */}
-              <div className="bg-light-green/10 border border-light-green/10 rounded-[40px] px-[8px] sm:px-[10px] py-[6px] sm:py-[7.5px] flex items-center gap-[3px] sm:gap-[4px]">
-                <Flame className="w-[11px] h-[11px] sm:w-[13px] sm:h-[13px] text-light-green" />
-                <p className="font-normal text-[11px] sm:text-[13px] text-light-green tracking-[-0.13px] leading-none">
-                  Earning
-                </p>
-                <p className="font-normal text-[11px] sm:text-[13px] text-light-green tracking-[-0.13px] leading-none">
-                  +${earningToday.toFixed(2)}
-                </p>
-                <p className="font-normal text-[11px] sm:text-[13px] text-light-green tracking-[-0.13px] leading-none hidden sm:inline">
-                  Today
-                </p>
-              </div>
+              <p
+                className={
+                  change24h >= 0 ? "text-light-green text-[11px] sm:text-[13px] md:text-[14px] tracking-[-0.14px] leading-none" : "text-base-red text-[11px] sm:text-[13px] md:text-[14px] tracking-[-0.14px] leading-none align-top"
+                }
+              >
+                {change24h >= 0 ? "+" : ""}
+                {change24h.toFixed(1)}%
+              </p>
+
             </div>
 
             {/* Right - Time Range Selector */}
@@ -734,16 +732,14 @@ export default function PriceChart({
                 <button
                   key={range}
                   onClick={() => setTimeRange(range)}
-                  className={`flex gap-[2px] sm:gap-[4px] items-center justify-center p-[5px] sm:p-[6px] md:p-[7.5px] rounded-[100px] relative cursor-pointer shrink-0 ${
-                    timeRange === range
-                      ? "bg-neutral-100 shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.2),0px_4px_5px_0px_inset_rgba(255,255,255,0.05)]"
-                      : ""
-                  }`}
+                  className={`flex gap-[2px] sm:gap-[4px] items-center justify-center p-[5px] sm:p-[6px] md:p-[7.5px] rounded-md relative cursor-pointer shrink-0 ${timeRange === range
+                    ? "bg-neutral-100 shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.2),0px_4px_5px_0px_inset_rgba(255,255,255,0.05)]"
+                    : ""
+                    }`}
                 >
                   <p
-                    className={`font-medium px-[2px] sm:px-[3px] text-[11px] sm:text-[12px] md:text-[13px] tracking-[-0.13px] leading-none ${
-                      timeRange === range ? "text-main" : "text-soft-400"
-                    }`}
+                    className={`font-medium px-[2px] sm:px-[3px] text-[11px] sm:text-[12px] md:text-[13px] tracking-[-0.13px] leading-none ${timeRange === range ? "text-main" : "text-soft-400"
+                      }`}
                   >
                     {range}
                   </p>
@@ -754,40 +750,44 @@ export default function PriceChart({
 
           {/* Stats Row */}
           <div className="flex gap-[12px] md:gap-[20px] items-center w-full relative z-10 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <div className="flex gap-[4px] items-center font-normal text-[11px] md:text-[13px] tracking-[-0.13px] leading-none whitespace-nowrap">
-              <p className="text-soft-400">Index:</p>
-              <p className="text-main">{indexValue}</p>
-            </div>
-            <div className="flex gap-[4px] items-center font-normal text-[11px] md:text-[13px] tracking-[-0.13px] leading-none whitespace-nowrap">
-              <p className="text-soft-400">Market</p>
-              <p className="text-main">{marketValue}</p>
-            </div>
-            <div className="flex gap-[4px] items-center font-normal text-[11px] md:text-[13px] tracking-[-0.13px] leading-none whitespace-nowrap">
-              <p className="text-soft-400">24h</p>
-              <p
-                className={
-                  change24h >= 0 ? "text-light-green" : "text-base-red"
-                }
-              >
-                {change24h >= 0 ? "+" : ""}
-                {change24h.toFixed(1)}%
+            {/* Earning Today */}
+            <div className="bg-white border border-light-gray rounded-md px-[8px] sm:px-[10px] py-[6px] sm:py-[7.5px] flex items-center gap-[3px] sm:gap-[4px]">
+              <Flame className="w-[11px] h-[11px] sm:w-[13px] sm:h-[13px] text-light-green" />
+              <p className="font-normal text-[11px] sm:text-[13px] text-light-green tracking-[-0.13px] leading-none">
+                +${earningToday.toFixed(2)}
+              </p>
+              <p className="font-bold text-[11px] sm:text-[13px] text-main tracking-[-0.13px] leading-none">
+                Earning Today
               </p>
             </div>
-            <div className="flex gap-[4px] items-center font-normal text-[11px] md:text-[13px] tracking-[-0.13px] leading-none whitespace-nowrap">
-              <p className="text-soft-400">Vol</p>
-              <p className="text-main">{volume}</p>
+            {/* Volume */}
+            <div className="bg-white border border-light-gray rounded-md px-[8px] sm:px-[10px] py-[6px] sm:py-[7.5px] flex items-center gap-[3px] sm:gap-[4px]">
+              <p className="font-normal text-[11px] sm:text-[13px] text-soft-400 tracking-[-0.13px] leading-none">
+                Vol
+              </p>
+              <p className="font-bold text-[11px] sm:text-[13px] text-main tracking-[-0.13px] leading-none">
+                {volume}
+              </p>
             </div>
-            <div className="flex gap-[4px] items-center font-normal text-[11px] md:text-[13px] tracking-[-0.13px] leading-none whitespace-nowrap">
-              <p className="text-soft-400">Open Interest</p>
-              <p className="text-main">{openInterest}</p>
-            </div>
-            <div className="flex gap-[4px] items-center font-normal text-[11px] md:text-[13px] tracking-[-0.13px] leading-none whitespace-nowrap">
-              <p className="text-soft-400">Funding</p>
-              <p
-                className={funding >= 0 ? "text-light-green" : "text-neon-pink"}
-              >
+            {/* Funding */}
+            <div className="bg-white border border-light-gray rounded-md px-[8px] py-[6px] sm:px-[10px]   sm:py-[2px] flex items-center gap-[3px] sm:gap-[4px]">
+              <p className="font-normal text-[11px] sm:text-[13px] text-soft-400 tracking-[-0.13px] leading-none">
+                Funding
+              </p>
+              <p className={funding >= 0 ? "text-light-green" : "text-neon-pink"}>
                 {funding >= 0 ? "+" : ""}
                 {funding.toFixed(2)}%
+
+              </p>
+            </div>
+            {/* Route */}
+            <div className="bg-white border border-light-gray rounded-md px-[8px] sm:px-[10px] py-[6px] sm:py-[7.5px] flex items-center gap-[3px] sm:gap-[4px]">
+              <Info className="w-[11px] h-[11px] sm:w-[13px] sm:h-[13px] text-main" />
+              <p className="font-normal text-[11px] sm:text-[13px] text-soft-400 tracking-[-0.13px] leading-none">
+                Route:
+              </p>
+              <p className="font-normal text-[11px] sm:text-[13px] text-main tracking-[-0.13px] leading-none">
+                {routeName}
               </p>
             </div>
           </div>
@@ -903,7 +903,7 @@ export default function PriceChart({
                 />
 
                 {/* Blue line - dotted, smooth (#25B3FF) */}
-                <Line
+                {/* <Line
                   type="monotone"
                   dataKey="blueLine"
                   stroke="#25B3FF"
@@ -917,7 +917,7 @@ export default function PriceChart({
                     strokeWidth: 2,
                   }}
                   connectNulls={true}
-                />
+                /> */}
 
                 {/* Green line - smooth (#16A34A) */}
                 <Line
@@ -1095,9 +1095,8 @@ export default function PriceChart({
                 return (
                   <p
                     key={`${point.time}-${index}`}
-                    className={`font-normal text-[10px] sm:text-[11px] md:text-[12px] text-center tracking-[-0.12px] leading-none transition-colors ${
-                      isActive ? "text-main font-medium" : "text-soft-400"
-                    }`}
+                    className={`font-normal text-[10px] sm:text-[11px] md:text-[12px] text-center tracking-[-0.12px] leading-none transition-colors ${isActive ? "text-main font-medium" : "text-soft-400"
+                      }`}
                   >
                     {point.timeLabel}
                   </p>
@@ -1109,11 +1108,85 @@ export default function PriceChart({
 
       {/* Live Feed Tab Content */}
       {activeTab === "Live Feed" && (
-        <div className="flex flex-col items-start w-full">
-          {/* Court and Controls */}
-          <div className="flex flex-col lg:flex-row gap-[12px] sm:gap-[16px] md:gap-[24px] items-start p-[12px] sm:p-[16px] md:p-[20px] w-full">
+        <div className="flex flex-col items-start w-full gap-[12px]">
+          <div className="flex gap-[12px] sm:gap-[24px] items-center p-2">
+            <div className="basis-0 flex gap-[12px] sm:gap-[24px] grow  items-center min-h-px min-w-px px-[12px] sm:px-[16px] md:px-[20px] py-0">
+              <div className="basis-0 flex gap-[2px] sm:gap-[4px] grow h-full items-center min-h-px min-w-px">
+                {quarters.map((quarter) => (
+                  <button
+                    key={quarter}
+                    onClick={() => setActiveQuarter(quarter)}
+                    className={` flex flex-col gap-[14px] grow h-full items-center justify-center min-h-px min-w-px p-2 cursor-pointer ${activeQuarter === quarter
+                      ? " rounded-md bg-soft-500 font-semibold text-[12px] sm:text-[12px] md:text-[12px] text-main tracking-[-0.14px] leading-none"
+                      : "font-medium text-[12px] sm:text-[12px] md:text-[12px] text-soft-400 tracking-[-0.14px] leading-none"
+                      }`}
+                  >
+                    {quarter}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-10 w-full px-4 mb-10">
+            {/* Play by Play Table */}
+            <div className="flex-1 w-full lg:max-w-[573px]">
+              <div className="bg-page-background p-4 rounded-[20px] h-[200px] sm:h-[240px] md:h-[308px] relative overflow-hidden">
+                <div className="overflow-x-auto h-full [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                  <Table className="border-separate border-spacing-y-2 w-full table-auto min-w-[450px] sm:min-w-[500px]">
+                    <TableHeader>
+                      <TableRow className="border-0">
+                        <TableHead className="font-medium text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] border-0 px-4 py-3">
+                          Time
+                        </TableHead>
+                        <TableHead className="font-medium text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] border-0 px-4 py-3">
+                          Play
+                        </TableHead>
+                        <TableHead className="font-medium text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] border-0 px-4 py-3 w-[40px] sm:w-[50px] md:w-[64px]">
+                          Weight
+                        </TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {playByPlayData.map((play, index) => (
+                        <TableRow
+                          key={index}
+                          className="bg-white border-0 mb-2 rounded-[14px] hover:bg-white hover:cursor-pointer transition-colors duration-200 ease-out"
+                        >
+                          <TableCell className="font-medium px-4 py-3 rounded-tl-[14px] rounded-bl-[14px]">
+                            {play.time}
+                          </TableCell>
+                          <TableCell className="px-4 py-3">
+                            <div className="flex gap-[4px] sm:gap-[6px] md:gap-[8px] items-center">
+                              <div className="flex flex-col w-[24px] h-[24px] sm:w-[28px] sm:h-[28px] md:w-[32px] md:h-[32px] px-[3px] py-[7px] items-center justify-center shrink-0">
+                                <Image
+                                  src={play.teamLogo}
+                                  alt={play.play}
+                                  width={32}
+                                  height={32}
+                                />
+                              </div>
+                              <span className="flex flex-col gap-[4px]">
+                                <p className="text-nowrap whitespace-pre">
+                                  {play.play}
+                                </p>
+                                <p className="text-nowrap text-xs text-soft-400 whitespace-pre">
+                                  ({play.playUpdate})
+                                </p>
+                              </span>
+                            </div>
+                          </TableCell>
+                          <TableCell className="px-4 py-3 rounded-tr-[14px] rounded-br-[14px] w-[40px] sm:w-[50px] md:w-[64px]">
+                            {play.score1}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+              </div>
+            </div>
             {/* Basketball Court */}
-            <div className="h-[200px] sm:h-[240px] md:h-[308px] w-full lg:w-[573px] shrink-0 relative overflow-hidden">
+            <div className="flex-1 w-full lg:max-w-[573px] h-[200px] sm:h-[240px] md:h-[308px] relative overflow-hidden rounded-[20px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={courtImage}
@@ -1265,478 +1338,89 @@ export default function PriceChart({
                 </>
               )}
             </div>
-
-            {/* Controls */}
-            <div className="w-full lg:flex-1 flex flex-col gap-[12px] sm:gap-[16px] items-start">
-              {/* Select Quarter */}
-              <div className="flex flex-col gap-[6px] sm:gap-[8px] items-start w-full relative">
-                <div className="flex gap-[8px] items-center w-full">
-                  <p className="font-normal leading-none text-[11px] sm:text-[12px] text-main text-nowrap tracking-[-0.12px] whitespace-pre">
-                    Select Quarter
-                  </p>
-                </div>
-                <button
-                  onClick={() => setQuarterDropdownOpen(!quarterDropdownOpen)}
-                  className="bg-white border border-[rgba(226,228,233,0.6)] border-solid flex gap-[4px] h-[36px] sm:h-[40px] items-center px-[16px] sm:px-[20px] py-[10px] sm:py-[13px] rounded-[100px] w-full hover:bg-gray-50 transition-colors cursor-pointer"
-                >
-                  <p className="basis-0 font-medium grow leading-none min-h-px min-w-px text-[13px] sm:text-[14px] text-main tracking-[-0.14px]">
-                    {selectedQuarter}
-                  </p>
-                  <ChevronDown
-                    className={`w-[13px] h-[13px] sm:w-[14px] sm:h-[14px] text-main transition-transform ${
-                      quarterDropdownOpen ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                {quarterDropdownOpen && (
-                  <>
-                    <div
-                      className="fixed inset-0 z-10"
-                      onClick={() => setQuarterDropdownOpen(false)}
-                    />
-                    <div className="absolute top-[68px] left-0 w-full bg-white border border-[rgba(226,228,233,0.6)] rounded-[10px] shadow-lg z-20 overflow-hidden">
-                      {quarterOptions.map((option) => (
-                        <button
-                          key={option}
-                          onClick={() => {
-                            setSelectedQuarter(option);
-                            setQuarterDropdownOpen(false);
-                          }}
-                          className={`w-full px-[20px] py-[12px] text-left font-medium text-[14px] tracking-[-0.14px] transition-colors cursor-pointer ${
-                            selectedQuarter === option
-                              ? "bg-neutral-100 text-main"
-                              : "text-main hover:bg-gray-50"
-                          }`}
-                        >
-                          {option}
-                        </button>
-                      ))}
-                    </div>
-                  </>
-                )}
-              </div>
-
-              {/* Los Angeles Lakers View */}
-              <div className="flex flex-col gap-[6px] sm:gap-[8px] items-start w-full">
-                <div className="flex flex-col gap-[6px] sm:gap-[8px] items-start w-full relative">
-                  <div className="flex gap-[8px] items-center w-full">
-                    <p className="font-normal leading-none text-[11px] sm:text-[12px] text-main text-nowrap tracking-[-0.12px] whitespace-pre">
-                      Los Angeles Lakers View
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => setLakersDropdownOpen(!lakersDropdownOpen)}
-                    className="bg-white border border-[rgba(226,228,233,0.6)] border-solid flex gap-[4px] h-[36px] sm:h-[40px] items-center px-[12px] sm:px-[16px] md:px-[20px] py-[10px] sm:py-[13px] rounded-[100px] w-full hover:bg-gray-50 transition-colors cursor-pointer"
-                  >
-                    <p className="basis-0 font-medium grow leading-none min-h-px min-w-px text-[12px] sm:text-[13px] md:text-[14px] text-main tracking-[-0.14px]">
-                      {lakersPlayer}
-                    </p>
-                    <ChevronDown
-                      className={`w-[12px] h-[12px] sm:w-[14px] sm:h-[14px] text-main transition-transform ${
-                        lakersDropdownOpen ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                  {lakersDropdownOpen && (
-                    <>
-                      <div
-                        className="fixed inset-0 z-10"
-                        onClick={() => setLakersDropdownOpen(false)}
-                      />
-                      <div className="absolute top-[48px] sm:top-[52px] left-0 w-full bg-white border border-[rgba(226,228,233,0.6)] rounded-[10px] shadow-lg z-20 overflow-hidden">
-                        {lakersPlayers.map((player) => (
-                          <button
-                            key={player}
-                            onClick={() => {
-                              setLakersPlayer(player);
-                              setLakersDropdownOpen(false);
-                            }}
-                            className={`w-full px-[12px] sm:px-[16px] md:px-[20px] py-[10px] sm:py-[12px] text-left font-medium text-[12px] sm:text-[13px] md:text-[14px] tracking-[-0.14px] transition-colors cursor-pointer ${
-                              lakersPlayer === player
-                                ? "bg-neutral-100 text-main"
-                                : "text-main hover:bg-gray-50"
-                            }`}
-                          >
-                            {player}
-                          </button>
-                        ))}
-                      </div>
-                    </>
-                  )}
-                </div>
-                <div className="flex gap-[6px] sm:gap-[8px] items-start w-full">
-                  {/* Made Toggle */}
-                  <button
-                    onClick={() => setLakersMade(!lakersMade)}
-                    className="basis-0 bg-white border border-[rgba(226,228,233,0.6)] border-solid flex gap-[6px] sm:gap-[10px] md:gap-[14px] grow h-[36px] sm:h-[40px] items-center min-h-px min-w-px px-[10px] sm:px-[12px] md:px-[16px] py-[10px] sm:py-[13px] rounded-[100px] hover:bg-gray-50 transition-colors"
-                  >
-                    <div className="basis-0 flex gap-[4px] sm:gap-[6px] md:gap-[8px] grow items-center min-h-px min-w-px">
-                      <div
-                        className={`border-2 border-solid border-white rounded-[100px] shrink-0 size-[12px] sm:size-[14px] ${
-                          lakersMade
-                            ? "bg-[#b47818] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)]"
-                            : "bg-[#b47818]"
-                        }`}
-                      >
-                        {!lakersMade && (
-                          <div className="flex items-center justify-center size-full">
-                            <div className="bg-white rounded-[100px] shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] shrink-0 size-[4px] sm:size-[6px]" />
-                          </div>
-                        )}
-                      </div>
-                      <p className="font-medium leading-none text-[11px] sm:text-[12px] md:text-[14px] text-main text-nowrap tracking-[-0.14px] whitespace-pre">
-                        Made
-                      </p>
-                    </div>
-                    <div className="size-[16px] sm:size-[18px] shrink-0">
-                      <div
-                        className={`border border-[rgba(255,255,255,0.1)] border-solid rounded-[6px] size-full relative shadow-[0px_2px_2px_0px_inset_rgba(255,255,255,0.25)] ${
-                          lakersMade ? "bg-[#2fd044]" : "bg-gray-300"
-                        }`}
-                      >
-                        {lakersMade && (
-                          <div className="absolute inset-[16.667%] flex items-center justify-center">
-                            <Image
-                              src={checkIcon}
-                              alt=""
-                              width={10}
-                              height={10}
-                            />
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </button>
-                  {/* Missed Toggle */}
-                  <button
-                    onClick={() => setLakersMissed(!lakersMissed)}
-                    className="basis-0 bg-white border border-[rgba(226,228,233,0.6)] border-solid flex gap-[4px] sm:gap-[6px] grow h-[36px] sm:h-[40px] items-center min-h-px min-w-px px-[10px] sm:px-[12px] md:px-[16px] py-[10px] sm:py-[13px] rounded-[100px] hover:bg-gray-50 transition-colors"
-                  >
-                    <div className="basis-0 flex gap-[4px] sm:gap-[6px] md:gap-[8px] grow items-center min-h-px min-w-px">
-                      <div
-                        className={`border-2 border-solid border-white rounded-[100px] shrink-0 size-[12px] sm:size-[14px] ${
-                          lakersMissed
-                            ? "bg-[#b47818] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)]"
-                            : "bg-[#b47818]"
-                        }`}
-                      >
-                        {!lakersMissed && (
-                          <div className="flex items-center justify-center size-full">
-                            <div className="bg-white rounded-[100px] shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] shrink-0 size-[4px] sm:size-[6px]" />
-                          </div>
-                        )}
-                      </div>
-                      <p className="font-medium leading-none text-[11px] sm:text-[12px] md:text-[14px] text-main text-nowrap tracking-[-0.14px] whitespace-pre">
-                        Missed
-                      </p>
-                    </div>
-                    <div className="size-[16px] sm:size-[18px] shrink-0">
-                      <div
-                        className={`border border-[rgba(255,255,255,0.1)] border-solid rounded-[6px] size-full relative shadow-[0px_2px_2px_0px_inset_rgba(255,255,255,0.25)] ${
-                          lakersMissed ? "bg-[#2fd044]" : "bg-gray-300"
-                        }`}
-                      >
-                        {lakersMissed && (
-                          <div className="absolute inset-[16.667%] flex items-center justify-center">
-                            <Image
-                              src={checkIcon}
-                              alt=""
-                              width={10}
-                              height={10}
-                            />
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </button>
-                </div>
-              </div>
-
-              {/* Golden State Warriors View */}
-              <div className="flex flex-col gap-[6px] sm:gap-[8px] items-start w-full">
-                <div className="flex flex-col gap-[6px] sm:gap-[8px] items-start w-full relative">
-                  <div className="flex gap-[8px] items-center w-full">
-                    <p className="font-normal leading-none text-[11px] sm:text-[12px] text-main text-nowrap tracking-[-0.12px] whitespace-pre">
-                      Golden State Warriors View
-                    </p>
-                  </div>
-                  <button
-                    onClick={() =>
-                      setWarriorsDropdownOpen(!warriorsDropdownOpen)
-                    }
-                    className="bg-white border border-[rgba(226,228,233,0.6)] border-solid flex gap-[4px] h-[36px] sm:h-[40px] items-center px-[12px] sm:px-[16px] md:px-[20px] py-[10px] sm:py-[13px] rounded-[100px] w-full hover:bg-gray-50 transition-colors cursor-pointer"
-                  >
-                    <p className="basis-0 font-medium grow leading-none min-h-px min-w-px text-[12px] sm:text-[13px] md:text-[14px] text-main tracking-[-0.14px]">
-                      {warriorsPlayer}
-                    </p>
-                    <ChevronDown
-                      className={`w-[12px] h-[12px] sm:w-[14px] sm:h-[14px] text-main transition-transform ${
-                        warriorsDropdownOpen ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                  {warriorsDropdownOpen && (
-                    <>
-                      <div
-                        className="fixed inset-0 z-10"
-                        onClick={() => setWarriorsDropdownOpen(false)}
-                      />
-                      <div className="absolute top-[48px] sm:top-[52px] left-0 w-full bg-white border border-[rgba(226,228,233,0.6)] rounded-[10px] shadow-lg z-20 overflow-hidden">
-                        {warriorsPlayers.map((player) => (
-                          <button
-                            key={player}
-                            onClick={() => {
-                              setWarriorsPlayer(player);
-                              setWarriorsDropdownOpen(false);
-                            }}
-                            className={`w-full px-[12px] sm:px-[16px] md:px-[20px] py-[10px] sm:py-[12px] text-left font-medium text-[12px] sm:text-[13px] md:text-[14px] tracking-[-0.14px] transition-colors cursor-pointer ${
-                              warriorsPlayer === player
-                                ? "bg-neutral-100 text-main"
-                                : "text-main hover:bg-gray-50"
-                            }`}
-                          >
-                            {player}
-                          </button>
-                        ))}
-                      </div>
-                    </>
-                  )}
-                </div>
-                <div className="flex gap-[6px] sm:gap-[8px] items-start w-full">
-                  {/* Made Toggle */}
-                  <button
-                    onClick={() => setWarriorsMade(!warriorsMade)}
-                    className="basis-0 bg-white border border-[rgba(226,228,233,0.6)] border-solid flex gap-[4px] sm:gap-[6px] grow h-[36px] sm:h-[40px] items-center min-h-px min-w-px px-[10px] sm:px-[12px] md:px-[16px] py-[10px] sm:py-[13px] rounded-[100px] hover:bg-gray-50 transition-colors"
-                  >
-                    <div className="basis-0 flex gap-[4px] sm:gap-[6px] md:gap-[8px] grow items-center min-h-px min-w-px">
-                      <div
-                        className={`border-2 border-solid border-white rounded-[100px] shrink-0 size-[12px] sm:size-[14px] ${
-                          warriorsMade
-                            ? "bg-[#cb0d0d] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)]"
-                            : "bg-[#cb0d0d]"
-                        }`}
-                      >
-                        {!warriorsMade && (
-                          <div className="flex items-center justify-center size-full">
-                            <div className="bg-white rounded-[100px] shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] shrink-0 size-[4px] sm:size-[6px]" />
-                          </div>
-                        )}
-                      </div>
-                      <p className="font-medium leading-none text-[11px] sm:text-[12px] md:text-[14px] text-main text-nowrap tracking-[-0.14px] whitespace-pre">
-                        Made
-                      </p>
-                    </div>
-                    <div className="size-[16px] sm:size-[18px] shrink-0">
-                      <div
-                        className={`border border-[rgba(255,255,255,0.1)] border-solid rounded-[6px] size-full relative shadow-[0px_2px_2px_0px_inset_rgba(255,255,255,0.25)] ${
-                          warriorsMade ? "bg-[#2fd044]" : "bg-gray-300"
-                        }`}
-                      >
-                        {warriorsMade && (
-                          <div className="absolute inset-[16.667%] flex items-center justify-center">
-                            <Image
-                              src={checkIcon}
-                              alt=""
-                              width={10}
-                              height={10}
-                            />
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </button>
-                  {/* Missed Toggle */}
-                  <button
-                    onClick={() => setWarriorsMissed(!warriorsMissed)}
-                    className="basis-0 bg-white border border-[rgba(226,228,233,0.6)] border-solid flex gap-[4px] sm:gap-[6px] grow h-[36px] sm:h-[40px] items-center min-h-px min-w-px px-[10px] sm:px-[12px] md:px-[16px] py-[10px] sm:py-[13px] rounded-[100px] hover:bg-gray-50 transition-colors"
-                  >
-                    <div className="basis-0 flex gap-[4px] sm:gap-[6px] md:gap-[8px] grow items-center min-h-px min-w-px">
-                      <div
-                        className={`border-2 border-solid border-white rounded-[100px] shrink-0 size-[12px] sm:size-[14px] ${
-                          warriorsMissed
-                            ? "bg-[#cb0d0d] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)]"
-                            : "bg-[#cb0d0d]"
-                        }`}
-                      >
-                        {!warriorsMissed && (
-                          <div className="flex items-center justify-center size-full">
-                            <div className="bg-white rounded-[100px] shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] shrink-0 size-[4px] sm:size-[6px]" />
-                          </div>
-                        )}
-                      </div>
-                      <p className="font-medium leading-none text-[11px] sm:text-[12px] md:text-[14px] text-main text-nowrap tracking-[-0.14px] whitespace-pre">
-                        Missed
-                      </p>
-                    </div>
-                    <div className="size-[16px] sm:size-[18px] shrink-0">
-                      <div
-                        className={`border border-[rgba(255,255,255,0.1)] border-solid rounded-[6px] size-full relative shadow-[0px_2px_2px_0px_inset_rgba(255,255,255,0.25)] ${
-                          warriorsMissed ? "bg-[#2fd044]" : "bg-gray-300"
-                        }`}
-                      >
-                        {warriorsMissed && (
-                          <div className="absolute inset-[16.667%] flex items-center justify-center">
-                            <Image
-                              src={checkIcon}
-                              alt=""
-                              width={10}
-                              height={10}
-                            />
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Quarter Tabs */}
-          <div className="flex flex-col items-start w-full">
-            <div className="border-[0px_0px_1px] border-light-gray border-solid flex gap-[12px] sm:gap-[24px] items-center w-full">
-              <div className="basis-0 flex gap-[12px] sm:gap-[24px] grow h-[44px] sm:h-[48px] items-center min-h-px min-w-px px-[12px] sm:px-[16px] md:px-[20px] py-0">
-                <div className="basis-0 flex gap-[2px] sm:gap-[4px] grow h-full items-center min-h-px min-w-px">
-                  {quarters.map((quarter) => (
-                    <button
-                      key={quarter}
-                      onClick={() => setActiveQuarter(quarter)}
-                      className={`basis-0 flex flex-col gap-[14px] grow h-full items-center justify-center min-h-px min-w-px px-[10px] sm:px-[15px] md:px-[19px] py-0 cursor-pointer ${
-                        activeQuarter === quarter
-                          ? "border-b border-main font-semibold text-[12px] sm:text-[13px] md:text-[14px] text-main tracking-[-0.14px] leading-none"
-                          : "font-medium text-[12px] sm:text-[13px] md:text-[14px] text-soft-400 tracking-[-0.14px] leading-none"
-                      }`}
-                    >
-                      {quarter}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Play by Play Table */}
-            <div className="flex flex-col items-start overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pb-[4px] pt-0 px-[2px] sm:px-[4px] w-full">
-              {/* Table Header */}
-              <div className="flex font-medium gap-[8px] sm:gap-[12px] md:gap-[16px] items-center leading-none px-[8px] sm:px-[12px] md:px-[16px] py-[10px] sm:py-[12px] text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] w-full min-w-[450px] sm:min-w-[500px]">
-                <p className="w-[45px] sm:w-[50px] md:w-[64px]">Time</p>
-                <p className="basis-0 grow min-h-px min-w-px">Play</p>
-                <p className="w-[40px] sm:w-[50px] md:w-[64px]">DET</p>
-                <p className="w-[40px] sm:w-[50px] md:w-[64px]">CLE</p>
-              </div>
-
-              {/* Table Rows */}
-              {playByPlayData.map((play, index) => (
-                <div
-                  key={index}
-                  className="flex gap-[8px] sm:gap-[12px] md:gap-[16px] h-[44px] sm:h-[48px] items-center p-[8px] sm:p-[12px] md:p-[16px] w-full min-w-[450px] sm:min-w-[500px] relative hover:border-t hover:border-main hover:bg-linear-to-r hover:from-main/3 hover:to-main/3 transition-all"
-                >
-                  <p className="font-medium leading-none text-[10px] sm:text-[11px] md:text-[12px] text-main tracking-[-0.12px] w-[45px] sm:w-[50px] md:w-[64px]">
-                    {play.time}
-                  </p>
-                  <div className="basis-0 flex gap-[4px] sm:gap-[6px] md:gap-[8px] grow items-center min-h-px min-w-px">
-                    <div className="flex flex-col w-[24px] h-[24px] sm:w-[28px] sm:h-[28px] md:w-[32px] md:h-[32px] px-[3px] py-[7px] items-center justify-center">
-                      <Image
-                        src={play.teamLogo}
-                        alt={play.play}
-                        width={32}
-                        height={32}
-                      />
-                    </div>
-                    <p className="font-medium leading-none text-[10px] sm:text-[11px] md:text-[12px] text-main text-nowrap tracking-[-0.12px] whitespace-pre">
-                      {play.play}
-                    </p>
-                  </div>
-                  <p className="font-medium leading-none text-[10px] sm:text-[11px] md:text-[12px] text-main tracking-[-0.12px] w-[40px] sm:w-[50px] md:w-[64px]">
-                    {play.score1}
-                  </p>
-                  <p className="font-medium leading-none text-[10px] sm:text-[11px] md:text-[12px] text-main tracking-[-0.12px] w-[40px] sm:w-[50px] md:w-[64px]">
-                    {play.score2}
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       )}
 
       {/* Orderbook Tab Content */}
       {activeTab === "Orderbook" && (
-        <div className="flex flex-col md:flex-row items-start w-full">
+        <div className="flex flex-col md:flex-row gap-4 p-4 items-start w-full">
           {/* Bids Column (Left) */}
-          <div className="basis-0 border-light-gray border-[0px_0px_1px_0px] md:border-[0px_1px_0px_0px] border-solid flex flex-col grow items-start min-h-px min-w-px w-full">
+          <div className="basis-0 flex flex-col grow items-start min-h-px min-w-px w-full">
             {/* Bids Header */}
-            <div className="border-light-gray border-[0px_0px_1px] border-solid flex gap-[4px] items-start p-[2px] sm:p-[4px] w-full">
-              <div className="basis-0 bg-light-gray border-[0px_0px_1px] border-light-gray border-solid flex flex-col gap-[8px] sm:gap-[12px] grow items-start min-h-px min-w-px px-[12px] sm:px-[16px] py-[10px] sm:py-[12px]">
+            <div className="flex gap-[4px] items-start p-[2px] sm:p-[4px] w-full">
+              <div className="basis-0 flex flex-col gap-[8px] sm:gap-[12px] grow items-start min-h-px min-w-px px-[12px] sm:px-[16px] py-[10px] sm:py-[12px]">
                 <p className="font-medium leading-none text-[11px] sm:text-[12px] text-main tracking-[-0.12px] w-full">
                   Bids (YES)
                 </p>
               </div>
             </div>
 
-            {/* Bids Table Header */}
-            <div className="border-light-gray border-[0px_0px_1px] border-solid flex font-medium gap-[16px] sm:gap-[24px] items-center leading-none px-[12px] sm:px-[16px] md:px-[20px] py-[12px] sm:py-[16px] text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] w-full">
-              <p className="w-[80px] sm:w-[120px] md:w-[180px]">Price</p>
-              <p className="basis-0 grow min-h-px min-w-px">Size</p>
+           <div className="bg-page-background w-full rounded-[14px] p-1 x-auto">
+             {/* Bids Table Header */}
+             <div className="flex font-medium justify-between items-center leading-none px-[12px] sm:px-[16px] md:px-[20px] py-[12px] sm:py-[16px] text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] w-full">
+              <p>Size</p>
+              <p>Price</p>
             </div>
 
             {/* Bids Rows */}
             {bidsData.map((bid, index) => (
               <div
                 key={index}
-                className={`flex gap-[12px] sm:gap-[16px] md:gap-[24px] items-center px-[12px] sm:px-[16px] md:px-[20px] py-[12px] sm:py-[14px] md:py-[16px] w-full relative ${
-                  index < bidsData.length - 1
-                    ? "border-light-gray border-[0px_0px_1px] border-solid"
-                    : ""
-                }`}
+                className={`flex gap-[12px] bg-white rounded-[14px] mb-2 sm:gap-[16px] md:gap-[24px] items-center px-[12px] sm:px-[16px] md:px-[20px] py-[12px] sm:py-[14px] md:py-[16px] w-full relative ${index < bidsData.length - 1
+                  ? "border-light-gray border-[0px_0px_1px] border-solid"
+                  : ""
+                  }`}
               >
                 {/* Background Bar */}
                 <div
-                  className="absolute bg-[rgba(22,163,74,0.2)] h-[40px] sm:h-[43px] md:h-[46px] top-1/2 translate-y-[-50%] left-0"
+                  className="absolute rounded-tr-[14px] rounded-br-[14px] bg-[rgba(22,163,74,0.2)] h-[40px] sm:h-[43px] md:h-[46px] top-1/2 translate-y-[-50%] right-0"
                   style={{
                     width: `${bid.barWidth}%`,
                     maxWidth: '50%',
                   }}
                 />
-                <p className="font-medium leading-none text-[12px] sm:text-[13px] md:text-[14px] text-green-600 tracking-[-0.14px] w-[80px] sm:w-[120px] md:w-[180px] relative z-10">
+                <p className="font-medium leading-none text-[12px] sm:text-[13px] md:text-[14px] text-main tracking-[-0.14px] w-[80px] sm:w-[120px] md:w-[180px] relative z-10">
                   {bid.price}
                 </p>
-                <p className="basis-0 font-medium grow leading-none min-h-px min-w-px text-main text-[12px] sm:text-[13px] md:text-[14px] tracking-[-0.14px] relative z-10">
+                <p className="font-medium leading-none text-green-600 text-[12px] sm:text-[13px] md:text-[14px] tracking-[-0.14px] relative z-10 ml-auto">
                   {bid.size}
                 </p>
               </div>
             ))}
+           </div>
           </div>
 
           {/* Asks Column (Right) */}
           <div className="basis-0 flex flex-col grow items-start min-h-px min-w-px w-full">
             {/* Asks Header */}
-            <div className="border-light-gray border-[0px_0px_1px] border-solid flex gap-[4px] items-start p-[2px] sm:p-[4px] w-full">
-              <div className="basis-0 bg-light-gray border-[0px_0px_1px] border-light-gray border-solid flex flex-col gap-[8px] sm:gap-[12px] grow items-start min-h-px min-w-px px-[12px] sm:px-[16px] py-[10px] sm:py-[12px]">
+            <div className="flex gap-[4px] items-start p-[2px] sm:p-[4px] w-full">
+              <div className="basis-0 flex flex-col gap-[8px] sm:gap-[12px] grow items-start min-h-px min-w-px px-[12px] sm:px-[16px] py-[10px] sm:py-[12px]">
                 <p className="font-medium leading-none text-[11px] sm:text-[12px] text-main tracking-[-0.12px] w-full">
                   Asks (YES)
                 </p>
               </div>
             </div>
 
-            {/* Asks Table Header */}
-            <div className="border-light-gray border-[0px_0px_1px] border-solid flex font-medium gap-[16px] sm:gap-[24px] items-center leading-none px-[12px] sm:px-[16px] md:px-[20px] py-[12px] sm:py-[16px] text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] w-full">
-              <p className="w-[80px] sm:w-[120px] md:w-[180px]">Price</p>
-              <p className="basis-0 grow min-h-px min-w-px">Size</p>
+           <div className="bg-page-background w-full rounded-[14px] p-1 mb-4">
+             {/* Asks Table Header */}
+             <div className="flex font-medium justify-between items-center leading-none px-[12px] sm:px-[16px] md:px-[20px] py-[12px] sm:py-[16px] text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] w-full">
+              <p>Size</p>
+              <p>Price</p>
             </div>
 
             {/* Asks Rows */}
             {asksData.map((ask, index) => (
               <div
                 key={index}
-                className={`flex gap-[12px] sm:gap-[16px] md:gap-[24px] items-center px-[12px] sm:px-[16px] md:px-[20px] py-[12px] sm:py-[14px] md:py-[16px] w-full relative ${
-                  index < asksData.length - 1
-                    ? "border-light-gray border-[0px_0px_1px] border-solid"
-                    : ""
-                }`}
+                className={`flex bg-white rounded-[14px] mb-2 gap-[12px] sm:gap-[16px] md:gap-[24px] items-center px-[12px] sm:px-[16px] md:px-[20px] py-[12px] sm:py-[14px] md:py-[16px] w-full relative ${index < asksData.length - 1
+                  ? "border-light-gray border-[0px_0px_1px] border-solid"
+                  : ""
+                  }`}
               >
                 {/* Background Bar */}
                 <div
-                  className="absolute bg-[rgba(252,57,112,0.2)] h-[40px] sm:h-[43px] md:h-[46px] top-1/2 translate-y-[-50%] left-0"
+                  className="absolute rounded-tl-[14px] rounded-bl-[14px] bg-[rgba(252,57,112,0.2)] h-[40px] sm:h-[43px] md:h-[46px] top-1/2 translate-y-[-50%] left-0"
                   style={{
                     width: `${ask.barWidth}%`,
                     maxWidth: '50%',
@@ -1750,6 +1434,7 @@ export default function PriceChart({
                 </p>
               </div>
             ))}
+           </div>
           </div>
         </div>
       )}

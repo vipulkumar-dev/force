@@ -150,7 +150,7 @@ export default function PriceTrendChart() {
             </div>
             {viewMode === "list" ? (
                 <div className="w-full overflow-x-auto">
-                    <Table className="border-separate border-spacing-y-2 w-full min-w-full table-auto">
+                    <Table className="border-separate border-spacing-y-2 w-full table-auto">
                         <TableHeader>
                             <TableRow className="border-0">
                                 <TableHead className="text-muted-foreground text-[12px] font-medium leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">Player</TableHead>

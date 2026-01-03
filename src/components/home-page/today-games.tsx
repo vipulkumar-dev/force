@@ -1,5 +1,6 @@
 import React from 'react'
 import GameCard from './game-card'
+import Link from 'next/link'
 
 interface GameData {
   id: string
@@ -127,6 +128,7 @@ export default function TodayGames() {
       <div className='flex flex-row overflow-x-auto overflow-y-hidden m-0 p-0 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'>
         {games.map((game) => (
           <div key={game.id} className='flex-shrink-0'>
+            <Link href={'/live/game-1'}>
             <GameCard
               image={game.image}
               team1={game.team1}
@@ -134,6 +136,7 @@ export default function TodayGames() {
               status={game.status}
               volume={game.volume}
             />
+            </Link>
           </div>
         ))}
       </div>

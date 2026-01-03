@@ -6,12 +6,23 @@ import { Info, ChevronDown, UserPlus, Bell } from "lucide-react";
 import AthleteSwitchModal from "./athlete-switch-modal";
 import { Button } from "../ui/button";
 import { ArrowLeft, ArrowUp, BellDot, LucideStepForward } from "lucide-react";
+import { Dropdown } from "react-day-picker";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
+import SearchBar from "../search-bar";
 
 interface AthleteBannerProps {
   name: string;
   team: string;
   league: string;
   imageUrl: string;
+  teamImageUrl: string;
   bgColor: string;
   isLive: boolean;
   nextGameTime?: string;
@@ -76,6 +87,7 @@ export default function AthleteBanner({
   team,
   league,
   imageUrl,
+  teamImageUrl,
   bgColor,
   isLive = true,
   nextGameTime,
@@ -89,6 +101,7 @@ export default function AthleteBanner({
 }: AthleteBannerProps) {
   const timeRemaining = useCountdown(nextGameTime);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const formatTimeUnit = (value: number) => {
     return value.toString().padStart(2, "0");
@@ -96,74 +109,92 @@ export default function AthleteBanner({
 
   return (
     <div className="bg-white rounded-[20px] flex flex-col h-full overflow-hidden w-full lg:max-w-[900px]">
-                <div
-                  className={`relative w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-auto lg:flex-1 lg:min-h-[400px] rounded-t-[20px] lg:rounded-md overflow-hidden flex-shrink-0 flex items-center justify-center`}
-                  style={{
-                    background: `linear-gradient(0deg, var(--Card-athlete-card-bg, #AFAFBC), var(--Card-athlete-card-bg, #AFAFBC)),
+      <div
+        className={`relative w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-auto lg:flex-1 lg:min-h-[400px] rounded-t-[20px] lg:rounded-md overflow-hidden flex-shrink-0 flex items-center justify-center`}
+        style={{
+          background: `linear-gradient(0deg, var(--Card-athlete-card-bg, #AFAFBC), var(--Card-athlete-card-bg, #AFAFBC)),
                     linear-gradient(180deg, rgba(16, 16, 18, 0.35) 0%, rgba(16, 16, 18, 0) 100%)`
-                  }}
-                >
-                  <Image
-                    src={imageUrl}
-                    alt={name}
-                    width={300}
-                    height={500}
-                    className="object-top object-cover relative z-10"
-                    style={{ transform: 'translateY(20%) scale(1.1)' }}
-                  />
-        
-                  <div className="absolute top-4 left-4 z-30 items-center justify-center flex flex-row gap-2">
-                    <Button variant="outline" className="w-8 h-8 bg-white border border-main/7 hover:cursor-pointer">
-                      <ArrowLeft className="w-4 h-4 text-main" />
-                    </Button>
-                    <span className="text-white text-[12px] sm:text-[14px] font-medium hidden sm:inline">Back to Live</span>
-                  </div>
-                  <div className="absolute top-4 right-4 z-30 items-center justify-center flex flex-row gap-2">
-                    {isLive && (
-                      <div className="flex flex-row items-center gap-2 px-2 sm:px-3 py-1.5 rounded-lg bg-white/10 backdrop-blur-sm">
-                        <div className="w-2 h-2 rounded-full bg-light-green"></div>
-                        <span className="text-white text-[12px] sm:text-[14px] font-medium">Live</span>
-                      </div>
-                    )}
-                    {isLive && (
-                      <div className="w-[1px] h-6 bg-white/20"></div>
-                    )}
-                    <Button onClick={onFollow} className="w-auto h-8 px-2 sm:px-3 border-none hover:cursor-pointer rounded-lg bg-white text-main text-[12px] sm:text-[14px] font-medium hidden sm:inline-flex">Follow</Button>
-                    <Button onClick={onNotify} className="w-8 h-8 border-none hover:cursor-pointer rounded-lg bg-white text-main">
-                      <BellDot className="w-4 h-4 text-main"/>
-                    </Button>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-white to-transparent z-20 pointer-events-none"></div>
-                </div>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 px-[16px] lg:flex-1 sm:px-[20px] md:px-[24px] lg:px-[30px] py-[16px] sm:py-[18px] md:py-[20px] flex-shrink-0 mb-[24px] sm:mb-[32px] md:mb-[44px]">
-                  <div className="flex flex-col">
-                    <h1 className="text-main text-[24px] sm:text-[28px] md:text-[32px] leading-[100%] tracking-[-2%] font-medium">{name}</h1>
-                    <h2 className="text-soft-400 text-[18px] sm:text-[20px] md:text-[24px] lg:text-[32px] leading-[100%] tracking-[-2%] font-medium mt-1">{team} ({league})</h2>
-                  </div>
-                  <div className="flex flex-col items-start sm:items-end">
-                    <p className="text-[12px] sm:text-[14px] text-soft-400 mb-1">Index Price:</p>
-                    <span className="flex flex-row items-center gap-1">
-                      <h1 className="text-main text-[24px] sm:text-[28px] md:text-[32px] font-medium">${price.toFixed(2)}</h1>
-                      <ArrowUp className="w-[12px] h-[16px] sm:w-[15px] sm:h-[20px] text-light-green" />
-                    </span>
-                  </div>
-                </div>
-                <div className="flex flex-row items-start justify-start gap-2 px-[16px] sm:px-[20px] md:px-[24px] lg:px-[30px] pb-[16px] sm:pb-[18px] md:pb-[20px] flex-shrink-0 flex-wrap">
-                  <Button variant="outline" className="text-[12px] sm:text-[14px] h-[32px] sm:h-[36px] px-[12px] sm:px-[16px]">🏅 <span className="text-[13px] md:text-[14px]">{percentile}st</span></Button>
-                  <Button variant="outline" className="text-[12px] sm:text-[14px] h-[32px] sm:h-[36px] px-[12px] sm:px-[16px]">
-                    <Image src={"/images/teams/lakers-logo.svg"} alt="Lakers" width={16} height={16} className="sm:w-5 sm:h-5 mr-1" /> 
-                    Lakers
-                  </Button>
-                  <Button variant="outline" className="text-[12px] sm:text-[14px] h-[32px] sm:h-[36px] px-[12px] sm:px-[16px]">
-                    <Image src={"/icons/game/f.svg"} alt="Force" width={8} height={8} className="sm:w-[10px] sm:h-[10px] mr-1" />
-                    {performance}%
-                  </Button>
-                  <Button variant="outline" className="text-[12px] sm:text-[14px] h-[32px] sm:h-[36px] px-[12px] sm:px-[16px]">
-                    <LucideStepForward className="w-[12px] h-[12px] sm:w-[14px] sm:h-[14px] mr-1" />
-                    {marketIndex}
-                  </Button>
-                </div>
-              </div>
+        }}
+      >
+        <Image
+          src={imageUrl}
+          alt={name}
+          width={300}
+          height={500}
+          className="object-top object-cover relative z-10"
+          style={{ transform: 'translateY(20%) scale(1.1)' }}
+        />
+
+        <div className="absolute top-4 left-4 z-30 items-center justify-center flex flex-row gap-2">
+          <Button variant="outline" className="w-8 h-8 bg-white border border-main/7 hover:cursor-pointer">
+            <ArrowLeft className="w-4 h-4 text-main" />
+          </Button>
+        </div>
+        <div className="absolute top-4 right-4 z-30 items-center justify-center flex flex-row gap-2">
+          {isLive && (
+            <div className="flex flex-row items-center gap-2 px-2 sm:px-3 py-1.5 rounded-lg bg-white/10 backdrop-blur-sm">
+              <div className="w-2 h-2 rounded-full bg-light-green"></div>
+              <span className="text-white text-[12px] sm:text-[14px] font-medium">Live</span>
+            </div>
+          )}
+          {isLive && (
+            <div className="w-[1px] h-6 bg-white/20"></div>
+          )}
+          <Button onClick={onFollow} className="w-auto h-8 px-2 sm:px-3 border-none hover:cursor-pointer rounded-lg bg-white text-main text-[12px] sm:text-[14px] font-medium hidden sm:inline-flex">Follow</Button>
+          <Button onClick={onNotify} className="w-8 h-8 border-none hover:cursor-pointer rounded-lg bg-white text-main">
+            <BellDot className="w-4 h-4 text-main" />
+          </Button>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-white to-transparent z-20 pointer-events-none"></div>
+      </div>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 px-[16px] lg:flex-1 sm:px-[20px] md:px-[24px] lg:px-[30px] py-[16px] sm:py-[18px] md:py-[20px] flex-shrink-0 mb-[24px] sm:mb-[32px] md:mb-[44px]">
+        <div className="flex flex-col">
+          <h1 className="text-main text-[24px] sm:text-[28px] md:text-[32px] leading-[100%] tracking-[-2%] font-medium">{name}</h1>
+          <h2 className="text-soft-400 text-[18px] sm:text-[20px] md:text-[24px] lg:text-[32px] leading-[100%] tracking-[-2%] font-medium mt-1">{team} ({league})</h2>
+        </div>
+        <div className="flex flex-col items-start sm:items-end">
+          <p className="text-[12px] sm:text-[14px] text-soft-400 mb-1">Index Price:</p>
+          <span className="flex flex-row items-center gap-1">
+            <h1 className="text-main text-[24px] sm:text-[28px] md:text-[32px] font-medium">${price.toFixed(2)}</h1>
+            <ArrowUp className="w-[12px] h-[16px] sm:w-[15px] sm:h-[20px] text-light-green" />
+          </span>
+        </div>
+      </div>
+      <div className="flex flex-row items-start justify-start gap-2 px-[16px] sm:px-[20px] md:px-[24px] lg:px-[30px] pb-[16px] sm:pb-[18px] md:pb-[20px] flex-shrink-0 flex-wrap">
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogTrigger asChild>
+            <Button variant="outline" className="text-[12px] sm:text-[14px] h-[32px] sm:h-[36px] px-[12px] sm:px-[16px]">
+              <Image src={teamImageUrl} alt="Team" width={16} height={16} className="sm:w-5 sm:h-5 mr-1" />
+              {name}
+              <ChevronDown className="w-4 h-4 ml-1" />
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="w-[90vw] max-w-[500px] [&>button]:hidden">
+            <button
+              onClick={() => setIsDialogOpen(false)}
+              className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100"
+            >
+              <p className="text-main">Close</p>
+            </button>
+          </DialogContent>
+        </Dialog>
+
+        <Button variant="outline" className="text-[12px] sm:text-[14px] h-[32px] sm:h-[36px] px-[12px] sm:px-[16px]">🏅 <span className="text-[13px] md:text-[14px]">{percentile}st</span></Button>
+        <Button variant="outline" className="text-[12px] sm:text-[14px] h-[32px] sm:h-[36px] px-[12px] sm:px-[16px]">
+          <Image src={"/images/teams/lakers-logo.svg"} alt="Lakers" width={16} height={16} className="sm:w-5 sm:h-5 mr-1" />
+          Lakers
+        </Button>
+        <Button variant="outline" className="text-[12px] sm:text-[14px] h-[32px] sm:h-[36px] px-[12px] sm:px-[16px]">
+          <Image src={"/icons/game/f.svg"} alt="Force" width={8} height={8} className="sm:w-[10px] sm:h-[10px] mr-1" />
+          {performance}%
+        </Button>
+        <Button variant="outline" className="text-[12px] sm:text-[14px] h-[32px] sm:h-[36px] px-[12px] sm:px-[16px]">
+          <Image src={"/icons/volume.svg"} alt="Chart" width={16} height={16} className="sm:w-[10px] sm:h-[10px] mr-1" />
+          {marketIndex}
+        </Button>
+
+      </div>
+    </div>
 
     // <>
     //   <AthleteSwitchModal

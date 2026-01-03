@@ -36,6 +36,8 @@ function StatCard({
         ) : (
           <ArrowDown className="w-[12px] h-[16px] sm:w-[14px] sm:h-[18px] md:w-[15px] md:h-[20px] text-base-red" />
         )}
+        {/* <p className="text-[12px] sm:text-[14px] font-medium ``">{change}%</p> */}
+        <p className={`text-[12px] sm:text-[14px] font-medium ${isPositive ? "text-light-green" : "text-base-red"}`}>{change}%</p>
       </span>
     </div>
   );

@@ -2,26 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import SplashScreen from "@/components/splash-screen";
-import ExplainerCard from "@/components/explainer-card";
-import LeagueSwitcher from "@/components/home-page/league-switcher";
-import { ChevronRight, MoveLeft } from "lucide-react";
-import Image from "next/image";
-import WelcomeText from "@/components/home-page/welcome-text";
-import LiveEvents from "@/components/home-page/live-events";
-import TodayFixtures from "@/components/home-page/today-fixtures";
-import BestAthlete from "@/components/home-page/best-athlete";
-import QuickLeaderboard from "@/components/home-page/quick-leaderboard";
-import AthletePriceTrend from "@/components/home-page/athlete-price-trend";
-import TeamsRankings from "@/components/home-page/teams-rankings";
-import AthletesPerformance from "@/components/home-page/athletes-performance";
 import PriceTrendPage from "@/components/home-page/price-trend-page";
 import TodayFixturesSide from "@/components/home-page/today-fixtures-side";
 import UpcomingMatchesSide from "@/components/home-page/upcoming-matches-side";
-import LivePerformanceCard from "@/components/home-page/live-performance-card";
-import PositionStatsCard from "@/components/home-page/position-stats-card";
 import AppFooter from "@/components/app-footer";
-import AthleteCard from "@/components/home-page/athlete-card";
 import TodayGames from "@/components/home-page/today-games";
 import Trending from "@/components/home-page/trending";
 import PriceTrendChart from "@/components/home-page/price-trend-chart";
@@ -145,25 +129,6 @@ export default function Page() {
 
   return (
     <AnimatePresence>
-      {/* {showSplash ? (
-        <motion.div
-          key="splash"
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <SplashScreen />
-        </motion.div>
-      ) : !onboardingDone ? (
-        <motion.div
-          key="explainer"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <ExplainerCard onFinished={handleOnboardingFinished} />
-        </motion.div>
-      ) : ( */}
         <motion.div
           key="home"
           initial={{ opacity: 0 }}
@@ -201,8 +166,6 @@ export default function Page() {
           </div>
           <AppFooter />
         </motion.div>
-      {/* ) */}
-      {/* } */}
     </AnimatePresence>
   );
 }

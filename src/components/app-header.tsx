@@ -4,13 +4,15 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import { Button } from "./ui/button";
-import { WalletIcon } from "lucide-react";
 import LeagueSwitcher from "./home-page/league-switcher";
 import {
   Search,
   ChevronDown,
   Calendar as CalendarIcon,
   Menu,
+  Moon,
+  Sun,
+  User,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -143,9 +145,49 @@ export default function ClientHeader() {
     }
     return false;
   });
+
+
   const [walletDialogOpen, setWalletDialogOpen] = useState(false);
   const [mobileSheetOpen, setMobileSheetOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      return document.documentElement.classList.contains("dark");
+    }
+    return false;
+  });
+
+  const toggleDarkMode = () => {
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    if (typeof window !== "undefined") {
+      if (newDarkMode) {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+      }
+    }
+  };
+
+  const [accountDialogOpen, setAccountDialogOpen] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const shouldBeDark = savedTheme === "dark" || (!savedTheme && prefersDark);
+      
+      if (shouldBeDark) {
+        document.documentElement.classList.add("dark");
+        setDarkMode(true);
+      } else {
+        document.documentElement.classList.remove("dark");
+        setDarkMode(false);
+      }
+    }
+  }, []);
 
   // Ticker data
   const tickerItems = [
@@ -343,22 +385,72 @@ export default function ClientHeader() {
                     <>
                     <WalletPopover />
                   </>
-                  ) : (
-                    <Popover open={walletDialogOpen} onOpenChange={setWalletDialogOpen}>
-                      <PopoverTrigger asChild>
-                        <div className="flex flex-row items-center hover:cursor-pointer">
-                          <div className="rounded-lg bg-[#7100FF] p-2 text-white">
-                            <WalletIcon className="text-white" width={15} height={15} />
+                  ) : (<></>
+                  )
+                }
+              </div>
+              <div className="hidden lg:flex flex-row items-center gap-[10px]">
+              </div>
+              <div className="hidden lg:block h-[12px] border border-black/5"></div>
+              <div className="hidden lg:flex flex-row items-center gap-2">
+              <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={toggleDarkMode}
+                    className="h-[32px] w-[32px] rounded-lg bg-page-background"
+                    aria-label="Toggle dark mode"
+                  >
+                    {darkMode ? (
+                      <Sun className="w-[18px] h-[18px] text-main" />
+                    ) : (
+                      <Moon className="w-[18px] h-[18px] text-main" />
+                    )}
+                  </Button>
+                  <NotificationsPopover />
+                  {
+                  walletConnected ? (
+                    <>
+                    <Dialog open={accountDialogOpen} onOpenChange={setAccountDialogOpen}>
+                      <DialogTrigger asChild>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-[32px] w-[32px] rounded-lg bg-page-background cursor-pointer"
+                          aria-label="Account"
+                        >
+                          <User className="w-[18px] h-[18px] text-main" />
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="w-[400px] max-w-[90vw] p-6 z-[200] rounded-2xl">
+                        <div className="flex flex-col items-center gap-4">
+                          <h2 className="text-xl font-semibold text-main">Account</h2>
+                          <div className="flex rounded-full bg-black p-4">
+                            <Image src="/icons/wallet2.svg" alt="Wallet" width={40} height={40} />
                           </div>
+                          <div className="w-full flex flex-col gap-6">
+                            <div className="flex flex-col gap-2">
+                              <h4 className="text-sm font-semibold text-main">Username</h4>
+                              <input type="text" placeholder="Username" className="w-full p-3 rounded-lg bg-page-background hover:bg-primary-foreground text-left transition-colors" />
+                            </div>
+                            <button className="w-full p-4 rounded-lg bg-page-background hover:bg-primary-foreground text-left transition-colors">
+                              <p className="text-sm text-center font-semibold text-main">Disconnect Wallet</p>
+                            </button>
+                          </div>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  </>
+                  ) : (
+                    <Dialog open={walletDialogOpen} onOpenChange={setWalletDialogOpen}>
+                      <DialogTrigger asChild>
+                        <div className="flex flex-row items-center bg-page-background rounded-lg p-2 hover:cursor-pointer">
                           <span className="ml-2 text-[12px] font-medium text-muted-foreground">
                             Connect your wallet
                           </span>
                         </div>
-                      </PopoverTrigger>
-                      <PopoverContent
-                        className="w-[422px] max-w-[90vw] p-6 z-[200]"
-                        align="end"
-                        side="bottom"
+                      </DialogTrigger>
+                      <DialogContent
+                        className="w-[422px] max-w-[90vw] p-6 z-[200] rounded-2xl"
                       >
                         <div className="flex flex-col items-center gap-6">
                           <WalletConnectScreen
@@ -371,16 +463,19 @@ export default function ClientHeader() {
                             }}
                           />
                         </div>
-                      </PopoverContent>
-                    </Popover>
+                      </DialogContent>
+                    </Dialog>
                   )
                 }
-              </div>
-              <div className="hidden lg:flex flex-row items-center gap-[10px]">
-              </div>
-              <div className="hidden lg:block h-[12px] border border-black/5"></div>
-              <div className="hidden lg:flex">
-                  <NotificationsPopover />
+                  {/* <Button
+                    variant="ghost"
+                    size="icon"
+                    // onClick={toggleDarkMode}
+                    className="h-[32px] w-[32px] rounded-lg bg-page-background"
+                    aria-label="Toggle dark mode"
+                  >
+                  <User className="w-[18px] h-[18px] text-main" />
+                  </Button> */}
                 </div>
               
               
@@ -428,11 +523,40 @@ export default function ClientHeader() {
                         <p className="text-main font-nohemi text-[18px] leading-none">
                           Notifications
                         </p>
+                        <button
+                          onClick={toggleDarkMode}
+                          className="flex flex-row items-center gap-2 text-main font-nohemi text-[18px] leading-none text-left"
+                        >
+                          {darkMode ? (
+                            <>
+                              <Sun className="w-[18px] h-[18px]" />
+                              Light Mode
+                            </>
+                          ) : (
+                            <>
+                              <Moon className="w-[18px] h-[18px]" />
+                              Dark Mode
+                            </>
+                          )}
+                        </button>
                       </div>
                     ) : (
                       <div className="flex flex-col md:flex-row items-stretch md:items-center gap-2 md:gap-3">
                         <WalletPopover />
                         <NotificationsPopover />
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={toggleDarkMode}
+                          className="h-[32px] w-[32px] rounded-[7px] border border-main/7 bg-white hover:bg-primary-foreground"
+                          aria-label="Toggle dark mode"
+                        >
+                          {darkMode ? (
+                            <Sun className="w-[18px] h-[18px] text-main" />
+                          ) : (
+                            <Moon className="w-[18px] h-[18px] text-main" />
+                          )}
+                        </Button>
                       </div>
                     )}
                     <div className="flex flex-col border-t border-light-gray mt-2 pt-4">

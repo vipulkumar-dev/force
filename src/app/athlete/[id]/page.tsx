@@ -21,6 +21,7 @@ const getAthleteData = (id: string) => ({
   league: "NBA",
   position: "Forward",
   imageUrl: "/icons/athletes/lebron-james.png",
+  teamImageUrl: "/images/teams/lakers-logo.svg",
   price: 44.25,
   priceChange: 1.75,
   priceChangePercent: 4.12,
@@ -98,7 +99,7 @@ export default function AthletePage() {
         >
           <div className="w-full flex flex-col  px-[16px] sm:px-[20px] md:px-[40px] bg-page-background justify-center pt-[117px]">
             <div className="w-full flex flex-col lg:flex-row gap-[16px] md:gap-[24px] lg:gap-[16px] justify-center items-stretch">
-              <AthleteBanner name={athleteData.name} team={athleteData.team} marketIndex={athleteData.marketIndex} league={athleteData.league} imageUrl={athleteData.imageUrl} price={athleteData.price} performance={athleteData.performance} bgColor={athleteData.bgColor} isLive={athleteData.isLive} nextGameTime={athleteData.nextGameTime} eloScore={athleteData.eloScore} percentile={athleteData.percentile} onFollow={handleFollow} onNotify={handleNotify} />
+              <AthleteBanner name={athleteData.name} team={athleteData.team} marketIndex={athleteData.marketIndex} league={athleteData.league} imageUrl={athleteData.imageUrl} teamImageUrl={athleteData.teamImageUrl} price={athleteData.price} performance={athleteData.performance} bgColor={athleteData.bgColor} isLive={athleteData.isLive} nextGameTime={athleteData.nextGameTime} eloScore={athleteData.eloScore} percentile={athleteData.percentile} onFollow={handleFollow} onNotify={handleNotify} />
               <div className="w-full lg:w-[360px] flex flex-col min-h-0 pb-[20px] sm:pb-[24px] overflow-y-hidden hover:overflow-y-auto h-full">
                 <TradingPanel
                   athleteName={athleteData.name}

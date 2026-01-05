@@ -15,7 +15,6 @@ import LeaderboardTableCard from "@/components/leaderboard/leaderboard-table-car
 import TodayFixturesSide from "@/components/home-page/today-fixtures-side";
 import UpcomingMatchesSide from "@/components/home-page/upcoming-matches-side";
 import PerformanceBreakdownPage from "@/components/leaderboard/performance-breakdown-page";
-import AppFooter from "@/components/app-footer";
 
 export default function LeaderboardPage() {
   const statCards = [
@@ -394,7 +393,6 @@ export default function LeaderboardPage() {
             </>
           )}
         </div>
-        <AppFooter />
       </motion.div>
     </AnimatePresence>
   );

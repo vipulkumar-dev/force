@@ -681,7 +681,7 @@ export default function PriceChart({
               </button>
             ))}
           </div>
-          {activeTab === "Orderbook" && (
+          {activeTab === "Live Feed" && (
             <div className="flex gap-[6px] items-center">
               <div className="overflow-hidden shrink-0 size-[14px]">
                 <Image src={liveIcon} alt="Live" width={14} height={14} />
@@ -715,14 +715,15 @@ export default function PriceChart({
             <div className="flex gap-[4px] items-center font-bold text-[40px] md:text-[40px] tracking-[-0.13px] leading-none whitespace-nowrap">
               <p className="text-main">{indexValue}</p>
 
-              <p
+              <span
                 className={
-                  change24h >= 0 ? "text-light-green text-[11px] sm:text-[13px] md:text-[14px] tracking-[-0.14px] leading-none" : "text-base-red text-[11px] sm:text-[13px] md:text-[14px] tracking-[-0.14px] leading-none align-top"
+                  change24h >= 0 ? "flex flex-row items-center gap-1 text-light-green text-[11px] sm:text-[13px] md:text-[14px] tracking-[-0.14px] leading-none" : "flex flex-row items-center gap-1 text-base-red text-[11px] sm:text-[13px] md:text-[14px] tracking-[-0.14px] leading-none align-top"
                 }
               >
-                {change24h >= 0 ? "+" : ""}
+                {change24h >= 0 ? <Image src="/icons/arrow_up.png" alt="arrow-up" width={12} height={16} /> : <Image src="/icons/arrow_down.png" alt="arrow-down" width={12} height={16} />}
+
                 {change24h.toFixed(1)}%
-              </p>
+              </span>
 
             </div>
 
@@ -751,7 +752,7 @@ export default function PriceChart({
           {/* Stats Row */}
           <div className="flex gap-[12px] md:gap-[20px] items-center w-full relative z-10 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {/* Earning Today */}
-            <div className="bg-white border border-light-gray rounded-md px-[8px] sm:px-[10px] py-[6px] sm:py-[7.5px] flex items-center gap-[3px] sm:gap-[4px]">
+            <div className="bg-white border border-soft-500 border-solid rounded-md px-[8px] sm:px-[10px] py-[6px] sm:py-[7.5px] flex items-center gap-[3px] sm:gap-[4px]">
               <Flame className="w-[11px] h-[11px] sm:w-[13px] sm:h-[13px] text-light-green" />
               <p className="font-normal text-[11px] sm:text-[13px] text-light-green tracking-[-0.13px] leading-none">
                 +${earningToday.toFixed(2)}
@@ -761,7 +762,7 @@ export default function PriceChart({
               </p>
             </div>
             {/* Volume */}
-            <div className="bg-white border border-light-gray rounded-md px-[8px] sm:px-[10px] py-[6px] sm:py-[7.5px] flex items-center gap-[3px] sm:gap-[4px]">
+            <div className="bg-white border border-soft-500 border-solid rounded-md px-[8px] sm:px-[10px] py-[6px] sm:py-[7.5px] flex items-center gap-[3px] sm:gap-[4px]">
               <p className="font-normal text-[11px] sm:text-[13px] text-soft-400 tracking-[-0.13px] leading-none">
                 Vol
               </p>
@@ -770,7 +771,7 @@ export default function PriceChart({
               </p>
             </div>
             {/* Funding */}
-            <div className="bg-white border border-light-gray rounded-md px-[8px] py-[6px] sm:px-[10px]   sm:py-[2px] flex items-center gap-[3px] sm:gap-[4px]">
+            <div className="bg-white border border-soft-500 border-solid rounded-md px-[8px] py-[6px] sm:px-[10px]   sm:py-[2px] flex items-center gap-[3px] sm:gap-[4px]">
               <p className="font-normal text-[11px] sm:text-[13px] text-soft-400 tracking-[-0.13px] leading-none">
                 Funding
               </p>
@@ -781,7 +782,7 @@ export default function PriceChart({
               </p>
             </div>
             {/* Route */}
-            <div className="bg-white border border-light-gray rounded-md px-[8px] sm:px-[10px] py-[6px] sm:py-[7.5px] flex items-center gap-[3px] sm:gap-[4px]">
+            <div className="bg-white border border-soft-500 border-solid rounded-md px-[8px] sm:px-[10px] py-[6px] sm:py-[7.5px] flex items-center gap-[3px] sm:gap-[4px]">
               <Info className="w-[11px] h-[11px] sm:w-[13px] sm:h-[13px] text-main" />
               <p className="font-normal text-[11px] sm:text-[13px] text-soft-400 tracking-[-0.13px] leading-none">
                 Route:
@@ -1130,18 +1131,18 @@ export default function PriceChart({
           <div className="flex flex-col lg:flex-row items-center justify-center gap-10 w-full px-4 mb-10">
             {/* Play by Play Table */}
             <div className="flex-1 w-full lg:max-w-[573px]">
-              <div className="bg-page-background p-4 rounded-[20px] h-[200px] sm:h-[240px] md:h-[308px] relative overflow-hidden">
+              <div className="bg-page-background p-2 rounded-[20px] h-[200px] sm:h-[240px] md:h-[308px] relative overflow-hidden">
                 <div className="overflow-x-auto h-full [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                  <Table className="border-separate border-spacing-y-2 w-full table-auto min-w-[450px] sm:min-w-[500px]">
+                  <Table className="border-separate border-spacing-y-1 w-full table-auto min-w-[350px] sm:min-w-[500px]">
                     <TableHeader>
                       <TableRow className="border-0">
-                        <TableHead className="font-medium text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] border-0 px-4 py-3">
+                        <TableHead className="font-medium text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] border-0 px-3 py-2">
                           Time
                         </TableHead>
-                        <TableHead className="font-medium text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] border-0 px-4 py-3">
+                        <TableHead className="font-medium text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] border-0 px-3 py-2">
                           Play
                         </TableHead>
-                        <TableHead className="font-medium text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] border-0 px-4 py-3 w-[40px] sm:w-[50px] md:w-[64px]">
+                        <TableHead className="font-medium text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] border-0 px-3 py-2 w-[40px] sm:w-[50px] md:w-[64px]">
                           Weight
                         </TableHead>
                       </TableRow>
@@ -1150,13 +1151,13 @@ export default function PriceChart({
                       {playByPlayData.map((play, index) => (
                         <TableRow
                           key={index}
-                          className="bg-white border-0 mb-2 rounded-[14px] hover:bg-white hover:cursor-pointer transition-colors duration-200 ease-out"
+                          className="bg-white border-0 mb-1 rounded-[14px] hover:bg-white hover:cursor-pointer transition-colors duration-200 ease-out"
                         >
-                          <TableCell className="font-medium px-4 py-3 rounded-tl-[14px] rounded-bl-[14px]">
+                          <TableCell className="font-medium px-3 py-2 rounded-tl-[14px] rounded-bl-[14px]">
                             {play.time}
                           </TableCell>
-                          <TableCell className="px-4 py-3">
-                            <div className="flex gap-[4px] sm:gap-[6px] md:gap-[8px] items-center">
+                          <TableCell className="px-3 py-2">
+                            <div className="flex gap-[2px] sm:gap-[3px] md:gap-[4px] items-center">
                               <div className="flex flex-col w-[24px] h-[24px] sm:w-[28px] sm:h-[28px] md:w-[32px] md:h-[32px] px-[3px] py-[7px] items-center justify-center shrink-0">
                                 <Image
                                   src={play.teamLogo}
@@ -1165,7 +1166,7 @@ export default function PriceChart({
                                   height={32}
                                 />
                               </div>
-                              <span className="flex flex-col gap-[4px]">
+                              <span className="flex flex-col gap-[2px]">
                                 <p className="text-nowrap whitespace-pre">
                                   {play.play}
                                 </p>
@@ -1175,7 +1176,7 @@ export default function PriceChart({
                               </span>
                             </div>
                           </TableCell>
-                          <TableCell className="px-4 py-3 rounded-tr-[14px] rounded-br-[14px] w-[40px] sm:w-[50px] md:w-[64px]">
+                          <TableCell className="px-3 py-2 rounded-tr-[14px] rounded-br-[14px] w-[40px] sm:w-[50px] md:w-[64px]">
                             {play.score1}
                           </TableCell>
                         </TableRow>
@@ -1356,39 +1357,39 @@ export default function PriceChart({
               </div>
             </div>
 
-           <div className="bg-page-background w-full rounded-[14px] p-1 x-auto">
-             {/* Bids Table Header */}
-             <div className="flex font-medium justify-between items-center leading-none px-[12px] sm:px-[16px] md:px-[20px] py-[12px] sm:py-[16px] text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] w-full">
-              <p>Size</p>
-              <p>Price</p>
-            </div>
-
-            {/* Bids Rows */}
-            {bidsData.map((bid, index) => (
-              <div
-                key={index}
-                className={`flex gap-[12px] bg-white rounded-[14px] mb-2 sm:gap-[16px] md:gap-[24px] items-center px-[12px] sm:px-[16px] md:px-[20px] py-[12px] sm:py-[14px] md:py-[16px] w-full relative ${index < bidsData.length - 1
-                  ? "border-light-gray border-[0px_0px_1px] border-solid"
-                  : ""
-                  }`}
-              >
-                {/* Background Bar */}
-                <div
-                  className="absolute rounded-tr-[14px] rounded-br-[14px] bg-[rgba(22,163,74,0.2)] h-[40px] sm:h-[43px] md:h-[46px] top-1/2 translate-y-[-50%] right-0"
-                  style={{
-                    width: `${bid.barWidth}%`,
-                    maxWidth: '50%',
-                  }}
-                />
-                <p className="font-medium leading-none text-[12px] sm:text-[13px] md:text-[14px] text-main tracking-[-0.14px] w-[80px] sm:w-[120px] md:w-[180px] relative z-10">
-                  {bid.price}
-                </p>
-                <p className="font-medium leading-none text-green-600 text-[12px] sm:text-[13px] md:text-[14px] tracking-[-0.14px] relative z-10 ml-auto">
-                  {bid.size}
-                </p>
+            <div className="bg-page-background w-full rounded-[14px] p-1 x-auto">
+              {/* Bids Table Header */}
+              <div className="flex font-medium justify-between items-center leading-none px-[12px] sm:px-[16px] md:px-[20px] py-[12px] sm:py-[16px] text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] w-full">
+                <p>Size</p>
+                <p>Price</p>
               </div>
-            ))}
-           </div>
+
+              {/* Bids Rows */}
+              {bidsData.map((bid, index) => (
+                <div
+                  key={index}
+                  className={`flex gap-[12px] bg-white rounded-[14px] mb-2 sm:gap-[16px] md:gap-[24px] items-center px-[12px] sm:px-[16px] md:px-[20px] py-[12px] sm:py-[14px] md:py-[16px] w-full relative ${index < bidsData.length - 1
+                    ? "border-light-gray border-[0px_0px_1px] border-solid"
+                    : ""
+                    }`}
+                >
+                  {/* Background Bar */}
+                  <div
+                    className="absolute rounded-tr-[14px] rounded-br-[14px] bg-[rgba(22,163,74,0.2)] h-[40px] sm:h-[43px] md:h-[46px] top-1/2 translate-y-[-50%] right-0"
+                    style={{
+                      width: `${bid.barWidth}%`,
+                      maxWidth: '50%',
+                    }}
+                  />
+                  <p className="font-medium leading-none text-[12px] sm:text-[13px] md:text-[14px] text-main tracking-[-0.14px] w-[80px] sm:w-[120px] md:w-[180px] relative z-10">
+                    {bid.price}
+                  </p>
+                  <p className="font-medium leading-none text-green-600 text-[12px] sm:text-[13px] md:text-[14px] tracking-[-0.14px] relative z-10 ml-auto">
+                    {bid.size}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Asks Column (Right) */}
@@ -1402,39 +1403,39 @@ export default function PriceChart({
               </div>
             </div>
 
-           <div className="bg-page-background w-full rounded-[14px] p-1 mb-4">
-             {/* Asks Table Header */}
-             <div className="flex font-medium justify-between items-center leading-none px-[12px] sm:px-[16px] md:px-[20px] py-[12px] sm:py-[16px] text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] w-full">
-              <p>Size</p>
-              <p>Price</p>
-            </div>
-
-            {/* Asks Rows */}
-            {asksData.map((ask, index) => (
-              <div
-                key={index}
-                className={`flex bg-white rounded-[14px] mb-2 gap-[12px] sm:gap-[16px] md:gap-[24px] items-center px-[12px] sm:px-[16px] md:px-[20px] py-[12px] sm:py-[14px] md:py-[16px] w-full relative ${index < asksData.length - 1
-                  ? "border-light-gray border-[0px_0px_1px] border-solid"
-                  : ""
-                  }`}
-              >
-                {/* Background Bar */}
-                <div
-                  className="absolute rounded-tl-[14px] rounded-bl-[14px] bg-[rgba(252,57,112,0.2)] h-[40px] sm:h-[43px] md:h-[46px] top-1/2 translate-y-[-50%] left-0"
-                  style={{
-                    width: `${ask.barWidth}%`,
-                    maxWidth: '50%',
-                  }}
-                />
-                <p className="font-medium leading-none text-[12px] sm:text-[13px] md:text-[14px] text-[#fc3970] tracking-[-0.14px] w-[80px] sm:w-[120px] md:w-[180px] relative z-10">
-                  {ask.price}
-                </p>
-                <p className="basis-0 font-medium grow leading-none min-h-px min-w-px text-main text-[12px] sm:text-[13px] md:text-[14px] tracking-[-0.14px] relative z-10">
-                  {ask.size}
-                </p>
+            <div className="bg-page-background w-full rounded-[14px] p-1 mb-4">
+              {/* Asks Table Header */}
+              <div className="flex font-medium justify-between items-center leading-none px-[12px] sm:px-[16px] md:px-[20px] py-[12px] sm:py-[16px] text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] w-full">
+                <p>Size</p>
+                <p>Price</p>
               </div>
-            ))}
-           </div>
+
+              {/* Asks Rows */}
+              {asksData.map((ask, index) => (
+                <div
+                  key={index}
+                  className={`flex bg-white rounded-[14px] mb-2 gap-[12px] sm:gap-[16px] md:gap-[24px] items-center px-[12px] sm:px-[16px] md:px-[20px] py-[12px] sm:py-[14px] md:py-[16px] w-full relative ${index < asksData.length - 1
+                    ? "border-light-gray border-[0px_0px_1px] border-solid"
+                    : ""
+                    }`}
+                >
+                  {/* Background Bar */}
+                  <div
+                    className="absolute rounded-tl-[14px] rounded-bl-[14px] bg-[rgba(252,57,112,0.2)] h-[40px] sm:h-[43px] md:h-[46px] top-1/2 translate-y-[-50%] left-0"
+                    style={{
+                      width: `${ask.barWidth}%`,
+                      maxWidth: '50%',
+                    }}
+                  />
+                  <p className="font-medium leading-none text-[12px] sm:text-[13px] md:text-[14px] text-[#fc3970] tracking-[-0.14px] w-[80px] sm:w-[120px] md:w-[180px] relative z-10">
+                    {ask.price}
+                  </p>
+                  <p className="basis-0 font-medium grow leading-none min-h-px min-w-px text-main text-[12px] sm:text-[13px] md:text-[14px] tracking-[-0.14px] relative z-10">
+                    {ask.size}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}

@@ -83,10 +83,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${interSans.variable} ${interDisplay.variable} ${plusJakartaSans.variable} ${lexendDeca.variable} ${nohemi.variable} antialiased`}
+        className={`${interSans.variable} ${interDisplay.variable} ${plusJakartaSans.variable} ${lexendDeca.variable} ${nohemi.variable} antialiased pb-[80px] bg-page-background`}
       >
         <ClientHeader />
         {children}
+        <AppFooter />
       </body>
     </html>
   );

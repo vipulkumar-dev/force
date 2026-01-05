@@ -12,7 +12,6 @@ import ArticleContent, {
 import AthleteUpdateCard from "@/components/learn-page/athlete-update-card";
 import IndexComponentsTable from "@/components/learn-page/index-components-table";
 import RelatedTopics from "@/components/learn-page/related-topics";
-import AppFooter from "@/components/app-footer";
 import {
   Sheet,
   SheetContent,
@@ -100,7 +99,6 @@ export default function LearnPage() {
             </ArticleContent>
           </div>
         </div>
-        <AppFooter />
       </motion.div>
     </AnimatePresence>
   );

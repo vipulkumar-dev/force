@@ -79,26 +79,20 @@ export default function LeagueSwitcher({
             }
 
             return (
-              <div key={opt.id} className="relative">
-                <button
-                  disabled
-                  className="flex items-center gap-3 w-full text-left px-2 py-2 rounded-md blur-[2px] opacity-60 cursor-not-allowed"
-                >
-                  <Image
-                    src={opt.icon}
-                    alt={opt.label}
-                    width={20}
-                    height={20}
-                    className="rounded-[4px]"
-                  />
-                  <span className="text-[13px] text-main">{opt.label}</span>
-                </button>
-                <div className="absolute inset-0 flex items-center justify-end pr-2 pointer-events-none">
-                  <span className="text-[11px] font-medium text-gray-500 bg-white/80 px-2 py-0.5 rounded">
-                    Coming Soon
-                  </span>
-                </div>
-              </div>
+              <button
+                key={opt.id}
+                disabled
+                className="flex items-center gap-3 w-full text-left px-2 py-2 rounded-md blur-[6px] opacity-60 cursor-not-allowed"
+              >
+                <Image
+                  src={opt.icon}
+                  alt={opt.label}
+                  width={20}
+                  height={20}
+                  className="rounded-[4px]"
+                />
+                <span className="text-[13px] text-main">{opt.label}</span>
+              </button>
             );
           })}
         </div>

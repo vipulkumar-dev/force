@@ -1,5 +1,4 @@
 "use client";
-import AppFooter from '@/components/app-footer'
 import { AnimatePresence, motion } from 'motion/react'
 import React, { useState } from 'react'
 import Image from 'next/image'
@@ -785,7 +784,6 @@ export default function LivePage() {
                         </div>
                     </div>
                 </div>
-                <AppFooter />
             </motion.div>
         </AnimatePresence>
     )

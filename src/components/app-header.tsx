@@ -364,7 +364,7 @@ export default function ClientHeader() {
             {/* Right side */}
             <div className="flex flex-row gap-[12px] items-center">
               <div className="flex flex-row items-center gap-[10px]">
-                <div className="flex flex-row items-center w-[160px] sm:w-[220px] h-[32px] rounded-[7px] border border-black/5 py-[6px] pr-[12px] pl-[10px] gap-[10px] bg-white">
+                <div className="flex flex-row items-center w-[160px] sm:w-[220px] h-[32px] rounded-[7px] py-[6px] pr-[12px] pl-[10px] gap-[10px] bg-page-background">
                   <Search
                     width={12}
                     height={12}

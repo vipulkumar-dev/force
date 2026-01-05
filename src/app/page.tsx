@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "motion/react";
 import PriceTrendPage from "@/components/home-page/price-trend-page";
 import TodayFixturesSide from "@/components/home-page/today-fixtures-side";
 import UpcomingMatchesSide from "@/components/home-page/upcoming-matches-side";
-import AppFooter from "@/components/app-footer";
 import TodayGames from "@/components/home-page/today-games";
 import Trending from "@/components/home-page/trending";
 import PriceTrendChart from "@/components/home-page/price-trend-chart";
@@ -164,7 +163,6 @@ export default function Page() {
             )}
             </div>
           </div>
-          <AppFooter />
         </motion.div>
     </AnimatePresence>
   );

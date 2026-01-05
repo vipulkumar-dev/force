@@ -7,7 +7,6 @@ import PortfolioStatsCards from "@/components/portfolio-page/portfolio-stats-car
 import PnLOverviewChart from "@/components/portfolio-page/pnl-overview-chart";
 import OpenPositionsTable from "@/components/portfolio-page/open-positions-table";
 import HistoricalTradesTable from "@/components/portfolio-page/historical-trades-table";
-import AppFooter from "@/components/app-footer";
 
 // Mock data - In production, this would come from an API
 const portfolioData = {
@@ -75,7 +74,6 @@ export default function PortfolioPage() {
             {/* More sections will be added here */}
           </div>
         </div>
-        <AppFooter />
       </motion.div>
     </AnimatePresence>
   );

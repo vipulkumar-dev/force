@@ -7,9 +7,9 @@ import { AtSign, MessageCircle } from "lucide-react";
 import Image from "next/image";
 export default function AppFooter() {
   return (
-    <footer className="w-full bg-white border-t border-black/5">
-      <div className="w-full max-w-[1440px] mx-auto">
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-5 px-[16px] sm:px-[24px] md:px-[32px] xl:px-[40px] py-4 md:py-5">
+    <footer className="fixed bottom-0 left-0 right-0 w-full h-[80px] bg-white border-t border-black/5 z-40">
+      <div className="w-full max-w-[1440px] mx-auto h-full">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-5 px-[16px] sm:px-[24px] md:px-[32px] xl:px-[40px] h-full">
         <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-4 md:gap-5 w-full md:w-auto text-center md:text-left">
           <Image src="/FORCE.svg" alt="Vibranium" width={80} height={21} />
           <a
@@ -38,7 +38,7 @@ export default function AppFooter() {
           </a>
         </div>
 
-        <div className="flex items-center gap-3 mt-4 md:mt-0">
+        <div className="flex items-center gap-3">
           <Link href="mailto:info@force.xyz">
           <Button
             lip="on"

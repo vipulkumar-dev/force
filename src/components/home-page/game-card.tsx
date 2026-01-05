@@ -1,10 +1,5 @@
 import React from 'react'
 import Image from 'next/image'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
 interface GameCardProps {
   image?: string
   team1: {
@@ -51,22 +46,8 @@ export default function GameCard({
           {team1.price} <p className={team1.change >= 0 ? 'text-light-green' : 'text-neon-pink'}>{team1.change >= 0 ? '+' : ''}{team1.change}%</p>
         </span>
         <div className='flex flex-row items-center justify-end gap-2'>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <button className='bg-page-background rounded-lg hover:cursor-pointer p-3'><Image src='/icons/game/long.svg' alt='Long' width={10} height={10} /></button>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Long</p>
-            </TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <button className='bg-page-background rounded-lg hover:cursor-pointer p-3'><Image src='/icons/game/short.svg' alt='Short' width={10} height={10} /></button>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Short</p>
-            </TooltipContent>
-          </Tooltip>
+          <button className='bg-page-background rounded-lg hover:cursor-pointer p-3'><Image src='/icons/game/long.svg' alt='Long' width={10} height={10} /></button>
+          <button className='bg-page-background rounded-lg hover:cursor-pointer p-3'><Image src='/icons/game/short.svg' alt='Short' width={10} height={10} /></button>
         </div>
       </div>
       <div className='flex flex-row items-center justify-between gap-2 px-4'>
@@ -79,22 +60,8 @@ export default function GameCard({
           {team2.price} <p className={team2.change >= 0 ? 'text-light-green' : 'text-neon-pink'}>{team2.change >= 0 ? '+' : ''}{team2.change}%</p>
         </span>
         <div className='flex flex-row items-center justify-end gap-2'>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <button className='bg-page-background rounded-lg hover:cursor-pointer p-3'><Image src='/icons/game/long.svg' alt='Long' width={10} height={10} /></button>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Long</p>
-            </TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <button className='bg-page-background rounded-lg hover:cursor-pointer p-3'><Image src='/icons/game/short.svg' alt='Short' width={10} height={10} /></button>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Short</p>
-            </TooltipContent>
-          </Tooltip>
+          <button className='bg-page-background rounded-lg hover:cursor-pointer p-3'><Image src='/icons/game/long.svg' alt='Long' width={10} height={10} /></button>
+          <button className='bg-page-background rounded-lg hover:cursor-pointer p-3'><Image src='/icons/game/short.svg' alt='Short' width={10} height={10} /></button>
         </div>
       </div>
 

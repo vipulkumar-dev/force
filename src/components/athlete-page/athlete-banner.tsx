@@ -169,13 +169,12 @@ export default function AthleteBanner({
               <ChevronDown className="w-4 h-4 ml-1" />
             </Button>
           </DialogTrigger>
-          <DialogContent className="w-[90vw] max-w-[500px] [&>button]:hidden">
-            <button
-              onClick={() => setIsDialogOpen(false)}
-              className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100"
-            >
-              <p className="text-main">Close</p>
-            </button>
+          <DialogContent className="w-[90vw] max-w-[500px] p-0 gap-0 [&>button]:hidden">
+            <SearchBar 
+              teamImageUrl={teamImageUrl} 
+              name={name} 
+              onClose={() => setIsDialogOpen(false)}
+            />
           </DialogContent>
         </Dialog>
 

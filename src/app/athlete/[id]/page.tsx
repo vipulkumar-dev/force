@@ -10,7 +10,6 @@ import ActivePositions, {
 } from "@/components/athlete-page/active-positions";
 import TradingPanel from "@/components/athlete-page/trading-panel";
 import AthletePageTour from "@/components/athlete-page/athlete-page-tour";
-import AppFooter from "@/components/app-footer";
 import PriceChart from "@/components/athlete-page/price-chart";
 // Mock data - In production, this would come from an API based on the athlete ID
 const getAthleteData = (id: string) => ({
@@ -48,6 +47,7 @@ const getAthleteData = (id: string) => ({
   chartFunding: -0.03,
   chartEarningToday: 3.27,
   chartRouteName: "Partner",
+  volume: 500,
 });
 
 export default function AthletePage() {
@@ -99,7 +99,7 @@ export default function AthletePage() {
         >
           <div className="w-full flex flex-col  px-[16px] sm:px-[20px] md:px-[40px] bg-page-background justify-center pt-[117px]">
             <div className="w-full flex flex-col lg:flex-row gap-[16px] md:gap-[24px] lg:gap-[16px] justify-center items-stretch">
-              <AthleteBanner name={athleteData.name} team={athleteData.team} marketIndex={athleteData.marketIndex} league={athleteData.league} imageUrl={athleteData.imageUrl} teamImageUrl={athleteData.teamImageUrl} price={athleteData.price} performance={athleteData.performance} bgColor={athleteData.bgColor} isLive={athleteData.isLive} nextGameTime={athleteData.nextGameTime} eloScore={athleteData.eloScore} percentile={athleteData.percentile} onFollow={handleFollow} onNotify={handleNotify} />
+              <AthleteBanner name={athleteData.name} team={athleteData.team} marketIndex={athleteData.volume} league={athleteData.league} imageUrl={athleteData.imageUrl} teamImageUrl={athleteData.teamImageUrl} price={athleteData.price} performance={athleteData.performance} bgColor={athleteData.bgColor} isLive={athleteData.isLive} nextGameTime={athleteData.nextGameTime} eloScore={athleteData.eloScore} percentile={athleteData.percentile} onFollow={handleFollow} onNotify={handleNotify} />
               <div className="w-full lg:w-[360px] flex flex-col min-h-0 pb-[20px] sm:pb-[24px] overflow-y-hidden hover:overflow-y-auto h-full">
                 <TradingPanel
                   athleteName={athleteData.name}
@@ -122,10 +122,9 @@ export default function AthletePage() {
                 />
               </div>
             </div>
-            {/* Tables in Accordion */}
             <div className="w-full flex justify-center mb-10 px-[16px] sm:px-[20px] md:px-[24px] lg:px-[40px]">
               <div className="max-w-[1276px] w-full flex flex-col gap-[16px] md:gap-[24px]">
-              <PriceChart />
+                <PriceChart />
                 <IndexWeights />
                 <ActivePositions />
               </div>
@@ -133,7 +132,6 @@ export default function AthletePage() {
           </div>
 
         </motion.div>
-        <AppFooter />
       </AnimatePresence>
     </>
   );

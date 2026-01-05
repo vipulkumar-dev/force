@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { ChevronUp, ChevronDown, ArrowUp, ArrowDown } from "lucide-react";
+import Image from "next/image";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../ui/accordion";
 import { Table, TableHeader, TableBody, TableRow, TableCell, TableHead } from "../ui/table";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { Info } from "lucide-react";
 
 interface IndexWeightMetric {
   metric: string;
@@ -16,6 +17,35 @@ interface IndexWeightMetric {
 interface IndexWeightsProps {
   metrics?: IndexWeightMetric[];
 }
+
+interface metricData {
+  metric: string;
+  description: string;
+  metricValue: String;
+}
+
+const MetricInfoData:metricData[] = [
+  {
+    metric: "Baseline Value",
+    description: "Average over last 30 days",
+    metricValue: "25.1",
+  },
+  {
+    metric: "Average (Period)",
+    description: "Current selected time range",
+    metricValue: "27.4",
+  },
+  {
+    metric: "Standard Deviation (Period)",
+    description: "Game-to-game scrolling volatility.",
+    metricValue: "3.2",
+  },
+  {
+    metric: "Relevance",
+    description: "Strong impact on overall index score.",
+    metricValue: "High(0.78)"
+  },
+];
 
 const defaultMetrics: IndexWeightMetric[] = [
   {
@@ -102,15 +132,47 @@ export default function IndexWeights({
             </TableRow>
           </TableHeader>
           <TableBody>
-            {metrics.map((metric, index) => (
-              <TableRow key={index} className="bg-white font-medium text-[12px]x border-0 mb-2 rounded-[14px] hover:bg-white hover:cursor-pointer transition-colors duration-200 ease-out overflow-hidden">
-                <TableCell className="bg-white px-4 py-3 rounded-tl-[14px] rounded-bl-[14px]">{metric.metric}</TableCell>
-                <TableCell className="bg-white px-4 py-3 text-soft-400 font-mediumxs">{metric.description}</TableCell>
-                <TableCell className="bg-white px-4 py-3">{metric.weight}</TableCell>
-                <TableCell className="bg-white px-4 py-3">{metric.current}</TableCell>
-                <TableCell className="bg-white px-4 py-3 text-light-green rounded-tr-[14px] rounded-br-[14px]"><div className="flex flex-row items-center gap-1"><ArrowUp className="w-[15px] h-[20px] text-light-green" />{metric.trend}%</div></TableCell>
-              </TableRow>
-            ))}
+            {metrics.map((metric, index) => {
+              const isPositive = metric.trend >= 0;
+              return (
+                <TableRow key={index} className="bg-white font-medium text-[12px]x border-0 mb-2 rounded-[14px] hover:bg-white hover:cursor-pointer transition-colors duration-200 ease-out overflow-hidden">
+                  <TableCell className="bg-white px-4 py-3 rounded-tl-[14px] rounded-bl-[14px]">{metric.metric}</TableCell>
+                  <TableCell className="bg-white px-4 py-3 text-soft-400 font-mediumxs">{metric.description}</TableCell>
+                  <TableCell className="bg-white px-4 py-3">{metric.weight}</TableCell>
+                  <TableCell className="bg-white px-4 py-3">{metric.current}</TableCell>
+                  <TableCell className={`bg-white px-4 py-3 ${isPositive ? 'text-light-green' : 'text-neon-pink'} rounded-tr-[14px] rounded-br-[14px]`}>
+                    <div className="flex flex-row items-center gap-1">
+                      {isPositive ? (
+                        <Image src="/icons/arrow_up.png" alt="arrow-up" width={12} height={16} />
+                      ) : (
+                        <Image src="/icons/arrow_down.png" alt="arrow-down" width={12} height={16} />
+                      )}
+                      {isPositive ? '+' : ''}{metric.trend}%
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <div className="flex justify-center items-center w-[12px] h-[12px] rounded-full bg-soft-400 shrink-0 cursor-pointer">
+                            <Info className="w-[12px] h-[12px] text-white" />
+                          </div>
+                        </TooltipTrigger>
+                        <TooltipContent className="bg-white border border-light-gray rounded-[10px] text-main text-[12px] p-4 font-medium leading-[100%] tracking-[-1%] [&>*[data-side]]:bg-white">
+                          <div className="flex flex-col gap-4">
+                          <h4>{metric.metric}</h4>
+                          {MetricInfoData.map((item, index) => {
+                            return (
+                              <div key={index} className="flex flex-col gap-1">
+                                <span className="flex flex-row font-medium text-[12px] text-soft-400 tracking-[0.28px] leading-none">{item.metric}: <p className="text-main">{item.metricValue}</p></span>
+                                <span className="font-medium text-[12px] text-soft-400 tracking-[0.28px] leading-none">{item.description}</span>
+                              </div>
+                            );
+                          })}
+                          </div>
+                        </TooltipContent>
+                      </Tooltip>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </div>

@@ -28,7 +28,7 @@ export default function TradingPanel({
 }: TradingPanelProps) {
   const [activeTab, setActiveTab] = useState<"long" | "short">("long");
   const [orderType, setOrderType] = useState<"market" | "limit">("market");
-  const [orderSize, setOrderSize] = useState<string>("50.00");
+  const [orderSize, setOrderSize] = useState<string>("0");
   const [leverage, setLeverage] = useState<number>(6);
   const [showAdvanced, setShowAdvanced] = useState<boolean>(false);
   const [showSummary, setShowSummary] = useState<boolean>(true);

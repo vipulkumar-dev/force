@@ -17,6 +17,7 @@ const getAthleteData = (player: Player) => ({
   id: player.id,
   name: player.name,
   team: player.teamName,
+  teamId: player.teamId,
   bgColor: player.bgColor || "bg-dark-yellow",
   league: "NBA",
   position: player.position || "Forward",
@@ -111,6 +112,7 @@ export default function AthletePage() {
               <AthleteBanner
                 name={athleteData.name}
                 team={athleteData.team}
+                teamId={athleteData.teamId}
                 marketIndex={athleteData.volume}
                 league={athleteData.league}
                 imageUrl={athleteData.imageUrl}

@@ -51,13 +51,14 @@ export default function TrendingCard({
           {change}%
         </p>
       </span>
-      <div className="flex flex-row items-center justify-between gap-2 p-2">
+      <div className="flex flex-row items-center justify-between gap-1 px-2 pt-3">
         <TradeButton
           onClick={() => {
             setOpenTradeDialog(true);
             setTradeType("long");
           }}
           type="long"
+          className="md:w-[63px]"
         />
         <TradeButton
           onClick={() => {
@@ -65,6 +66,7 @@ export default function TrendingCard({
             setTradeType("short");
           }}
           type="short"
+          className="md:w-[63px]"
         />
       </div>
       <Dialog open={openTradeDialog} onOpenChange={setOpenTradeDialog}>

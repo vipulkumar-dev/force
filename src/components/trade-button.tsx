@@ -6,9 +6,14 @@ import { cn } from "@/lib/utils";
 
 interface TradeButtonProps extends Omit<HTMLMotionProps<"button">, "type"> {
   type: "long" | "short";
+  className?: string;
 }
 
-export default function TradeButton({ type, ...props }: TradeButtonProps) {
+export default function TradeButton({
+  type,
+  className,
+  ...props
+}: TradeButtonProps) {
   const icon =
     type === "long" ? "/icons/game/long.svg" : "/icons/game/short.svg";
   const iconRef = useRef<HTMLImageElement>(null);
@@ -86,7 +91,10 @@ export default function TradeButton({ type, ...props }: TradeButtonProps) {
       initial="initial"
       whileHover="hover"
       animate="initial"
-      className="bg-elevation-button relative flex aspect-square w-[32px] items-center justify-center overflow-hidden rounded-lg hover:cursor-pointer"
+      className={cn(
+        "bg-elevation-button relative flex h-[32px] w-[32px] items-center justify-center overflow-hidden rounded-lg hover:cursor-pointer",
+        className,
+      )}
       {...props}
     >
       <Image ref={iconRef} src={icon} alt={type} width={10} height={10} />

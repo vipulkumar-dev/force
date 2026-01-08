@@ -146,9 +146,9 @@ export default function Page() {
               <>
                 <div className="flex min-h-0 w-full flex-col gap-[24px] overflow-visible overscroll-contain pt-[24px] pb-[24px] xl:overflow-y-auto xl:pt-[40px] xl:[-ms-overflow-style:none] xl:[scrollbar-width:none] xl:[&::-webkit-scrollbar]:hidden">
                   <TodayGames />
-                  <div className="bg-border h-[0.5px] w-full px-2"></div>
+                  <div className="h-[0.5px] w-full bg-[#EAEBEC] px-2 dark:bg-[#2C2C33]"></div>
                   <Trending />
-                  <div className="bg-border h-[0.5px] w-full px-2"></div>
+                  <div className="h-[0.5px] w-full bg-[#EAEBEC] px-2 dark:bg-[#2C2C33]"></div>
                   <PriceTrendChart />
                 </div>
               </>

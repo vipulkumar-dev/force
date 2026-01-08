@@ -293,162 +293,164 @@ export default function ClientHeader() {
         transition={{ duration: 0.4 }}
         className="fixed top-0 right-0 left-0 z-[101] h-fit bg-white"
       >
-        <div className="mx-auto w-full max-w-[1440px]">
-          <div className="bg-bg-secondary flex h-[64px] w-full flex-row items-center justify-between border-b border-black/5 px-[16px] py-[14px] sm:px-[24px] md:px-[32px] xl:px-[40px]">
-            <div className="flex flex-row items-center gap-[16px]">
-              <Link href="/" aria-label="Home">
-                <Logo className="text-text-primary w-[100px]" />
-              </Link>
-              <div className="hidden h-[12px] border border-black/5 lg:block"></div>
+        <div className="w-full">
+          <div className="bg-bg-secondary w-full border-b border-black/5">
+            <div className="mx-auto w-full max-w-[1440px]">
+              <div className="flex h-[64px] w-full flex-row items-center justify-between px-[16px] py-[14px] sm:px-[24px] md:px-[32px] xl:px-[40px]">
+                <div className="flex flex-row items-center gap-[16px]">
+                  <Link href="/" aria-label="Home">
+                    <Logo className="text-text-primary w-[100px]" />
+                  </Link>
+                  <div className="hidden h-[12px] border border-black/5 lg:block"></div>
 
-              <div className="hidden flex-row items-center gap-[8px] lg:flex">
-                {navItems.map((item) => {
-                  const active = pathname === item.href;
-                  return (
-                    <Button
-                      key={item.href}
-                      asChild
-                      className={`${baseBtn} ${
-                        active ? "bg-bg-tertiary!" : "bg-transparent!"
-                      } rounded-lg`}
-                    >
-                      <Link href={item.href}>
-                        <p
-                          className={`text-[14px] leading-[100%] font-medium tracking-tight ${
-                            active ? "text-text-primary" : "text-soft-400"
-                          }`}
-                        >
-                          {item.label}
-                        </p>
-                      </Link>
-                    </Button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Right side */}
-            <div className="flex flex-row items-center gap-[12px]">
-              <div className="flex flex-row items-center gap-[10px]">
-                <div className="bg-page-background flex h-[32px] w-[160px] flex-row items-center gap-[10px] rounded-[7px] py-[6px] pr-[12px] pl-[10px] sm:w-[220px]">
-                  <Search
-                    width={12}
-                    height={12}
-                    color="var(--main)"
-                    className="shrink-0"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Search Anything..."
-                    aria-label="Search"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="placeholder:text-disabled-300 h-[18px] flex-1 border-0 bg-transparent px-0 text-[12px] leading-[100%] tracking-tight text-[#0a0d14] outline-none"
-                  />
-                </div>
-                {walletConnected ? (
-                  <>
-                    <WalletPopover />
-                  </>
-                ) : (
-                  <></>
-                )}
-              </div>
-              <div className="hidden flex-row items-center gap-[10px] lg:flex"></div>
-              <div className="hidden h-[12px] border border-black/5 lg:block"></div>
-              <div className="hidden flex-row items-center gap-2 lg:flex">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={toggleDarkMode}
-                  className="bg-page-background h-[32px] w-[32px] rounded-lg"
-                  aria-label="Toggle dark mode"
-                >
-                  {darkMode ? (
-                    <Sun className="text-main h-[18px] w-[18px]" />
-                  ) : (
-                    <Moon className="text-main h-[18px] w-[18px]" />
-                  )}
-                </Button>
-                <NotificationsPopover />
-                {walletConnected ? (
-                  <>
-                    <Dialog
-                      open={accountDialogOpen}
-                      onOpenChange={setAccountDialogOpen}
-                    >
-                      <DialogTrigger asChild>
+                  <div className="hidden flex-row items-center gap-[8px] lg:flex">
+                    {navItems.map((item) => {
+                      const active = pathname === item.href;
+                      return (
                         <Button
-                          variant="ghost"
-                          size="icon"
-                          className="bg-page-background h-[32px] w-[32px] cursor-pointer rounded-lg"
-                          aria-label="Account"
+                          key={item.href}
+                          asChild
+                          className={`${baseBtn} ${
+                            active ? "bg-bg-tertiary!" : "bg-transparent!"
+                          } rounded-lg`}
                         >
-                          <User className="text-main h-[18px] w-[18px]" />
+                          <Link href={item.href}>
+                            <p
+                              className={`text-[14px] leading-[100%] font-medium tracking-tight ${
+                                active ? "text-text-primary" : "text-soft-400"
+                              }`}
+                            >
+                              {item.label}
+                            </p>
+                          </Link>
                         </Button>
-                      </DialogTrigger>
-                      <DialogContent className="z-[200] w-[400px] max-w-[90vw] rounded-2xl p-6">
-                        <div className="flex flex-col items-center gap-4">
-                          <h2 className="text-main text-xl font-semibold">
-                            Account
-                          </h2>
-                          <div className="flex rounded-full bg-black p-4">
-                            <Image
-                              src="/icons/wallet2.svg"
-                              alt="Wallet"
-                              width={40}
-                              height={40}
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Right side */}
+                <div className="flex flex-row items-center gap-[12px]">
+                  <div className="flex flex-row items-center gap-[10px]">
+                    <div className="bg-page-background flex h-[32px] w-[160px] flex-row items-center gap-[10px] rounded-[7px] py-[6px] pr-[12px] pl-[10px] sm:w-[220px]">
+                      <Search
+                        width={12}
+                        height={12}
+                        color="var(--main)"
+                        className="shrink-0"
+                      />
+                      <input
+                        type="text"
+                        placeholder="Search Anything..."
+                        aria-label="Search"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="placeholder:text-disabled-300 h-[18px] flex-1 border-0 bg-transparent px-0 text-[12px] leading-[100%] tracking-tight text-[#0a0d14] outline-none"
+                      />
+                    </div>
+                    {walletConnected ? (
+                      <>
+                        <WalletPopover />
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
+                  <div className="hidden flex-row items-center gap-[10px] lg:flex"></div>
+                  <div className="hidden h-[12px] border border-black/5 lg:block"></div>
+                  <div className="hidden flex-row items-center gap-2 lg:flex">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={toggleDarkMode}
+                      className="bg-page-background h-[32px] w-[32px] rounded-lg"
+                      aria-label="Toggle dark mode"
+                    >
+                      {darkMode ? (
+                        <Sun className="text-main h-[18px] w-[18px]" />
+                      ) : (
+                        <Moon className="text-main h-[18px] w-[18px]" />
+                      )}
+                    </Button>
+                    <NotificationsPopover />
+                    {walletConnected ? (
+                      <>
+                        <Dialog
+                          open={accountDialogOpen}
+                          onOpenChange={setAccountDialogOpen}
+                        >
+                          <DialogTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="bg-page-background h-[32px] w-[32px] cursor-pointer rounded-lg"
+                              aria-label="Account"
+                            >
+                              <User className="text-main h-[18px] w-[18px]" />
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="z-[200] w-[400px] max-w-[90vw] rounded-2xl p-6">
+                            <div className="flex flex-col items-center gap-4">
+                              <h2 className="text-main text-xl font-semibold">
+                                Account
+                              </h2>
+                              <div className="flex rounded-full bg-black p-4">
+                                <Image
+                                  src="/icons/wallet2.svg"
+                                  alt="Wallet"
+                                  width={40}
+                                  height={40}
+                                />
+                              </div>
+                              <div className="flex w-full flex-col gap-6">
+                                <div className="flex flex-col gap-2">
+                                  <h4 className="text-main text-sm font-semibold">
+                                    Username
+                                  </h4>
+                                  <input
+                                    type="text"
+                                    placeholder="Username"
+                                    className="bg-page-background hover:bg-primary-foreground w-full rounded-lg p-3 text-left transition-colors"
+                                  />
+                                </div>
+                                <button className="bg-page-background hover:bg-primary-foreground w-full rounded-lg p-4 text-left transition-colors">
+                                  <p className="text-main text-center text-sm font-semibold">
+                                    Disconnect Wallet
+                                  </p>
+                                </button>
+                              </div>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
+                      </>
+                    ) : (
+                      <Dialog
+                        open={walletDialogOpen}
+                        onOpenChange={setWalletDialogOpen}
+                      >
+                        <DialogTrigger asChild>
+                          <div className="bg-page-background flex flex-row items-center rounded-lg p-2 hover:cursor-pointer">
+                            <span className="text-muted-foreground ml-2 text-[12px] font-medium">
+                              Connect your wallet
+                            </span>
+                          </div>
+                        </DialogTrigger>
+                        <DialogContent className="z-[200] w-[422px] max-w-[90vw] rounded-2xl p-6">
+                          <div className="flex flex-col items-center gap-6">
+                            <WalletConnectScreen
+                              onWalletChosen={(id) => {
+                                setWalletConnected(true);
+                                if (typeof window !== "undefined") {
+                                  localStorage.setItem("walletConnected", "1");
+                                }
+                                setWalletDialogOpen(false);
+                              }}
                             />
                           </div>
-                          <div className="flex w-full flex-col gap-6">
-                            <div className="flex flex-col gap-2">
-                              <h4 className="text-main text-sm font-semibold">
-                                Username
-                              </h4>
-                              <input
-                                type="text"
-                                placeholder="Username"
-                                className="bg-page-background hover:bg-primary-foreground w-full rounded-lg p-3 text-left transition-colors"
-                              />
-                            </div>
-                            <button className="bg-page-background hover:bg-primary-foreground w-full rounded-lg p-4 text-left transition-colors">
-                              <p className="text-main text-center text-sm font-semibold">
-                                Disconnect Wallet
-                              </p>
-                            </button>
-                          </div>
-                        </div>
-                      </DialogContent>
-                    </Dialog>
-                  </>
-                ) : (
-                  <Dialog
-                    open={walletDialogOpen}
-                    onOpenChange={setWalletDialogOpen}
-                  >
-                    <DialogTrigger asChild>
-                      <div className="bg-page-background flex flex-row items-center rounded-lg p-2 hover:cursor-pointer">
-                        <span className="text-muted-foreground ml-2 text-[12px] font-medium">
-                          Connect your wallet
-                        </span>
-                      </div>
-                    </DialogTrigger>
-                    <DialogContent className="z-[200] w-[422px] max-w-[90vw] rounded-2xl p-6">
-                      <div className="flex flex-col items-center gap-6">
-                        <WalletConnectScreen
-                          onWalletChosen={(id) => {
-                            setWalletConnected(true);
-                            if (typeof window !== "undefined") {
-                              localStorage.setItem("walletConnected", "1");
-                            }
-                            setWalletDialogOpen(false);
-                          }}
-                        />
-                      </div>
-                    </DialogContent>
-                  </Dialog>
-                )}
-                {/* <Button
+                        </DialogContent>
+                      </Dialog>
+                    )}
+                    {/* <Button
                     variant="ghost"
                     size="icon"
                     // onClick={toggleDarkMode}
@@ -457,114 +459,122 @@ export default function ClientHeader() {
                   >
                   <User className="w-[18px] h-[18px] text-main" />
                   </Button> */}
-              </div>
-
-              <Sheet open={mobileSheetOpen} onOpenChange={setMobileSheetOpen}>
-                <SheetTrigger asChild>
-                  <Button className="border-main/7 hover:bg-primary-foreground flex h-[32px] w-[32px] items-center justify-center rounded-[7px] border bg-white lg:hidden">
-                    <Menu className="text-main h-[18px] w-[18px]" />
-                  </Button>
-                </SheetTrigger>
-                <SheetContent
-                  side="right"
-                  className="bg-white"
-                  style={{ top: 118, height: "calc(100vh - 118px)" }}
-                >
-                  <div className="flex flex-col gap-4 p-4">
-                    {!walletConnected ? (
-                      <div className="flex flex-col gap-4">
-                        <Dialog
-                          open={walletDialogOpen}
-                          onOpenChange={setWalletDialogOpen}
-                        >
-                          <DialogTrigger asChild>
-                            <button className="text-main font-nohemi text-left text-[18px] leading-none">
-                              Connect Wallet
-                            </button>
-                          </DialogTrigger>
-                          <DialogContent
-                            fullscreen
-                            className="z-[200] overflow-auto"
-                            showCloseButton={true}
-                          >
-                            <WalletConnectScreen
-                              onWalletChosen={(id) => {
-                                setWalletConnected(true);
-                                if (typeof window !== "undefined") {
-                                  localStorage.setItem("walletConnected", "1");
-                                }
-                                setWalletDialogOpen(false);
-                                setMobileSheetOpen(false);
-                              }}
-                            />
-                          </DialogContent>
-                        </Dialog>
-                        <p className="text-main font-nohemi text-[18px] leading-none">
-                          Notifications
-                        </p>
-                        <button
-                          onClick={toggleDarkMode}
-                          className="text-main font-nohemi flex flex-row items-center gap-2 text-left text-[18px] leading-none"
-                        >
-                          {darkMode ? (
-                            <>
-                              <Sun className="h-[18px] w-[18px]" />
-                              Light Mode
-                            </>
-                          ) : (
-                            <>
-                              <Moon className="h-[18px] w-[18px]" />
-                              Dark Mode
-                            </>
-                          )}
-                        </button>
-                      </div>
-                    ) : (
-                      <div className="flex flex-col items-stretch gap-2 md:flex-row md:items-center md:gap-3">
-                        <WalletPopover />
-                        <NotificationsPopover />
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={toggleDarkMode}
-                          className="border-main/7 hover:bg-primary-foreground h-[32px] w-[32px] rounded-[7px] border bg-white"
-                          aria-label="Toggle dark mode"
-                        >
-                          {darkMode ? (
-                            <Sun className="text-main h-[18px] w-[18px]" />
-                          ) : (
-                            <Moon className="text-main h-[18px] w-[18px]" />
-                          )}
-                        </Button>
-                      </div>
-                    )}
-                    <div className="border-light-gray mt-2 flex flex-col border-t pt-4">
-                      {navItems.map((item) => {
-                        const active = pathname === item.href;
-                        return (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            onClick={() => setMobileSheetOpen(false)}
-                            className={`hover:bg-primary-foreground rounded-[8px] px-3 py-2 transition-colors ${
-                              active ? "text-main" : "text-soft-400"
-                            }`}
-                          >
-                            {item.label}
-                          </Link>
-                        );
-                      })}
-                    </div>
                   </div>
-                </SheetContent>
-              </Sheet>
+
+                  <Sheet
+                    open={mobileSheetOpen}
+                    onOpenChange={setMobileSheetOpen}
+                  >
+                    <SheetTrigger asChild>
+                      <Button className="border-main/7 hover:bg-primary-foreground flex h-[32px] w-[32px] items-center justify-center rounded-[7px] border bg-white lg:hidden">
+                        <Menu className="text-main h-[18px] w-[18px]" />
+                      </Button>
+                    </SheetTrigger>
+                    <SheetContent
+                      side="right"
+                      className="bg-white"
+                      style={{ top: 118, height: "calc(100vh - 118px)" }}
+                    >
+                      <div className="flex flex-col gap-4 p-4">
+                        {!walletConnected ? (
+                          <div className="flex flex-col gap-4">
+                            <Dialog
+                              open={walletDialogOpen}
+                              onOpenChange={setWalletDialogOpen}
+                            >
+                              <DialogTrigger asChild>
+                                <button className="text-main font-nohemi text-left text-[18px] leading-none">
+                                  Connect Wallet
+                                </button>
+                              </DialogTrigger>
+                              <DialogContent
+                                fullscreen
+                                className="z-[200] overflow-auto"
+                                showCloseButton={true}
+                              >
+                                <WalletConnectScreen
+                                  onWalletChosen={(id) => {
+                                    setWalletConnected(true);
+                                    if (typeof window !== "undefined") {
+                                      localStorage.setItem(
+                                        "walletConnected",
+                                        "1",
+                                      );
+                                    }
+                                    setWalletDialogOpen(false);
+                                    setMobileSheetOpen(false);
+                                  }}
+                                />
+                              </DialogContent>
+                            </Dialog>
+                            <p className="text-main font-nohemi text-[18px] leading-none">
+                              Notifications
+                            </p>
+                            <button
+                              onClick={toggleDarkMode}
+                              className="text-main font-nohemi flex flex-row items-center gap-2 text-left text-[18px] leading-none"
+                            >
+                              {darkMode ? (
+                                <>
+                                  <Sun className="h-[18px] w-[18px]" />
+                                  Light Mode
+                                </>
+                              ) : (
+                                <>
+                                  <Moon className="h-[18px] w-[18px]" />
+                                  Dark Mode
+                                </>
+                              )}
+                            </button>
+                          </div>
+                        ) : (
+                          <div className="flex flex-col items-stretch gap-2 md:flex-row md:items-center md:gap-3">
+                            <WalletPopover />
+                            <NotificationsPopover />
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={toggleDarkMode}
+                              className="border-main/7 hover:bg-primary-foreground h-[32px] w-[32px] rounded-[7px] border bg-white"
+                              aria-label="Toggle dark mode"
+                            >
+                              {darkMode ? (
+                                <Sun className="text-main h-[18px] w-[18px]" />
+                              ) : (
+                                <Moon className="text-main h-[18px] w-[18px]" />
+                              )}
+                            </Button>
+                          </div>
+                        )}
+                        <div className="border-light-gray mt-2 flex flex-col border-t pt-4">
+                          {navItems.map((item) => {
+                            const active = pathname === item.href;
+                            return (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                onClick={() => setMobileSheetOpen(false)}
+                                className={`hover:bg-primary-foreground rounded-[8px] px-3 py-2 transition-colors ${
+                                  active ? "text-main" : "text-soft-400"
+                                }`}
+                              >
+                                {item.label}
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </SheetContent>
+                  </Sheet>
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Toolbar + Infinite ticker (second row) */}
           <div
             id="athlete-ticker-header"
-            className={`relative flex h-fit bg-white px-10 flex-row${
+            className={`relative mx-auto flex h-fit max-w-[1440px] bg-white px-10 flex-row${
               priceTrendActive || showAthleteRankingPage
                 ? "py-[8.22px]"
                 : "py-5"
@@ -623,122 +633,130 @@ export default function ClientHeader() {
               </PopoverContent>
             </Popover> */}
 
-            <div className="flex items-center gap-3">
-              {(priceTrendActive || showAthleteRankingPage) && (
-                <div className="flex w-full flex-col gap-2 md:w-auto md:flex-row md:gap-3">
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button className="border-main/7 hover:bg-primary-foreground flex h-fit items-center gap-2 rounded-[100px] border bg-white px-3">
-                        <Image
-                          src={selectedTeam.icon}
-                          alt={selectedTeam.label}
-                          width={18}
-                          height={18}
-                          className="rounded-1"
+            <div
+              className="flex w-full flex-row overflow-hidden"
+              style={{
+                maskImage:
+                  "linear-gradient(to right, transparent, black 40px, black calc(100% - 100px), transparent)",
+              }}
+            >
+              <div className="flex shrink-0 items-center gap-3">
+                {(priceTrendActive || showAthleteRankingPage) && (
+                  <div className="flex w-full flex-col gap-2 md:w-auto md:flex-row md:gap-3">
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button className="border-main/7 hover:bg-primary-foreground flex h-fit items-center gap-2 rounded-[100px] border bg-white px-3">
+                          <Image
+                            src={selectedTeam.icon}
+                            alt={selectedTeam.label}
+                            width={18}
+                            height={18}
+                            className="rounded-1"
+                          />
+                          <span className="text-main text-[13px] font-medium">
+                            {selectedTeam.label}
+                          </span>
+                          <ChevronDown size={14} className="text-soft-400" />
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent
+                        align="start"
+                        className="w-[220px] bg-white p-2"
+                      >
+                        <div className="flex max-h-[300px] flex-col overflow-auto">
+                          {teamOptions.map((opt) => {
+                            const active = opt.id === selectedTeam.id;
+                            return (
+                              <button
+                                key={opt.id}
+                                onClick={() => setSelectedTeam(opt)}
+                                className={`hover:bg-primary-foreground flex w-full items-center gap-3 rounded-md px-2 py-2 text-left ${
+                                  active ? "bg-primary-foreground" : ""
+                                }`}
+                              >
+                                <Image
+                                  src={opt.icon}
+                                  alt={opt.label}
+                                  width={20}
+                                  height={20}
+                                  className="rounded-[4px]"
+                                />
+                                <span className="text-main text-[13px]">
+                                  {opt.label}
+                                </span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </PopoverContent>
+                    </Popover>
+
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button className="border-main/7 hover:bg-primary-foreground flex h-fit items-center gap-2 rounded-[100px] border bg-white px-3">
+                          <CalendarIcon size={14} className="text-main" />
+                          <span className="text-main text-[13px] font-medium">
+                            {formatShortDate(selectedDate)}
+                          </span>
+                          <ChevronDown size={14} className="text-soft-400" />
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent align="start" className="bg-white p-3">
+                        <Calendar
+                          mode="single"
+                          selected={selectedDate}
+                          onSelect={setSelectedDate}
+                          className="rounded-md bg-white"
                         />
-                        <span className="text-main text-[13px] font-medium">
-                          {selectedTeam.label}
-                        </span>
-                        <ChevronDown size={14} className="text-soft-400" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent
-                      align="start"
-                      className="w-[220px] bg-white p-2"
-                    >
-                      <div className="flex max-h-[300px] flex-col overflow-auto">
-                        {teamOptions.map((opt) => {
-                          const active = opt.id === selectedTeam.id;
-                          return (
-                            <button
-                              key={opt.id}
-                              onClick={() => setSelectedTeam(opt)}
-                              className={`hover:bg-primary-foreground flex w-full items-center gap-3 rounded-md px-2 py-2 text-left ${
-                                active ? "bg-primary-foreground" : ""
-                              }`}
-                            >
-                              <Image
-                                src={opt.icon}
-                                alt={opt.label}
-                                width={20}
-                                height={20}
-                                className="rounded-[4px]"
-                              />
-                              <span className="text-main text-[13px]">
-                                {opt.label}
-                              </span>
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </PopoverContent>
-                  </Popover>
+                      </PopoverContent>
+                    </Popover>
 
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button className="border-main/7 hover:bg-primary-foreground flex h-fit items-center gap-2 rounded-[100px] border bg-white px-3">
-                        <CalendarIcon size={14} className="text-main" />
-                        <span className="text-main text-[13px] font-medium">
-                          {formatShortDate(selectedDate)}
-                        </span>
-                        <ChevronDown size={14} className="text-soft-400" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent align="start" className="bg-white p-3">
-                      <Calendar
-                        mode="single"
-                        selected={selectedDate}
-                        onSelect={setSelectedDate}
-                        className="rounded-md bg-white"
-                      />
-                    </PopoverContent>
-                  </Popover>
+                    <div className="mx-[4px] hidden h-[20px] border border-black/5 md:block" />
+                  </div>
+                )}
 
-                  <div className="mx-[4px] hidden h-[20px] border border-black/5 md:block" />
-                </div>
-              )}
-
-              {/* Infinite scroller with fading edges (mask applied only here) */}
-              <div className="relative w-full overflow-hidden md:flex-1 md:[mask-image:linear-gradient(to_right,transparent,black_40px,black_calc(100%-40px),transparent)] md:[-webkit-mask-image:linear-gradient(to_right,transparent,black_40px,black_calc(100%-40px),transparent)]">
-                <div className="ticker-track flex w-full whitespace-nowrap will-change-transform">
-                  {tickerItems.map((item, idx) => (
-                    <span
-                      key={`t1-${idx}`}
-                      className="mr-[24px] flex items-center gap-[8px]"
-                    >
-                      <span className="text-main text-[13px] leading-[100%] font-medium tracking-tight">
-                        {item.name}
-                      </span>
+                {/* Infinite scroller with fading edges (mask applied only here) */}
+                <div className="relative w-full overflow-hidden md:flex-1 md:[mask-image:linear-gradient(to_right,transparent,black_40px,black_calc(100%-40px),transparent)] md:[-webkit-mask-image:linear-gradient(to_right,transparent,black_40px,black_calc(100%-40px),transparent)]">
+                  <div className="ticker-track flex w-full whitespace-nowrap will-change-transform">
+                    {tickerItems.map((item, idx) => (
                       <span
-                        className={`text-[13px] leading-[100%] font-medium tracking-tight ${
-                          item.change >= 0
-                            ? "text-light-green"
-                            : "text-neon-pink"
-                        }`}
+                        key={`t1-${idx}`}
+                        className="mr-[24px] flex items-center gap-[8px]"
                       >
-                        {formatChange(item.change)}
+                        <span className="text-main text-[13px] leading-[100%] font-medium tracking-tight">
+                          {item.name}
+                        </span>
+                        <span
+                          className={`text-[13px] leading-[100%] font-medium tracking-tight ${
+                            item.change >= 0
+                              ? "text-light-green"
+                              : "text-neon-pink"
+                          }`}
+                        >
+                          {formatChange(item.change)}
+                        </span>
                       </span>
-                    </span>
-                  ))}
-                  {tickerItems.map((item, idx) => (
-                    <span
-                      key={`t2-${idx}`}
-                      className="mr-[24px] flex items-center gap-[8px]"
-                    >
-                      <span className="text-main text-[13px] leading-[100%] font-medium tracking-tight">
-                        {item.name}
-                      </span>
+                    ))}
+                    {tickerItems.map((item, idx) => (
                       <span
-                        className={`text-[13px] leading-[100%] font-medium tracking-tight ${
-                          item.change >= 0
-                            ? "text-light-green"
-                            : "text-neon-pink"
-                        }`}
+                        key={`t2-${idx}`}
+                        className="mr-[24px] flex items-center gap-[8px]"
                       >
-                        {formatChange(item.change)}
+                        <span className="text-main text-[13px] leading-[100%] font-medium tracking-tight">
+                          {item.name}
+                        </span>
+                        <span
+                          className={`text-[13px] leading-[100%] font-medium tracking-tight ${
+                            item.change >= 0
+                              ? "text-light-green"
+                              : "text-neon-pink"
+                          }`}
+                        >
+                          {formatChange(item.change)}
+                        </span>
                       </span>
-                    </span>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

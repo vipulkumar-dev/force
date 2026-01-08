@@ -24,6 +24,7 @@ import { Calendar } from "./ui/calendar";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 import WalletConnectScreen from "./wallet-connect-modal";
 import { Sheet, SheetTrigger, SheetContent } from "./ui/sheet";
+import Logo from "@/image/FORCE.svg";
 
 export default function ClientHeader() {
   // Use current route to style active tab
@@ -293,15 +294,10 @@ export default function ClientHeader() {
         className="fixed top-0 right-0 left-0 z-[101] h-fit bg-white"
       >
         <div className="mx-auto w-full max-w-[1440px]">
-          <div className="flex h-[64px] w-full flex-row items-center justify-between border-b border-black/5 bg-white px-[16px] py-[14px] sm:px-[24px] md:px-[32px] xl:px-[40px]">
+          <div className="bg-bg-secondary flex h-[64px] w-full flex-row items-center justify-between border-b border-black/5 px-[16px] py-[14px] sm:px-[24px] md:px-[32px] xl:px-[40px]">
             <div className="flex flex-row items-center gap-[16px]">
               <Link href="/" aria-label="Home">
-                <Image
-                  src="/FORCE.svg"
-                  alt="Vibranium"
-                  width={100}
-                  height={31}
-                />
+                <Logo className="text-text-primary w-[100px]" />
               </Link>
               <div className="hidden h-[12px] border border-black/5 lg:block"></div>
 
@@ -313,13 +309,13 @@ export default function ClientHeader() {
                       key={item.href}
                       asChild
                       className={`${baseBtn} ${
-                        active ? "bg-nav-button" : "bg-transparent"
+                        active ? "bg-bg-tertiary!" : "bg-transparent!"
                       } rounded-lg`}
                     >
                       <Link href={item.href}>
                         <p
                           className={`text-[14px] leading-[100%] font-medium tracking-tight ${
-                            active ? "text-main" : "text-soft-400"
+                            active ? "text-text-primary" : "text-soft-400"
                           }`}
                         >
                           {item.label}

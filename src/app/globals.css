@@ -94,6 +94,9 @@
   --font-lexend-deca: var(--font-lexend-deca);
   --font-nohemi: var(--font-nohemi);
   --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+  --color-text-primary: var(--text-primary);
 }
 
 :root {
@@ -182,10 +185,18 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   --bg-primary: #f0f0f0;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f0f0f0;
+  --text-primary: #101012;
+  --text-secondary: #7e7e8c;
 }
 
 .dark {
   --bg-primary: #101012;
+  --bg-secondary: #16161a;
+  --bg-tertiary: #1f1f24;
+  --text-primary: #ffffff;
+  --text-secondary: #7e7e8c;
 }
 
 @layer base {

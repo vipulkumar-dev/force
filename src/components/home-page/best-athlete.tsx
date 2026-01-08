@@ -19,7 +19,7 @@ export default function BestAthlete() {
   const [openDialog, setOpenDialog] = useState<number | null>(null);
   const [openSide, setOpenSide] = useState<"long" | "short" | null>(null);
   const [selectedMobileIndex, setSelectedMobileIndex] = useState<number | null>(
-    null
+    null,
   );
 
   // Rows data (same content you have, now centralized)
@@ -70,37 +70,37 @@ export default function BestAthlete() {
     change.startsWith("-") ? "text-base-red" : "text-dark-green";
 
   return (
-    <div className="flex flex-col rounded-[10px] bg-white w-full">
-      <Button className="flex flex-row w-full h-fit justify-between border-b border-light-gray px-[20px]! py-[20px] gap-[20px] bg-white hover:bg-primary-foreground hover:cursor-pointer">
-        <p className="font-nohemi font-medium text-[14px] leading-[100%] tracking-[2%] text-main">
+    <div className="flex w-full flex-col rounded-[10px] bg-white">
+      <Button className="border-light-gray hover:bg-primary-foreground flex h-fit w-full flex-row justify-between gap-[20px] border-b bg-white px-[20px]! py-[20px] hover:cursor-pointer">
+        <p className="font-nohemi text-text-primary text-[14px] leading-[100%] font-medium tracking-[2%]">
           Best Athletes to Trade
         </p>
         <ChevronRight className="text-soft-400" width={14} height={14} />
       </Button>
-      <div className="w-full flex flex-col p-[4px]">
-        <div className="hidden md:flex flex-row w-full">
-          <div className="w-[30%] py-[12px] px-[16px] gap-[24px]">
-            <p className="text-[12px] font-medium leading-[100%] tracking-[-1%] text-soft-400">
+      <div className="flex w-full flex-col p-[4px]">
+        <div className="hidden w-full flex-row md:flex">
+          <div className="w-[30%] gap-[24px] px-[16px] py-[12px]">
+            <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
               Athlete Name
             </p>
           </div>
-          <div className="w-[17%] py-[12px] px-[16px] gap-[24px]">
-            <p className="text-[12px] font-medium leading-[100%] tracking-[-1%] text-soft-400">
+          <div className="w-[17%] gap-[24px] px-[16px] py-[12px]">
+            <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
               Current Price
             </p>
           </div>
-          <div className="w-[17%] py-[12px] px-[16px] gap-[24px]">
-            <p className="text-[12px] font-medium leading-[100%] tracking-[-1%] text-soft-400">
+          <div className="w-[17%] gap-[24px] px-[16px] py-[12px]">
+            <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
               24h Change
             </p>
           </div>
-          <div className="w-[17%] py-[12px] px-[16px] gap-[24px]">
-            <p className="text-[12px] font-medium leading-[100%] tracking-[-1%] text-soft-400">
+          <div className="w-[17%] gap-[24px] px-[16px] py-[12px]">
+            <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
               24h Volume
             </p>
           </div>
-          <div className="w-[21%] py-[12px] px-[16px] gap-[24px]">
-            <p className="text-[12px] font-medium leading-[100%] tracking-[-1%] text-soft-400">
+          <div className="w-[21%] gap-[24px] px-[16px] py-[12px]">
+            <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
               Quick Trade
             </p>
           </div>
@@ -110,13 +110,13 @@ export default function BestAthlete() {
           <div
             key={idx}
             onClick={() => setSelectedMobileIndex(idx)}
-            className={`flex flex-col md:flex-row w-full gap-[8px] md:gap-0 transition-colors duration-200 ease-out ${
+            className={`flex w-full flex-col gap-[8px] transition-colors duration-200 ease-out md:flex-row md:gap-0 ${
               idx >= 3 ? "hidden md:flex" : ""
-            }  md:hover:bg-primary-foreground md:border-b-0 ${
+            } md:hover:bg-primary-foreground md:border-b-0 ${
               selectedMobileIndex === idx ? "bg-primary-foreground" : ""
             }`}
           >
-            <div className="md:hidden w-full flex flex-col gap-3 py-[12px] px-[16px]">
+            <div className="flex w-full flex-col gap-3 px-[16px] py-[12px] md:hidden">
               <div className="flex items-center justify-between gap-[10px]">
                 <div className="flex flex-row gap-[10px]">
                   <Image
@@ -124,32 +124,32 @@ export default function BestAthlete() {
                     alt={row.name}
                     width={32}
                     height={32}
-                    className="rounded-[6px] max-w-[32px] max-h-[32px]"
+                    className="max-h-[32px] max-w-[32px] rounded-[6px]"
                   />
                   <div className="flex flex-col gap-[8px]">
-                    <p className="font-medium text-[14px] text-main leading-[100%] tracking-[-2%]">
+                    <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                       {row.name}
                     </p>
-                    <p className="text-[12px] leading-[100%] tracking-[-1%] text-soft-400">
+                    <p className="text-soft-400 text-[12px] leading-[100%] tracking-[-1%]">
                       {row.team}
                     </p>
                   </div>
                 </div>
-                <p className="font-medium text-[14px] leading-[100%] tracking-[-2%] text-main">
+                <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                   {row.price}
                 </p>
               </div>
               <div className="flex items-center justify-between">
                 <p
-                  className={`font-medium text-[14px] leading-[100%] tracking-[-2%] ${changeClass(
-                    row.change
+                  className={`text-[14px] leading-[100%] font-medium tracking-[-2%] ${changeClass(
+                    row.change,
                   )}`}
                 >
                   {row.change}
                 </p>
                 <p
-                  className={`font-medium text-[14px] leading-[100%] tracking-[-2%] ${changeClass(
-                    row.change
+                  className={`text-[14px] leading-[100%] font-medium tracking-[-2%] ${changeClass(
+                    row.change,
                   )}`}
                 >
                   {row.volume}
@@ -157,60 +157,60 @@ export default function BestAthlete() {
               </div>
             </div>
 
-            <div className="hidden md:flex w-full md:w-[30%] flex-row rounded-[10px] py-[12px] px-[16px] gap-[10px]">
+            <div className="hidden w-full flex-row gap-[10px] rounded-[10px] px-[16px] py-[12px] md:flex md:w-[30%]">
               <Image
                 src={row.iconSrc}
                 alt={row.name}
                 width={32}
                 height={32}
-                className="rounded-[6px] max-w-[32px] max-h-[32px]"
+                className="max-h-[32px] max-w-[32px] rounded-[6px]"
               />
               <div className="flex flex-col gap-[8px]">
-                <p className="font-medium text-[14px] text-main leading-[100%] tracking-[-2%]">
+                <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                   {row.name}
                 </p>
-                <p className="text-[12px] leading-[100%] tracking-[-1%] text-soft-400">
+                <p className="text-soft-400 text-[12px] leading-[100%] tracking-[-1%]">
                   {row.team}
                 </p>
               </div>
             </div>
 
-            <div className="hidden md:flex flex-col md:flex-row w-full md:w-[17%] py-[12px] px-[16px] gap-[6px] md:gap-[16px]">
-              <p className="md:hidden text-[11px] font-medium leading-[100%] tracking-[-1%] text-soft-400">
+            <div className="hidden w-full flex-col gap-[6px] px-[16px] py-[12px] md:flex md:w-[17%] md:flex-row md:gap-[16px]">
+              <p className="text-soft-400 text-[11px] leading-[100%] font-medium tracking-[-1%] md:hidden">
                 Current Price
               </p>
-              <p className="font-medium text-[14px] leading-[100%] tracking-[-2%] text-main">
+              <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                 {row.price}
               </p>
             </div>
 
-            <div className="hidden md:flex flex-col md:flex-row w-full md:w-[17%] py-[12px] px-[16px] gap-[6px] md:gap-[16px]">
-              <p className="md:hidden text-[11px] font-medium leading-[100%] tracking-[-1%] text-soft-400">
+            <div className="hidden w-full flex-col gap-[6px] px-[16px] py-[12px] md:flex md:w-[17%] md:flex-row md:gap-[16px]">
+              <p className="text-soft-400 text-[11px] leading-[100%] font-medium tracking-[-1%] md:hidden">
                 24h Change
               </p>
               <p
-                className={`font-medium text-[14px] leading-[100%] tracking-[-2%] ${changeClass(
-                  row.change
+                className={`text-[14px] leading-[100%] font-medium tracking-[-2%] ${changeClass(
+                  row.change,
                 )}`}
               >
                 {row.change}
               </p>
             </div>
 
-            <div className="hidden md:flex flex-col md:flex-row w-full md:w-[17%] py-[12px] px-[16px] gap-[6px] md:gap-[16px]">
-              <p className="md:hidden text-[11px] font-medium leading-[100%] tracking-[-1%] text-soft-400">
+            <div className="hidden w-full flex-col gap-[6px] px-[16px] py-[12px] md:flex md:w-[17%] md:flex-row md:gap-[16px]">
+              <p className="text-soft-400 text-[11px] leading-[100%] font-medium tracking-[-1%] md:hidden">
                 24h Volume
               </p>
               <p
-                className={`font-medium text:[14px] leading-[100%] tracking-[-2%] ${changeClass(
-                  row.change
+                className={`text:[14px] leading-[100%] font-medium tracking-[-2%] ${changeClass(
+                  row.change,
                 )}`}
               >
                 {row.volume}
               </p>
             </div>
 
-            <div className="hidden md:flex w-full md:w-[21%] flex flex-row py-[12px] px-[16px] gap-[8px] items-center">
+            <div className="flex hidden w-full flex-row items-center gap-[8px] px-[16px] py-[12px] md:flex md:w-[21%]">
               <Dialog
                 open={openDialog === idx && openSide === "long"}
                 onOpenChange={(open) => {
@@ -222,15 +222,15 @@ export default function BestAthlete() {
                   <Button
                     lip="on"
                     onClick={() => setOpenSide("long")}
-                    className="flex flex-row items-center justify-center rounded-[7px] py-[10px] px-[12px] gap-[8px] h-[32px] bg-main border border-main hover:cursor-pointer"
+                    className="bg-main border-main flex h-[32px] flex-row items-center justify-center gap-[8px] rounded-[7px] border px-[12px] py-[10px] hover:cursor-pointer"
                   >
-                    <p className="text-[12px] font-medium leading-[130%] tracking-[-1%] text-white">
+                    <p className="text-[12px] leading-[130%] font-medium tracking-[-1%] text-white">
                       Long
                     </p>
                   </Button>
                 </DialogTrigger>
                 <DialogContent
-                  className="bg-white w-[400px] px-0 py-0 max-h-[700px] overflow-y-hidden hover:overflow-y-auto overscroll-contain [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                  className="max-h-[700px] w-[400px] overflow-y-hidden overscroll-contain bg-white px-0 py-0 [-ms-overflow-style:none] [scrollbar-width:none] hover:overflow-y-auto [&::-webkit-scrollbar]:hidden"
                   showCloseButton={false}
                 >
                   <MarketModal type="long" />
@@ -248,15 +248,15 @@ export default function BestAthlete() {
                   <Button
                     lip="on"
                     onClick={() => setOpenSide("short")}
-                    className="flex flex-row items-center justify-center rounded-[7px] py-[10px] px-[12px] gap-[8px] h-[32px] bg-white border border-main/7 hover:bg-primary-foreground hover:cursor-pointer"
+                    className="border-main/7 hover:bg-primary-foreground flex h-[32px] flex-row items-center justify-center gap-[8px] rounded-[7px] border bg-white px-[12px] py-[10px] hover:cursor-pointer"
                   >
-                    <p className="text-[12px] font-medium leading-[130%] tracking-[-1%] text-dark-900">
+                    <p className="text-dark-900 text-[12px] leading-[130%] font-medium tracking-[-1%]">
                       Short
                     </p>
                   </Button>
                 </DialogTrigger>
                 <DialogContent
-                  className="bg-white w-[400px] px-0 py-0 max-h-[700px] overflow-y-hidden hover:overflow-y-auto overscroll-contain [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                  className="max-h-[700px] w-[400px] overflow-y-hidden overscroll-contain bg-white px-0 py-0 [-ms-overflow-style:none] [scrollbar-width:none] hover:overflow-y-auto [&::-webkit-scrollbar]:hidden"
                   showCloseButton={false}
                 >
                   <MarketModal type="short" />
@@ -265,7 +265,7 @@ export default function BestAthlete() {
             </div>
           </div>
         ))}
-        <div className="md:hidden w-full flex gap-2 px-[16px] pb-[16px]">
+        <div className="flex w-full gap-2 px-[16px] pb-[16px] md:hidden">
           <Button
             lip="on"
             disabled={selectedMobileIndex === null}
@@ -275,7 +275,7 @@ export default function BestAthlete() {
                 setOpenDialog(selectedMobileIndex);
               }
             }}
-            className="w-1/2 flex items-center justify-center rounded-[7px] py-[10px] px-[12px] h-[40px] bg-main border border-main text-white disabled:opacity-50"
+            className="bg-main border-main flex h-[40px] w-1/2 items-center justify-center rounded-[7px] border px-[12px] py-[10px] text-white disabled:opacity-50"
           >
             Long
           </Button>
@@ -288,7 +288,7 @@ export default function BestAthlete() {
                 setOpenDialog(selectedMobileIndex);
               }
             }}
-            className="w-1/2 flex items-center justify-center rounded-[7px] py-[10px] px-[12px] h-[40px] bg-white border border-main/7 hover:bg-primary-foreground text-main disabled:opacity-50"
+            className="border-main/7 hover:bg-primary-foreground text-text-primary flex h-[40px] w-1/2 items-center justify-center rounded-[7px] border bg-white px-[12px] py-[10px] disabled:opacity-50"
           >
             Short
           </Button>
@@ -303,7 +303,7 @@ export default function BestAthlete() {
           }}
         >
           <DialogContent
-            className="bg-white w-[400px] px-0 py-0 max-h-[700px] overflow-y-hidden hover:overflow-y-auto overscroll-contain [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="max-h-[700px] w-[400px] overflow-y-hidden overscroll-contain bg-white px-0 py-0 [-ms-overflow-style:none] [scrollbar-width:none] hover:overflow-y-auto [&::-webkit-scrollbar]:hidden"
             showCloseButton={false}
           >
             <MarketModal type={openSide ?? "long"} />

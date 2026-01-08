@@ -27,7 +27,7 @@ function TabsList({
       data-slot="tabs-list"
       className={cn(
         "bg-muted text-muted-foreground inline-flex h-[40px] w-fit items-center justify-center rounded-lg p-[3px]",
-        className
+        className,
       )}
       {...props}
     />
@@ -43,16 +43,16 @@ function TabsTrigger({
       data-slot="tabs-trigger"
       className={cn(
         // Base: text-like tab, no pill/shadow
-        "relative inline-flex items-center justify-center gap-1.5 px-2 py-1 text-sm font-medium whitespace-nowrap bg-transparent rounded-none",
+        "relative inline-flex items-center justify-center gap-1.5 rounded-none bg-transparent px-2 py-1 text-sm font-medium whitespace-nowrap",
         // Text colors: unselected soft, selected main
-        "text-soft-400 data-[state=active]:text-main",
+        "text-soft-400 data-[state=active]:text-text-primary",
         // Underline: animate in/out using scale-x for smooth movement
-        "border-b border-transparent after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:bg-main after:origin-left after:scale-x-0 data-[state=active]:after:scale-x-100",
+        "after:bg-main border-b border-transparent after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:origin-left after:scale-x-0 data-[state=active]:after:scale-x-100",
         // Transitions
         "transition-[color] duration-200 ease-out after:transition-transform after:duration-200",
         // Remove previous button-like visuals
         "data-[state=active]:shadow-none",
-        className
+        className,
       )}
       {...props}
     />

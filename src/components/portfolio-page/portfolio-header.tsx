@@ -14,18 +14,18 @@ export default function PortfolioHeader({
   onDepositWithdraw,
 }: PortfolioHeaderProps) {
   return (
-    <div className="flex flex-col md:flex-row items-start md:items-center justify-between w-full gap-[16px] md:gap-0">
+    <div className="flex w-full flex-col items-start justify-between gap-[16px] md:flex-row md:items-center md:gap-0">
       {/* Title */}
-      <h1 className="font-nohemi font-medium text-[22px] md:text-[26px] leading-none tracking-[0.52px] text-main">
+      <h1 className="font-nohemi text-text-primary text-[22px] leading-none font-medium tracking-[0.52px] md:text-[26px]">
         Portfolio
       </h1>
 
       {/* Action Buttons */}
-      <div className="flex gap-[8px] md:gap-[10px] items-center w-full md:w-auto">
+      <div className="flex w-full items-center gap-[8px] md:w-auto md:gap-[10px]">
         {/* Export Trades Button */}
         <Button
           onClick={onExportTrades}
-          className="bg-white border border-main/7 rounded-[8px] h-[40px] px-[12px] md:px-[16px] py-[10px] flex items-center gap-[6px] md:gap-[8px] hover:bg-primary-foreground transition-colors flex-1 md:flex-initial"
+          className="border-main/7 hover:bg-primary-foreground flex h-[40px] flex-1 items-center gap-[6px] rounded-[8px] border bg-white px-[12px] py-[10px] transition-colors md:flex-initial md:gap-[8px] md:px-[16px]"
         >
           <Image
             src="/icons/file-export.svg"
@@ -34,7 +34,7 @@ export default function PortfolioHeader({
             height={16}
             className="shrink-0"
           />
-          <span className="font-medium text-[12px] md:text-[14px] leading-[1.4] tracking-[-0.14px] text-main whitespace-nowrap">
+          <span className="text-text-primary text-[12px] leading-[1.4] font-medium tracking-[-0.14px] whitespace-nowrap md:text-[14px]">
             <span className="hidden md:inline">Export Trades (CSV)</span>
             <span className="md:hidden">Export</span>
           </span>
@@ -43,10 +43,10 @@ export default function PortfolioHeader({
         {/* Deposit / Withdraw Button */}
         <Button
           onClick={onDepositWithdraw}
-          className="bg-main border border-main rounded-[8px] h-[40px] px-[12px] md:px-[16px] py-[10px] flex items-center gap-[6px] md:gap-[8px] hover:bg-main/90 transition-colors shadow-[0px_-1px_14px_-1px_inset_rgba(255,255,255,0.25)] flex-1 md:flex-initial"
+          className="bg-main border-main hover:bg-main/90 flex h-[40px] flex-1 items-center gap-[6px] rounded-[8px] border px-[12px] py-[10px] shadow-[0px_-1px_14px_-1px_inset_rgba(255,255,255,0.25)] transition-colors md:flex-initial md:gap-[8px] md:px-[16px]"
         >
-          <Plus className="w-[16px] h-[16px] text-white shrink-0" />
-          <span className="font-medium text-[12px] md:text-[14px] leading-[1.4] tracking-[-0.14px] text-white whitespace-nowrap">
+          <Plus className="h-[16px] w-[16px] shrink-0 text-white" />
+          <span className="text-[12px] leading-[1.4] font-medium tracking-[-0.14px] whitespace-nowrap text-white md:text-[14px]">
             <span className="hidden md:inline">Deposit / Withdraw</span>
             <span className="md:hidden">Deposit</span>
           </span>

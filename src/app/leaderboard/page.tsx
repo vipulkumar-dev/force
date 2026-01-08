@@ -236,7 +236,7 @@ export default function LeaderboardPage() {
     { id: "all", label: "All Time" },
   ];
   const [selectedTimeRange, setSelectedTimeRange] = useState(
-    timeRangeOptions[0]
+    timeRangeOptions[0],
   );
 
   // Sort By options
@@ -261,7 +261,7 @@ export default function LeaderboardPage() {
       window.dispatchEvent(
         new CustomEvent("performanceBreakdown", {
           detail: { visible: showPerformanceBreakdown },
-        })
+        }),
       );
     }
   }, [showPerformanceBreakdown]);
@@ -274,24 +274,24 @@ export default function LeaderboardPage() {
         transition={{ duration: 0.5 }}
       >
         <div
-          className={`w-full flex ${
+          className={`flex w-full ${
             showPerformanceBreakdown
               ? "flex-row justify-center"
               : "flex-col items-center"
-          } gap-[16px] md:gap-[24px] px-[16px] md:px-[40px] bg-page-background pt-[117px] pb-[24px]`}
+          } bg-page-background gap-[16px] px-[16px] pt-[117px] pb-[24px] md:gap-[24px] md:px-[40px]`}
         >
           {!showPerformanceBreakdown ? (
-            <div className="w-full md:w-fit flex flex-col gap-[16px] md:gap-6 overflow-y-hidden">
-              <div className="w-auto h-fit flex flex-col md:flex-row items-start md:items-center justify-between pt-[20px] md:pt-6 gap-[16px] md:gap-0">
-                <p className="font-nohemi font-medium text-[22px] md:text-[26px] leading-[100%] tracking-[2%] text-main">
+            <div className="flex w-full flex-col gap-[16px] overflow-y-hidden md:w-fit md:gap-6">
+              <div className="flex h-fit w-auto flex-col items-start justify-between gap-[16px] pt-[20px] md:flex-row md:items-center md:gap-0 md:pt-6">
+                <p className="font-nohemi text-text-primary text-[22px] leading-[100%] font-medium tracking-[2%] md:text-[26px]">
                   Leaderboard
                 </p>
-                <div className="w-full  md:w-fit h-fit gap-2.5 flex flex-row">
+                <div className="flex h-fit w-full flex-row gap-2.5 md:w-fit">
                   {/* Time Range dropdown */}
                   <Popover>
                     <PopoverTrigger asChild>
-                      <Button className="h-fit px-[12px] md:px-3 rounded-[100px] border border-main/7 bg-white hover:bg-primary-foreground flex items-center gap-2">
-                        <span className="text-[12px] md:text-[13px] font-medium text-main">
+                      <Button className="border-main/7 hover:bg-primary-foreground flex h-fit items-center gap-2 rounded-[100px] border bg-white px-[12px] md:px-3">
+                        <span className="text-text-primary text-[12px] font-medium md:text-[13px]">
                           Time Range
                         </span>
                         <ChevronDown
@@ -302,7 +302,7 @@ export default function LeaderboardPage() {
                     </PopoverTrigger>
                     <PopoverContent
                       align="start"
-                      className="w-[180px] p-2 bg-white"
+                      className="w-[180px] bg-white p-2"
                     >
                       <div className="flex flex-col">
                         {timeRangeOptions.map((opt) => {
@@ -311,11 +311,11 @@ export default function LeaderboardPage() {
                             <button
                               key={opt.id}
                               onClick={() => setSelectedTimeRange(opt)}
-                              className={`flex items-center w-full text-left px-2 py-2 rounded-md hover:bg-primary-foreground ${
+                              className={`hover:bg-primary-foreground flex w-full items-center rounded-md px-2 py-2 text-left ${
                                 active ? "bg-primary-foreground" : ""
                               }`}
                             >
-                              <span className="text-[13px] text-main">
+                              <span className="text-text-primary text-[13px]">
                                 {opt.label}
                               </span>
                             </button>
@@ -328,8 +328,8 @@ export default function LeaderboardPage() {
                   {/* Sort By dropdown */}
                   <Popover>
                     <PopoverTrigger asChild>
-                      <Button className="h-fit px-[12px] md:px-3 rounded-[100px] border border-main/7 bg-white hover:bg-primary-foreground flex items-center gap-2">
-                        <span className="text-[12px] md:text-[13px] font-medium text-main">
+                      <Button className="border-main/7 hover:bg-primary-foreground flex h-fit items-center gap-2 rounded-[100px] border bg-white px-[12px] md:px-3">
+                        <span className="text-text-primary text-[12px] font-medium md:text-[13px]">
                           Sort By
                         </span>
                         <ChevronDown
@@ -340,7 +340,7 @@ export default function LeaderboardPage() {
                     </PopoverTrigger>
                     <PopoverContent
                       align="start"
-                      className="w-[180px] p-2 bg-white"
+                      className="w-[180px] bg-white p-2"
                     >
                       <div className="flex flex-col">
                         {sortByOptions.map((opt) => {
@@ -349,11 +349,11 @@ export default function LeaderboardPage() {
                             <button
                               key={opt.id}
                               onClick={() => setSelectedSortBy(opt)}
-                              className={`flex items-center w-full text-left px-2 py-2 rounded-md hover:bg-primary-foreground ${
+                              className={`hover:bg-primary-foreground flex w-full items-center rounded-md px-2 py-2 text-left ${
                                 active ? "bg-primary-foreground" : ""
                               }`}
                             >
-                              <span className="text-[13px] text-main">
+                              <span className="text-text-primary text-[13px]">
                                 {opt.label}
                               </span>
                             </button>
@@ -364,9 +364,9 @@ export default function LeaderboardPage() {
                   </Popover>
                 </div>
               </div>
-              <div className="flex flex-row w-full md:w-fit justify-center gap-[16px] md:gap-6 overflow-y-auto overscroll-contain [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                <div className="flex flex-col lg:w-[1020px]  w-full gap-[16px] md:gap-6">
-                  <div className="grid grid-cols-1 min-[400px]:grid-cols-2 md:grid-cols-4 gap-[12px] md:gap-6 w-full">
+              <div className="flex w-full flex-row justify-center gap-[16px] overflow-y-auto overscroll-contain [-ms-overflow-style:none] [scrollbar-width:none] md:w-fit md:gap-6 [&::-webkit-scrollbar]:hidden">
+                <div className="flex w-full flex-col gap-[16px] md:gap-6 lg:w-[1020px]">
+                  <div className="grid w-full grid-cols-1 gap-[12px] min-[400px]:grid-cols-2 md:grid-cols-4 md:gap-6">
                     {statCards.map((card, index) => (
                       <StatCard key={index} {...card} />
                     ))}
@@ -386,7 +386,7 @@ export default function LeaderboardPage() {
               <PerformanceBreakdownPage
                 onBack={() => setShowPerformanceBreakdown(false)}
               />
-              <div className="w-full md:w-[300px] flex flex-col pt-6 gap-6">
+              <div className="flex w-full flex-col gap-6 pt-6 md:w-[300px]">
                 <TodayFixturesSide />
                 <UpcomingMatchesSide />
               </div>

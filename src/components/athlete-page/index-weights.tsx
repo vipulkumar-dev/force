@@ -1,8 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../ui/accordion";
-import { Table, TableHeader, TableBody, TableRow, TableCell, TableHead } from "../ui/table";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "../ui/accordion";
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableHead,
+} from "../ui/table";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import { Info } from "lucide-react";
 
@@ -24,7 +36,7 @@ interface metricData {
   metricValue: String;
 }
 
-const MetricInfoData:metricData[] = [
+const MetricInfoData: metricData[] = [
   {
     metric: "Baseline Value",
     description: "Average over last 30 days",
@@ -43,7 +55,7 @@ const MetricInfoData:metricData[] = [
   {
     metric: "Relevance",
     description: "Strong impact on overall index score.",
-    metricValue: "High(0.78)"
+    metricValue: "High(0.78)",
   },
 ];
 
@@ -117,66 +129,112 @@ export default function IndexWeights({
   metrics = defaultMetrics,
 }: IndexWeightsProps) {
   return (
-    <>           
-    <div className="flex flex-col gap-4 bg-white rounded-[20px] p-[10px] sm:p-[14px] md:p-[16px] mb-[16px] md:mb-[24px] last:mb-0">
-      <h1 className="font-medium text-[16px] text-main tracking-[0.28px] px-4 pt-2 leading-none">Index Weight</h1>
-      <div className="w-full overflow-x-auto mt-4 rounded-[20px] bg-page-background px-2">
-        <Table className="border-separate border-spacing-y-2 w-full min-w-full table-auto">
-          <TableHeader>
-            <TableRow className="border-0">
-              <TableHead className="text-muted-foreground text-[12px] font-medium leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">Time</TableHead>
-              <TableHead className="text-muted-foreground text-[12px] leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">Play</TableHead>
-              <TableHead className="text-muted-foreground text-[12px] leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">Weight</TableHead>
-              <TableHead className="text-muted-foreground text-[12px] leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">Current</TableHead>
-              <TableHead className="text-muted-foreground text-[12px] leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">Trend</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {metrics.map((metric, index) => {
-              const isPositive = metric.trend >= 0;
-              return (
-                <TableRow key={index} className="bg-white font-medium text-[12px]x border-0 mb-2 rounded-[14px] hover:bg-white hover:cursor-pointer transition-colors duration-200 ease-out overflow-hidden">
-                  <TableCell className="bg-white px-4 py-3 rounded-tl-[14px] rounded-bl-[14px]">{metric.metric}</TableCell>
-                  <TableCell className="bg-white px-4 py-3 text-soft-400 font-mediumxs">{metric.description}</TableCell>
-                  <TableCell className="bg-white px-4 py-3">{metric.weight}</TableCell>
-                  <TableCell className="bg-white px-4 py-3">{metric.current}</TableCell>
-                  <TableCell className={`bg-white px-4 py-3 ${isPositive ? 'text-light-green' : 'text-neon-pink'} rounded-tr-[14px] rounded-br-[14px]`}>
-                    <div className="flex flex-row items-center gap-1">
-                      {isPositive ? (
-                        <Image src="/icons/arrow_up.png" alt="arrow-up" width={12} height={16} />
-                      ) : (
-                        <Image src="/icons/arrow_down.png" alt="arrow-down" width={12} height={16} />
-                      )}
-                      {isPositive ? '+' : ''}{metric.trend}%
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <div className="flex justify-center items-center w-[12px] h-[12px] rounded-full bg-soft-400 shrink-0 cursor-pointer">
-                            <Info className="w-[12px] h-[12px] text-white" />
-                          </div>
-                        </TooltipTrigger>
-                        <TooltipContent className="bg-white border border-light-gray rounded-[10px] text-main text-[12px] p-4 font-medium leading-[100%] tracking-[-1%] [&>*[data-side]]:bg-white">
-                          <div className="flex flex-col gap-4">
-                          <h4>{metric.metric}</h4>
-                          {MetricInfoData.map((item, index) => {
-                            return (
-                              <div key={index} className="flex flex-col gap-1">
-                                <span className="flex flex-row font-medium text-[12px] text-soft-400 tracking-[0.28px] leading-none">{item.metric}: <p className="text-main">{item.metricValue}</p></span>
-                                <span className="font-medium text-[12px] text-soft-400 tracking-[0.28px] leading-none">{item.description}</span>
-                              </div>
-                            );
-                          })}
-                          </div>
-                        </TooltipContent>
-                      </Tooltip>
-                    </div>
-                  </TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
+    <>
+      <div className="mb-[16px] flex flex-col gap-4 rounded-[20px] bg-white p-[10px] last:mb-0 sm:p-[14px] md:mb-[24px] md:p-[16px]">
+        <h1 className="text-text-primary px-4 pt-2 text-[16px] leading-none font-medium tracking-[0.28px]">
+          Index Weight
+        </h1>
+        <div className="bg-page-background mt-4 w-full overflow-x-auto rounded-[20px] px-2">
+          <Table className="w-full min-w-full table-auto border-separate border-spacing-y-2">
+            <TableHeader>
+              <TableRow className="border-0">
+                <TableHead className="text-muted-foreground border-0 px-4 py-3 text-[12px] leading-[100%] font-medium tracking-[-1%] whitespace-nowrap">
+                  Time
+                </TableHead>
+                <TableHead className="text-muted-foreground border-0 px-4 py-3 text-[12px] leading-[100%] tracking-[-1%] whitespace-nowrap">
+                  Play
+                </TableHead>
+                <TableHead className="text-muted-foreground border-0 px-4 py-3 text-[12px] leading-[100%] tracking-[-1%] whitespace-nowrap">
+                  Weight
+                </TableHead>
+                <TableHead className="text-muted-foreground border-0 px-4 py-3 text-[12px] leading-[100%] tracking-[-1%] whitespace-nowrap">
+                  Current
+                </TableHead>
+                <TableHead className="text-muted-foreground border-0 px-4 py-3 text-[12px] leading-[100%] tracking-[-1%] whitespace-nowrap">
+                  Trend
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {metrics.map((metric, index) => {
+                const isPositive = metric.trend >= 0;
+                return (
+                  <TableRow
+                    key={index}
+                    className="text-[12px]x mb-2 overflow-hidden rounded-[14px] border-0 bg-white font-medium transition-colors duration-200 ease-out hover:cursor-pointer hover:bg-white"
+                  >
+                    <TableCell className="rounded-tl-[14px] rounded-bl-[14px] bg-white px-4 py-3">
+                      {metric.metric}
+                    </TableCell>
+                    <TableCell className="text-soft-400 font-mediumxs bg-white px-4 py-3">
+                      {metric.description}
+                    </TableCell>
+                    <TableCell className="bg-white px-4 py-3">
+                      {metric.weight}
+                    </TableCell>
+                    <TableCell className="bg-white px-4 py-3">
+                      {metric.current}
+                    </TableCell>
+                    <TableCell
+                      className={`bg-white px-4 py-3 ${isPositive ? "text-light-green" : "text-neon-pink"} rounded-tr-[14px] rounded-br-[14px]`}
+                    >
+                      <div className="flex flex-row items-center gap-1">
+                        {isPositive ? (
+                          <Image
+                            src="/icons/arrow_up.png"
+                            alt="arrow-up"
+                            width={12}
+                            height={16}
+                          />
+                        ) : (
+                          <Image
+                            src="/icons/arrow_down.png"
+                            alt="arrow-down"
+                            width={12}
+                            height={16}
+                          />
+                        )}
+                        {isPositive ? "+" : ""}
+                        {metric.trend}%
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <div className="bg-soft-400 flex h-[12px] w-[12px] shrink-0 cursor-pointer items-center justify-center rounded-full">
+                              <Info className="h-[12px] w-[12px] text-white" />
+                            </div>
+                          </TooltipTrigger>
+                          <TooltipContent className="border-light-gray text-text-primary rounded-[10px] border bg-white p-4 text-[12px] leading-[100%] font-medium tracking-[-1%] [&>*[data-side]]:bg-white">
+                            <div className="flex flex-col gap-4">
+                              <h4>{metric.metric}</h4>
+                              {MetricInfoData.map((item, index) => {
+                                return (
+                                  <div
+                                    key={index}
+                                    className="flex flex-col gap-1"
+                                  >
+                                    <span className="text-soft-400 flex flex-row text-[12px] leading-none font-medium tracking-[0.28px]">
+                                      {item.metric}:{" "}
+                                      <p className="text-text-primary">
+                                        {item.metricValue}
+                                      </p>
+                                    </span>
+                                    <span className="text-soft-400 text-[12px] leading-none font-medium tracking-[0.28px]">
+                                      {item.description}
+                                    </span>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </TooltipContent>
+                        </Tooltip>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </div>
       </div>
-    </div>
     </>
     // <div className="backdrop-blur-[22px] bg-white rounded-[10px] flex flex-col w-full">
     //   {/* Header */}
@@ -185,7 +243,7 @@ export default function IndexWeights({
     //     className="flex gap-[12px] sm:gap-[16px] h-[48px] sm:h-[52px] md:h-[56px] items-center px-[16px] sm:px-[20px] md:px-[24px] border-b border-light-gray w-full hover:bg-primary-foreground transition-colors cursor-pointer"
     //   >
     //     <div className="flex-1 flex flex-col justify-center">
-    //       <p className="font-nohemi text-[14px] sm:text-[15px] md:text-[16px] text-main font-medium tracking-[0.32px] leading-none text-left font-500">
+    //       <p className="font-nohemi text-[14px] sm:text-[15px] md:text-[16px] text-text-primary font-medium tracking-[0.32px] leading-none text-left font-500">
     //         Index Weights
     //       </p>
     //     </div>
@@ -193,9 +251,9 @@ export default function IndexWeights({
     //       {isExpanded ? "Hide" : "Show"}
     //     </p>
     //     {isExpanded ? (
-    //       <ChevronUp className="w-[12px] h-[12px] sm:w-[14px] sm:h-[14px] text-main" />
+    //       <ChevronUp className="w-[12px] h-[12px] sm:w-[14px] sm:h-[14px] text-text-primary" />
     //     ) : (
-    //       <ChevronDown className="w-[12px] h-[12px] sm:w-[14px] sm:h-[14px] text-main" />
+    //       <ChevronDown className="w-[12px] h-[12px] sm:w-[14px] sm:h-[14px] text-text-primary" />
     //     )}
     //   </button>
 
@@ -219,16 +277,16 @@ export default function IndexWeights({
     //             key={index}
     //             className="flex gap-[16px] md:gap-[24px] items-center p-[12px] md:p-[16px] rounded-[10px] bg-linear-to-b from-[rgba(255,255,255,0.06)] to-[rgba(255,255,255,0.024)] relative shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.2)] min-w-[600px]"
     //           >
-    //             <p className="font-medium text-[11px] md:text-[12px] text-main tracking-[-0.12px] leading-none w-[150px] md:w-[180px]">
+    //             <p className="font-medium text-[11px] md:text-[12px] text-text-primary tracking-[-0.12px] leading-none w-[150px] md:w-[180px]">
     //               {item.metric}
     //             </p>
     //             <p className="flex-1 min-w-[200px] font-medium text-[11px] md:text-[12px] text-soft-400 tracking-[-0.12px] leading-[1.1]">
     //               {item.description}
     //             </p>
-    //             <p className="font-medium text-[11px] md:text-[12px] text-main tracking-[-0.12px] leading-none w-[60px] md:w-[72px]">
+    //             <p className="font-medium text-[11px] md:text-[12px] text-text-primary tracking-[-0.12px] leading-none w-[60px] md:w-[72px]">
     //               {item.weight}
     //             </p>
-    //             <p className="font-medium text-[11px] md:text-[12px] text-main tracking-[-0.12px] leading-none w-[60px] md:w-[72px]">
+    //             <p className="font-medium text-[11px] md:text-[12px] text-text-primary tracking-[-0.12px] leading-none w-[60px] md:w-[72px]">
     //               {typeof item.current === "number"
     //                 ? item.current.toFixed(1)
     //                 : item.current}

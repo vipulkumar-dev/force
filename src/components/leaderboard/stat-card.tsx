@@ -10,22 +10,22 @@ export default function StatCard({
   percent: string;
 }) {
   return (
-    <div className="flex flex-col w-full h-[100px] justify-between p-4 bg-white rounded-[10px]">
-      <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400">
+    <div className="flex h-[100px] w-full flex-col justify-between rounded-[10px] bg-white p-4">
+      <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
         {title}
       </p>
-      <div className="flex flex-row w-full items-center justify-between">
-        <p className="font-nohemi font-medium text-[20px] leading-[100%] tracking-[-1%] text-main">
+      <div className="flex w-full flex-row items-center justify-between">
+        <p className="font-nohemi text-text-primary text-[20px] leading-[100%] font-medium tracking-[-1%]">
           {value}
         </p>
-        <div className="flex flex-row w-fit gap-px items-center">
+        <div className="flex w-fit flex-row items-center gap-px">
           <Image
             src="/icons/leaderboard/arrow-up.svg"
             alt="arrow-up"
             width={14}
             height={14}
           />
-          <p className="text-light-green font-medium text-[14px] leading-[100%] tracking-[-1%]">
+          <p className="text-light-green text-[14px] leading-[100%] font-medium tracking-[-1%]">
             {percent}%
           </p>
         </div>

@@ -65,16 +65,16 @@ const mockAthletes: AthleteData[] = [
 
 export default function AthleteUpdateCard() {
   return (
-    <div className="p-0 md:p-[45px_40px_0px_40px] lg:p-[45px_80px_0px_80px] xl:p-[45px_194px_0px_194px] rounded-lg bg-transparent md:bg-soft-500 backdrop-blur-0 md:backdrop-blur-[22px]">
-      <div className="bg-white rounded-t-xl md:rounded-t-2xl border border-inactive p-4 md:p-5 lg:p-6 flex flex-col gap-3 w-full">
+    <div className="md:bg-soft-500 backdrop-blur-0 rounded-lg bg-transparent p-0 md:p-[45px_40px_0px_40px] md:backdrop-blur-[22px] lg:p-[45px_80px_0px_80px] xl:p-[45px_194px_0px_194px]">
+      <div className="border-inactive flex w-full flex-col gap-3 rounded-t-xl border bg-white p-4 md:rounded-t-2xl md:p-5 lg:p-6">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <h3 className="text-[15px] md:text-[16px] leading-[100%] font-medium font-nohemi tracking-[1%] text-main">
+          <h3 className="font-nohemi text-text-primary text-[15px] leading-[100%] font-medium tracking-[1%] md:text-[16px]">
             Athlete Update
           </h3>
-          <button className="text-[11px] md:text-[12px] leading-[100%] tracking-[1%] font-inter text-soft-400 transition-colors flex items-center gap-1 cursor-pointer hover:text-main">
+          <button className="font-inter text-soft-400 hover:text-text-primary flex cursor-pointer items-center gap-1 text-[11px] leading-[100%] tracking-[1%] transition-colors md:text-[12px]">
             Explore
-            <ChevronRight className="w-[13px] h-[13px] md:w-[14px] md:h-[14px] text-soft-400" />
+            <ChevronRight className="text-soft-400 h-[13px] w-[13px] md:h-[14px] md:w-[14px]" />
           </button>
         </div>
 
@@ -86,12 +86,12 @@ export default function AthleteUpdateCard() {
             return (
               <div
                 key={athlete.id}
-                className="flex flex-col md:flex-row md:items-center justify-between cursor-pointer py-3 md:py-3.5 lg:py-4 gap-3 md:gap-3 lg:gap-[14px] border-b border-light-gray hover:bg-active-hover/30 transition-colors"
+                className="border-light-gray hover:bg-active-hover/30 flex cursor-pointer flex-col justify-between gap-3 border-b py-3 transition-colors md:flex-row md:items-center md:gap-3 md:py-3.5 lg:gap-[14px] lg:py-4"
               >
                 {/* Left: Athlete info */}
                 <div className="flex items-center gap-2 md:gap-2.5 lg:gap-3">
                   <div
-                    className={`relative w-10 h-10 md:w-11 md:h-11 lg:w-12 lg:h-12 rounded-md ${athlete.bgColor} overflow-hidden shrink-0`}
+                    className={`relative h-10 w-10 rounded-md md:h-11 md:w-11 lg:h-12 lg:w-12 ${athlete.bgColor} shrink-0 overflow-hidden`}
                   >
                     <Image
                       src="/icons/athletes/logo.png"
@@ -107,24 +107,24 @@ export default function AthleteUpdateCard() {
                     />
                   </div>
                   <div className="flex flex-col gap-2 md:gap-2 lg:gap-2.5">
-                    <span className="text-[14px] md:text-[14px] lg:text-[15px] leading-[14px] lg:leading-[15px] font-medium font-inter text-main tracking-[-0.14px] lg:tracking-[-0.15px]">
+                    <span className="font-inter text-text-primary text-[14px] leading-[14px] font-medium tracking-[-0.14px] md:text-[14px] lg:text-[15px] lg:leading-[15px] lg:tracking-[-0.15px]">
                       {athlete.name}
                     </span>
-                    <span className="text-[12px] md:text-[12px] lg:text-[13px] leading-[12px] lg:leading-[13px] font-normal font-inter text-soft-400">
+                    <span className="font-inter text-soft-400 text-[12px] leading-[12px] font-normal md:text-[12px] lg:text-[13px] lg:leading-[13px]">
                       {athlete.team} ({athlete.league})
                     </span>
                   </div>
                 </div>
 
                 {/* Right: Price and stats */}
-                <div className="flex flex-row md:flex-col items-start md:items-end justify-between md:justify-start gap-2 md:gap-2 lg:gap-2.5">
+                <div className="flex flex-row items-start justify-between gap-2 md:flex-col md:items-end md:justify-start md:gap-2 lg:gap-2.5">
                   <div className="flex items-center gap-1.5">
-                    <span className="text-[14px] md:text-[14px] lg:text-[15px] leading-[14px] lg:leading-[15px] font-medium font-inter text-main tracking-[-0.14px] lg:tracking-[-0.15px]">
+                    <span className="font-inter text-text-primary text-[14px] leading-[14px] font-medium tracking-[-0.14px] md:text-[14px] lg:text-[15px] lg:leading-[15px] lg:tracking-[-0.15px]">
                       ${athlete.price.toFixed(1)} ELO
                     </span>
                     <span
                       className={cn(
-                        "text-[12px] md:text-[12px] lg:text-[13px] leading-[12px] lg:leading-[13px] font-medium font-inter",
+                        "font-inter text-[12px] leading-[12px] font-medium md:text-[12px] lg:text-[13px] lg:leading-[13px]",
                         isPositive ? "text-success" : "text-error",
                       )}
                     >
@@ -132,11 +132,11 @@ export default function AthleteUpdateCard() {
                       {athlete.priceChange.toFixed(2)}%
                     </span>
                   </div>
-                  <div className="flex items-center gap-1 px-1 md:px-1.5 py-0.5 bg-soft-500/30 md:bg-transparent rounded">
-                    <span className="text-[10px] md:text-[10px] lg:text-[11px] leading-[10px] lg:leading-[11px] tracking-[-0.1px] lg:tracking-[-0.11px]">
+                  <div className="bg-soft-500/30 flex items-center gap-1 rounded px-1 py-0.5 md:bg-transparent md:px-1.5">
+                    <span className="text-[10px] leading-[10px] tracking-[-0.1px] md:text-[10px] lg:text-[11px] lg:leading-[11px] lg:tracking-[-0.11px]">
                       🏅
                     </span>
-                    <span className="text-[10px] md:text-[10px] lg:text-[11px] leading-[10px] lg:leading-[11px] font-inter text-soft-400 whitespace-nowrap">
+                    <span className="font-inter text-soft-400 text-[10px] leading-[10px] whitespace-nowrap md:text-[10px] lg:text-[11px] lg:leading-[11px]">
                       {athlete.percentile}st Percentile
                     </span>
                   </div>

@@ -26,14 +26,14 @@ export default function LeaderboardTableCard({
   rows: LeaderboardRowT[];
 }) {
   return (
-    <div className="flex flex-col rounded-[10px] w-full bg-white">
-      <Button className="flex flex-row w-full h-fit justify-between border-b border-light-gray px-[20px]! py-[20px] gap-[20px] bg-white hover:bg-primary-foreground hover:cursor-pointer">
-        <p className="font-nohemi font-medium text-[14px] leading-[100%] tracking-[2%] text-main">
+    <div className="flex w-full flex-col rounded-[10px] bg-white">
+      <Button className="border-light-gray hover:bg-primary-foreground flex h-fit w-full flex-row justify-between gap-[20px] border-b bg-white px-[20px]! py-[20px] hover:cursor-pointer">
+        <p className="font-nohemi text-text-primary text-[14px] leading-[100%] font-medium tracking-[2%]">
           Leaderboard Table
         </p>
         <ChevronRight className="text-soft-400" width={14} height={14} />
       </Button>
-      <div className="flex flex-col px-2 pb-2 w-full overflow-x-auto ">
+      <div className="flex w-full flex-col overflow-x-auto px-2 pb-2">
         <LeaderboardHeader />
         {rows.map((r, i) => (
           <LeaderboardRow

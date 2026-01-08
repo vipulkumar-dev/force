@@ -47,11 +47,11 @@ export default function TeamPage() {
 
   if (!team) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-page-background pt-[117px] px-4">
-        <h1 className="text-4xl font-bold text-main mb-4">404</h1>
+      <div className="bg-page-background flex min-h-screen flex-col items-center justify-center px-4 pt-[117px]">
+        <h1 className="text-text-primary mb-4 text-4xl font-bold">404</h1>
         <p className="text-soft-400 mb-8">Team not found</p>
         <Link href="/">
-          <button className="px-4 py-2 bg-main text-white rounded-lg">
+          <button className="bg-main rounded-lg px-4 py-2 text-white">
             Go Home
           </button>
         </Link>
@@ -62,15 +62,15 @@ export default function TeamPage() {
   const handlePlaceOrder = (
     type: "long" | "short",
     orderSize: number,
-    leverage: number
+    leverage: number,
   ) => {
     console.log("Order placed:", { type, orderSize, leverage });
     alert(
       `${type.toUpperCase()} order confirmed!\nOrder Size: $${orderSize.toFixed(
-        2
+        2,
       )}\nLeverage: ${leverage}x\nEntry Price: $${teamStats.currentPrice.toFixed(
-        2
-      )}`
+        2,
+      )}`,
     );
   };
 
@@ -92,14 +92,14 @@ export default function TeamPage() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="w-full bg-page-background pt-[117px] min-h-screen">
+        <div className="bg-page-background min-h-screen w-full pt-[117px]">
           {/* Main Content */}
-          <div className="w-full max-w-[1440px] mx-auto px-4 md:px-6  py-4">
-            <div className="flex flex-col lg:flex-row gap-4">
+          <div className="mx-auto w-full max-w-[1440px] px-4 py-4 md:px-6">
+            <div className="flex flex-col gap-4 lg:flex-row">
               {/* Left: Team Card */}
-              <div className="flex-1 flex flex-col gap-4 w-full">
+              <div className="flex w-full flex-1 flex-col gap-4">
                 {/* Hero Section */}
-                <div className="w-full flex flex-col lg:flex-row gap-4">
+                <div className="flex w-full flex-col gap-4 lg:flex-row">
                   <TeamBanner
                     name={team.name}
                     league={team.league}
@@ -114,7 +114,7 @@ export default function TeamPage() {
                     onFollow={handleFollow}
                     onNotify={handleNotify}
                   />
-                  <div className="w-full lg:w-[360px] flex flex-col min-h-0  overflow-y-hidden hover:overflow-y-auto h-full">
+                  <div className="flex h-full min-h-0 w-full flex-col overflow-y-hidden hover:overflow-y-auto lg:w-[360px]">
                     <TradingPanel
                       athleteName={team.name}
                       currentPrice={teamStats.currentPrice}
@@ -124,8 +124,8 @@ export default function TeamPage() {
                 </div>
 
                 {/* Stats Cards */}
-                <div className="w-full flex justify-center">
-                  <div className="max-w-[1276px] w-full">
+                <div className="flex w-full justify-center">
+                  <div className="w-full max-w-[1276px]">
                     <AthleteStatsCards
                       indexPrice={teamStats.indexPrice}
                       indexPriceChange={teamStats.indexPriceChange}
@@ -140,16 +140,16 @@ export default function TeamPage() {
                 </div>
 
                 {/* Chart Section */}
-                <div className="w-full flex justify-center">
-                  <div className="max-w-[1276px] w-full">
+                <div className="flex w-full justify-center">
+                  <div className="w-full max-w-[1276px]">
                     <PriceChart />
                   </div>
                 </div>
 
                 {/* Player Table */}
-                <div className="bg-white rounded-[20px] overflow-hidden">
+                <div className="overflow-hidden rounded-[20px] bg-white">
                   {/* Table Header */}
-                  <div className="flex justify-between items-center p-4 border-b border-[#F7F7F7]">
+                  <div className="flex items-center justify-between border-b border-[#F7F7F7] p-4">
                     <div className="flex items-center gap-1.5">
                       {["All Players", "Guards", "Forwards", "Centers"].map(
                         (filter) => (
@@ -157,50 +157,50 @@ export default function TeamPage() {
                             key={filter}
                             onClick={() =>
                               setPlayerFilter(
-                                filter.toLowerCase().replace(" ", "")
+                                filter.toLowerCase().replace(" ", ""),
                               )
                             }
-                            className={`px-2 py-2 rounded-lg text-[12px] font-medium ${
+                            className={`rounded-lg px-2 py-2 text-[12px] font-medium ${
                               playerFilter ===
                               filter.toLowerCase().replace(" ", "")
-                                ? "bg-page-background text-main"
+                                ? "bg-page-background text-text-primary"
                                 : "text-soft-400"
                             }`}
                           >
                             {filter}
                           </button>
-                        )
+                        ),
                       )}
                     </div>
                     <div className="flex items-center gap-10">
-                      <div className="flex items-center gap-1 px-3 h-8 rounded-full bg-[#F7F7F7]">
-                        <Search className="w-[15px] h-[15px] text-soft-400" />
+                      <div className="flex h-8 items-center gap-1 rounded-full bg-[#F7F7F7] px-3">
+                        <Search className="text-soft-400 h-[15px] w-[15px]" />
                         <input
                           type="text"
                           placeholder="Search player"
-                          className="bg-transparent text-[12px] font-medium text-soft-400 outline-none w-[150px]"
+                          className="text-soft-400 w-[150px] bg-transparent text-[12px] font-medium outline-none"
                         />
                       </div>
                       <div className="flex items-center gap-2">
-                        <button className="w-8 h-8 flex items-center justify-center rounded-lg bg-[#F7F7F7]">
-                          <Filter className="w-4 h-4 text-soft-400" />
+                        <button className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#F7F7F7]">
+                          <Filter className="text-soft-400 h-4 w-4" />
                         </button>
-                        <div className="flex items-center h-8 rounded-lg border border-[#EAEBEC]">
+                        <div className="flex h-8 items-center rounded-lg border border-[#EAEBEC]">
                           <button
                             onClick={() => setViewMode("grid")}
-                            className={`w-6 h-6 flex items-center justify-center rounded ${
+                            className={`flex h-6 w-6 items-center justify-center rounded ${
                               viewMode === "grid" ? "" : ""
                             }`}
                           >
-                            <LayoutGrid className="w-[15px] h-[15px] text-[#AAAABD]" />
+                            <LayoutGrid className="h-[15px] w-[15px] text-[#AAAABD]" />
                           </button>
                           <button
                             onClick={() => setViewMode("list")}
-                            className={`w-6 h-6 flex items-center justify-center rounded ${
+                            className={`flex h-6 w-6 items-center justify-center rounded ${
                               viewMode === "list" ? "bg-[#F7F7F7]" : ""
                             }`}
                           >
-                            <LayoutList className="w-[15px] h-[15px] text-main" />
+                            <LayoutList className="text-text-primary h-[15px] w-[15px]" />
                           </button>
                         </div>
                       </div>
@@ -209,36 +209,36 @@ export default function TeamPage() {
 
                   {/* Table Content */}
                   <div className="p-1">
-                    <div className="bg-[#F7F7F7] rounded-[14px] p-1 flex flex-col gap-1">
+                    <div className="flex flex-col gap-1 rounded-[14px] bg-[#F7F7F7] p-1">
                       {/* Table Header Row */}
                       <div className="flex items-center gap-5 px-3 py-2.5">
                         <div className="w-[320px]">
-                          <span className="text-[11px] font-medium text-soft-400">
+                          <span className="text-soft-400 text-[11px] font-medium">
                             Player
                           </span>
                         </div>
                         <div className="w-[160px]">
-                          <span className="text-[11px] font-medium text-soft-400">
+                          <span className="text-soft-400 text-[11px] font-medium">
                             Chart
                           </span>
                         </div>
                         <div className="flex-1">
-                          <span className="text-[11px] font-medium text-soft-400">
+                          <span className="text-soft-400 text-[11px] font-medium">
                             Price
                           </span>
                         </div>
                         <div className="flex-1">
-                          <span className="text-[11px] font-medium text-soft-400">
+                          <span className="text-soft-400 text-[11px] font-medium">
                             Volume
                           </span>
                         </div>
                         <div className="w-[140px]">
-                          <span className="text-[11px] font-medium text-soft-400">
+                          <span className="text-soft-400 text-[11px] font-medium">
                             Performance
                           </span>
                         </div>
                         <div className="w-[68px]">
-                          <span className="text-[11px] font-medium text-soft-400">
+                          <span className="text-soft-400 text-[11px] font-medium">
                             Actions
                           </span>
                         </div>
@@ -247,10 +247,10 @@ export default function TeamPage() {
                       {/* Player Rows */}
                       {players.slice(0, 6).map((player) => (
                         <Link key={player.id} href={`/athlete/${player.id}`}>
-                          <div className="bg-white rounded-[14px] flex items-center gap-5 p-3 hover:shadow-md transition-shadow cursor-pointer">
-                            <div className="w-[320px] flex items-center gap-3 pr-10">
-                              <div className="flex items-center gap-2 flex-1">
-                                <div className="w-8 h-8 rounded-full overflow-hidden bg-gray-200">
+                          <div className="flex cursor-pointer items-center gap-5 rounded-[14px] bg-white p-3 transition-shadow hover:shadow-md">
+                            <div className="flex w-[320px] items-center gap-3 pr-10">
+                              <div className="flex flex-1 items-center gap-2">
+                                <div className="h-8 w-8 overflow-hidden rounded-full bg-gray-200">
                                   <Image
                                     src={player.imageUrl}
                                     alt={player.name}
@@ -259,32 +259,32 @@ export default function TeamPage() {
                                     className="object-cover"
                                   />
                                 </div>
-                                <span className="text-[13px] font-semibold text-main">
+                                <span className="text-text-primary text-[13px] font-semibold">
                                   {player.name}
                                 </span>
                               </div>
-                              <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-[#F7F7F7]">
-                                <span className="text-[12px] font-medium text-soft-400">
+                              <div className="flex items-center gap-1 rounded-full bg-[#F7F7F7] px-2 py-1">
+                                <span className="text-soft-400 text-[12px] font-medium">
                                   F
                                 </span>
-                                <span className="text-[12px] font-medium text-soft-400">
+                                <span className="text-soft-400 text-[12px] font-medium">
                                   80%
                                 </span>
                               </div>
                             </div>
-                            <div className="w-[160px] flex items-center gap-1.5">
+                            <div className="flex w-[160px] items-center gap-1.5">
                               <Image
                                 src={player.teamImageUrl}
                                 alt={player.teamAbbreviation}
                                 width={24}
                                 height={24}
                               />
-                              <span className="text-[12px] font-medium text-main">
+                              <span className="text-text-primary text-[12px] font-medium">
                                 {player.teamAbbreviation}
                               </span>
                             </div>
                             <div className="flex-1">
-                              <span className="text-[12px] font-medium text-main">
+                              <span className="text-text-primary text-[12px] font-medium">
                                 $2,315
                               </span>
                             </div>
@@ -294,26 +294,26 @@ export default function TeamPage() {
                               </span>
                             </div>
                             <div className="w-[140px]">
-                              <div className="w-[104px] h-[21px] bg-gray-100 rounded" />
+                              <div className="h-[21px] w-[104px] rounded bg-gray-100" />
                             </div>
-                            <div className="w-[68px] flex items-center gap-1">
+                            <div className="flex w-[68px] items-center gap-1">
                               <button
-                                className="w-8 h-8 flex items-center justify-center rounded-lg bg-[#F7F7F7] hover:bg-[#EAEBEC] transition-colors"
+                                className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#F7F7F7] transition-colors hover:bg-[#EAEBEC]"
                                 onClick={(e) => {
                                   e.preventDefault();
                                   e.stopPropagation();
                                 }}
                               >
-                                <ArrowUpRight className="w-[15px] h-[15px] text-[#25AB7A]" />
+                                <ArrowUpRight className="h-[15px] w-[15px] text-[#25AB7A]" />
                               </button>
                               <button
-                                className="w-8 h-8 flex items-center justify-center rounded-lg bg-[#F7F7F7] hover:bg-[#EAEBEC] transition-colors"
+                                className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#F7F7F7] transition-colors hover:bg-[#EAEBEC]"
                                 onClick={(e) => {
                                   e.preventDefault();
                                   e.stopPropagation();
                                 }}
                               >
-                                <ArrowDownRight className="w-[15px] h-[15px] text-[#E13F5E]" />
+                                <ArrowDownRight className="h-[15px] w-[15px] text-[#E13F5E]" />
                               </button>
                             </div>
                           </div>
@@ -323,16 +323,16 @@ export default function TeamPage() {
                   </div>
 
                   {/* Pagination */}
-                  <div className="flex justify-between items-center p-4">
+                  <div className="flex items-center justify-between p-4">
                     <div className="flex items-center gap-1 text-[12px] font-medium">
                       <span className="text-soft-400">Showing</span>
-                      <span className="text-main">1-10</span>
+                      <span className="text-text-primary">1-10</span>
                       <span className="text-soft-400">of</span>
-                      <span className="text-main">32</span>
+                      <span className="text-text-primary">32</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <button className="w-3 h-3 flex items-center justify-center">
-                        <ChevronLeft className="w-3 h-3 text-[#AAAABD]" />
+                      <button className="flex h-3 w-3 items-center justify-center">
+                        <ChevronLeft className="h-3 w-3 text-[#AAAABD]" />
                       </button>
                       <div className="flex items-center gap-1">
                         {[1, 2, 3, "...", 4].map((page, idx) => (
@@ -341,9 +341,9 @@ export default function TeamPage() {
                             onClick={() =>
                               typeof page === "number" && setCurrentPage(page)
                             }
-                            className={`w-7 px-2 py-2 rounded-lg text-[12px] font-medium ${
+                            className={`w-7 rounded-lg px-2 py-2 text-[12px] font-medium ${
                               currentPage === page
-                                ? "bg-[#F7F7F7] text-main"
+                                ? "text-text-primary bg-[#F7F7F7]"
                                 : "text-soft-400"
                             }`}
                           >
@@ -351,8 +351,8 @@ export default function TeamPage() {
                           </button>
                         ))}
                       </div>
-                      <button className="w-3 h-3 flex items-center justify-center">
-                        <ChevronRight className="w-3 h-3 text-[#AAAABD]" />
+                      <button className="flex h-3 w-3 items-center justify-center">
+                        <ChevronRight className="h-3 w-3 text-[#AAAABD]" />
                       </button>
                     </div>
                   </div>

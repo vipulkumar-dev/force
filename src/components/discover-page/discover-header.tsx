@@ -16,18 +16,21 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 interface DiscoverHeaderProps {
   viewMode: "grid" | "list";
   setViewMode: (mode: "grid" | "list") => void;
 }
 
-export default function DiscoverHeader({ viewMode, setViewMode }: DiscoverHeaderProps) {
+export default function DiscoverHeader({
+  viewMode,
+  setViewMode,
+}: DiscoverHeaderProps) {
   const [activeTab, setActiveTab] = useState("athletes");
   const tabs = [
     {
@@ -53,98 +56,125 @@ export default function DiscoverHeader({ viewMode, setViewMode }: DiscoverHeader
     {
       label: "Volume",
       value: "volume",
-    }
-  ]
+    },
+  ];
   return (
-    <div className="flex flex-col w-full gap-3">
-      <div className="flex flex-row items-center justify-between w-full px-2">
+    <div className="flex w-full flex-col gap-3">
+      <div className="flex w-full flex-row items-center justify-between px-2">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="flex flex-row gap-[8px] items-center bg-transparent p-0 h-auto">
+          <TabsList className="flex h-auto flex-row items-center gap-[8px] bg-transparent p-0">
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.value}
                 value={tab.value}
-                className="text-[14px] leading-[100%] font-semibold px-2 py-0 data-[state=active]:text-main data-[state=active]:shadow-none after:hidden"
+                className="data-[state=active]:text-text-primary px-2 py-0 text-[14px] leading-[100%] font-semibold after:hidden data-[state=active]:shadow-none"
               >
                 {tab.label}
               </TabsTrigger>
             ))}
           </TabsList>
         </Tabs>
-        <div className="flex flex-row gap-2 items-center">
-          <button className="p-2 rounded-lg transition-colors bg-white hover:cursor-pointer">
+        <div className="flex flex-row items-center gap-2">
+          <button className="rounded-lg bg-white p-2 transition-colors hover:cursor-pointer">
             <ListFilter width={18} height={18} />
           </button>
           <button
             onClick={() => setViewMode("grid")}
-            className={`p-2 rounded-lg transition-colors ${viewMode === "grid"
-              ? "bg-primary-foreground"
-              : "bg-transparent hover:bg-primary-foreground"
-              }`}
+            className={`rounded-lg p-2 transition-colors ${
+              viewMode === "grid"
+                ? "bg-primary-foreground"
+                : "hover:bg-primary-foreground bg-transparent"
+            }`}
           >
-            <Image src='/icons/grid.svg' alt='Grid view' width={18} height={18} />
+            <Image
+              src="/icons/grid.svg"
+              alt="Grid view"
+              width={18}
+              height={18}
+            />
           </button>
           <button
             onClick={() => setViewMode("list")}
-            className={`p-2 rounded-lg transition-colors ${viewMode === "list"
-              ? "bg-primary-foreground"
-              : "bg-transparent hover:bg-primary-foreground"
-              }`}
+            className={`rounded-lg p-2 transition-colors ${
+              viewMode === "list"
+                ? "bg-primary-foreground"
+                : "hover:bg-primary-foreground bg-transparent"
+            }`}
           >
-            <Image src='/icons/list.svg' alt='List view' width={18} height={18} />
+            <Image
+              src="/icons/list.svg"
+              alt="List view"
+              width={18}
+              height={18}
+            />
           </button>
         </div>
       </div>
-      <div className="flex flex-row gap-2 items-center px-2">
-        <div className="flex flex-row gap-2 items-center">
+      <div className="flex flex-row items-center gap-2 px-2">
+        <div className="flex flex-row items-center gap-2">
           {/* Positions */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" className="flex flex-row gap-2 items-center bg-white rounded-[8px] text-[12px] leading-[100%] font-semibold data-[state=active]:text-main data-[state=active]:shadow-none after:hidden">Positions <ChevronDown width={18} height={18} /></Button>
+              <Button
+                variant="outline"
+                className="data-[state=active]:text-text-primary flex flex-row items-center gap-2 rounded-[8px] bg-white text-[12px] leading-[100%] font-semibold after:hidden data-[state=active]:shadow-none"
+              >
+                Positions <ChevronDown width={18} height={18} />
+              </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56" align="start">
               <DropdownMenuGroup>
-                <DropdownMenuItem>
-                  All
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  Guards
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  Forwards
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  Centers
-                </DropdownMenuItem>
+                <DropdownMenuItem>All</DropdownMenuItem>
+                <DropdownMenuItem>Guards</DropdownMenuItem>
+                <DropdownMenuItem>Forwards</DropdownMenuItem>
+                <DropdownMenuItem>Centers</DropdownMenuItem>
               </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>
           {/* Price Range */}
           <Popover>
             <PopoverTrigger asChild>
-              <Button variant="outline" className="flex flex-row gap-2 items-center bg-white rounded-[8px] text-[12px] leading-[100%] font-semibold data-[state=active]:text-main data-[state=active]:shadow-none after:hidden">Price Range <ChevronDown width={18} height={18} /></Button>
+              <Button
+                variant="outline"
+                className="data-[state=active]:text-text-primary flex flex-row items-center gap-2 rounded-[8px] bg-white text-[12px] leading-[100%] font-semibold after:hidden data-[state=active]:shadow-none"
+              >
+                Price Range <ChevronDown width={18} height={18} />
+              </Button>
             </PopoverTrigger>
             <PopoverContent className="w-auto p-[12px]" align="start">
-              <div className="flex flex-col gap-2 items-center">
-                <div className="flex flex-row gap-2 items-center">
+              <div className="flex flex-col items-center gap-2">
+                <div className="flex flex-row items-center gap-2">
                   <div>
                     From
-                    <input type="text" placeholder="$" className="w-full bg-soft-500 rounded-[8px] px-2 py-1"/>
+                    <input
+                      type="text"
+                      placeholder="$"
+                      className="bg-soft-500 w-full rounded-[8px] px-2 py-1"
+                    />
                   </div>
                   <div>
-                    To 
-                    <input type="text" placeholder="$" className="w-full bg-soft-500 rounded-[8px] px-2 py-1" />
+                    To
+                    <input
+                      type="text"
+                      placeholder="$"
+                      className="bg-soft-500 w-full rounded-[8px] px-2 py-1"
+                    />
                   </div>
                 </div>
-                <Button variant="default" className="w-full bg-secondary text-main font-semibold hover:bg-primary/90 hover:text-primary-foreground">Apply</Button>
+                <Button
+                  variant="default"
+                  className="bg-secondary text-text-primary hover:bg-primary/90 hover:text-primary-foreground w-full font-semibold"
+                >
+                  Apply
+                </Button>
               </div>
             </PopoverContent>
           </Popover>
-          <div className="flex flex-row gap-2 items-center bg-white rounded-[8px] text-[12px] leading-[100%] font-semibold px-2 py-1 data-[state=active]:text-main data-[state=active]:shadow-none after:hidden">
+          <div className="data-[state=active]:text-text-primary flex flex-row items-center gap-2 rounded-[8px] bg-white px-2 py-1 text-[12px] leading-[100%] font-semibold after:hidden data-[state=active]:shadow-none">
             Last 24 Hours
             <ChevronDown width={18} height={18} />
           </div>
-          <div className="flex items-center gap-2 bg-white rounded-lg text-sm font-semibold px-2 py-1 cursor-pointer hover:bg-accent">
+          <div className="hover:bg-accent flex cursor-pointer items-center gap-2 rounded-lg bg-white px-2 py-1 text-sm font-semibold">
             <div className="flex items-center gap-1">
               <span className="text-muted-foreground font-medium">Sort by</span>
               <span className="font-semibold">Most Traded</span>

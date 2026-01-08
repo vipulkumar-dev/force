@@ -67,7 +67,7 @@ function useCountdown(targetDate?: string): TimeRemaining {
 
       const days = Math.floor(difference / (1000 * 60 * 60 * 24));
       const hours = Math.floor(
-        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
       );
       const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((difference % (1000 * 60)) / 1000);
@@ -111,9 +111,9 @@ export default function AthleteBanner({
   };
 
   return (
-    <div className="bg-white rounded-[20px] flex flex-col h-full overflow-hidden w-full lg:max-w-[900px]">
+    <div className="flex h-full w-full flex-col overflow-hidden rounded-[20px] bg-white lg:max-w-[900px]">
       <div
-        className={`relative w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-auto lg:flex-1 lg:min-h-[400px] rounded-t-[20px] lg:rounded-md overflow-hidden flex-shrink-0 flex items-center justify-center`}
+        className={`relative flex h-[300px] w-full flex-shrink-0 items-center justify-center overflow-hidden rounded-t-[20px] sm:h-[350px] md:h-[400px] lg:h-auto lg:min-h-[400px] lg:flex-1 lg:rounded-md`}
         style={{
           background: `linear-gradient(0deg, var(--Card-athlete-card-bg, #AFAFBC), var(--Card-athlete-card-bg, #AFAFBC)),
                     linear-gradient(180deg, rgba(16, 16, 18, 0.35) 0%, rgba(16, 16, 18, 0) 100%)`,
@@ -124,83 +124,83 @@ export default function AthleteBanner({
           alt={name}
           width={300}
           height={500}
-          className="object-top object-cover relative z-10"
+          className="relative z-10 object-cover object-top"
           style={{ transform: "translateY(20%) scale(1.1)" }}
         />
 
-        <div className="absolute top-4 left-4 z-30 items-center justify-center flex flex-row gap-2">
+        <div className="absolute top-4 left-4 z-30 flex flex-row items-center justify-center gap-2">
           <Button
             variant="outline"
-            className="w-8 h-8 bg-white border border-main/7 hover:cursor-pointer"
+            className="border-main/7 h-8 w-8 border bg-white hover:cursor-pointer"
           >
-            <ArrowLeft className="w-4 h-4 text-main" />
+            <ArrowLeft className="text-text-primary h-4 w-4" />
           </Button>
         </div>
-        <div className="absolute top-4 right-4 z-30 items-center justify-center flex flex-row gap-2">
+        <div className="absolute top-4 right-4 z-30 flex flex-row items-center justify-center gap-2">
           {isLive && (
-            <div className="flex flex-row items-center gap-2 px-2 sm:px-3 py-1.5 rounded-lg bg-white/10 backdrop-blur-sm">
-              <div className="w-2 h-2 rounded-full bg-light-green"></div>
-              <span className="text-white text-[12px] sm:text-[14px] font-medium">
+            <div className="flex flex-row items-center gap-2 rounded-lg bg-white/10 px-2 py-1.5 backdrop-blur-sm sm:px-3">
+              <div className="bg-light-green h-2 w-2 rounded-full"></div>
+              <span className="text-[12px] font-medium text-white sm:text-[14px]">
                 Live
               </span>
             </div>
           )}
-          {isLive && <div className="w-[1px] h-6 bg-white/20"></div>}
+          {isLive && <div className="h-6 w-[1px] bg-white/20"></div>}
           <Button
             onClick={onFollow}
-            className="w-auto h-8 px-2 sm:px-3 border-none hover:cursor-pointer rounded-lg bg-white text-main text-[12px] sm:text-[14px] font-medium hidden sm:inline-flex"
+            className="text-text-primary hidden h-8 w-auto rounded-lg border-none bg-white px-2 text-[12px] font-medium hover:cursor-pointer sm:inline-flex sm:px-3 sm:text-[14px]"
           >
             Follow
           </Button>
           <Button
             onClick={onNotify}
-            className="w-8 h-8 border-none hover:cursor-pointer rounded-lg bg-white text-main"
+            className="text-text-primary h-8 w-8 rounded-lg border-none bg-white hover:cursor-pointer"
           >
-            <BellDot className="w-4 h-4 text-main" />
+            <BellDot className="text-text-primary h-4 w-4" />
           </Button>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-white to-transparent z-20 pointer-events-none"></div>
+        <div className="pointer-events-none absolute right-0 bottom-0 left-0 z-20 h-[40%] bg-gradient-to-t from-white to-transparent"></div>
       </div>
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 px-[16px] lg:flex-1 sm:px-[20px] md:px-[24px] lg:px-[30px] py-[16px] sm:py-[18px] md:py-[20px] flex-shrink-0 mb-[24px] sm:mb-[32px] md:mb-[44px]">
+      <div className="mb-[24px] flex flex-shrink-0 flex-col gap-4 px-[16px] py-[16px] sm:mb-[32px] sm:flex-row sm:items-center sm:justify-between sm:px-[20px] sm:py-[18px] md:mb-[44px] md:px-[24px] md:py-[20px] lg:flex-1 lg:px-[30px]">
         <div className="flex flex-col">
-          <h1 className="text-main text-[24px] sm:text-[28px] md:text-[32px] leading-[100%] tracking-[-2%] font-medium">
+          <h1 className="text-text-primary text-[24px] leading-[100%] font-medium tracking-[-2%] sm:text-[28px] md:text-[32px]">
             {name}
           </h1>
-          <h2 className="text-soft-400 text-[18px] sm:text-[20px] md:text-[24px] lg:text-[32px] leading-[100%] tracking-[-2%] font-medium mt-1">
+          <h2 className="text-soft-400 mt-1 text-[18px] leading-[100%] font-medium tracking-[-2%] sm:text-[20px] md:text-[24px] lg:text-[32px]">
             {team} ({league})
           </h2>
         </div>
         <div className="flex flex-col items-start sm:items-end">
-          <p className="text-[12px] sm:text-[14px] text-soft-400 mb-1">
+          <p className="text-soft-400 mb-1 text-[12px] sm:text-[14px]">
             Index Price:
           </p>
           <span className="flex flex-row items-center gap-1">
-            <h1 className="text-main text-[24px] sm:text-[28px] md:text-[32px] font-medium">
+            <h1 className="text-text-primary text-[24px] font-medium sm:text-[28px] md:text-[32px]">
               ${price.toFixed(2)}
             </h1>
-            <ArrowUp className="w-[12px] h-[16px] sm:w-[15px] sm:h-[20px] text-light-green" />
+            <ArrowUp className="text-light-green h-[16px] w-[12px] sm:h-[20px] sm:w-[15px]" />
           </span>
         </div>
       </div>
-      <div className="flex flex-row items-start justify-start gap-2 px-[16px] sm:px-[20px] md:px-[24px] lg:px-[30px] pb-[16px] sm:pb-[18px] md:pb-[20px] flex-shrink-0 flex-wrap">
+      <div className="flex flex-shrink-0 flex-row flex-wrap items-start justify-start gap-2 px-[16px] pb-[16px] sm:px-[20px] sm:pb-[18px] md:px-[24px] md:pb-[20px] lg:px-[30px]">
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
             <Button
               variant="outline"
-              className="text-[12px] sm:text-[14px] h-[32px] sm:h-[36px] px-[12px] sm:px-[16px]"
+              className="h-[32px] px-[12px] text-[12px] sm:h-[36px] sm:px-[16px] sm:text-[14px]"
             >
               <Image
                 src={teamImageUrl}
                 alt="Team"
                 width={16}
                 height={16}
-                className="sm:w-5 sm:h-5 mr-1"
+                className="mr-1 sm:h-5 sm:w-5"
               />
               {name}
-              <ChevronDown className="w-4 h-4 ml-1" />
+              <ChevronDown className="ml-1 h-4 w-4" />
             </Button>
           </DialogTrigger>
-          <DialogContent className="w-[90vw] max-w-[500px] p-0 gap-0 [&>button]:hidden">
+          <DialogContent className="w-[90vw] max-w-[500px] gap-0 p-0 [&>button]:hidden">
             <SearchBar
               teamImageUrl={teamImageUrl}
               name={name}
@@ -211,48 +211,48 @@ export default function AthleteBanner({
 
         <Button
           variant="outline"
-          className="text-[12px] sm:text-[14px] h-[32px] sm:h-[36px] px-[12px] sm:px-[16px]"
+          className="h-[32px] px-[12px] text-[12px] sm:h-[36px] sm:px-[16px] sm:text-[14px]"
         >
           🏅 <span className="text-[13px] md:text-[14px]">{percentile}st</span>
         </Button>
         <Link href={`/team/${teamId}`}>
           <Button
             variant="outline"
-            className="text-[12px] sm:text-[14px] h-[32px] sm:h-[36px] px-[12px] sm:px-[16px]"
+            className="h-[32px] px-[12px] text-[12px] sm:h-[36px] sm:px-[16px] sm:text-[14px]"
           >
             <Image
               src={"/images/teams/lakers-logo.svg"}
               alt="Lakers"
               width={16}
               height={16}
-              className="sm:w-5 sm:h-5 mr-1"
+              className="mr-1 sm:h-5 sm:w-5"
             />
             {team}
           </Button>
         </Link>
         <Button
           variant="outline"
-          className="text-[12px] sm:text-[14px] h-[32px] sm:h-[36px] px-[12px] sm:px-[16px]"
+          className="h-[32px] px-[12px] text-[12px] sm:h-[36px] sm:px-[16px] sm:text-[14px]"
         >
           <Image
             src={"/icons/game/f.svg"}
             alt="Force"
             width={8}
             height={8}
-            className="sm:w-[10px] sm:h-[10px] mr-1"
+            className="mr-1 sm:h-[10px] sm:w-[10px]"
           />
           {performance}%
         </Button>
         <Button
           variant="outline"
-          className="text-[12px] sm:text-[14px] h-[32px] sm:h-[36px] px-[12px] sm:px-[16px]"
+          className="h-[32px] px-[12px] text-[12px] sm:h-[36px] sm:px-[16px] sm:text-[14px]"
         >
           <Image
             src={"/icons/volume.svg"}
             alt="Chart"
             width={16}
             height={16}
-            className="sm:w-[10px] sm:h-[10px] mr-1"
+            className="mr-1 sm:h-[10px] sm:w-[10px]"
           />
           {marketIndex}
         </Button>
@@ -320,7 +320,7 @@ export default function AthleteBanner({
 
     //         {/* Player Name & Team */}
     //         <div className="flex flex-col gap-[8px] sm:gap-[8px] md:gap-[12px] w-full">
-    //           <p className="font-nohemi text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px] text-main font-medium leading-[100%]">
+    //           <p className="font-nohemi text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px] text-text-primary font-medium leading-[100%]">
     //             {name}
     //           </p>
     //           <p className="text-[14px] sm:text-[14px] md:text-[15px] lg:text-[16px] text-soft-400 tracking-[-1%] leading-[100%]">
@@ -355,34 +355,34 @@ export default function AthleteBanner({
     //                 <div className="flex gap-[4px] sm:gap-[4px] items-center">
     //                   {/* Days */}
     //                   <div className="bg-neutral-100 flex items-center justify-center rounded-[4px] w-[26px] h-[26px] sm:w-[28px] sm:h-[28px]">
-    //                     <p className="font-medium text-[13px] sm:text-[14px] text-main tracking-[-0.14px]">
+    //                     <p className="font-medium text-[13px] sm:text-[14px] text-text-primary tracking-[-0.14px]">
     //                       {formatTimeUnit(timeRemaining.days)}
     //                     </p>
     //                   </div>
-    //                   <p className="font-medium text-[11px] sm:text-[12px] text-main tracking-[-0.12px]">
+    //                   <p className="font-medium text-[11px] sm:text-[12px] text-text-primary tracking-[-0.12px]">
     //                     :
     //                   </p>
     //                   {/* Hours */}
     //                   <div className="bg-neutral-100 flex items-center justify-center rounded-[4px] w-[26px] h-[26px] sm:w-[28px] sm:h-[28px]">
-    //                     <p className="font-medium text-[13px] sm:text-[14px] text-main tracking-[-0.14px]">
+    //                     <p className="font-medium text-[13px] sm:text-[14px] text-text-primary tracking-[-0.14px]">
     //                       {formatTimeUnit(timeRemaining.hours)}
     //                     </p>
     //                   </div>
-    //                   <p className="font-medium text-[11px] sm:text-[12px] text-main tracking-[-0.12px]">
+    //                   <p className="font-medium text-[11px] sm:text-[12px] text-text-primary tracking-[-0.12px]">
     //                     :
     //                   </p>
     //                   {/* Minutes */}
     //                   <div className="bg-neutral-100 flex items-center justify-center rounded-[4px] w-[26px] h-[26px] sm:w-[28px] sm:h-[28px]">
-    //                     <p className="font-medium text-[13px] sm:text-[14px] text-main tracking-[-0.14px]">
+    //                     <p className="font-medium text-[13px] sm:text-[14px] text-text-primary tracking-[-0.14px]">
     //                       {formatTimeUnit(timeRemaining.minutes)}
     //                     </p>
     //                   </div>
-    //                   <p className="font-medium text-[11px] sm:text-[12px] text-main tracking-[-0.12px]">
+    //                   <p className="font-medium text-[11px] sm:text-[12px] text-text-primary tracking-[-0.12px]">
     //                     :
     //                   </p>
     //                   {/* Seconds */}
     //                   <div className="bg-neutral-100 flex items-center justify-center rounded-[4px] w-[26px] h-[26px] sm:w-[28px] sm:h-[28px]">
-    //                     <p className="font-medium text-[13px] sm:text-[14px] text-main tracking-[-0.14px]">
+    //                     <p className="font-medium text-[13px] sm:text-[14px] text-text-primary tracking-[-0.14px]">
     //                       {formatTimeUnit(timeRemaining.seconds)}
     //                     </p>
     //                   </div>

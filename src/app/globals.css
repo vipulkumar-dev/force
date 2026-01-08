@@ -98,6 +98,8 @@
   --color-bg-tertiary: var(--bg-tertiary);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
+  --color-elevation-card: var(--elevation-card);
+  --color-elevation-button: var(--elevation-button);
 }
 
 :root {
@@ -169,7 +171,7 @@
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
+  --border: #f7f7f7;
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
@@ -190,6 +192,9 @@
   --bg-tertiary: #f0f0f0;
   --text-primary: #101012;
   --text-secondary: #7e7e8c;
+  --elevation-card: #ffffff;
+  --elevation-button: #f7f7f7;
+  --border-secondary: #f7f7f7;
 }
 
 .dark {
@@ -198,6 +203,10 @@
   --bg-tertiary: #1f1f24;
   --text-primary: #ffffff;
   --text-secondary: #7e7e8c;
+  --elevation-card: #16161a;
+  --elevation-button: #1f1f24;
+  --border: #1f1f24;
+  --border-secondary: #1f1f24;
 }
 
 @layer base {

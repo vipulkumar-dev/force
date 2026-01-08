@@ -126,13 +126,13 @@ export default function PerformanceBreakdownPage({
   const [activeTab, setActiveTab] = useState<"teams" | "athletes">("teams");
 
   return (
-    <div className="flex flex-col w-[1020px] pb-6 overflow-y-auto overscroll-contain [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-      <div className="flex flex-col w-full pt-6 gap-5">
+    <div className="flex w-[1020px] flex-col overflow-y-auto overscroll-contain pb-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="flex w-full flex-col gap-5 pt-6">
         {/* Header */}
-        <div className="w-full flex flex-row gap-4 items-center">
+        <div className="flex w-full flex-row items-center gap-4">
           <Button
             lip="on"
-            className="flex flex-row w-8 h-8 rounded-[7px] items-center justify-center border border-main/7 bg-white gap-2 px-0 hover:bg-primary-foreground hover:cursor-pointer"
+            className="border-main/7 hover:bg-primary-foreground flex h-8 w-8 flex-row items-center justify-center gap-2 rounded-[7px] border bg-white px-0 hover:cursor-pointer"
             onClick={onBack}
           >
             <Image
@@ -143,7 +143,7 @@ export default function PerformanceBreakdownPage({
             />
           </Button>
 
-          <p className="font-medium font-nohemi text-[20px] leading-[100%] tracking-[2%] text-main">
+          <p className="font-nohemi text-text-primary text-[20px] leading-[100%] font-medium tracking-[2%]">
             Performance Breakdown
           </p>
         </div>
@@ -152,14 +152,14 @@ export default function PerformanceBreakdownPage({
         <div className="flex flex-row gap-2">
           <Button
             onClick={() => setActiveTab("teams")}
-            className={`flex flex-row rounded-[100px] h-fit items-center justify-center py-2 px-4 gap-1 border transition-colors duration-200 ease-out hover:cursor-pointer ${
+            className={`flex h-fit flex-row items-center justify-center gap-1 rounded-[100px] border px-4 py-2 transition-colors duration-200 ease-out hover:cursor-pointer ${
               activeTab === "teams"
                 ? "bg-main border-black/5"
-                : "bg-white border-main/7 hover:bg-primary-foreground"
+                : "border-main/7 hover:bg-primary-foreground bg-white"
             }`}
           >
             <p
-              className={`font-medium text-[12px] leading-[100%] tracking-[-1%] ${
+              className={`text-[12px] leading-[100%] font-medium tracking-[-1%] ${
                 activeTab === "teams" ? "text-white" : "text-sub-500"
               }`}
             >
@@ -168,14 +168,14 @@ export default function PerformanceBreakdownPage({
           </Button>
           <Button
             onClick={() => setActiveTab("athletes")}
-            className={`flex flex-row rounded-[100px] h-fit items-center justify-center py-2 px-4 gap-1 border transition-colors duration-200 ease-out hover:cursor-pointer ${
+            className={`flex h-fit flex-row items-center justify-center gap-1 rounded-[100px] border px-4 py-2 transition-colors duration-200 ease-out hover:cursor-pointer ${
               activeTab === "athletes"
                 ? "bg-main border-black/5"
-                : "bg-white border-main/7 hover:bg-primary-foreground"
+                : "border-main/7 hover:bg-primary-foreground bg-white"
             }`}
           >
             <p
-              className={`font-medium text-[12px] leading-[100%] tracking-[-1%] ${
+              className={`text-[12px] leading-[100%] font-medium tracking-[-1%] ${
                 activeTab === "athletes" ? "text-white" : "text-sub-500"
               }`}
             >
@@ -186,30 +186,30 @@ export default function PerformanceBreakdownPage({
       </div>
 
       {/* Content */}
-      <div className="flex flex-col w-full mt-6">
+      <div className="mt-6 flex w-full flex-col">
         {activeTab === "teams" ? (
-          <div className="flex flex-col w-full bg-white rounded-[10px]">
+          <div className="flex w-full flex-col rounded-[10px] bg-white">
             {/* Table Header */}
-            <div className="flex flex-row w-full py-3 px-5 gap-4 border-b border-light-gray">
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[8%]">
+            <div className="border-light-gray flex w-full flex-row gap-4 border-b px-5 py-3">
+              <p className="text-soft-400 w-[8%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Rank
               </p>
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[25%]">
+              <p className="text-soft-400 w-[25%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Team
               </p>
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[12%]">
+              <p className="text-soft-400 w-[12%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 24H Volume
               </p>
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[12%]">
+              <p className="text-soft-400 w-[12%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Total Trades
               </p>
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[13%]">
+              <p className="text-soft-400 w-[13%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Avg Trade Size
               </p>
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[12%]">
+              <p className="text-soft-400 w-[12%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Top Traders
               </p>
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[12%] text-right">
+              <p className="text-soft-400 w-[12%] text-right text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 24H Change
               </p>
             </div>
@@ -218,15 +218,15 @@ export default function PerformanceBreakdownPage({
             {teamsData.map((team) => (
               <div
                 key={team.rank}
-                className="flex flex-row w-full py-4 px-5 gap-4 border-b border-light-gray last:border-b-0 hover:bg-primary-foreground transition-colors duration-200"
+                className="border-light-gray hover:bg-primary-foreground flex w-full flex-row gap-4 border-b px-5 py-4 transition-colors duration-200 last:border-b-0"
               >
-                <div className="w-[8%] flex items-center">
-                  <p className="font-medium text-[13px] leading-[100%] tracking-[-1%] text-main">
+                <div className="flex w-[8%] items-center">
+                  <p className="text-text-primary text-[13px] leading-[100%] font-medium tracking-[-1%]">
                     #{team.rank}
                   </p>
                 </div>
-                <div className="w-[25%] flex flex-row items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-primary-foreground flex items-center justify-center overflow-hidden">
+                <div className="flex w-[25%] flex-row items-center gap-2.5">
+                  <div className="bg-primary-foreground flex h-8 w-8 items-center justify-center overflow-hidden rounded-full">
                     <Image
                       src={team.logo}
                       alt={team.name}
@@ -236,37 +236,37 @@ export default function PerformanceBreakdownPage({
                     />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <p className="font-medium text-[13px] leading-[100%] tracking-[-1%] text-main">
+                    <p className="text-text-primary text-[13px] leading-[100%] font-medium tracking-[-1%]">
                       {team.name}
                     </p>
-                    <p className="font-medium text-[11px] leading-[100%] tracking-[-1%] text-soft-400">
+                    <p className="text-soft-400 text-[11px] leading-[100%] font-medium tracking-[-1%]">
                       {team.league}
                     </p>
                   </div>
                 </div>
-                <div className="w-[12%] flex items-center">
-                  <p className="font-medium text-[13px] leading-[100%] tracking-[-1%] text-main">
+                <div className="flex w-[12%] items-center">
+                  <p className="text-text-primary text-[13px] leading-[100%] font-medium tracking-[-1%]">
                     {team.tradingVolume}
                   </p>
                 </div>
-                <div className="w-[12%] flex items-center">
-                  <p className="font-medium text-[13px] leading-[100%] tracking-[-1%] text-main">
+                <div className="flex w-[12%] items-center">
+                  <p className="text-text-primary text-[13px] leading-[100%] font-medium tracking-[-1%]">
                     {team.totalTrades.toLocaleString()}
                   </p>
                 </div>
-                <div className="w-[13%] flex items-center">
-                  <p className="font-medium text-[13px] leading-[100%] tracking-[-1%] text-main">
+                <div className="flex w-[13%] items-center">
+                  <p className="text-text-primary text-[13px] leading-[100%] font-medium tracking-[-1%]">
                     {team.avgTradeSize}
                   </p>
                 </div>
-                <div className="w-[12%] flex items-center">
-                  <p className="font-medium text-[13px] leading-[100%] tracking-[-1%] text-main">
+                <div className="flex w-[12%] items-center">
+                  <p className="text-text-primary text-[13px] leading-[100%] font-medium tracking-[-1%]">
                     {team.topTraders}
                   </p>
                 </div>
-                <div className="w-[12%] flex items-center justify-end">
+                <div className="flex w-[12%] items-center justify-end">
                   <p
-                    className={`font-medium text-[13px] leading-[100%] tracking-[-1%] ${
+                    className={`text-[13px] leading-[100%] font-medium tracking-[-1%] ${
                       team.isPositive ? "text-success-500" : "text-error-500"
                     }`}
                   >
@@ -277,25 +277,25 @@ export default function PerformanceBreakdownPage({
             ))}
           </div>
         ) : (
-          <div className="flex flex-col w-full bg-white rounded-[10px]">
+          <div className="flex w-full flex-col rounded-[10px] bg-white">
             {/* Table Header */}
-            <div className="flex flex-row w-full py-3 px-5 gap-4 border-b border-light-gray">
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[8%]">
+            <div className="border-light-gray flex w-full flex-row gap-4 border-b px-5 py-3">
+              <p className="text-soft-400 w-[8%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Rank
               </p>
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[27%]">
+              <p className="text-soft-400 w-[27%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Athlete
               </p>
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[13%]">
+              <p className="text-soft-400 w-[13%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 24H Volume
               </p>
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[13%]">
+              <p className="text-soft-400 w-[13%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Total Trades
               </p>
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[13%]">
+              <p className="text-soft-400 w-[13%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Avg Trade Size
               </p>
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[13%] text-right">
+              <p className="text-soft-400 w-[13%] text-right text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Price Change
               </p>
             </div>
@@ -304,16 +304,16 @@ export default function PerformanceBreakdownPage({
             {athletesData.map((athlete) => (
               <div
                 key={athlete.rank}
-                className="flex flex-row w-full py-4 px-5 gap-4 border-b border-light-gray last:border-b-0 hover:bg-primary-foreground transition-colors duration-200"
+                className="border-light-gray hover:bg-primary-foreground flex w-full flex-row gap-4 border-b px-5 py-4 transition-colors duration-200 last:border-b-0"
               >
-                <div className="w-[8%] flex items-center">
-                  <p className="font-medium text-[13px] leading-[100%] tracking-[-1%] text-main">
+                <div className="flex w-[8%] items-center">
+                  <p className="text-text-primary text-[13px] leading-[100%] font-medium tracking-[-1%]">
                     #{athlete.rank}
                   </p>
                 </div>
-                <div className="w-[27%] flex flex-row items-center gap-2.5">
+                <div className="flex w-[27%] flex-row items-center gap-2.5">
                   <div
-                    className={`relative w-10 h-10 rounded-md ${athlete.backgroundColor} overflow-hidden`}
+                    className={`relative h-10 w-10 rounded-md ${athlete.backgroundColor} overflow-hidden`}
                   >
                     <Image
                       src="/icons/athletes/logo.png"
@@ -329,32 +329,32 @@ export default function PerformanceBreakdownPage({
                     />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <p className="font-medium text-[13px] leading-[100%] tracking-[-1%] text-main">
+                    <p className="text-text-primary text-[13px] leading-[100%] font-medium tracking-[-1%]">
                       {athlete.name}
                     </p>
-                    <p className="font-medium text-[11px] leading-[100%] tracking-[-1%] text-soft-400">
+                    <p className="text-soft-400 text-[11px] leading-[100%] font-medium tracking-[-1%]">
                       {athlete.team}
                     </p>
                   </div>
                 </div>
-                <div className="w-[13%] flex items-center">
-                  <p className="font-medium text-[13px] leading-[100%] tracking-[-1%] text-main">
+                <div className="flex w-[13%] items-center">
+                  <p className="text-text-primary text-[13px] leading-[100%] font-medium tracking-[-1%]">
                     {athlete.tradingVolume}
                   </p>
                 </div>
-                <div className="w-[13%] flex items-center">
-                  <p className="font-medium text-[13px] leading-[100%] tracking-[-1%] text-main">
+                <div className="flex w-[13%] items-center">
+                  <p className="text-text-primary text-[13px] leading-[100%] font-medium tracking-[-1%]">
                     {athlete.totalTrades.toLocaleString()}
                   </p>
                 </div>
-                <div className="w-[13%] flex items-center">
-                  <p className="font-medium text-[13px] leading-[100%] tracking-[-1%] text-main">
+                <div className="flex w-[13%] items-center">
+                  <p className="text-text-primary text-[13px] leading-[100%] font-medium tracking-[-1%]">
                     {athlete.avgTradeSize}
                   </p>
                 </div>
-                <div className="w-[13%] flex items-center justify-end">
+                <div className="flex w-[13%] items-center justify-end">
                   <p
-                    className={`font-medium text-[13px] leading-[100%] tracking-[-1%] ${
+                    className={`text-[13px] leading-[100%] font-medium tracking-[-1%] ${
                       athlete.isPositive ? "text-success-500" : "text-error-500"
                     }`}
                   >

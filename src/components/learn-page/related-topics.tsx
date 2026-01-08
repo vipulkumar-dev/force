@@ -33,30 +33,30 @@ export default function RelatedTopics({
 }: RelatedTopicsProps) {
   return (
     <div className="flex flex-col gap-2.5">
-      <h3 className="text-[16px] leading-5 font-medium font-nohemi tracking-[0.4px] text-main">
+      <h3 className="font-nohemi text-text-primary text-[16px] leading-5 font-medium tracking-[0.4px]">
         Related Topics
       </h3>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4 lg:grid-cols-3">
         {topics.map((topic) => {
           return (
             <button
               key={topic.id}
               onClick={() => onTopicClick?.(topic.id)}
-              className="bg-white rounded-[10px] border border-black/7 hover:border-base-purple hover:shadow-sm transition-all text-left overflow-hidden flex flex-col p-1"
+              className="hover:border-base-purple flex flex-col overflow-hidden rounded-[10px] border border-black/7 bg-white p-1 text-left transition-all hover:shadow-sm"
             >
               {/* Content area */}
               <div
-                className="h-[120px] md:h-[150px] rounded-[10px] w-full bg-center bg-no-repeat bg-contain"
+                className="h-[120px] w-full rounded-[10px] bg-contain bg-center bg-no-repeat md:h-[150px]"
                 style={{ backgroundImage: `url(${topic.svgUrl})` }}
               />
 
               {/* Footer */}
-              <div className="flex flex-col gap-2 md:gap-3 px-4 md:px-6 py-3 md:py-4 bg-white">
-                <span className="text-[11px] leading-[11px] font-semibold font-inter text-disabled-300 uppercase tracking-[0.66px]">
+              <div className="flex flex-col gap-2 bg-white px-4 py-3 md:gap-3 md:px-6 md:py-4">
+                <span className="font-inter text-disabled-300 text-[11px] leading-[11px] font-semibold tracking-[0.66px] uppercase">
                   {topic.category}
                 </span>
-                <span className="text-[13px] md:text-[14px] leading-[14px] font-medium font-inter text-main">
+                <span className="font-inter text-text-primary text-[13px] leading-[14px] font-medium md:text-[14px]">
                   {topic.title}
                 </span>
               </div>

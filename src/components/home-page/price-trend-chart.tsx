@@ -156,27 +156,27 @@ export default function PriceTrendChart() {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-row items-center justify-between w-full px-2">
+      <div className="flex w-full flex-row items-center justify-between px-2">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="flex flex-row gap-[8px] items-center bg-transparent p-0 h-auto">
+          <TabsList className="flex h-auto flex-row items-center gap-[8px] bg-transparent p-0">
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.value}
                 value={tab.value}
-                className="text-[14px] leading-[100%] font-semibold px-2 py-0 data-[state=active]:text-main data-[state=active]:shadow-none after:hidden cursor-pointer"
+                className="data-[state=active]:text-text-primary cursor-pointer px-2 py-0 text-[14px] leading-[100%] font-semibold after:hidden data-[state=active]:shadow-none"
               >
                 {tab.label}
               </TabsTrigger>
             ))}
           </TabsList>
         </Tabs>
-        <div className="flex flex-row gap-2 items-center">
+        <div className="flex flex-row items-center gap-2">
           <button
             onClick={() => setViewMode("grid")}
-            className={`p-2 rounded-lg transition-colors ${
+            className={`rounded-lg p-2 transition-colors ${
               viewMode === "grid"
                 ? "bg-primary-foreground"
-                : "bg-transparent hover:bg-primary-foreground"
+                : "hover:bg-primary-foreground bg-transparent"
             }`}
           >
             <Image
@@ -188,10 +188,10 @@ export default function PriceTrendChart() {
           </button>
           <button
             onClick={() => setViewMode("list")}
-            className={`p-2 rounded-lg transition-colors ${
+            className={`rounded-lg p-2 transition-colors ${
               viewMode === "list"
                 ? "bg-primary-foreground"
-                : "bg-transparent hover:bg-primary-foreground"
+                : "hover:bg-primary-foreground bg-transparent"
             }`}
           >
             <Image
@@ -205,28 +205,28 @@ export default function PriceTrendChart() {
       </div>
       {viewMode === "list" ? (
         <div className="w-full overflow-x-auto">
-          <Table className="border-separate border-spacing-y-2 w-full table-auto">
+          <Table className="w-full table-auto border-separate border-spacing-y-2">
             <TableHeader>
               <TableRow className="border-0">
-                <TableHead className="text-muted-foreground text-[12px] font-medium leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">
+                <TableHead className="text-muted-foreground border-0 px-4 py-3 text-[12px] leading-[100%] font-medium tracking-[-1%] whitespace-nowrap">
                   Player
                 </TableHead>
-                <TableHead className="text-muted-foreground text-[12px] leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">
+                <TableHead className="text-muted-foreground border-0 px-4 py-3 text-[12px] leading-[100%] tracking-[-1%] whitespace-nowrap">
                   Chart
                 </TableHead>
-                <TableHead className="text-muted-foreground text-[12px] leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">
+                <TableHead className="text-muted-foreground border-0 px-4 py-3 text-[12px] leading-[100%] tracking-[-1%] whitespace-nowrap">
                   Price
                 </TableHead>
-                <TableHead className="text-muted-foreground text-[12px] leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">
+                <TableHead className="text-muted-foreground border-0 px-4 py-3 text-[12px] leading-[100%] tracking-[-1%] whitespace-nowrap">
                   Volume
                 </TableHead>
-                <TableHead className="text-muted-foreground text-[12px] leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">
+                <TableHead className="text-muted-foreground border-0 px-4 py-3 text-[12px] leading-[100%] tracking-[-1%] whitespace-nowrap">
                   Performance
                 </TableHead>
-                <TableHead className="text-muted-foreground text-[12px] leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">
+                <TableHead className="text-muted-foreground border-0 px-4 py-3 text-[12px] leading-[100%] tracking-[-1%] whitespace-nowrap">
                   Rank
                 </TableHead>
-                <TableHead className="text-muted-foreground text-[12px] leading-[100%] tracking-[-1%] border-0 whitespace-nowrap px-4 py-3">
+                <TableHead className="text-muted-foreground border-0 px-4 py-3 text-[12px] leading-[100%] tracking-[-1%] whitespace-nowrap">
                   Action
                 </TableHead>
               </TableRow>
@@ -246,11 +246,11 @@ export default function PriceTrendChart() {
                 return (
                   <TableRow
                     key={athlete.id}
-                    className="bg-white border-0 mb-2 rounded-[14px] hover:bg-white hover:cursor-pointer transition-colors duration-200 ease-out"
+                    className="bg-elevation-card hover:bg-elevation-card mb-2 rounded-[14px] border-0 transition-colors duration-200 ease-out hover:cursor-pointer"
                   >
-                    <TableCell className="font-medium px-4 py-3 rounded-tl-[14px] rounded-bl-[14px]">
-                      <div className="relative flex flex-row gap-2 items-center">
-                        <div className="relative w-8 h-8 rounded-full bg-dark-yellow overflow-hidden">
+                    <TableCell className="rounded-tl-[14px] rounded-bl-[14px] px-4 py-3 font-medium">
+                      <div className="relative flex flex-row items-center gap-2">
+                        <div className="bg-dark-yellow relative h-8 w-8 overflow-hidden rounded-full">
                           <Image
                             src="/icons/athletes/logo.png"
                             alt="Logo"
@@ -265,14 +265,14 @@ export default function PriceTrendChart() {
                           />
                         </div>
                         <div>
-                          <p className="text-main text-[14px] leading-[100%] tracking-[-2%] font-medium">
+                          <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                             {athlete.name}
                           </p>
-                          <p className="text-soft-400 text-[12px] leading-[100%] tracking-[-1%] font-medium">
+                          <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
                             {athlete.team}
                           </p>
                         </div>
-                        <div className="flex flex-row items-center justify-center gap-2 bg-league-card text-soft-400 px-2 py-1 rounded-full text-xs font-medium">
+                        <div className="bg-league-card text-soft-400 flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
                           <Image
                             src="/icons/game/f.svg"
                             alt="Flag"
@@ -293,11 +293,11 @@ export default function PriceTrendChart() {
                     </TableCell>
                     <TableCell className="px-4 py-3">
                       <div>
-                        <p className="text-main text-[12px] leading-[100%] tracking-[-2%] font-medium">
+                        <p className="text-text-primary text-[12px] leading-[100%] font-medium tracking-[-2%]">
                           {athlete.price}
                         </p>
                         <p
-                          className={`${changeColor} text-[12px] leading-[100%] tracking-[-1%] font-medium`}
+                          className={`${changeColor} text-[12px] leading-[100%] font-medium tracking-[-1%]`}
                         >
                           {changeSign}
                           {athlete.change.toFixed(2)}%
@@ -306,11 +306,11 @@ export default function PriceTrendChart() {
                     </TableCell>
                     <TableCell className="px-4 py-3">
                       <div>
-                        <p className="text-main text-[12px] leading-[100%] tracking-[-2%] font-medium">
+                        <p className="text-text-primary text-[12px] leading-[100%] font-medium tracking-[-2%]">
                           {athlete.volume}
                         </p>
                         <p
-                          className={`${volumeChangeColor} text-[12px] leading-[100%] tracking-[-1%] font-medium`}
+                          className={`${volumeChangeColor} text-[12px] leading-[100%] font-medium tracking-[-1%]`}
                         >
                           {volumeChangeSign}
                           {athlete.volumeChange.toFixed(2)}%
@@ -323,8 +323,8 @@ export default function PriceTrendChart() {
                     <TableCell className="px-4 py-3">#{athlete.rank}</TableCell>
                     <TableCell
                       className={`${
-                        isLastRow ? "px-2 w-[1%]" : "px-4"
-                      } py-3 rounded-tr-[14px] rounded-br-[14px]`}
+                        isLastRow ? "w-[1%] px-2" : "px-4"
+                      } rounded-tr-[14px] rounded-br-[14px] py-3`}
                     >
                       <div
                         className={`flex flex-row items-center gap-2 ${

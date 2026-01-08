@@ -43,31 +43,31 @@ export default function TeamsRankings() {
     },
   ];
   return (
-    <div className="w-full flex flex-col bg-white rounded-[10px]">
-      <Button className="flex flex-col w-full h-auto border-b px-[20px]! py-[20px]! gap-[16px] border-light-gray bg-white hover:bg-primary-foreground hover:cursor-pointer">
-        <div className="flex flex-row justify-between w-full gap-[16px]">
-          <p className="font-nohemi font-medium text-[16px] leading-[100%] tracking-[2%] text-main">
+    <div className="flex w-full flex-col rounded-[10px] bg-white">
+      <Button className="border-light-gray hover:bg-primary-foreground flex h-auto w-full flex-col gap-[16px] border-b bg-white px-[20px]! py-[20px]! hover:cursor-pointer">
+        <div className="flex w-full flex-row justify-between gap-[16px]">
+          <p className="font-nohemi text-text-primary text-[16px] leading-[100%] font-medium tracking-[2%]">
             NBA Teams Ranking
           </p>
           <ChevronRight className="text-soft-400" width={14} height={14} />
         </div>
       </Button>
 
-      <div className="flex flex-col w-full">
+      <div className="flex w-full flex-col">
         {rankings.map((row) => (
           <div
             key={row.rank}
-            className="flex flex-row py-[16px] px-[20px] gap-[8px] border-b border-light-gray items-center border-t border-transparent hover:bg-primary-foreground hover:cursor-pointer transition-colors duration-200 ease-out"
+            className="border-light-gray hover:bg-primary-foreground flex flex-row items-center gap-[8px] border-t border-b border-transparent px-[20px] py-[16px] transition-colors duration-200 ease-out hover:cursor-pointer"
           >
-            <div className="flex flex-row items-center justify-center w-[32px] h-fit rounded-[100px] py-[6px] px-[12px] gap-[4px] bg-white border border-disabled-100">
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-sub-500">
+            <div className="border-disabled-100 flex h-fit w-[32px] flex-row items-center justify-center gap-[4px] rounded-[100px] border bg-white px-[12px] py-[6px]">
+              <p className="text-sub-500 text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 #{row.rank}
               </p>
             </div>
-            <div className="flex flex-col w-[32px] h-[32px] items-center justify-center rounded-[7px] gap-[6px] bg-light-gray">
+            <div className="bg-light-gray flex h-[32px] w-[32px] flex-col items-center justify-center gap-[6px] rounded-[7px]">
               <Image src={row.iconSrc} alt={row.alt} width={27} height={17} />
             </div>
-            <p className="font-medium text-[14px] leading-[100%] tracking-[-2%] text-main">
+            <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
               {row.team}
             </p>
           </div>

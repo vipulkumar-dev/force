@@ -2,7 +2,14 @@
 
 import { useState } from "react";
 import { MoreVertical, ArrowUp, ListFilterIcon } from "lucide-react";
-import { Table, TableHeader, TableBody, TableRow, TableCell, TableHead } from "@/components/ui/table";
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableHead,
+} from "@/components/ui/table";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { SearchIcon } from "lucide-react";
@@ -82,52 +89,62 @@ export default function OpenPositionsTable({
   positions = mockPositions,
 }: OpenPositionsTableProps) {
   return (
-    <div className="flex flex-col w-full bg-white rounded-[20px] p-[16px]">
-      <div className="flex flex-row items-center justify-between w-full p-[16px] md:p-5">
-        <h2 className="font-nohemi font-medium text-[14px] text-main tracking-[0.28px] leading-none">Open Positions</h2>
+    <div className="flex w-full flex-col rounded-[20px] bg-white p-[16px]">
+      <div className="flex w-full flex-row items-center justify-between p-[16px] md:p-5">
+        <h2 className="font-nohemi text-text-primary text-[14px] leading-none font-medium tracking-[0.28px]">
+          Open Positions
+        </h2>
         <div className="flex flex-row items-center gap-[10px]">
-
-          <div className="flex flex-row items-center gap-[10px] bg-page-background rounded-full">
+          <div className="bg-page-background flex flex-row items-center gap-[10px] rounded-full">
             {/* Search Input */}
-            <div className="flex flex-row items-center flex-1 md:w-[204px] h-[32px] py-[6px] pr-[16px] pl-[10px] gap-[10px] ">
-              <SearchIcon width={15} height={15}  className="text-main shrink-0" /> <input type="text" placeholder="Search" aria-label="Search" className="flex-1 h-[18px] bg-transparent border-0 outline-none px-0 text-[12px] leading-[100%] tracking-tight placeholder:text-disabled-300 text-[#0a0d14]" />
+            <div className="flex h-[32px] flex-1 flex-row items-center gap-[10px] py-[6px] pr-[16px] pl-[10px] md:w-[204px]">
+              <SearchIcon
+                width={15}
+                height={15}
+                className="text-text-primary shrink-0"
+              />{" "}
+              <input
+                type="text"
+                placeholder="Search"
+                aria-label="Search"
+                className="placeholder:text-disabled-300 h-[18px] flex-1 border-0 bg-transparent px-0 text-[12px] leading-[100%] tracking-tight text-[#0a0d14] outline-none"
+              />
             </div>
           </div>
 
           {/* Filter Button */}
-          <Button className="bg-page-background border-none rounded-[8px] h-[32px] w-[32px] px-[12px] md:px-[16px] py-[10px] flex items-center gap-[6px] md:gap-[8px] hover:bg-gray-50 transition-colors">
-            <ListFilterIcon className="w-[16px] h-[16px] text-main shrink-0" />
+          <Button className="bg-page-background flex h-[32px] w-[32px] items-center gap-[6px] rounded-[8px] border-none px-[12px] py-[10px] transition-colors hover:bg-gray-50 md:gap-[8px] md:px-[16px]">
+            <ListFilterIcon className="text-text-primary h-[16px] w-[16px] shrink-0" />
           </Button>
         </div>
       </div>
-      <div className="flex items-center justify-between h-[1px] w-full bg-light-gray">
-      </div>
-      <div className="w-full overflow-x-auto rounded-[20px] bg-page-background ">
-        <Table className="border-separate px-2 border-spacing-y-2 w-full min-w-full table-auto">
+      <div className="bg-light-gray flex h-[1px] w-full items-center justify-between"></div>
+      <div className="bg-page-background w-full overflow-x-auto rounded-[20px]">
+        <Table className="w-full min-w-full table-auto border-separate border-spacing-y-2 px-2">
           <TableHeader>
             <TableRow className="border-0">
-              <TableHead className="text-muted-foreground text-[12px] font-medium whitespace-nowrap px-4 py-3">
+              <TableHead className="text-muted-foreground px-4 py-3 text-[12px] font-medium whitespace-nowrap">
                 Athlete Name
               </TableHead>
-              <TableHead className="text-muted-foreground text-[12px] whitespace-nowrap px-4 py-3">
+              <TableHead className="text-muted-foreground px-4 py-3 text-[12px] whitespace-nowrap">
                 Position
               </TableHead>
-              <TableHead className="text-muted-foreground text-[12px] whitespace-nowrap px-4 py-3">
+              <TableHead className="text-muted-foreground px-4 py-3 text-[12px] whitespace-nowrap">
                 Size
               </TableHead>
-              <TableHead className="text-muted-foreground text-[12px] whitespace-nowrap px-4 py-3">
+              <TableHead className="text-muted-foreground px-4 py-3 text-[12px] whitespace-nowrap">
                 Entry/$
               </TableHead>
-              <TableHead className="text-muted-foreground text-[12px] whitespace-nowrap px-4 py-3">
+              <TableHead className="text-muted-foreground px-4 py-3 text-[12px] whitespace-nowrap">
                 Current/$
               </TableHead>
-              <TableHead className="text-muted-foreground text-[12px] whitespace-nowrap px-4 py-3">
+              <TableHead className="text-muted-foreground px-4 py-3 text-[12px] whitespace-nowrap">
                 Liq. Price
               </TableHead>
-              <TableHead className="text-muted-foreground text-[12px] whitespace-nowrap px-4 py-3">
+              <TableHead className="text-muted-foreground px-4 py-3 text-[12px] whitespace-nowrap">
                 PnL (Unrealized)
               </TableHead>
-              <TableHead className="text-muted-foreground text-[12px] whitespace-nowrap px-4 py-3">
+              <TableHead className="text-muted-foreground px-4 py-3 text-[12px] whitespace-nowrap">
                 Fun Rate
               </TableHead>
             </TableRow>
@@ -139,10 +156,10 @@ export default function OpenPositionsTable({
                 key={position.id}
                 className="border-0 hover:bg-transparent"
               >
-                <TableCell className="bg-white px-4 py-3 mx-2 rounded-l-[14px] font-medium text-[12px]">
+                <TableCell className="mx-2 rounded-l-[14px] bg-white px-4 py-3 text-[12px] font-medium">
                   <div className="flex items-center gap-[10px] px-[4px] py-[6px]">
                     <div
-                      className={`relative w-8 h-8 rounded-md ${position.athleteBgColor} overflow-hidden`}
+                      className={`relative h-8 w-8 rounded-md ${position.athleteBgColor} overflow-hidden`}
                     >
                       <Image
                         src="/icons/athletes/logo.png"
@@ -157,50 +174,48 @@ export default function OpenPositionsTable({
                         className="object-cover object-top"
                       />
                     </div>
-                    <p className="font-medium text-[14px] text-main">
+                    <p className="text-text-primary text-[14px] font-medium">
                       {position.athleteName} ({position.league})
                     </p>
                   </div>
                 </TableCell>
 
                 {/* Position */}
-                <TableCell className="bg-white px-4 py-3 mx-2 text-main font-medium text-[12px]">
+                <TableCell className="text-text-primary mx-2 bg-white px-4 py-3 text-[12px] font-medium">
                   {position.position} {position.leverage}
                 </TableCell>
 
                 {/* Size */}
-                <TableCell className="bg-white px-4 py-3 mx-2 font-medium text-[12px]">
+                <TableCell className="mx-2 bg-white px-4 py-3 text-[12px] font-medium">
                   ${position.size}
                 </TableCell>
 
                 {/* Entry */}
-                <TableCell className="bg-white px-4 py-3 mx-2 font-medium text-[12px]">
+                <TableCell className="mx-2 bg-white px-4 py-3 text-[12px] font-medium">
                   ${position.entryPrice.toFixed(2)}
                 </TableCell>
 
                 {/* Current */}
-                <TableCell className="bg-white px-4 py-3 mx-2 font-medium text-[12px]">
+                <TableCell className="mx-2 bg-white px-4 py-3 text-[12px] font-medium">
                   ${position.currentPrice.toFixed(2)}
                 </TableCell>
 
                 {/* Liq */}
-                <TableCell className="bg-white px-4 py-3 mx-2 font-medium text-[12px]">
+                <TableCell className="mx-2 bg-white px-4 py-3 text-[12px] font-medium">
                   ${position.liquidationPrice.toFixed(2)}
                 </TableCell>
 
                 {/* PNL */}
-                <TableCell className="bg-white px-4 py-3 mx-2 font-medium text-[12px]">
+                <TableCell className="mx-2 bg-white px-4 py-3 text-[12px] font-medium">
                   <div className="flex items-center gap-1">
-
-                    <span className="text-main">
+                    <span className="text-text-primary">
                       {position.pnl >= 0 ? "+" : "-"}$
                       {Math.abs(position.pnl).toFixed(2)}
                     </span>
                     <span
-                      className={`${position.pnl >= 0
-                        ? "text-dark-green"
-                        : "text-base-red"
-                        }`}
+                      className={`${
+                        position.pnl >= 0 ? "text-dark-green" : "text-base-red"
+                      }`}
                     >
                       {Math.abs(position.pnlPercentage).toFixed(1)}%
                     </span>
@@ -208,22 +223,21 @@ export default function OpenPositionsTable({
                 </TableCell>
 
                 {/* Funding */}
-                <TableCell className="bg-white px-4 py-3 mx-2 text-main font-medium text-[12px]">
+                <TableCell className="text-text-primary mx-2 bg-white px-4 py-3 text-[12px] font-medium">
                   {position.fundingRate.toFixed(2)}%
                 </TableCell>
 
                 {/* Menu */}
-                <TableCell className="bg-white px-4 py-3 mx-2 rounded-r-[14px] font-medium text-[12px] w-[1%]">
+                <TableCell className="mx-2 w-[1%] rounded-r-[14px] bg-white px-4 py-3 text-[12px] font-medium">
                   <div className="flex justify-end">
-                    <button className="p-[8px] hover:bg-gray-50 rounded-[6px] transition-colors">
-                      <MoreVertical className="w-[16px] h-[16px] text-soft-400" />
+                    <button className="rounded-[6px] p-[8px] transition-colors hover:bg-gray-50">
+                      <MoreVertical className="text-soft-400 h-[16px] w-[16px]" />
                     </button>
                   </div>
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
-
         </Table>
       </div>
     </div>

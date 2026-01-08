@@ -18,24 +18,38 @@ interface AthleteStatsCardsProps {
   marketIndexChange: number;
 }
 
-function StatCard({
-  label,
-  value,
-  change,
-}: StatCardProps) {
+function StatCard({ label, value, change }: StatCardProps) {
   const isPositive = change >= 0;
 
   return (
-    <div className="flex flex-col bg-white flex-1 rounded-[14px] p-[16px] sm:p-[18px] md:p-[20px] gap-[24px] sm:gap-[32px] md:gap-[46px]">
-      <p className="text-[12px] sm:text-[14px] text-soft-400 font-medium">{label}</p>
+    <div className="flex flex-1 flex-col gap-[24px] rounded-[14px] bg-white p-[16px] sm:gap-[32px] sm:p-[18px] md:gap-[46px] md:p-[20px]">
+      <p className="text-soft-400 text-[12px] font-medium sm:text-[14px]">
+        {label}
+      </p>
       <span className="flex flex-row items-center gap-1">
-        <h1 className="text-main text-[24px] sm:text-[28px] md:text-[32px] font-medium">{value}</h1>
+        <h1 className="text-text-primary text-[24px] font-medium sm:text-[28px] md:text-[32px]">
+          {value}
+        </h1>
         {isPositive ? (
-          <Image src="/icons/arrow_up.png" alt="arrow-up" width={12} height={16} />
+          <Image
+            src="/icons/arrow_up.png"
+            alt="arrow-up"
+            width={12}
+            height={16}
+          />
         ) : (
-          <Image src="/icons/arrow_down.png" alt="arrow-down" width={12} height={16} />
+          <Image
+            src="/icons/arrow_down.png"
+            alt="arrow-down"
+            width={12}
+            height={16}
+          />
         )}
-        <p className={`text-[12px] sm:text-[14px] font-medium ${isPositive ? "text-light-green" : "text-base-red"}`}>{change}%</p>
+        <p
+          className={`text-[12px] font-medium sm:text-[14px] ${isPositive ? "text-light-green" : "text-base-red"}`}
+        >
+          {change}%
+        </p>
       </span>
     </div>
   );
@@ -52,8 +66,8 @@ export default function AthleteStatsCards({
   marketIndexChange,
 }: AthleteStatsCardsProps) {
   return (
-    <div className="w-full flex flex-col lg:flex-row gap-[12px] sm:gap-[16px] lg:gap-[16px]">
-      <div className="w-full lg:w-[900px] flex flex-col sm:flex-row gap-[12px] sm:gap-[16px] md:gap-[24px]">
+    <div className="flex w-full flex-col gap-[12px] sm:gap-[16px] lg:flex-row lg:gap-[16px]">
+      <div className="flex w-full flex-col gap-[12px] sm:flex-row sm:gap-[16px] md:gap-[24px] lg:w-[900px]">
         <StatCard
           label="League Rank"
           value={`#${leagueRank}`}
@@ -65,14 +79,28 @@ export default function AthleteStatsCards({
           change={performanceChange}
         />
       </div>
-      <div className="flex flex-col bg-white w-full lg:w-[360px] flex-shrink-0 rounded-[14px] p-[16px] sm:p-[18px] md:p-[20px] gap-[24px] sm:gap-[32px] md:gap-[46px]">
-        <p className="text-[12px] sm:text-[14px] text-soft-400 font-medium">Narrative Multiple</p>
+      <div className="flex w-full flex-shrink-0 flex-col gap-[24px] rounded-[14px] bg-white p-[16px] sm:gap-[32px] sm:p-[18px] md:gap-[46px] md:p-[20px] lg:w-[360px]">
+        <p className="text-soft-400 text-[12px] font-medium sm:text-[14px]">
+          Narrative Multiple
+        </p>
         <span className="flex flex-row items-center gap-1">
-          <h1 className="text-[24px] sm:text-[28px] md:text-[32px] font-medium">{marketIndex}x</h1>
+          <h1 className="text-[24px] font-medium sm:text-[28px] md:text-[32px]">
+            {marketIndex}x
+          </h1>
           {marketIndexChange >= 0 ? (
-            <Image src="/icons/arrow_up.png" alt="arrow-up" width={12} height={16} />
+            <Image
+              src="/icons/arrow_up.png"
+              alt="arrow-up"
+              width={12}
+              height={16}
+            />
           ) : (
-            <Image src="/icons/arrow_down.png" alt="arrow-down" width={12} height={16} />
+            <Image
+              src="/icons/arrow_down.png"
+              alt="arrow-down"
+              width={12}
+              height={16}
+            />
           )}
         </span>
       </div>

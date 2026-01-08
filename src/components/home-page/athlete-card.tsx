@@ -51,13 +51,13 @@ export default function AthleteCard({
   if (mode === "list") {
     return (
       <div
-        className="flex flex-row w-full items-center rounded-[10px] border border-black/5 p-5 gap-8 bg-white hover:cursor-pointer transition-colors duration-200 hover:bg-primary-foreground"
+        className="hover:bg-primary-foreground flex w-full flex-row items-center gap-8 rounded-[10px] border border-black/5 bg-white p-5 transition-colors duration-200 hover:cursor-pointer"
         onClick={() => id && router.push(`/athlete/${id}`)}
       >
         {index !== undefined && (
-          <div className="w-[4%] flex flex-row items-center">
-            <div className="flex flex-row items-center justify-center w-8 rounded-[100px] border border-light-gray bg-white py-1.5 gap-1">
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-sub-500 text-center">
+          <div className="flex w-[4%] flex-row items-center">
+            <div className="border-light-gray flex w-8 flex-row items-center justify-center gap-1 rounded-[100px] border bg-white py-1.5">
+              <p className="text-sub-500 text-center text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 #{index}
               </p>
             </div>
@@ -66,10 +66,10 @@ export default function AthleteCard({
         <div
           className={`flex flex-row ${
             index !== undefined ? "w-[51%]" : "w-[55%]"
-          } gap-4 items-center`}
+          } items-center gap-4`}
         >
           <div
-            className={`relative w-12 h-12 rounded-md ${backgroundColor} overflow-hidden`}
+            className={`relative h-12 w-12 rounded-md ${backgroundColor} overflow-hidden`}
           >
             <Image
               src="/icons/athletes/logo.png"
@@ -84,27 +84,27 @@ export default function AthleteCard({
               className="object-cover object-top"
             />
           </div>
-          <div className="flex flex-col w-fit gap-2">
-            <p className="text-nowrap font-medium text-[14px] leading-[100%] tracking-[-2%] text-main">
+          <div className="flex w-fit flex-col gap-2">
+            <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%] text-nowrap">
               {athleteName}
             </p>
-            <p className="text-[12px] text-nowrap leading-[100%] tracking-[-1%] text-soft-400">
+            <p className="text-soft-400 text-[12px] leading-[100%] tracking-[-1%] text-nowrap">
               {team}
             </p>
           </div>
         </div>
 
-        <p className="font-medium w-[10.5%] text-[14px] leading-[100%] tracking-[-1%] text-main">
+        <p className="text-text-primary w-[10.5%] text-[14px] leading-[100%] font-medium tracking-[-1%]">
           {price}
         </p>
         <p
-          className={`font-medium w-[10.5%] text-[14px] leading-[100%] tracking-[-1%] ${
+          className={`w-[10.5%] text-[14px] leading-[100%] font-medium tracking-[-1%] ${
             isPositive ? "text-light-green" : "text-neon-pink"
           }`}
         >
           {percentage}
         </p>
-        <p className="font-medium w-[10.5%] text-[14px] leading-[100%] tracking-[-1%] text-light-green">
+        <p className="text-light-green w-[10.5%] text-[14px] leading-[100%] font-medium tracking-[-1%]">
           {volume ?? "-"}
         </p>
         <Dialog
@@ -113,7 +113,7 @@ export default function AthleteCard({
             if (!open) setOpenSide(null);
           }}
         >
-          <div className="w-[13.5%] flex flex-row gap-2.5 items-center">
+          <div className="flex w-[13.5%] flex-row items-center gap-2.5">
             <DialogTrigger asChild>
               <Button
                 lip="on"
@@ -121,9 +121,9 @@ export default function AthleteCard({
                   e.stopPropagation();
                   setOpenSide("long");
                 }}
-                className="flex flex-row items-center justify-center rounded-[7px] py-2.5 px-3 gap-2 h-8 bg-main border border-main hover:cursor-pointer"
+                className="bg-main border-main flex h-8 flex-row items-center justify-center gap-2 rounded-[7px] border px-3 py-2.5 hover:cursor-pointer"
               >
-                <p className="text-[12px] font-medium leading-[130%] tracking-[-1%] text-white">
+                <p className="text-[12px] leading-[130%] font-medium tracking-[-1%] text-white">
                   Long
                 </p>
               </Button>
@@ -135,9 +135,9 @@ export default function AthleteCard({
                   e.stopPropagation();
                   setOpenSide("short");
                 }}
-                className="flex flex-row items-center justify-center rounded-[7px] py-2.5 px-3 gap-2 h-8 bg-white border border-main/7 hover:bg-primary-foreground hover:cursor-pointer"
+                className="border-main/7 hover:bg-primary-foreground flex h-8 flex-row items-center justify-center gap-2 rounded-[7px] border bg-white px-3 py-2.5 hover:cursor-pointer"
               >
-                <p className="text-[12px] font-medium leading-[130%] tracking-[-1%] text-dark-900">
+                <p className="text-dark-900 text-[12px] leading-[130%] font-medium tracking-[-1%]">
                   Short
                 </p>
               </Button>
@@ -145,7 +145,11 @@ export default function AthleteCard({
           </div>
           <DialogContent
             fullscreen={isMobile}
-            className={isMobile ? "overflow-auto z-[200]" : "bg-white w-[400px] px-0 py-0 max-h-[700px] overflow-y-hidden hover:overflow-y-auto overscroll-contain [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"}
+            className={
+              isMobile
+                ? "z-[200] overflow-auto"
+                : "max-h-[700px] w-[400px] overflow-y-hidden overscroll-contain bg-white px-0 py-0 [-ms-overflow-style:none] [scrollbar-width:none] hover:overflow-y-auto [&::-webkit-scrollbar]:hidden"
+            }
             showCloseButton={false}
           >
             <MarketModal type={openSide ?? "long"} />
@@ -158,11 +162,11 @@ export default function AthleteCard({
   // grid mode
   return (
     <div
-      className="flex flex-col w-[340px] md:w-full rounded-[10px] p-1 gap-1 bg-white hover:cursor-pointer"
+      className="flex w-[340px] flex-col gap-1 rounded-[10px] bg-white p-1 hover:cursor-pointer md:w-full"
       onClick={() => id && router.push(`/athlete/${id}`)}
     >
       <div
-        className={`relative w-full h-[210px] rounded-md ${backgroundColor} overflow-hidden`}
+        className={`relative h-[210px] w-full rounded-md ${backgroundColor} overflow-hidden`}
       >
         <Image
           src="/icons/athletes/logo.png"
@@ -177,21 +181,21 @@ export default function AthleteCard({
           className="object-cover object-top"
         />
       </div>
-      <div className="flex flex-col w-full min-w-0 p-3 sm:p-4 gap-3 sm:gap-4">
-        <div className="flex flex-col gap-2 w-full min-w-0">
-          <p className="font-medium text-[14px] sm:text-[14px] leading-[100%] tracking-[-2%] text-main truncate">
+      <div className="flex w-full min-w-0 flex-col gap-3 p-3 sm:gap-4 sm:p-4">
+        <div className="flex w-full min-w-0 flex-col gap-2">
+          <p className="text-text-primary truncate text-[14px] leading-[100%] font-medium tracking-[-2%] sm:text-[14px]">
             {athleteName}
           </p>
-          <p className="text-[12px] leading-[100%] tracking-[-1%] text-soft-400 truncate">
+          <p className="text-soft-400 truncate text-[12px] leading-[100%] tracking-[-1%]">
             {team}
           </p>
         </div>
-        <div className="flex flex-row items-center justify-between w-full">
-          <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-main">
+        <div className="flex w-full flex-row items-center justify-between">
+          <p className="text-text-primary text-[12px] leading-[100%] font-medium tracking-[-1%]">
             {price}
           </p>
           <p
-            className={`font-medium text-[12px] leading-[100%] tracking-[-1%] ${
+            className={`text-[12px] leading-[100%] font-medium tracking-[-1%] ${
               isPositive ? "text-light-green" : "text-neon-pink"
             }`}
           >

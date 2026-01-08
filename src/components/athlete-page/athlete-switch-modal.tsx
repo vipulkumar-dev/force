@@ -100,14 +100,14 @@ function AthleteRow({
   const isPositive = athlete.change24h > 0;
 
   return (
-    <div className="flex items-start w-full ">
+    <div className="flex w-full items-start">
       {/* Athlete Name Column */}
       <button
         onClick={onClick}
-        className="bg-gradient-to-b from-[rgba(255,255,255,0.06)] to-[rgba(255,255,255,0.024)] flex gap-[8px] md:gap-[10px] h-[64px] items-center px-[12px] md:px-[16px] py-[12px] rounded-[10px] shrink-0 w-[280px] hover:from-[rgba(255,255,255,0.08)] hover:to-[rgba(255,255,255,0.04)] transition-all shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.2)] cursor-pointer"
+        className="flex h-[64px] w-[280px] shrink-0 cursor-pointer items-center gap-[8px] rounded-[10px] bg-gradient-to-b from-[rgba(255,255,255,0.06)] to-[rgba(255,255,255,0.024)] px-[12px] py-[12px] shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.2)] transition-all hover:from-[rgba(255,255,255,0.08)] hover:to-[rgba(255,255,255,0.04)] md:gap-[10px] md:px-[16px]"
       >
         <div
-          className={`relative w-7 h-7 md:w-8 md:h-8 rounded-md ${athlete.backgroundColor} overflow-hidden shrink-0`}
+          className={`relative h-7 w-7 rounded-md md:h-8 md:w-8 ${athlete.backgroundColor} shrink-0 overflow-hidden`}
         >
           <Image
             src="/icons/athletes/logo.png"
@@ -122,29 +122,29 @@ function AthleteRow({
             className="object-cover object-top"
           />
         </div>
-        <div className="flex flex-col gap-[6px] md:gap-[8px] items-start text-left flex-1 min-w-0">
-          <p className="font-medium text-[13px] md:text-[14px] text-main tracking-[-0.28px] leading-none truncate w-full">
+        <div className="flex min-w-0 flex-1 flex-col items-start gap-[6px] text-left md:gap-[8px]">
+          <p className="text-text-primary w-full truncate text-[13px] leading-none font-medium tracking-[-0.28px] md:text-[14px]">
             {athlete.name}
           </p>
-          <p className="font-normal text-[11px] md:text-[12px] text-soft-400 tracking-[-0.12px] leading-none truncate w-full">
+          <p className="text-soft-400 w-full truncate text-[11px] leading-none font-normal tracking-[-0.12px] md:text-[12px]">
             {athlete.team}
           </p>
         </div>
       </button>
 
       {/* Current Price */}
-      <div className="flex-1 bg-gradient-to-b from-[rgba(255,255,255,0.06)] to-[rgba(255,255,255,0.024)] flex gap-[16px] h-[64px] items-center px-[12px] md:px-[16px] py-[12px] rounded-[10px] shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.2)] min-w-[140px]">
-        <p className="font-medium text-[13px] md:text-[14px] text-main tracking-[-0.28px] whitespace-nowrap leading-none">
+      <div className="flex h-[64px] min-w-[140px] flex-1 items-center gap-[16px] rounded-[10px] bg-gradient-to-b from-[rgba(255,255,255,0.06)] to-[rgba(255,255,255,0.024)] px-[12px] py-[12px] shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.2)] md:px-[16px]">
+        <p className="text-text-primary text-[13px] leading-none font-medium tracking-[-0.28px] whitespace-nowrap md:text-[14px]">
           ${athlete.currentPrice}
         </p>
       </div>
 
       {/* 24h Change */}
-      <div className="flex-1 bg-gradient-to-b from-[rgba(255,255,255,0.06)] to-[rgba(255,255,255,0.024)] flex gap-[16px] h-[64px] items-center px-[12px] md:px-[16px] py-[12px] rounded-[10px] shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.2)] min-w-[120px]">
+      <div className="flex h-[64px] min-w-[120px] flex-1 items-center gap-[16px] rounded-[10px] bg-gradient-to-b from-[rgba(255,255,255,0.06)] to-[rgba(255,255,255,0.024)] px-[12px] py-[12px] shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.2)] md:px-[16px]">
         <p
           className={cn(
-            "font-medium text-[13px] md:text-[14px] tracking-[-0.28px] whitespace-nowrap leading-none",
-            isPositive ? "text-green-dark" : "text-base-red"
+            "text-[13px] leading-none font-medium tracking-[-0.28px] whitespace-nowrap md:text-[14px]",
+            isPositive ? "text-green-dark" : "text-base-red",
           )}
         >
           {isPositive ? "+" : ""}
@@ -153,11 +153,11 @@ function AthleteRow({
       </div>
 
       {/* 24h Volume */}
-      <div className="flex-1 bg-gradient-to-b from-[rgba(255,255,255,0.06)] to-[rgba(255,255,255,0.024)] flex gap-[16px] h-[64px] items-center px-[12px] md:px-[16px] py-[12px] rounded-[10px] shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.2)] min-w-[120px]">
+      <div className="flex h-[64px] min-w-[120px] flex-1 items-center gap-[16px] rounded-[10px] bg-gradient-to-b from-[rgba(255,255,255,0.06)] to-[rgba(255,255,255,0.024)] px-[12px] py-[12px] shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.2)] md:px-[16px]">
         <p
           className={cn(
-            "font-medium text-[13px] md:text-[14px] tracking-[-0.28px] whitespace-nowrap leading-none",
-            isPositive ? "text-green-dark" : "text-base-red"
+            "text-[13px] leading-none font-medium tracking-[-0.28px] whitespace-nowrap md:text-[14px]",
+            isPositive ? "text-green-dark" : "text-base-red",
           )}
         >
           ${(athlete.volume24h / 1000).toFixed(1)}k
@@ -165,15 +165,15 @@ function AthleteRow({
       </div>
 
       {/* 8hr Funding */}
-      <div className="flex-1 bg-gradient-to-b from-[rgba(255,255,255,0.06)] to-[rgba(255,255,255,0.024)] flex gap-[16px] h-[64px] items-center px-[12px] md:px-[16px] py-[12px] rounded-[10px] shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.2)] min-w-[120px]">
-        <p className="flex-1 font-medium text-[13px] md:text-[14px] text-main tracking-[-0.28px] leading-none">
+      <div className="flex h-[64px] min-w-[120px] flex-1 items-center gap-[16px] rounded-[10px] bg-gradient-to-b from-[rgba(255,255,255,0.06)] to-[rgba(255,255,255,0.024)] px-[12px] py-[12px] shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.2)] md:px-[16px]">
+        <p className="text-text-primary flex-1 text-[13px] leading-none font-medium tracking-[-0.28px] md:text-[14px]">
           {athlete.funding8h}%
         </p>
       </div>
 
       {/* Open Interest */}
-      <div className="flex-1 bg-gradient-to-b from-[rgba(255,255,255,0.06)] to-[rgba(255,255,255,0.024)] flex gap-[16px] h-[64px] items-center px-[12px] md:px-[16px] py-[12px] rounded-[10px] shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.2)] min-w-[140px]">
-        <p className="flex-1 font-medium text-[13px] md:text-[14px] text-main tracking-[-0.28px] leading-none">
+      <div className="flex h-[64px] min-w-[140px] flex-1 items-center gap-[16px] rounded-[10px] bg-gradient-to-b from-[rgba(255,255,255,0.06)] to-[rgba(255,255,255,0.024)] px-[12px] py-[12px] shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.2)] md:px-[16px]">
+        <p className="text-text-primary flex-1 text-[13px] leading-none font-medium tracking-[-0.28px] md:text-[14px]">
           ${athlete.openInterest.toLocaleString()}
         </p>
       </div>
@@ -197,7 +197,7 @@ export default function AthleteSwitchModal({
   const filteredAthletes = mockAthletes.filter(
     (athlete) =>
       athlete.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      athlete.team.toLowerCase().includes(searchQuery.toLowerCase())
+      athlete.team.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   return (
@@ -208,7 +208,7 @@ export default function AthleteSwitchModal({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-[1px] backdrop-filter bg-[rgba(10,13,20,0.32)]"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(10,13,20,0.32)] backdrop-blur-[1px] backdrop-filter"
           onClick={onClose}
         >
           <motion.div
@@ -216,21 +216,21 @@ export default function AthleteSwitchModal({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="bg-white border border-[#f2f2f2] rounded-[10px] w-full mx-4 md:mx-0 md:w-[956px] max-h-[90vh] overflow-hidden"
+            className="mx-4 max-h-[90vh] w-full overflow-hidden rounded-[10px] border border-[#f2f2f2] bg-white md:mx-0 md:w-[956px]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Search Bar */}
-            <div className="flex flex-col gap-[16px] items-start pb-[8px] pt-[16px] md:pt-[20px] px-[16px] md:px-[20px]">
-              <div className="flex gap-[16px] items-center w-full">
-                <div className="flex-1 bg-white border border-[rgba(10,13,20,0.07)] rounded-[8px] h-[36px]">
-                  <div className="flex gap-[10px] h-[36px] items-center px-[12px] md:px-[16px] py-[6px]">
-                    <Search className="w-[14px] h-[14px] md:w-[16px] md:h-[16px] text-soft-400 shrink-0" />
+            <div className="flex flex-col items-start gap-[16px] px-[16px] pt-[16px] pb-[8px] md:px-[20px] md:pt-[20px]">
+              <div className="flex w-full items-center gap-[16px]">
+                <div className="h-[36px] flex-1 rounded-[8px] border border-[rgba(10,13,20,0.07)] bg-white">
+                  <div className="flex h-[36px] items-center gap-[10px] px-[12px] py-[6px] md:px-[16px]">
+                    <Search className="text-soft-400 h-[14px] w-[14px] shrink-0 md:h-[16px] md:w-[16px]" />
                     <input
                       type="text"
                       placeholder="Search player or team..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="flex-1 font-normal text-[12px] md:text-[13px] text-disabled-300 tracking-[-0.13px] leading-none outline-none placeholder:text-disabled-300"
+                      className="text-disabled-300 placeholder:text-disabled-300 flex-1 text-[12px] leading-none font-normal tracking-[-0.13px] outline-none md:text-[13px]"
                     />
                   </div>
                 </div>
@@ -238,34 +238,34 @@ export default function AthleteSwitchModal({
             </div>
 
             {/* Tabs */}
-            <div className="border-b border-weak-100 flex items-center w-full overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="border-weak-100 flex w-full items-center overflow-x-auto border-b [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               <Tabs
                 value={activeTab}
                 onValueChange={setActiveTab}
-                className="flex-1 min-w-full"
+                className="min-w-full flex-1"
               >
-                <TabsList className="flex h-[48px] px-[12px] md:px-[20px] bg-transparent rounded-none p-0 w-full gap-0 min-w-fit">
+                <TabsList className="flex h-[48px] w-full min-w-fit gap-0 rounded-none bg-transparent p-0 px-[12px] md:px-[20px]">
                   <TabsTrigger
                     value="nba"
-                    className="flex-1 md:flex-1 font-semibold text-[12px] md:text-[14px] tracking-[-0.14px] leading-none h-full border-b-[1px] border-transparent data-[state=active]:border-main data-[state=active]:text-main text-soft-400 px-[12px] md:px-[19px] rounded-none after:hidden whitespace-nowrap shrink-0"
+                    className="data-[state=active]:border-main data-[state=active]:text-text-primary text-soft-400 h-full flex-1 shrink-0 rounded-none border-b-[1px] border-transparent px-[12px] text-[12px] leading-none font-semibold tracking-[-0.14px] whitespace-nowrap after:hidden md:flex-1 md:px-[19px] md:text-[14px]"
                   >
                     NBA
                   </TabsTrigger>
                   <TabsTrigger
                     value="soccer"
-                    className="flex-1 md:flex-1 font-medium text-[12px] md:text-[14px] tracking-[-0.14px] leading-none h-full border-b-[1px] border-transparent data-[state=active]:border-main data-[state=active]:text-main text-soft-400 px-[12px] md:px-[19px] rounded-none after:hidden whitespace-nowrap shrink-0"
+                    className="data-[state=active]:border-main data-[state=active]:text-text-primary text-soft-400 h-full flex-1 shrink-0 rounded-none border-b-[1px] border-transparent px-[12px] text-[12px] leading-none font-medium tracking-[-0.14px] whitespace-nowrap after:hidden md:flex-1 md:px-[19px] md:text-[14px]"
                   >
                     Soccer
                   </TabsTrigger>
                   <TabsTrigger
                     value="esports"
-                    className="flex-1 md:flex-1 font-medium text-[12px] md:text-[14px] tracking-[-0.14px] leading-none h-full border-b-[1px] border-transparent data-[state=active]:border-main data-[state=active]:text-main text-soft-400 px-[12px] md:px-[19px] rounded-none after:hidden whitespace-nowrap shrink-0"
+                    className="data-[state=active]:border-main data-[state=active]:text-text-primary text-soft-400 h-full flex-1 shrink-0 rounded-none border-b-[1px] border-transparent px-[12px] text-[12px] leading-none font-medium tracking-[-0.14px] whitespace-nowrap after:hidden md:flex-1 md:px-[19px] md:text-[14px]"
                   >
                     Esports
                   </TabsTrigger>
                   <TabsTrigger
                     value="coming-soon"
-                    className="flex-1 md:flex-1 font-medium text-[12px] md:text-[14px] tracking-[-0.14px] leading-none h-full border-b-[1px] border-transparent data-[state=active]:border-main data-[state=active]:text-main text-soft-400 px-[12px] md:px-[19px] rounded-none after:hidden whitespace-nowrap shrink-0"
+                    className="data-[state=active]:border-main data-[state=active]:text-text-primary text-soft-400 h-full flex-1 shrink-0 rounded-none border-b-[1px] border-transparent px-[12px] text-[12px] leading-none font-medium tracking-[-0.14px] whitespace-nowrap after:hidden md:flex-1 md:px-[19px] md:text-[14px]"
                   >
                     Coming Soon
                   </TabsTrigger>
@@ -275,41 +275,41 @@ export default function AthleteSwitchModal({
                   {/* Table Container with Horizontal Scroll */}
                   <div className="overflow-x-auto">
                     {/* Table Headers */}
-                    <div className="flex items-start w-full min-w-[1200px]">
-                      <div className="flex gap-[24px] items-center px-[12px] md:px-[16px] py-[12px] w-[280px] shrink-0">
-                        <p className="flex-1 font-medium text-[11px] md:text-[12px] text-[#868c98] tracking-[-0.12px] leading-none">
+                    <div className="flex w-full min-w-[1200px] items-start">
+                      <div className="flex w-[280px] shrink-0 items-center gap-[24px] px-[12px] py-[12px] md:px-[16px]">
+                        <p className="flex-1 text-[11px] leading-none font-medium tracking-[-0.12px] text-[#868c98] md:text-[12px]">
                           Athlete Name
                         </p>
                       </div>
-                      <div className="flex-1 flex gap-[24px] items-center px-[12px] md:px-[16px] py-[12px] min-w-[140px]">
-                        <p className="flex-1 font-medium text-[11px] md:text-[12px] text-[#868c98] tracking-[-0.12px] leading-none">
+                      <div className="flex min-w-[140px] flex-1 items-center gap-[24px] px-[12px] py-[12px] md:px-[16px]">
+                        <p className="flex-1 text-[11px] leading-none font-medium tracking-[-0.12px] text-[#868c98] md:text-[12px]">
                           Current Price
                         </p>
                       </div>
-                      <div className="flex-1 flex gap-[24px] items-center px-[12px] md:px-[16px] py-[12px] min-w-[120px]">
-                        <p className="flex-1 font-medium text-[11px] md:text-[12px] text-[#868c98] tracking-[-0.12px] leading-none">
+                      <div className="flex min-w-[120px] flex-1 items-center gap-[24px] px-[12px] py-[12px] md:px-[16px]">
+                        <p className="flex-1 text-[11px] leading-none font-medium tracking-[-0.12px] text-[#868c98] md:text-[12px]">
                           24h change
                         </p>
                       </div>
-                      <div className="flex-1 flex gap-[24px] items-center px-[12px] md:px-[16px] py-[12px] min-w-[120px]">
-                        <p className="flex-1 font-medium text-[11px] md:text-[12px] text-[#868c98] tracking-[-0.12px] leading-none">
+                      <div className="flex min-w-[120px] flex-1 items-center gap-[24px] px-[12px] py-[12px] md:px-[16px]">
+                        <p className="flex-1 text-[11px] leading-none font-medium tracking-[-0.12px] text-[#868c98] md:text-[12px]">
                           24h Volume
                         </p>
                       </div>
-                      <div className="flex-1 flex gap-[24px] items-center px-[12px] md:px-[16px] py-[12px] min-w-[120px]">
-                        <p className="flex-1 font-medium text-[11px] md:text-[12px] text-[#868c98] tracking-[-0.12px] leading-none">
+                      <div className="flex min-w-[120px] flex-1 items-center gap-[24px] px-[12px] py-[12px] md:px-[16px]">
+                        <p className="flex-1 text-[11px] leading-none font-medium tracking-[-0.12px] text-[#868c98] md:text-[12px]">
                           8hr Funding
                         </p>
                       </div>
-                      <div className="flex-1 flex gap-[24px] items-center px-[12px] md:px-[16px] py-[12px] min-w-[140px]">
-                        <p className="flex-1 font-medium text-[11px] md:text-[12px] text-[#868c98] tracking-[-0.12px] leading-none">
+                      <div className="flex min-w-[140px] flex-1 items-center gap-[24px] px-[12px] py-[12px] md:px-[16px]">
+                        <p className="flex-1 text-[11px] leading-none font-medium tracking-[-0.12px] text-[#868c98] md:text-[12px]">
                           Open Interest
                         </p>
                       </div>
                     </div>
 
                     {/* Athlete Rows */}
-                    <div className="flex flex-col gap-0 max-h-[400px] min-w-[1200px] ">
+                    <div className="flex max-h-[400px] min-w-[1200px] flex-col gap-0">
                       {filteredAthletes.map((athlete) => (
                         <AthleteRow
                           key={athlete.id}

@@ -64,7 +64,7 @@ type SmallChartProps = {
 
 const SmallChart = ({ data, gradientId, color }: SmallChartProps) => {
   return (
-    <div className="w-[52px] h-[26px]">
+    <div className="h-[26px] w-[52px]">
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart
           data={data}
@@ -101,9 +101,9 @@ function StatCard({ stat, index }: StatCardProps) {
   const chartColor = isPositive ? "#2d9f75" : "#df1c41";
 
   return (
-    <div className="flex items-center justify-between px-4 py-3 gap-x-3 bg-[#0A0D14]/2 rounded-lg">
+    <div className="flex items-center justify-between gap-x-3 rounded-lg bg-[#0A0D14]/2 px-4 py-3">
       <div className="flex flex-col gap-y-2.5">
-        <p className="text-xs font-medium text-soft-400">{stat.title}</p>
+        <p className="text-soft-400 text-xs font-medium">{stat.title}</p>
         <p className="font-nohemi font-medium">{stat.formatter(stat.value)}</p>
       </div>
 
@@ -128,27 +128,27 @@ function StatCard({ stat, index }: StatCardProps) {
 
 export default function PositionStatsCard() {
   return (
-    <div className="bg-white rounded-[10px] p-5 space-y-5">
+    <div className="space-y-5 rounded-[10px] bg-white p-5">
       <div className="flex items-center gap-x-2.5">
         <div className="flex items-center gap-x-2.5">
-          <div className="bg-[#EEEBFF] rounded-full flex items-center justify-center w-12 aspect-square">
-            <p className="font-semibold text-[22px] text-dark-purple">M</p>
+          <div className="flex aspect-square w-12 items-center justify-center rounded-full bg-[#EEEBFF]">
+            <p className="text-dark-purple text-[22px] font-semibold">M</p>
           </div>
 
           <div className="flex flex-col gap-y-2">
-            <h4 className="text-base font-medium text-main font-nohemi">
+            <h4 className="text-text-primary font-nohemi text-base font-medium">
               Marineboa#3271
             </h4>
 
             <div className="flex items-center gap-x-[11px]">
-              <div className="flex items-center justify-center bg-base-orange rounded-full py-1.5 px-2 gap-x-1">
-                <div className="bg-white w-1 h-1 rounded-full" />
+              <div className="bg-base-orange flex items-center justify-center gap-x-1 rounded-full px-2 py-1.5">
+                <div className="h-1 w-1 rounded-full bg-white" />
                 <p className="text-[10px] leading-[50%] font-medium text-white uppercase">
                   Bronze
                 </p>
               </div>
 
-              <p className="text-xs text-soft-400 font-medium">REP: 248</p>
+              <p className="text-soft-400 text-xs font-medium">REP: 248</p>
             </div>
           </div>
         </div>
@@ -162,10 +162,10 @@ export default function PositionStatsCard() {
 
       <Link
         href="/portfolio"
-        className="hover:bg-zinc-50 cursor-pointer transition-colors duration-200 rounded-lg border-[#0A0D14]/7 py-2.5 border flex justify-center gap-x-2 w-full items-center text-main relative after:content-[''] after:absolute after:inset-0 after:rounded-[7px] after:pointer-events-none after:shadow-[inset_0_-2px_0_0_rgba(10,13,20,0.06)]"
+        className="text-text-primary relative flex w-full cursor-pointer items-center justify-center gap-x-2 rounded-lg border border-[#0A0D14]/7 py-2.5 transition-colors duration-200 after:pointer-events-none after:absolute after:inset-0 after:rounded-[7px] after:shadow-[inset_0_-2px_0_0_rgba(10,13,20,0.06)] after:content-[''] hover:bg-zinc-50"
       >
         <span className="text-sm font-medium">More Details</span>
-        <ArrowRight className="w-4 aspect-auto mt-0.5" />
+        <ArrowRight className="mt-0.5 aspect-auto w-4" />
       </Link>
     </div>
   );

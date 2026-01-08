@@ -134,21 +134,21 @@ export default function LearnSidebar({
   };
 
   return (
-    <div className="w-full h-full flex flex-col gap-6 pt-6">
+    <div className="flex h-full w-full flex-col gap-6 pt-6">
       {/* Title */}
-      <h2 className="text-[16px] md:text-lg font-nohemi leading-[16px] md:leading-[18px] tracking-[0.32px] md:tracking-[0.36px] font-normal text-main">
+      <h2 className="font-nohemi text-text-primary text-[16px] leading-[16px] font-normal tracking-[0.32px] md:text-lg md:leading-[18px] md:tracking-[0.36px]">
         Learn how it&apos;s works
       </h2>
 
       {/* Search bar */}
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-soft-400" />
+        <Search className="text-soft-400 absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
         <Input
           type="text"
           placeholder="Search topic..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="pl-9 h-10 text-sm bg-white border-inactive rounded-lg placeholder:text-disabled-300 rounded-[8px]"
+          className="border-inactive placeholder:text-disabled-300 h-10 rounded-[8px] rounded-lg bg-white pl-9 text-sm"
         />
       </div>
 
@@ -164,18 +164,18 @@ export default function LearnSidebar({
               <button
                 onClick={() => hasItems && toggleSection(section.id)}
                 className={cn(
-                  "flex items-center justify-between text-[11px] font-semibold tracking-[0.66px] font-inter text-disabled-300 uppercase px-4",
+                  "font-inter text-disabled-300 flex items-center justify-between px-4 text-[11px] font-semibold tracking-[0.66px] uppercase",
                   hasItems &&
-                    "cursor-pointer hover:text-soft-400 transition-colors",
+                    "hover:text-soft-400 cursor-pointer transition-colors",
                 )}
               >
                 <span>{section.title}</span>
                 {hasItems && (
                   <>
                     {isExpanded ? (
-                      <ChevronUp className="w-3.5 h-3.5" />
+                      <ChevronUp className="h-3.5 w-3.5" />
                     ) : (
-                      <ChevronDown className="w-3.5 h-3.5" />
+                      <ChevronDown className="h-3.5 w-3.5" />
                     )}
                   </>
                 )}
@@ -192,10 +192,10 @@ export default function LearnSidebar({
                         key={item.id}
                         onClick={() => onArticleSelect?.(item.slug)}
                         className={cn(
-                          "text-left px-4 py-1.5 h-9 text-[14px] leading-3.5 tracking-[-0.14px] transition-colors font-medium",
+                          "h-9 px-4 py-1.5 text-left text-[14px] leading-3.5 font-medium tracking-[-0.14px] transition-colors",
                           isActive
-                            ? "bg-learn-gray text-main rounded-lg"
-                            : "text-sub-500 hover:text-main",
+                            ? "bg-learn-gray text-text-primary rounded-lg"
+                            : "text-sub-500 hover:text-text-primary",
                         )}
                       >
                         {item.title}

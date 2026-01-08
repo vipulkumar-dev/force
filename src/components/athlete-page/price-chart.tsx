@@ -196,7 +196,7 @@ const generateChartData = (timeRange: TimeRange): ChartDataPoint[] => {
       currentDate.setMonth(startDate.getMonth() + i);
     } else {
       currentDate = new Date(
-        startDate.getTime() + i * intervalMinutes * 60 * 1000
+        startDate.getTime() + i * intervalMinutes * 60 * 1000,
       );
     }
     const progress = i / (totalDataPoints - 1);
@@ -387,12 +387,12 @@ const CustomTooltip = ({
   // Check if this data point has an associated event
   // Find the event by matching the data point's date/time
   const dataPointIndex = chartData.findIndex(
-    (d: ChartDataPoint) => d.date === data.date
+    (d: ChartDataPoint) => d.date === data.date,
   );
   const event = events.find((e) => e.index === dataPointIndex);
 
   return (
-    <div className="bg-[#262626]/80 rounded-lg py-2 px-3 shadow-lg w-[275px] text-xs">
+    <div className="w-[275px] rounded-lg bg-[#262626]/80 px-3 py-2 text-xs shadow-lg">
       {event && (
         <div className="mb-2 space-y-1">
           <p className="text-white/60">
@@ -406,34 +406,30 @@ const CustomTooltip = ({
       )}
 
       {!event && (
-        <p className="text-white mb-2">{formatTooltipDate(data.date)}</p>
+        <p className="mb-2 text-white">{formatTooltipDate(data.date)}</p>
       )}
 
       <div className="space-y-1">
         {indexValue !== undefined && (
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-[#2d9f75] flex items-center justify-center">
-              <div className="w-1.5 h-1.5 rounded-full bg-white" />
+            <div className="flex h-3 w-3 items-center justify-center rounded-full bg-[#2d9f75]">
+              <div className="h-1.5 w-1.5 rounded-full bg-white" />
             </div>
-            <p className="text-white">
-              Index: {indexValue.toFixed(1)}
-            </p>
+            <p className="text-white">Index: {indexValue.toFixed(1)}</p>
           </div>
         )}
         {marketValue !== undefined && (
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-[#df1c41] flex items-center justify-center">
-              <div className="w-1.5 h-1.5 rounded-full bg-white" />
+            <div className="flex h-3 w-3 items-center justify-center rounded-full bg-[#df1c41]">
+              <div className="h-1.5 w-1.5 rounded-full bg-white" />
             </div>
-            <p className="text-white">
-              Market: {marketValue.toFixed(1)}
-            </p>
+            <p className="text-white">Market: {marketValue.toFixed(1)}</p>
           </div>
         )}
         {performanceValue !== undefined && (
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-[#60a5fa] flex items-center justify-center">
-              <div className="w-1.5 h-1.5 rounded-full bg-white" />
+            <div className="flex h-3 w-3 items-center justify-center rounded-full bg-[#60a5fa]">
+              <div className="h-1.5 w-1.5 rounded-full bg-white" />
             </div>
             <p className="text-white">
               Performance: {performanceValue.toFixed(1)}
@@ -448,7 +444,7 @@ const CustomTooltip = ({
 // Generate events based on time range
 const generateEvents = (
   timeRange: TimeRange,
-  chartData: ChartDataPoint[]
+  chartData: ChartDataPoint[],
 ): ChartEvent[] => {
   if (chartData.length === 0) return [];
 
@@ -626,19 +622,19 @@ export default function PriceChart({
   const [warriorsDropdownOpen, setWarriorsDropdownOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [hoveredEventIndex, setHoveredEventIndex] = useState<number | null>(
-    null
+    null,
   );
 
   const chartData = generateChartData(timeRange);
   const events = useMemo(
     () => generateEvents(timeRange, chartData),
-    [timeRange, chartData]
+    [timeRange, chartData],
   );
 
   // Create a Set of event indices for efficient lookup in custom dot component
   const eventIndices = useMemo(
     () => new Set(events.map((e) => e.index)),
-    [events]
+    [events],
   );
 
   const timeRanges: TimeRange[] = ["1H", "6H", "1D", "1W", "1M", "ALL"];
@@ -661,33 +657,34 @@ export default function PriceChart({
   return (
     <div
       id="price-chart"
-      className="backdrop-blur-[22px] bg-white rounded-[8px] md:rounded-[10px] flex flex-col w-full"
+      className="flex w-full flex-col rounded-[8px] bg-white backdrop-blur-[22px] md:rounded-[10px]"
     >
       {/* Tabs Header */}
-      <div className="border-[0px_0px_1px] border-light-gray border-solid flex gap-[12px] sm:gap-[24px] items-center w-full">
-        <div className="basis-0 flex grow h-[44px] sm:h-[48px] items-center justify-between min-h-px min-w-px px-[12px] sm:px-[16px] md:px-[20px] py-0">
-          <div className="flex gap-[2px] sm:gap-[4px] h-full items-center">
+      <div className="border-light-gray flex w-full items-center gap-[12px] border-[0px_0px_1px] border-solid sm:gap-[24px]">
+        <div className="flex h-[44px] min-h-px min-w-px grow basis-0 items-center justify-between px-[12px] py-0 sm:h-[48px] sm:px-[16px] md:px-[20px]">
+          <div className="flex h-full items-center gap-[2px] sm:gap-[4px]">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 id={`price-chart-tab-${tab.toLowerCase().replace(" ", "-")}`}
                 onClick={() => setActiveTab(tab)}
-                className={`flex flex-col gap-[14px] h-full items-start justify-center px-[10px] sm:px-[15px] md:px-[19px] cursor-pointer ${activeTab === tab
-                  ? "border-b border-soft-500 font-medium text-[12px] sm:text-[13px] md:text-[14px] text-main tracking-[-0.14px] leading-none"
-                  : "font-medium text-[12px] sm:text-[13px] md:text-[14px] text-soft-400 tracking-[-0.14px] leading-none"
-                  }`}
+                className={`flex h-full cursor-pointer flex-col items-start justify-center gap-[14px] px-[10px] sm:px-[15px] md:px-[19px] ${
+                  activeTab === tab
+                    ? "border-soft-500 text-text-primary border-b text-[12px] leading-none font-medium tracking-[-0.14px] sm:text-[13px] md:text-[14px]"
+                    : "text-soft-400 text-[12px] leading-none font-medium tracking-[-0.14px] sm:text-[13px] md:text-[14px]"
+                }`}
               >
                 {tab}
               </button>
             ))}
           </div>
           {activeTab === "Live Feed" && (
-            <div className="flex gap-[6px] items-center">
-              <div className="overflow-hidden shrink-0 size-[14px]">
+            <div className="flex items-center gap-[6px]">
+              <div className="size-[14px] shrink-0 overflow-hidden">
                 <Image src={liveIcon} alt="Live" width={14} height={14} />
               </div>
-              <div className="flex gap-[4px] items-center justify-center px-[3px] py-0">
-                <p className="font-medium leading-none text-[14px] text-[#df1c41] text-nowrap tracking-[-0.14px] whitespace-pre">
+              <div className="flex items-center justify-center gap-[4px] px-[3px] py-0">
+                <p className="text-[14px] leading-none font-medium tracking-[-0.14px] text-nowrap whitespace-pre text-[#df1c41]">
                   Live
                 </p>
               </div>
@@ -698,11 +695,11 @@ export default function PriceChart({
 
       {/* Chart Tab Content */}
       {activeTab === "Chart" && (
-        <div className="flex flex-col gap-[12px] sm:gap-[16px] md:gap-[20px] p-[12px] sm:p-[16px] md:p-[20px] relative">
+        <div className="relative flex flex-col gap-[12px] p-[12px] sm:gap-[16px] sm:p-[16px] md:gap-[20px] md:p-[20px]">
           {/* Background Pattern */}
-          <div className="absolute left-0 top-0 w-full h-[384px] opacity-30 pointer-events-none">
+          <div className="pointer-events-none absolute top-0 left-0 h-[384px] w-full opacity-30">
             <div
-              className="w-full h-full bg-repeat bg-size-[140px_140px]"
+              className="h-full w-full bg-size-[140px_140px] bg-repeat"
               style={{
                 backgroundImage:
                   "url('/images/backgrounds/chart-background.png')",
@@ -711,36 +708,54 @@ export default function PriceChart({
           </div>
 
           {/* Top Section - Badges and Time Range */}
-          <div className="flex flex-col sm:flex-row gap-[8px] sm:gap-0 items-start sm:items-center justify-between w-full relative z-10">
-            <div className="flex gap-[4px] items-center font-bold text-[40px] md:text-[40px] tracking-[-0.13px] leading-none whitespace-nowrap">
-              <p className="text-main">{indexValue}</p>
+          <div className="relative z-10 flex w-full flex-col items-start justify-between gap-[8px] sm:flex-row sm:items-center sm:gap-0">
+            <div className="flex items-center gap-[4px] text-[40px] leading-none font-bold tracking-[-0.13px] whitespace-nowrap md:text-[40px]">
+              <p className="text-text-primary">{indexValue}</p>
 
               <span
                 className={
-                  change24h >= 0 ? "flex flex-row items-center gap-1 text-light-green text-[11px] sm:text-[13px] md:text-[14px] tracking-[-0.14px] leading-none" : "flex flex-row items-center gap-1 text-base-red text-[11px] sm:text-[13px] md:text-[14px] tracking-[-0.14px] leading-none align-top"
+                  change24h >= 0
+                    ? "text-light-green flex flex-row items-center gap-1 text-[11px] leading-none tracking-[-0.14px] sm:text-[13px] md:text-[14px]"
+                    : "text-base-red flex flex-row items-center gap-1 align-top text-[11px] leading-none tracking-[-0.14px] sm:text-[13px] md:text-[14px]"
                 }
               >
-                {change24h >= 0 ? <Image src="/icons/arrow_up.png" alt="arrow-up" width={12} height={16} /> : <Image src="/icons/arrow_down.png" alt="arrow-down" width={12} height={16} />}
-
+                {change24h >= 0 ? (
+                  <Image
+                    src="/icons/arrow_up.png"
+                    alt="arrow-up"
+                    width={12}
+                    height={16}
+                  />
+                ) : (
+                  <Image
+                    src="/icons/arrow_down.png"
+                    alt="arrow-down"
+                    width={12}
+                    height={16}
+                  />
+                )}
                 {change24h.toFixed(1)}%
               </span>
-
             </div>
 
             {/* Right - Time Range Selector */}
-            <div className="flex items-center gap-[1px] sm:gap-0 w-full sm:w-auto overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="flex w-full items-center gap-[1px] overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] sm:w-auto sm:gap-0 [&::-webkit-scrollbar]:hidden">
               {timeRanges.map((range) => (
                 <button
                   key={range}
                   onClick={() => setTimeRange(range)}
-                  className={`flex gap-[2px] sm:gap-[4px] items-center justify-center p-[5px] sm:p-[6px] md:p-[7.5px] rounded-md relative cursor-pointer shrink-0 ${timeRange === range
-                    ? "bg-neutral-100 shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.2),0px_4px_5px_0px_inset_rgba(255,255,255,0.05)]"
-                    : ""
-                    }`}
+                  className={`relative flex shrink-0 cursor-pointer items-center justify-center gap-[2px] rounded-md p-[5px] sm:gap-[4px] sm:p-[6px] md:p-[7.5px] ${
+                    timeRange === range
+                      ? "bg-neutral-100 shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.2),0px_4px_5px_0px_inset_rgba(255,255,255,0.05)]"
+                      : ""
+                  }`}
                 >
                   <p
-                    className={`font-medium px-[2px] sm:px-[3px] text-[11px] sm:text-[12px] md:text-[13px] tracking-[-0.13px] leading-none ${timeRange === range ? "text-main" : "text-soft-400"
-                      }`}
+                    className={`px-[2px] text-[11px] leading-none font-medium tracking-[-0.13px] sm:px-[3px] sm:text-[12px] md:text-[13px] ${
+                      timeRange === range
+                        ? "text-text-primary"
+                        : "text-soft-400"
+                    }`}
                   >
                     {range}
                   </p>
@@ -750,44 +765,45 @@ export default function PriceChart({
           </div>
 
           {/* Stats Row */}
-          <div className="flex gap-[12px] md:gap-[20px] items-center w-full relative z-10 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="relative z-10 flex w-full items-center gap-[12px] overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] md:gap-[20px] [&::-webkit-scrollbar]:hidden">
             {/* Earning Today */}
-            <div className="bg-white border border-soft-500 border-solid rounded-md px-[8px] sm:px-[10px] py-[6px] sm:py-[7.5px] flex items-center gap-[3px] sm:gap-[4px]">
-              <Flame className="w-[11px] h-[11px] sm:w-[13px] sm:h-[13px] text-light-green" />
-              <p className="font-normal text-[11px] sm:text-[13px] text-light-green tracking-[-0.13px] leading-none">
+            <div className="border-soft-500 flex items-center gap-[3px] rounded-md border border-solid bg-white px-[8px] py-[6px] sm:gap-[4px] sm:px-[10px] sm:py-[7.5px]">
+              <Flame className="text-light-green h-[11px] w-[11px] sm:h-[13px] sm:w-[13px]" />
+              <p className="text-light-green text-[11px] leading-none font-normal tracking-[-0.13px] sm:text-[13px]">
                 +${earningToday.toFixed(2)}
               </p>
-              <p className="font-bold text-[11px] sm:text-[13px] text-main tracking-[-0.13px] leading-none">
+              <p className="text-text-primary text-[11px] leading-none font-bold tracking-[-0.13px] sm:text-[13px]">
                 Earning Today
               </p>
             </div>
             {/* Volume */}
-            <div className="bg-white border border-soft-500 border-solid rounded-md px-[8px] sm:px-[10px] py-[6px] sm:py-[7.5px] flex items-center gap-[3px] sm:gap-[4px]">
-              <p className="font-normal text-[11px] sm:text-[13px] text-soft-400 tracking-[-0.13px] leading-none">
+            <div className="border-soft-500 flex items-center gap-[3px] rounded-md border border-solid bg-white px-[8px] py-[6px] sm:gap-[4px] sm:px-[10px] sm:py-[7.5px]">
+              <p className="text-soft-400 text-[11px] leading-none font-normal tracking-[-0.13px] sm:text-[13px]">
                 Vol
               </p>
-              <p className="font-bold text-[11px] sm:text-[13px] text-main tracking-[-0.13px] leading-none">
+              <p className="text-text-primary text-[11px] leading-none font-bold tracking-[-0.13px] sm:text-[13px]">
                 {volume}
               </p>
             </div>
             {/* Funding */}
-            <div className="bg-white border border-soft-500 border-solid rounded-md px-[8px] py-[6px] sm:px-[10px]   sm:py-[2px] flex items-center gap-[3px] sm:gap-[4px]">
-              <p className="font-normal text-[11px] sm:text-[13px] text-soft-400 tracking-[-0.13px] leading-none">
+            <div className="border-soft-500 flex items-center gap-[3px] rounded-md border border-solid bg-white px-[8px] py-[6px] sm:gap-[4px] sm:px-[10px] sm:py-[2px]">
+              <p className="text-soft-400 text-[11px] leading-none font-normal tracking-[-0.13px] sm:text-[13px]">
                 Funding
               </p>
-              <p className={funding >= 0 ? "text-light-green" : "text-neon-pink"}>
+              <p
+                className={funding >= 0 ? "text-light-green" : "text-neon-pink"}
+              >
                 {funding >= 0 ? "+" : ""}
                 {funding.toFixed(2)}%
-
               </p>
             </div>
             {/* Route */}
-            <div className="bg-white border border-soft-500 border-solid rounded-md px-[8px] sm:px-[10px] py-[6px] sm:py-[7.5px] flex items-center gap-[3px] sm:gap-[4px]">
-              <Info className="w-[11px] h-[11px] sm:w-[13px] sm:h-[13px] text-main" />
-              <p className="font-normal text-[11px] sm:text-[13px] text-soft-400 tracking-[-0.13px] leading-none">
+            <div className="border-soft-500 flex items-center gap-[3px] rounded-md border border-solid bg-white px-[8px] py-[6px] sm:gap-[4px] sm:px-[10px] sm:py-[7.5px]">
+              <Info className="text-text-primary h-[11px] w-[11px] sm:h-[13px] sm:w-[13px]" />
+              <p className="text-soft-400 text-[11px] leading-none font-normal tracking-[-0.13px] sm:text-[13px]">
                 Route:
               </p>
-              <p className="font-normal text-[11px] sm:text-[13px] text-main tracking-[-0.13px] leading-none">
+              <p className="text-text-primary text-[11px] leading-none font-normal tracking-[-0.13px] sm:text-[13px]">
                 {routeName}
               </p>
             </div>
@@ -795,7 +811,7 @@ export default function PriceChart({
 
           {/* Chart */}
           <div
-            className="h-[250px] sm:h-[280px] md:h-[312px] w-full relative z-10 rounded-[8px] overflow-hidden"
+            className="relative z-10 h-[250px] w-full overflow-hidden rounded-[8px] sm:h-[280px] md:h-[312px]"
             id="price-chart-container"
           >
             <ResponsiveContainer width="100%" height="100%">
@@ -887,7 +903,7 @@ export default function PriceChart({
                       eventIndices={eventIndices}
                       onMouseEnter={(index) => {
                         const eventIdx = events.findIndex(
-                          (e) => e.index === index
+                          (e) => e.index === index,
                         );
                         if (eventIdx !== -1) setHoveredEventIndex(eventIdx);
                       }}
@@ -970,7 +986,7 @@ export default function PriceChart({
               return (
                 <div
                   key={`event-tooltip-${idx}`}
-                  className="absolute pointer-events-none z-50"
+                  className="pointer-events-none absolute z-50"
                   style={{
                     left: `${xPos}%`,
                     top: showTooltipBelow
@@ -982,11 +998,11 @@ export default function PriceChart({
                     transform: "translateX(-50%)",
                   }}
                 >
-                  <div className="bg-[#262626]/80 rounded-lg px-3 py-2 shadow-lg whitespace-nowrap min-w-[280px]">
-                    <p className="text-[#9ca3af] text-[11px] font-medium mb-1 text-center">
+                  <div className="min-w-[280px] rounded-lg bg-[#262626]/80 px-3 py-2 whitespace-nowrap shadow-lg">
+                    <p className="mb-1 text-center text-[11px] font-medium text-[#9ca3af]">
                       {event.time} — &ldquo;{event.title}&rdquo;
                     </p>
-                    <p className="text-white text-[11px] font-normal text-center">
+                    <p className="text-center text-[11px] font-normal text-white">
                       {event.description} Index jumps {event.impact} instantly.
                     </p>
                   </div>
@@ -1022,7 +1038,7 @@ export default function PriceChart({
                   <>
                     {/* Red line label box */}
                     <div
-                      className="absolute flex items-center justify-center z-10 rounded p-1"
+                      className="absolute z-10 flex items-center justify-center rounded p-1"
                       style={{
                         right: "0px",
                         top: `${redY}px`,
@@ -1030,14 +1046,14 @@ export default function PriceChart({
                         backgroundColor: "#FC3970",
                       }}
                     >
-                      <p className="font-medium text-[10px] text-white whitespace-nowrap">
+                      <p className="text-[10px] font-medium whitespace-nowrap text-white">
                         {lastDataPoint.redLine.toFixed(1)}
                       </p>
                     </div>
 
                     {/* Blue line label box */}
                     <div
-                      className="absolute flex items-center justify-center z-10 rounded p-1"
+                      className="absolute z-10 flex items-center justify-center rounded p-1"
                       style={{
                         right: "0px",
                         top: `${blueY}px`,
@@ -1045,14 +1061,14 @@ export default function PriceChart({
                         backgroundColor: "#25B3FF",
                       }}
                     >
-                      <p className="font-medium text-[10px] text-white whitespace-nowrap">
+                      <p className="text-[10px] font-medium whitespace-nowrap text-white">
                         {lastDataPoint.blueLine.toFixed(1)}
                       </p>
                     </div>
 
                     {/* Green line label box */}
                     <div
-                      className="absolute flex items-center justify-center z-10 rounded p-1"
+                      className="absolute z-10 flex items-center justify-center rounded p-1"
                       style={{
                         right: "0px",
                         top: `${greenY}px`,
@@ -1060,7 +1076,7 @@ export default function PriceChart({
                         backgroundColor: "#16A34A",
                       }}
                     >
-                      <p className="font-medium text-[10px] text-white whitespace-nowrap">
+                      <p className="text-[10px] font-medium whitespace-nowrap text-white">
                         {lastDataPoint.greenLine.toFixed(1)}
                       </p>
                     </div>
@@ -1070,8 +1086,8 @@ export default function PriceChart({
 
             {/* Hover indicator - time label */}
             {activeIndex !== null && chartData[activeIndex] && (
-              <div className="absolute bottom-[10px] left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm border border-light-gray rounded-[6px] px-[12px] py-[6px] shadow-lg z-20">
-                <p className="font-medium text-[12px] text-main tracking-[-0.12px]">
+              <div className="border-light-gray absolute bottom-[10px] left-1/2 z-20 -translate-x-1/2 transform rounded-[6px] border bg-white/90 px-[12px] py-[6px] shadow-lg backdrop-blur-sm">
+                <p className="text-text-primary text-[12px] font-medium tracking-[-0.12px]">
                   {chartData[activeIndex].time}
                 </p>
               </div>
@@ -1080,7 +1096,7 @@ export default function PriceChart({
 
           {/* X-axis time labels */}
           <div
-            className="flex items-center justify-between relative z-10 mt-[4px] sm:mt-[6px] md:mt-[8px] w-full overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="relative z-10 mt-[4px] flex w-full items-center justify-between overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] sm:mt-[6px] md:mt-[8px] [&::-webkit-scrollbar]:hidden"
             style={{ paddingRight: "25px" }}
           >
             {chartData
@@ -1096,8 +1112,11 @@ export default function PriceChart({
                 return (
                   <p
                     key={`${point.time}-${index}`}
-                    className={`font-normal text-[10px] sm:text-[11px] md:text-[12px] text-center tracking-[-0.12px] leading-none transition-colors ${isActive ? "text-main font-medium" : "text-soft-400"
-                      }`}
+                    className={`text-center text-[10px] leading-none font-normal tracking-[-0.12px] transition-colors sm:text-[11px] md:text-[12px] ${
+                      isActive
+                        ? "text-text-primary font-medium"
+                        : "text-soft-400"
+                    }`}
                   >
                     {point.timeLabel}
                   </p>
@@ -1109,18 +1128,19 @@ export default function PriceChart({
 
       {/* Live Feed Tab Content */}
       {activeTab === "Live Feed" && (
-        <div className="flex flex-col items-start w-full gap-[12px]">
-          <div className="flex gap-[12px] sm:gap-[24px] items-center p-2">
-            <div className="basis-0 flex gap-[12px] sm:gap-[24px] grow  items-center min-h-px min-w-px px-[12px] sm:px-[16px] md:px-[20px] py-0">
-              <div className="basis-0 flex gap-[2px] sm:gap-[4px] grow h-full items-center min-h-px min-w-px">
+        <div className="flex w-full flex-col items-start gap-[12px]">
+          <div className="flex items-center gap-[12px] p-2 sm:gap-[24px]">
+            <div className="flex min-h-px min-w-px grow basis-0 items-center gap-[12px] px-[12px] py-0 sm:gap-[24px] sm:px-[16px] md:px-[20px]">
+              <div className="flex h-full min-h-px min-w-px grow basis-0 items-center gap-[2px] sm:gap-[4px]">
                 {quarters.map((quarter) => (
                   <button
                     key={quarter}
                     onClick={() => setActiveQuarter(quarter)}
-                    className={` flex flex-col gap-[14px] grow h-full items-center justify-center min-h-px min-w-px p-2 cursor-pointer ${activeQuarter === quarter
-                      ? " rounded-md bg-soft-500 font-semibold text-[12px] sm:text-[12px] md:text-[12px] text-main tracking-[-0.14px] leading-none"
-                      : "font-medium text-[12px] sm:text-[12px] md:text-[12px] text-soft-400 tracking-[-0.14px] leading-none"
-                      }`}
+                    className={`flex h-full min-h-px min-w-px grow cursor-pointer flex-col items-center justify-center gap-[14px] p-2 ${
+                      activeQuarter === quarter
+                        ? "bg-soft-500 text-text-primary rounded-md text-[12px] leading-none font-semibold tracking-[-0.14px] sm:text-[12px] md:text-[12px]"
+                        : "text-soft-400 text-[12px] leading-none font-medium tracking-[-0.14px] sm:text-[12px] md:text-[12px]"
+                    }`}
                   >
                     {quarter}
                   </button>
@@ -1128,21 +1148,21 @@ export default function PriceChart({
               </div>
             </div>
           </div>
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-10 w-full px-4 mb-10">
+          <div className="mb-10 flex w-full flex-col items-center justify-center gap-10 px-4 lg:flex-row">
             {/* Play by Play Table */}
-            <div className="flex-1 w-full lg:max-w-[573px]">
-              <div className="bg-page-background p-2 rounded-[20px] h-[200px] sm:h-[240px] md:h-[308px] relative overflow-hidden">
-                <div className="overflow-x-auto h-full [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                  <Table className="border-separate border-spacing-y-1 w-full table-auto min-w-[350px] sm:min-w-[500px]">
+            <div className="w-full flex-1 lg:max-w-[573px]">
+              <div className="bg-page-background relative h-[200px] overflow-hidden rounded-[20px] p-2 sm:h-[240px] md:h-[308px]">
+                <div className="h-full overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                  <Table className="w-full min-w-[350px] table-auto border-separate border-spacing-y-1 sm:min-w-[500px]">
                     <TableHeader>
                       <TableRow className="border-0">
-                        <TableHead className="font-medium text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] border-0 px-3 py-2">
+                        <TableHead className="border-0 px-3 py-2 text-[10px] font-medium tracking-[-0.12px] text-[#868c98] sm:text-[11px] md:text-[12px]">
                           Time
                         </TableHead>
-                        <TableHead className="font-medium text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] border-0 px-3 py-2">
+                        <TableHead className="border-0 px-3 py-2 text-[10px] font-medium tracking-[-0.12px] text-[#868c98] sm:text-[11px] md:text-[12px]">
                           Play
                         </TableHead>
-                        <TableHead className="font-medium text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] border-0 px-3 py-2 w-[40px] sm:w-[50px] md:w-[64px]">
+                        <TableHead className="w-[40px] border-0 px-3 py-2 text-[10px] font-medium tracking-[-0.12px] text-[#868c98] sm:w-[50px] sm:text-[11px] md:w-[64px] md:text-[12px]">
                           Weight
                         </TableHead>
                       </TableRow>
@@ -1151,14 +1171,14 @@ export default function PriceChart({
                       {playByPlayData.map((play, index) => (
                         <TableRow
                           key={index}
-                          className="bg-white border-0 mb-1 rounded-[14px] hover:bg-white hover:cursor-pointer transition-colors duration-200 ease-out"
+                          className="mb-1 rounded-[14px] border-0 bg-white transition-colors duration-200 ease-out hover:cursor-pointer hover:bg-white"
                         >
-                          <TableCell className="font-medium px-3 py-2 rounded-tl-[14px] rounded-bl-[14px]">
+                          <TableCell className="rounded-tl-[14px] rounded-bl-[14px] px-3 py-2 font-medium">
                             {play.time}
                           </TableCell>
                           <TableCell className="px-3 py-2">
-                            <div className="flex gap-[2px] sm:gap-[3px] md:gap-[4px] items-center">
-                              <div className="flex flex-col w-[24px] h-[24px] sm:w-[28px] sm:h-[28px] md:w-[32px] md:h-[32px] px-[3px] py-[7px] items-center justify-center shrink-0">
+                            <div className="flex items-center gap-[2px] sm:gap-[3px] md:gap-[4px]">
+                              <div className="flex h-[24px] w-[24px] shrink-0 flex-col items-center justify-center px-[3px] py-[7px] sm:h-[28px] sm:w-[28px] md:h-[32px] md:w-[32px]">
                                 <Image
                                   src={play.teamLogo}
                                   alt={play.play}
@@ -1170,13 +1190,13 @@ export default function PriceChart({
                                 <p className="text-nowrap whitespace-pre">
                                   {play.play}
                                 </p>
-                                <p className="text-nowrap text-xs text-soft-400 whitespace-pre">
+                                <p className="text-soft-400 text-xs text-nowrap whitespace-pre">
                                   ({play.playUpdate})
                                 </p>
                               </span>
                             </div>
                           </TableCell>
-                          <TableCell className="px-3 py-2 rounded-tr-[14px] rounded-br-[14px] w-[40px] sm:w-[50px] md:w-[64px]">
+                          <TableCell className="w-[40px] rounded-tr-[14px] rounded-br-[14px] px-3 py-2 sm:w-[50px] md:w-[64px]">
                             {play.score1}
                           </TableCell>
                         </TableRow>
@@ -1187,11 +1207,11 @@ export default function PriceChart({
               </div>
             </div>
             {/* Basketball Court */}
-            <div className="flex-1 w-full lg:max-w-[573px] h-[200px] sm:h-[240px] md:h-[308px] relative overflow-hidden rounded-[20px]">
+            <div className="relative h-[200px] w-full flex-1 overflow-hidden rounded-[20px] sm:h-[240px] md:h-[308px] lg:max-w-[573px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={courtImage}
-                className="block max-w-none size-full"
+                className="block size-full max-w-none"
                 alt="Basketball Court"
               />
 
@@ -1200,27 +1220,27 @@ export default function PriceChart({
                 <>
                   {/* Made shots - filled circles */}
                   <div
-                    className="absolute bg-[#b47818] border-2 border-solid border-white rounded-[100px] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] size-[10px] sm:size-[12px] md:size-[14.56px]"
+                    className="absolute size-[10px] rounded-[100px] border-2 border-solid border-white bg-[#b47818] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "6.53%", top: "14.2%" }}
                   />
                   <div
-                    className="absolute bg-[#b47818] border-2 border-solid border-white rounded-[100px] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] size-[10px] sm:size-[12px] md:size-[14.56px]"
+                    className="absolute size-[10px] rounded-[100px] border-2 border-solid border-white bg-[#b47818] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "8.17%", top: "85.1%" }}
                   />
                   <div
-                    className="absolute bg-[#b47818] border-2 border-solid border-white rounded-[100px] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] size-[10px] sm:size-[12px] md:size-[14.56px]"
+                    className="absolute size-[10px] rounded-[100px] border-2 border-solid border-white bg-[#b47818] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "13.79%", top: "24.3%" }}
                   />
                   <div
-                    className="absolute bg-[#b47818] border-2 border-solid border-white rounded-[100px] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] size-[10px] sm:size-[12px] md:size-[14.56px]"
+                    className="absolute size-[10px] rounded-[100px] border-2 border-solid border-white bg-[#b47818] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "22.87%", top: "7.4%" }}
                   />
                   <div
-                    className="absolute bg-[#b47818] border-2 border-solid border-white rounded-[100px] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] size-[10px] sm:size-[12px] md:size-[14.56px]"
+                    className="absolute size-[10px] rounded-[100px] border-2 border-solid border-white bg-[#b47818] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "15.43%", top: "75%" }}
                   />
                   <div
-                    className="absolute bg-[#b47818] border-2 border-solid border-white rounded-[100px] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] size-[10px] sm:size-[12px] md:size-[14.56px]"
+                    className="absolute size-[10px] rounded-[100px] border-2 border-solid border-white bg-[#b47818] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "28.13%", top: "81.7%" }}
                   />
                 </>
@@ -1229,40 +1249,40 @@ export default function PriceChart({
                 <>
                   {/* Missed shots - circles with white dots */}
                   <div
-                    className="absolute bg-[#b47818] border-2 border-solid border-white rounded-[100px] size-[10px] sm:size-[12px] md:size-[14.56px] flex items-center justify-center"
+                    className="absolute flex size-[10px] items-center justify-center rounded-[100px] border-2 border-solid border-white bg-[#b47818] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "24.5%", top: "32.8%" }}
                   >
-                    <div className="bg-white rounded-[100px] shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] size-[4px] sm:size-[5px] md:size-[6px]" />
+                    <div className="size-[4px] rounded-[100px] bg-white shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] sm:size-[5px] md:size-[6px]" />
                   </div>
                   <div
-                    className="absolute bg-[#b47818] border-2 border-solid border-white rounded-[100px] size-[10px] sm:size-[12px] md:size-[14.56px] flex items-center justify-center"
+                    className="absolute flex size-[10px] items-center justify-center rounded-[100px] border-2 border-solid border-white bg-[#b47818] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "29.95%", top: "29.4%" }}
                   >
-                    <div className="bg-white rounded-[100px] shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] size-[4px] sm:size-[5px] md:size-[6px]" />
+                    <div className="size-[4px] rounded-[100px] bg-white shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] sm:size-[5px] md:size-[6px]" />
                   </div>
                   <div
-                    className="absolute bg-[#b47818] border-2 border-solid border-white rounded-[100px] size-[10px] sm:size-[12px] md:size-[14.56px] flex items-center justify-center"
+                    className="absolute flex size-[10px] items-center justify-center rounded-[100px] border-2 border-solid border-white bg-[#b47818] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "26.32%", top: "42.9%" }}
                   >
-                    <div className="bg-white rounded-[100px] shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] size-[4px] sm:size-[5px] md:size-[6px]" />
+                    <div className="size-[4px] rounded-[100px] bg-white shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] sm:size-[5px] md:size-[6px]" />
                   </div>
                   <div
-                    className="absolute bg-[#b47818] border-2 border-solid border-white rounded-[100px] size-[10px] sm:size-[12px] md:size-[14.56px] flex items-center justify-center"
+                    className="absolute flex size-[10px] items-center justify-center rounded-[100px] border-2 border-solid border-white bg-[#b47818] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "33.58%", top: "42.9%" }}
                   >
-                    <div className="bg-white rounded-[100px] shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] size-[4px] sm:size-[5px] md:size-[6px]" />
+                    <div className="size-[4px] rounded-[100px] bg-white shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] sm:size-[5px] md:size-[6px]" />
                   </div>
                   <div
-                    className="absolute bg-[#b47818] border-2 border-solid border-white rounded-[100px] size-[10px] sm:size-[12px] md:size-[14.56px] flex items-center justify-center"
+                    className="absolute flex size-[10px] items-center justify-center rounded-[100px] border-2 border-solid border-white bg-[#b47818] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "24.5%", top: "56.4%" }}
                   >
-                    <div className="bg-white rounded-[100px] shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] size-[4px] sm:size-[5px] md:size-[6px]" />
+                    <div className="size-[4px] rounded-[100px] bg-white shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] sm:size-[5px] md:size-[6px]" />
                   </div>
                   <div
-                    className="absolute bg-[#b47818] border-2 border-solid border-white rounded-[100px] size-[10px] sm:size-[12px] md:size-[14.56px] flex items-center justify-center"
+                    className="absolute flex size-[10px] items-center justify-center rounded-[100px] border-2 border-solid border-white bg-[#b47818] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "20.87%", top: "69.6%" }}
                   >
-                    <div className="bg-white rounded-[100px] shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] size-[4px] sm:size-[5px] md:size-[6px]" />
+                    <div className="size-[4px] rounded-[100px] bg-white shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] sm:size-[5px] md:size-[6px]" />
                   </div>
                 </>
               )}
@@ -1272,27 +1292,27 @@ export default function PriceChart({
                 <>
                   {/* Made shots - filled circles */}
                   <div
-                    className="absolute bg-[#cb0d0d] border-2 border-solid border-white rounded-[100px] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] size-[10px] sm:size-[12px] md:size-[14.56px]"
+                    className="absolute size-[10px] rounded-[100px] border-2 border-solid border-white bg-[#cb0d0d] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "89.29%", top: "11.8%" }}
                   />
                   <div
-                    className="absolute bg-[#cb0d0d] border-2 border-solid border-white rounded-[100px] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] size-[10px] sm:size-[12px] md:size-[14.56px]"
+                    className="absolute size-[10px] rounded-[100px] border-2 border-solid border-white bg-[#cb0d0d] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "87.66%", top: "82.8%" }}
                   />
                   <div
-                    className="absolute bg-[#cb0d0d] border-2 border-solid border-white rounded-[100px] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] size-[10px] sm:size-[12px] md:size-[14.56px]"
+                    className="absolute size-[10px] rounded-[100px] border-2 border-solid border-white bg-[#cb0d0d] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "82.03%", top: "22%" }}
                   />
                   <div
-                    className="absolute bg-[#cb0d0d] border-2 border-solid border-white rounded-[100px] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] size-[10px] sm:size-[12px] md:size-[14.56px]"
+                    className="absolute size-[10px] rounded-[100px] border-2 border-solid border-white bg-[#cb0d0d] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "72.96%", top: "5.1%" }}
                   />
                   <div
-                    className="absolute bg-[#cb0d0d] border-2 border-solid border-white rounded-[100px] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] size-[10px] sm:size-[12px] md:size-[14.56px]"
+                    className="absolute size-[10px] rounded-[100px] border-2 border-solid border-white bg-[#cb0d0d] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "80.4%", top: "72.6%" }}
                   />
                   <div
-                    className="absolute bg-[#cb0d0d] border-2 border-solid border-white rounded-[100px] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] size-[10px] sm:size-[12px] md:size-[14.56px]"
+                    className="absolute size-[10px] rounded-[100px] border-2 border-solid border-white bg-[#cb0d0d] shadow-[0px_2px_5px_0px_rgba(0,0,0,0.23)] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "67.69%", top: "79.4%" }}
                   />
                 </>
@@ -1301,40 +1321,40 @@ export default function PriceChart({
                 <>
                   {/* Missed shots - circles with white dots */}
                   <div
-                    className="absolute bg-[#cb0d0d] border-2 border-solid border-white rounded-[100px] size-[10px] sm:size-[12px] md:size-[14.56px] flex items-center justify-center"
+                    className="absolute flex size-[10px] items-center justify-center rounded-[100px] border-2 border-solid border-white bg-[#cb0d0d] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "71.33%", top: "30.4%" }}
                   >
-                    <div className="bg-white rounded-[100px] shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] size-[4px] sm:size-[5px] md:size-[6px]" />
+                    <div className="size-[4px] rounded-[100px] bg-white shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] sm:size-[5px] md:size-[6px]" />
                   </div>
                   <div
-                    className="absolute bg-[#cb0d0d] border-2 border-solid border-white rounded-[100px] size-[10px] sm:size-[12px] md:size-[14.56px] flex items-center justify-center"
+                    className="absolute flex size-[10px] items-center justify-center rounded-[100px] border-2 border-solid border-white bg-[#cb0d0d] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "65.88%", top: "27%" }}
                   >
-                    <div className="bg-white rounded-[100px] shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] size-[4px] sm:size-[5px] md:size-[6px]" />
+                    <div className="size-[4px] rounded-[100px] bg-white shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] sm:size-[5px] md:size-[6px]" />
                   </div>
                   <div
-                    className="absolute bg-[#cb0d0d] border-2 border-solid border-white rounded-[100px] size-[10px] sm:size-[12px] md:size-[14.56px] flex items-center justify-center"
+                    className="absolute flex size-[10px] items-center justify-center rounded-[100px] border-2 border-solid border-white bg-[#cb0d0d] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "69.51%", top: "40.5%" }}
                   >
-                    <div className="bg-white rounded-[100px] shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] size-[4px] sm:size-[5px] md:size-[6px]" />
+                    <div className="size-[4px] rounded-[100px] bg-white shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] sm:size-[5px] md:size-[6px]" />
                   </div>
                   <div
-                    className="absolute bg-[#cb0d0d] border-2 border-solid border-white rounded-[100px] size-[10px] sm:size-[12px] md:size-[14.56px] flex items-center justify-center"
+                    className="absolute flex size-[10px] items-center justify-center rounded-[100px] border-2 border-solid border-white bg-[#cb0d0d] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "62.25%", top: "40.5%" }}
                   >
-                    <div className="bg-white rounded-[100px] shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] size-[4px] sm:size-[5px] md:size-[6px]" />
+                    <div className="size-[4px] rounded-[100px] bg-white shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] sm:size-[5px] md:size-[6px]" />
                   </div>
                   <div
-                    className="absolute bg-[#cb0d0d] border-2 border-solid border-white rounded-[100px] size-[10px] sm:size-[12px] md:size-[14.56px] flex items-center justify-center"
+                    className="absolute flex size-[10px] items-center justify-center rounded-[100px] border-2 border-solid border-white bg-[#cb0d0d] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "71.33%", top: "54.1%" }}
                   >
-                    <div className="bg-white rounded-[100px] shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] size-[4px] sm:size-[5px] md:size-[6px]" />
+                    <div className="size-[4px] rounded-[100px] bg-white shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] sm:size-[5px] md:size-[6px]" />
                   </div>
                   <div
-                    className="absolute bg-[#cb0d0d] border-2 border-solid border-white rounded-[100px] size-[10px] sm:size-[12px] md:size-[14.56px] flex items-center justify-center"
+                    className="absolute flex size-[10px] items-center justify-center rounded-[100px] border-2 border-solid border-white bg-[#cb0d0d] sm:size-[12px] md:size-[14.56px]"
                     style={{ left: "74.95%", top: "67.2%" }}
                   >
-                    <div className="bg-white rounded-[100px] shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] size-[4px] sm:size-[5px] md:size-[6px]" />
+                    <div className="size-[4px] rounded-[100px] bg-white shadow-[0px_6px_10px_0px_rgba(22,38,100,0.08),0px_4px_8px_0px_rgba(22,38,100,0.08),0px_2px_4px_0px_rgba(22,38,100,0.08),0px_2px_5px_0px_rgba(0,0,0,0.4)] sm:size-[5px] md:size-[6px]" />
                   </div>
                 </>
               )}
@@ -1345,21 +1365,21 @@ export default function PriceChart({
 
       {/* Orderbook Tab Content */}
       {activeTab === "Orderbook" && (
-        <div className="flex flex-col md:flex-row gap-4 p-4 items-start w-full">
+        <div className="flex w-full flex-col items-start gap-4 p-4 md:flex-row">
           {/* Bids Column (Left) */}
-          <div className="basis-0 flex flex-col grow items-start min-h-px min-w-px w-full">
+          <div className="flex min-h-px w-full min-w-px grow basis-0 flex-col items-start">
             {/* Bids Header */}
-            <div className="flex gap-[4px] items-start p-[2px] sm:p-[4px] w-full">
-              <div className="basis-0 flex flex-col gap-[8px] sm:gap-[12px] grow items-start min-h-px min-w-px px-[12px] sm:px-[16px] py-[10px] sm:py-[12px]">
-                <p className="font-medium leading-none text-[11px] sm:text-[12px] text-main tracking-[-0.12px] w-full">
+            <div className="flex w-full items-start gap-[4px] p-[2px] sm:p-[4px]">
+              <div className="flex min-h-px min-w-px grow basis-0 flex-col items-start gap-[8px] px-[12px] py-[10px] sm:gap-[12px] sm:px-[16px] sm:py-[12px]">
+                <p className="text-text-primary w-full text-[11px] leading-none font-medium tracking-[-0.12px] sm:text-[12px]">
                   Bids (YES)
                 </p>
               </div>
             </div>
 
-            <div className="bg-page-background w-full rounded-[14px] p-1 x-auto">
+            <div className="bg-page-background x-auto w-full rounded-[14px] p-1">
               {/* Bids Table Header */}
-              <div className="flex font-medium justify-between items-center leading-none px-[12px] sm:px-[16px] md:px-[20px] py-[12px] sm:py-[16px] text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] w-full">
+              <div className="flex w-full items-center justify-between px-[12px] py-[12px] text-[10px] leading-none font-medium tracking-[-0.12px] text-[#868c98] sm:px-[16px] sm:py-[16px] sm:text-[11px] md:px-[20px] md:text-[12px]">
                 <p>Size</p>
                 <p>Price</p>
               </div>
@@ -1368,23 +1388,24 @@ export default function PriceChart({
               {bidsData.map((bid, index) => (
                 <div
                   key={index}
-                  className={`flex gap-[12px] bg-white rounded-[14px] mb-2 sm:gap-[16px] md:gap-[24px] items-center px-[12px] sm:px-[16px] md:px-[20px] py-[12px] sm:py-[14px] md:py-[16px] w-full relative ${index < bidsData.length - 1
-                    ? "border-light-gray border-[0px_0px_1px] border-solid"
-                    : ""
-                    }`}
+                  className={`relative mb-2 flex w-full items-center gap-[12px] rounded-[14px] bg-white px-[12px] py-[12px] sm:gap-[16px] sm:px-[16px] sm:py-[14px] md:gap-[24px] md:px-[20px] md:py-[16px] ${
+                    index < bidsData.length - 1
+                      ? "border-light-gray border-[0px_0px_1px] border-solid"
+                      : ""
+                  }`}
                 >
                   {/* Background Bar */}
                   <div
-                    className="absolute rounded-tr-[14px] rounded-br-[14px] bg-[rgba(22,163,74,0.2)] h-[40px] sm:h-[43px] md:h-[46px] top-1/2 translate-y-[-50%] right-0"
+                    className="absolute top-1/2 right-0 h-[40px] translate-y-[-50%] rounded-tr-[14px] rounded-br-[14px] bg-[rgba(22,163,74,0.2)] sm:h-[43px] md:h-[46px]"
                     style={{
                       width: `${bid.barWidth}%`,
-                      maxWidth: '50%',
+                      maxWidth: "50%",
                     }}
                   />
-                  <p className="font-medium leading-none text-[12px] sm:text-[13px] md:text-[14px] text-main tracking-[-0.14px] w-[80px] sm:w-[120px] md:w-[180px] relative z-10">
+                  <p className="text-text-primary relative z-10 w-[80px] text-[12px] leading-none font-medium tracking-[-0.14px] sm:w-[120px] sm:text-[13px] md:w-[180px] md:text-[14px]">
                     {bid.price}
                   </p>
-                  <p className="font-medium leading-none text-green-600 text-[12px] sm:text-[13px] md:text-[14px] tracking-[-0.14px] relative z-10 ml-auto">
+                  <p className="relative z-10 ml-auto text-[12px] leading-none font-medium tracking-[-0.14px] text-green-600 sm:text-[13px] md:text-[14px]">
                     {bid.size}
                   </p>
                 </div>
@@ -1393,19 +1414,19 @@ export default function PriceChart({
           </div>
 
           {/* Asks Column (Right) */}
-          <div className="basis-0 flex flex-col grow items-start min-h-px min-w-px w-full">
+          <div className="flex min-h-px w-full min-w-px grow basis-0 flex-col items-start">
             {/* Asks Header */}
-            <div className="flex gap-[4px] items-start p-[2px] sm:p-[4px] w-full">
-              <div className="basis-0 flex flex-col gap-[8px] sm:gap-[12px] grow items-start min-h-px min-w-px px-[12px] sm:px-[16px] py-[10px] sm:py-[12px]">
-                <p className="font-medium leading-none text-[11px] sm:text-[12px] text-main tracking-[-0.12px] w-full">
+            <div className="flex w-full items-start gap-[4px] p-[2px] sm:p-[4px]">
+              <div className="flex min-h-px min-w-px grow basis-0 flex-col items-start gap-[8px] px-[12px] py-[10px] sm:gap-[12px] sm:px-[16px] sm:py-[12px]">
+                <p className="text-text-primary w-full text-[11px] leading-none font-medium tracking-[-0.12px] sm:text-[12px]">
                   Asks (YES)
                 </p>
               </div>
             </div>
 
-            <div className="bg-page-background w-full rounded-[14px] p-1 mb-4">
+            <div className="bg-page-background mb-4 w-full rounded-[14px] p-1">
               {/* Asks Table Header */}
-              <div className="flex font-medium justify-between items-center leading-none px-[12px] sm:px-[16px] md:px-[20px] py-[12px] sm:py-[16px] text-[#868c98] text-[10px] sm:text-[11px] md:text-[12px] tracking-[-0.12px] w-full">
+              <div className="flex w-full items-center justify-between px-[12px] py-[12px] text-[10px] leading-none font-medium tracking-[-0.12px] text-[#868c98] sm:px-[16px] sm:py-[16px] sm:text-[11px] md:px-[20px] md:text-[12px]">
                 <p>Size</p>
                 <p>Price</p>
               </div>
@@ -1414,23 +1435,24 @@ export default function PriceChart({
               {asksData.map((ask, index) => (
                 <div
                   key={index}
-                  className={`flex bg-white rounded-[14px] mb-2 gap-[12px] sm:gap-[16px] md:gap-[24px] items-center px-[12px] sm:px-[16px] md:px-[20px] py-[12px] sm:py-[14px] md:py-[16px] w-full relative ${index < asksData.length - 1
-                    ? "border-light-gray border-[0px_0px_1px] border-solid"
-                    : ""
-                    }`}
+                  className={`relative mb-2 flex w-full items-center gap-[12px] rounded-[14px] bg-white px-[12px] py-[12px] sm:gap-[16px] sm:px-[16px] sm:py-[14px] md:gap-[24px] md:px-[20px] md:py-[16px] ${
+                    index < asksData.length - 1
+                      ? "border-light-gray border-[0px_0px_1px] border-solid"
+                      : ""
+                  }`}
                 >
                   {/* Background Bar */}
                   <div
-                    className="absolute rounded-tl-[14px] rounded-bl-[14px] bg-[rgba(252,57,112,0.2)] h-[40px] sm:h-[43px] md:h-[46px] top-1/2 translate-y-[-50%] left-0"
+                    className="absolute top-1/2 left-0 h-[40px] translate-y-[-50%] rounded-tl-[14px] rounded-bl-[14px] bg-[rgba(252,57,112,0.2)] sm:h-[43px] md:h-[46px]"
                     style={{
                       width: `${ask.barWidth}%`,
-                      maxWidth: '50%',
+                      maxWidth: "50%",
                     }}
                   />
-                  <p className="font-medium leading-none text-[12px] sm:text-[13px] md:text-[14px] text-[#fc3970] tracking-[-0.14px] w-[80px] sm:w-[120px] md:w-[180px] relative z-10">
+                  <p className="relative z-10 w-[80px] text-[12px] leading-none font-medium tracking-[-0.14px] text-[#fc3970] sm:w-[120px] sm:text-[13px] md:w-[180px] md:text-[14px]">
                     {ask.price}
                   </p>
-                  <p className="basis-0 font-medium grow leading-none min-h-px min-w-px text-main text-[12px] sm:text-[13px] md:text-[14px] tracking-[-0.14px] relative z-10">
+                  <p className="text-text-primary relative z-10 min-h-px min-w-px grow basis-0 text-[12px] leading-none font-medium tracking-[-0.14px] sm:text-[13px] md:text-[14px]">
                     {ask.size}
                   </p>
                 </div>

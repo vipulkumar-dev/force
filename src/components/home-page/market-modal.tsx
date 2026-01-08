@@ -30,7 +30,7 @@ export default function MarketModal({ type }: { type: string }) {
 
   const onFilterClick = (
     e: React.MouseEvent<HTMLButtonElement>,
-    label: string
+    label: string,
   ) => {
     e.stopPropagation();
     setSelectedFilter(label);
@@ -38,29 +38,29 @@ export default function MarketModal({ type }: { type: string }) {
   return (
     <>
       <DialogClose asChild>
-        <Button className="flex flex-row w-full h-fit justify-between border-b border-light-gray px-[20px]! py-[20px] gap-[20px] bg-white hover:bg-primary-foreground hover:cursor-pointer">
-          <p className="font-nohemi font-medium text-[14px] leading-[100%] tracking-[2%] text-main">
+        <Button className="border-light-gray hover:bg-primary-foreground flex h-fit w-full flex-row justify-between gap-[20px] border-b bg-white px-[20px]! py-[20px] hover:cursor-pointer">
+          <p className="font-nohemi text-text-primary text-[14px] leading-[100%] font-medium tracking-[2%]">
             {type === "long" ? "Long" : "Short"}
           </p>
           <X className="text-soft-400" width={14} height={14} />
         </Button>
       </DialogClose>
-      <div className="flex flex-col py-4 sm:py-5 px-4 sm:px-6 gap-5 w-full">
-        <div className="flex flex-row gap-2 w-fit">
+      <div className="flex w-full flex-col gap-5 px-4 py-4 sm:px-6 sm:py-5">
+        <div className="flex w-fit flex-row gap-2">
           {filters.map((label) => {
             const isSelected = selectedFilter === label;
             return (
               <Button
                 key={label}
                 onClick={(e) => onFilterClick(e, label)}
-                className={`flex flex-row rounded-[100px] h-fit items-center justify-center py-[6px] px-[10px] gap-[4px] border transition-colors duration-200 ease-out hover:cursor-pointer ${
+                className={`flex h-fit flex-row items-center justify-center gap-[4px] rounded-[100px] border px-[10px] py-[6px] transition-colors duration-200 ease-out hover:cursor-pointer ${
                   isSelected
                     ? "bg-main border-black/5"
-                    : "bg-white border-main/7 hover:bg-primary-foreground"
+                    : "border-main/7 hover:bg-primary-foreground bg-white"
                 }`}
               >
                 <p
-                  className={`font-medium text-[12px] leading-[100%] tracking-[-1%] ${
+                  className={`text-[12px] leading-[100%] font-medium tracking-[-1%] ${
                     isSelected ? "text-white" : "text-sub-500"
                   }`}
                 >
@@ -71,16 +71,18 @@ export default function MarketModal({ type }: { type: string }) {
           })}
         </div>
 
-        <div className="flex flex-col w-full">
-          <div className="flex flex-row w-full justify-end border-b border-light-gray py-4 gap-4">
-            <div className="flex flex-row items-center gap-2 w-full">
-              <div className="flex flex-row gap-2 items-center w-[87px]">
-                <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-soft-400 text-nowrap">
+        <div className="flex w-full flex-col">
+          <div className="border-light-gray flex w-full flex-row justify-end gap-4 border-b py-4">
+            <div className="flex w-full flex-row items-center gap-2">
+              <div className="flex w-[87px] flex-row items-center gap-2">
+                <p className="text-soft-400 text-[14px] leading-[100%] font-medium tracking-[-1%] text-nowrap">
                   Order size
                 </p>
               </div>
-              <div className="relative w-full h-12 rounded-[10px] border border-main/7 bg-white flex items-center justify-end px-5 gap-1">
-                <span className="text-[24px] font-medium text-main/20">$</span>
+              <div className="border-main/7 relative flex h-12 w-full items-center justify-end gap-1 rounded-[10px] border bg-white px-5">
+                <span className="text-text-primary/20 text-[24px] font-medium">
+                  $
+                </span>
                 <Input
                   type="text"
                   value={orderSize}
@@ -90,19 +92,19 @@ export default function MarketModal({ type }: { type: string }) {
                   }}
                   placeholder="50"
                   size={Math.max(orderSize.length, 2)}
-                  className="h-12 border-0 bg-transparent text-right text-[24px]! font-medium text-main placeholder:text-main/20 placeholder:!text-[24px] focus-visible:ring-0 focus-visible:ring-offset-0 p-0 w-auto min-w-[2ch] shrink-0"
+                  className="text-text-primary placeholder:text-text-primary/20 h-12 w-auto min-w-[2ch] shrink-0 border-0 bg-transparent p-0 text-right text-[24px]! font-medium placeholder:!text-[24px] focus-visible:ring-0 focus-visible:ring-offset-0"
                 />
               </div>
             </div>
           </div>
-          <div className="flex flex-col w-full border-b border-light-gray py-4 gap-4">
+          <div className="border-light-gray flex w-full flex-col gap-4 border-b py-4">
             <div className="flex flex-row justify-between">
-              <p className="font-semibold text-[14px] leading-[100%] tracking-[-1%] text-main">
+              <p className="text-text-primary text-[14px] leading-[100%] font-semibold tracking-[-1%]">
                 Leverage
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 w-full items-center">
-              <div className="flex flex-col gap-3.5 w-full sm:min-w-[286px]">
+            <div className="flex w-full flex-col items-center gap-4 sm:flex-row">
+              <div className="flex w-full flex-col gap-3.5 sm:min-w-[286px]">
                 <Slider
                   defaultValue={[6]}
                   min={1}
@@ -124,68 +126,68 @@ export default function MarketModal({ type }: { type: string }) {
                   onValueChange={(value) => setLeverage(value[0])}
                 />
               </div>
-              <div className="flex flex-row items-center justify-center w-[50px] h-10 rounded-[10px] border border-main/7 py-2.5 px-4 gap-1 bg-white self-start sm:self-auto">
-                <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-main">
+              <div className="border-main/7 flex h-10 w-[50px] flex-row items-center justify-center gap-1 self-start rounded-[10px] border bg-white px-4 py-2.5 sm:self-auto">
+                <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
                   {leverage}x
                 </p>
               </div>
             </div>
           </div>
-          <div className="flex flex-col w-full border-b border-light-gray">
+          <div className="border-light-gray flex w-full flex-col border-b">
             {" "}
             <Accordion type="single" collapsible>
               <AccordionItem
                 value="item-1"
-                className="data-[state=open]:px-5 data-[state=open]:my-5 data-[state=open]:bg-main/2"
+                className="data-[state=open]:bg-main/2 data-[state=open]:my-5 data-[state=open]:px-5"
               >
                 <AccordionTrigger>Advanced parameters</AccordionTrigger>
                 <AccordionContent>
-                  <div className="flex flex-col gap-4 w-full">
-                    <div className="flex flex-row w-full justify-between items-center">
-                      <p className="text-[14px] leading-[100%] tracking-[-1%] text-soft-400">
+                  <div className="flex w-full flex-col gap-4">
+                    <div className="flex w-full flex-row items-center justify-between">
+                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
                         Side:
                       </p>
-                      <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-main">
+                      <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
                         {type === "long" ? "Long" : "Short"}
                       </p>
                     </div>
-                    <div className="flex flex-row w-full justify-between items-center">
-                      <p className="text-[14px] leading-[100%] tracking-[-1%] text-soft-400">
+                    <div className="flex w-full flex-row items-center justify-between">
+                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
                         Entry Price:
                       </p>
-                      <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-main">
+                      <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
                         ${entryPrice.toFixed(2)}
                       </p>
                     </div>
-                    <div className="flex flex-row w-full justify-between items-center">
-                      <p className="text-[14px] leading-[100%] tracking-[-1%] text-soft-400">
+                    <div className="flex w-full flex-row items-center justify-between">
+                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
                         Order Size:
                       </p>
-                      <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-main">
+                      <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
                         ${orderSizeNum.toFixed(2)}
                       </p>
                     </div>
-                    <div className="flex flex-row w-full justify-between items-center">
-                      <p className="text-[14px] leading-[100%] tracking-[-1%] text-soft-400">
+                    <div className="flex w-full flex-row items-center justify-between">
+                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
                         Leverage:
                       </p>
-                      <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-main">
+                      <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
                         {leverage}x
                       </p>
                     </div>
-                    <div className="flex flex-row w-full justify-between items-center">
-                      <p className="text-[14px] leading-[100%] tracking-[-1%] text-soft-400">
+                    <div className="flex w-full flex-row items-center justify-between">
+                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
                         Est. Fees:
                       </p>
-                      <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-main">
+                      <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
                         ${estimatedFees.toFixed(2)}
                       </p>
                     </div>
-                    <div className="flex flex-row w-full justify-between items-center">
-                      <p className="text-[14px] leading-[100%] tracking-[-1%] text-soft-400">
+                    <div className="flex w-full flex-row items-center justify-between">
+                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
                         Liq. Price:
                       </p>
-                      <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-main">
+                      <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
                         ${liquidationPrice.toFixed(2)}
                       </p>
                     </div>
@@ -195,61 +197,61 @@ export default function MarketModal({ type }: { type: string }) {
             </Accordion>
           </div>
 
-          <div className="flex flex-col w-full border-b border-light-gray">
+          <div className="border-light-gray flex w-full flex-col border-b">
             {" "}
             <Accordion type="single" collapsible>
               <AccordionItem
                 value="item-1"
-                className="data-[state=open]:px-5 data-[state=open]:my-5 data-[state=open]:bg-main/2"
+                className="data-[state=open]:bg-main/2 data-[state=open]:my-5 data-[state=open]:px-5"
               >
                 <AccordionTrigger>Trade summary</AccordionTrigger>
                 <AccordionContent>
-                  <div className="flex flex-col gap-4 w-full">
-                    <div className="flex flex-row w-full justify-between items-center">
-                      <p className="text-[14px] leading-[100%] tracking-[-1%] text-soft-400">
+                  <div className="flex w-full flex-col gap-4">
+                    <div className="flex w-full flex-row items-center justify-between">
+                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
                         Side:
                       </p>
-                      <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-main">
+                      <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
                         {type === "long" ? "Long" : "Short"}
                       </p>
                     </div>
-                    <div className="flex flex-row w-full justify-between items-center">
-                      <p className="text-[14px] leading-[100%] tracking-[-1%] text-soft-400">
+                    <div className="flex w-full flex-row items-center justify-between">
+                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
                         Entry Price:
                       </p>
-                      <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-main">
+                      <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
                         ${entryPrice.toFixed(2)}
                       </p>
                     </div>
-                    <div className="flex flex-row w-full justify-between items-center">
-                      <p className="text-[14px] leading-[100%] tracking-[-1%] text-soft-400">
+                    <div className="flex w-full flex-row items-center justify-between">
+                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
                         Order Size:
                       </p>
-                      <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-main">
+                      <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
                         ${orderSizeNum.toFixed(2)}
                       </p>
                     </div>
-                    <div className="flex flex-row w-full justify-between items-center">
-                      <p className="text-[14px] leading-[100%] tracking-[-1%] text-soft-400">
+                    <div className="flex w-full flex-row items-center justify-between">
+                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
                         Leverage:
                       </p>
-                      <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-main">
+                      <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
                         {leverage}x
                       </p>
                     </div>
-                    <div className="flex flex-row w-full justify-between items-center">
-                      <p className="text-[14px] leading-[100%] tracking-[-1%] text-soft-400">
+                    <div className="flex w-full flex-row items-center justify-between">
+                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
                         Est. Fees:
                       </p>
-                      <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-main">
+                      <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
                         ${estimatedFees.toFixed(2)}
                       </p>
                     </div>
-                    <div className="flex flex-row w-full justify-between items-center">
-                      <p className="text-[14px] leading-[100%] tracking-[-1%] text-soft-400">
+                    <div className="flex w-full flex-row items-center justify-between">
+                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
                         Liq. Price:
                       </p>
-                      <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-main">
+                      <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
                         ${liquidationPrice.toFixed(2)}
                       </p>
                     </div>
@@ -259,20 +261,20 @@ export default function MarketModal({ type }: { type: string }) {
             </Accordion>
           </div>
         </div>
-        <div className="flex flex-row w-full rounded-lg border border-[#e1c925]/8 px-3 py-2.5 gap-3 bg-lighter-yellow">
-          <div className="flex flex-row items-center justify-center rounded-[52px] p-2.5 gap-1 bg-light-yellow">
+        <div className="bg-lighter-yellow flex w-full flex-row gap-3 rounded-lg border border-[#e1c925]/8 px-3 py-2.5">
+          <div className="bg-light-yellow flex flex-row items-center justify-center gap-1 rounded-[52px] p-2.5">
             <Image src="/icons/gift.svg" alt="gift" width={14} height={14} />
           </div>
-          <p className="font-medium text-[12px] leading-[140%] text-dark-yellow tracking-[-1%]">
+          <p className="text-dark-yellow text-[12px] leading-[140%] font-medium tracking-[-1%]">
             Place your first $10 trade to unlock your starter position.
           </p>
         </div>
 
-        <div className="flex flex-col w-full gap-3">
-          <Button className="flex flex-row items-center justify-center w-full h-10 rounded-lg py-2.5 px-4 gap-2 bg-main hover:cursor-pointer">
+        <div className="flex w-full flex-col gap-3">
+          <Button className="bg-main flex h-10 w-full flex-row items-center justify-center gap-2 rounded-lg px-4 py-2.5 hover:cursor-pointer">
             <p>Confirm Market Order</p>
           </Button>
-          <p className="text-[11px] leading-[100%] w-full tracking-[-1%] text-center text-soft-400">
+          <p className="text-soft-400 w-full text-center text-[11px] leading-[100%] tracking-[-1%]">
             Order will execute immediately at the best available price.
           </p>
         </div>

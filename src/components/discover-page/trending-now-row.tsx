@@ -21,12 +21,12 @@ export default function TrendingNowRow({
 }) {
   return (
     <div
-      className="w-full flex flex-row hover:cursor-pointer hover:bg-primary-foreground transition-colors duration-200"
+      className="hover:bg-primary-foreground flex w-full flex-row transition-colors duration-200 hover:cursor-pointer"
       onClick={onClick}
     >
-      <div className="w-[60%] md:w-[40%] flex flex-row py-3 px-4 gap-2.5 items-center">
+      <div className="flex w-[60%] flex-row items-center gap-2.5 px-4 py-3 md:w-[40%]">
         <div
-          className={`relative w-8 h-8 rounded-md ${athleteColor} overflow-hidden`}
+          className={`relative h-8 w-8 rounded-md ${athleteColor} overflow-hidden`}
         >
           <Image
             src="/icons/athletes/logo.png"
@@ -41,24 +41,24 @@ export default function TrendingNowRow({
             className="object-cover object-top"
           />
         </div>
-        <div className="flex flex-col w-fit gap-2">
-          <p className="text-nowrap font-medium text-[14px] leading-[100%] tracking-[-2%] text-main">
+        <div className="flex w-fit flex-col gap-2">
+          <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%] text-nowrap">
             {athleteName}
           </p>
-          <p className="text-[12px] text-nowrap leading-[100%] tracking-[-1%] text-soft-400">
+          <p className="text-soft-400 text-[12px] leading-[100%] tracking-[-1%] text-nowrap">
             {athleteTeam}
           </p>
         </div>
       </div>
-      <div className="flex flex-row w-[40%] md:w-[20%] py-3 px-4 gap-4 items-center">
-        <p className="font-medium text-[14px] leading-[100%] tracking-[-2%] text-main">
+      <div className="flex w-[40%] flex-row items-center gap-4 px-4 py-3 md:w-[20%]">
+        <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
           {currentPrice}
         </p>
       </div>
 
-      <div className="hidden md:flex flex-row w-[20%] py-3 px-4 gap-4 items-center">
+      <div className="hidden w-[20%] flex-row items-center gap-4 px-4 py-3 md:flex">
         <p
-          className={`font-medium text-[14px] leading-[100%] tracking-[-2%] ${
+          className={`text-[14px] leading-[100%] font-medium tracking-[-2%] ${
             change[0] === "+" ? "text-light-green" : "text-base-red"
           }`}
         >
@@ -66,8 +66,8 @@ export default function TrendingNowRow({
         </p>
       </div>
 
-      <div className="hidden md:flex flex-row w-[20%] py-3 px-4 gap-4 items-center">
-        <p className="font-medium text-[14px] leading-[100%] tracking-[-2%] text-main">
+      <div className="hidden w-[20%] flex-row items-center gap-4 px-4 py-3 md:flex">
+        <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
           {volume}
         </p>
       </div>

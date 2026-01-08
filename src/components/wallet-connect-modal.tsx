@@ -65,7 +65,6 @@ export default function WalletConnectScreen({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
-
         {/* Title & Description */}
         <motion.div
           className="flex w-full flex-col items-center gap-3"
@@ -73,15 +72,15 @@ export default function WalletConnectScreen({
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h2 className="text-2xl leading-none tracking-[0.48px] text-black font-nohemi font-medium">
+          <h2 className="font-nohemi text-2xl leading-none font-medium tracking-[0.48px] text-black">
             Account
           </h2>
           <div className="relative w-full">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-            <input 
-              type="text" 
-              placeholder="Search Wallets" 
-              className="w-full pl-10 pr-4 py-2 rounded-full bg-page-background focus:outline-none focus:ring-0" 
+            <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Search Wallets"
+              className="bg-page-background w-full rounded-full py-2 pr-4 pl-10 focus:ring-0 focus:outline-none"
             />
           </div>
         </motion.div>
@@ -100,7 +99,7 @@ export default function WalletConnectScreen({
                 wallet.onClick();
                 onWalletChosen?.(wallet.id);
               }}
-              className={`flex w-full m-2 rounded-lg bg-page-background items-center gap-4 p-5 text-left transition-colors hover:bg-gray-50 `}
+              className={`bg-page-background m-2 flex w-full items-center gap-4 rounded-lg p-5 text-left transition-colors hover:bg-gray-50`}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{
@@ -112,8 +111,8 @@ export default function WalletConnectScreen({
               whileTap={{ scale: 0.99 }}
             >
               {/* Text */}
-              <div className="flex min-w-0 flex-1 rounded-lg flex-col gap-2.5">
-                <p className="font-inter text-center text-sm font-semibold leading-none tracking-[-0.28px] text-main">
+              <div className="flex min-w-0 flex-1 flex-col gap-2.5 rounded-lg">
+                <p className="font-inter text-text-primary text-center text-sm leading-none font-semibold tracking-[-0.28px]">
                   {wallet.name}
                 </p>
               </div>
@@ -128,7 +127,7 @@ export default function WalletConnectScreen({
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <p className="text-center font-inter text-xs font-normal leading-[1.4] tracking-[-0.12px] text-[#868c98]">
+          <p className="font-inter text-center text-xs leading-[1.4] font-normal tracking-[-0.12px] text-[#868c98]">
             By logging in I agree to the{" "}
             <a
               href="#"

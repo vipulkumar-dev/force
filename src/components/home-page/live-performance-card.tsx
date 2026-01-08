@@ -109,13 +109,13 @@ export default function LivePerformanceCard() {
   };
 
   return (
-    <div className="flex flex-col w-full rounded-[10px] bg-white">
+    <div className="flex w-full flex-col rounded-[10px] bg-white">
       <Button
         asChild
-        className="flex flex-row w-full h-fit justify-between border-b border-light-gray px-[20px]! py-[20px] gap-[20px] bg-white hover:bg-primary-foreground hover:cursor-pointer"
+        className="border-light-gray hover:bg-primary-foreground flex h-fit w-full flex-row justify-between gap-[20px] border-b bg-white px-[20px]! py-[20px] hover:cursor-pointer"
       >
         <Link href="/athlete/lebron-james">
-          <p className="font-nohemi font-medium text-sm leading-[100%] tracking-[2%] text-main">
+          <p className="font-nohemi text-text-primary text-sm leading-[100%] font-medium tracking-[2%]">
             Live Performance
           </p>
           <ChevronRight className="text-soft-400" width={14} height={14} />
@@ -123,12 +123,12 @@ export default function LivePerformanceCard() {
       </Button>
 
       <div className="p-5">
-        <div className="flex flex-col lg:flex-row lg:gap-x-12 gap-y-6">
-          <div className="flex flex-col gap-y-5 w-full lg:w-[260px] shrink-0 transition-opacity duration-300">
+        <div className="flex flex-col gap-y-6 lg:flex-row lg:gap-x-12">
+          <div className="flex w-full shrink-0 flex-col gap-y-5 transition-opacity duration-300 lg:w-[260px]">
             <div className="flex items-center gap-x-3">
-              <div className="w-11 h-11 rounded-lg bg-[#0A0D14]/3 px-1 py-2.5">
+              <div className="h-11 w-11 rounded-lg bg-[#0A0D14]/3 px-1 py-2.5">
                 <Image
-                  className="w-full aspect-auto object-contain"
+                  className="aspect-auto w-full object-contain"
                   src={currentPlayer.teamIconSrc}
                   width={100}
                   height={100}
@@ -138,13 +138,13 @@ export default function LivePerformanceCard() {
 
               <div className="space-y-2">
                 <div className="flex items-center gap-x-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-dark-green" />
-                  <p className="text-xs font-medium text-dark-green">
+                  <div className="bg-dark-green h-1.5 w-1.5 rounded-full" />
+                  <p className="text-dark-green text-xs font-medium">
                     Realtime Market
                   </p>
                 </div>
 
-                <p className="font-semibold text-base text-main">
+                <p className="text-text-primary text-base font-semibold">
                   {currentPlayer.teamAbbr}
                 </p>
               </div>
@@ -152,18 +152,18 @@ export default function LivePerformanceCard() {
 
             <div className="flex gap-5">
               <div className="space-y-2.5">
-                <p className="text-[11px] font-medium text-soft-400">Price</p>
-                <p className="text-main font-semibold text-sm">
+                <p className="text-soft-400 text-[11px] font-medium">Price</p>
+                <p className="text-text-primary text-sm font-semibold">
                   {currencyFormatter.format(currentPlayer.price)}
                 </p>
               </div>
 
               <div className="space-y-2.5">
-                <p className="text-[11px] font-medium text-soft-400">
+                <p className="text-soft-400 text-[11px] font-medium">
                   24H Change
                 </p>
                 <p
-                  className={`font-semibold text-sm ${
+                  className={`text-sm font-semibold ${
                     currentPlayer.change24h >= 0
                       ? "text-dark-green"
                       : "text-base-red"
@@ -175,10 +175,10 @@ export default function LivePerformanceCard() {
               </div>
 
               <div className="space-y-2.5">
-                <p className="text-[11px] font-medium text-soft-400">
+                <p className="text-soft-400 text-[11px] font-medium">
                   24H Volume
                 </p>
-                <p className="text-main font-semibold text-sm">
+                <p className="text-text-primary text-sm font-semibold">
                   {moneyFormatter.format(currentPlayer.volume24h)}
                 </p>
               </div>
@@ -195,7 +195,7 @@ export default function LivePerformanceCard() {
                   <Button
                     lip="on"
                     onClick={() => setOpenSide("long")}
-                    className="bg-base-purple py-2.5 px-12 rounded-lg text-white hover:bg-base-purple/90 cursor-pointer text-sm font-medium"
+                    className="bg-base-purple hover:bg-base-purple/90 cursor-pointer rounded-lg px-12 py-2.5 text-sm font-medium text-white"
                   >
                     Long
                   </Button>
@@ -204,44 +204,44 @@ export default function LivePerformanceCard() {
                   <Button
                     lip="on"
                     onClick={() => setOpenSide("short")}
-                    className="bg-base-orange py-2.5 px-12 rounded-lg text-white hover:bg-base-orange/90 cursor-pointer text-sm font-medium"
+                    className="bg-base-orange hover:bg-base-orange/90 cursor-pointer rounded-lg px-12 py-2.5 text-sm font-medium text-white"
                   >
                     Short
                   </Button>
                 </DialogTrigger>
               </div>
               <DialogContent
-                className="bg-white w-[400px] px-0 py-0 max-h-[700px] overflow-y-hidden hover:overflow-y-auto overscroll-contain [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                className="max-h-[700px] w-[400px] overflow-y-hidden overscroll-contain bg-white px-0 py-0 [-ms-overflow-style:none] [scrollbar-width:none] hover:overflow-y-auto [&::-webkit-scrollbar]:hidden"
                 showCloseButton={false}
               >
                 <MarketModal type={openSide ?? "long"} />
               </DialogContent>
             </Dialog>
 
-            <div className="text-[11px] space-y-1">
-              <p className="font-light text-soft-400 line-clamp-2">
-                <span className="font-semibold text-main">News: </span>
+            <div className="space-y-1 text-[11px]">
+              <p className="text-soft-400 line-clamp-2 font-light">
+                <span className="text-text-primary font-semibold">News: </span>
                 {currentPlayer.news}
               </p>
 
-              <button className="flex items-center gap-x-1 text-main font-medium text-xs cursor-pointer hover:underline underline-offset-4">
+              <button className="text-text-primary flex cursor-pointer items-center gap-x-1 text-xs font-medium underline-offset-4 hover:underline">
                 More Details{" "}
-                <ChevronRight className="w-3.5 aspect-auto mt-0.5" />
+                <ChevronRight className="mt-0.5 aspect-auto w-3.5" />
               </button>
             </div>
           </div>
 
-          <div className="flex flex-col gap-y-4 w-full flex-1 min-w-0">
+          <div className="flex w-full min-w-0 flex-1 flex-col gap-y-4">
             <div className="flex justify-between">
               <div className="flex items-center gap-x-2">
                 <Image
                   src="/icons/live-performance/chart-line.svg"
-                  className="w-[14px] h-[14px]"
+                  className="h-[14px] w-[14px]"
                   width={14}
                   height={14}
                   alt="chart-line"
                 />
-                <div className="font-semibold text-xs text-main">
+                <div className="text-text-primary text-xs font-semibold">
                   Performances
                 </div>
               </div>
@@ -251,10 +251,10 @@ export default function LivePerformanceCard() {
                   <button
                     key={range}
                     onClick={() => setTimeRange(range)}
-                    className={`text-xs font-medium py-1.5 px-3 rounded-full cursor-pointer transition-colors ${
+                    className={`cursor-pointer rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
                       timeRange === range
-                        ? "bg-soft-gray text-main"
-                        : "text-soft-400 hover:text-main"
+                        ? "bg-soft-gray text-text-primary"
+                        : "text-soft-400 hover:text-text-primary"
                     }`}
                   >
                     {range}
@@ -271,38 +271,38 @@ export default function LivePerformanceCard() {
           <div className="flex items-center gap-x-4">
             <button
               onClick={handlePrevious}
-              className="flex items-center justify-center cursor-pointer w-8 aspect-square rounded-lg border border-[#0A0D14]/7 group hover:bg-primary-foreground transition-colors duration-200 relative overflow-visible after:content-[''] after:absolute after:inset-0 after:rounded-[inherit] after:pointer-events-none after:shadow-[0_3px_0_0_rgba(10,13,20,0.06),inset_0_-2px_0_0_rgba(255,255,255,0.18)]"
+              className="group hover:bg-primary-foreground relative flex aspect-square w-8 cursor-pointer items-center justify-center overflow-visible rounded-lg border border-[#0A0D14]/7 transition-colors duration-200 after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:shadow-[0_3px_0_0_rgba(10,13,20,0.06),inset_0_-2px_0_0_rgba(255,255,255,0.18)] after:content-['']"
             >
-              <ChevronLeft className="w-3.5 aspect-auto text-[#989A9E] group-hover:text-main" />
+              <ChevronLeft className="group-hover:text-text-primary aspect-auto w-3.5 text-[#989A9E]" />
             </button>
 
-            <p className="text-[11px] text-soft-400">
+            <p className="text-soft-400 text-[11px]">
               {currentPlayer.priceTrendLabel}
             </p>
           </div>
 
-          <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-x-2">
+          <div className="absolute left-1/2 flex -translate-x-1/2 items-center gap-x-2">
             {players.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`rounded-full transition-all duration-200 cursor-pointer hover:opacity-80 ${
+                className={`cursor-pointer rounded-full transition-all duration-200 hover:opacity-80 ${
                   index === currentIndex
-                    ? "bg-main w-[11px] h-[5px]"
-                    : "bg-[#E2E4E9] w-[5px] h-[5px]"
+                    ? "bg-main h-[5px] w-[11px]"
+                    : "h-[5px] w-[5px] bg-[#E2E4E9]"
                 }`}
               />
             ))}
           </div>
 
           <div className="flex items-center gap-x-4">
-            <p className="text-[11px] text-soft-400">{nextPlayer.name} Price</p>
+            <p className="text-soft-400 text-[11px]">{nextPlayer.name} Price</p>
 
             <button
               onClick={handleNext}
-              className="flex items-center justify-center cursor-pointer w-8 aspect-square rounded-lg border group border-[#0A0D14]/7 hover:bg-primary-foreground transition-colors duration-200 relative overflow-visible after:content-[''] after:absolute after:inset-0 after:rounded-[inherit] after:pointer-events-none after:shadow-[0_3px_0_0_rgba(10,13,20,0.06),inset_0_-2px_0_0_rgba(255,255,255,0.18)]"
+              className="group hover:bg-primary-foreground relative flex aspect-square w-8 cursor-pointer items-center justify-center overflow-visible rounded-lg border border-[#0A0D14]/7 transition-colors duration-200 after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:shadow-[0_3px_0_0_rgba(10,13,20,0.06),inset_0_-2px_0_0_rgba(255,255,255,0.18)] after:content-['']"
             >
-              <ChevronRight className="w-3.5 aspect-auto text-[#989A9E] group-hover:text-main" />
+              <ChevronRight className="group-hover:text-text-primary aspect-auto w-3.5 text-[#989A9E]" />
             </button>
           </div>
         </div>

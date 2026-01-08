@@ -26,7 +26,7 @@ export default function TradeButton({ type, ...props }: TradeButtonProps) {
           scale: 0,
           opacity: 0,
         },
-        { duration: 0.4, ease: [0, 0, 0.4, 1] }
+        { duration: 0.4, ease: [0, 0, 0.4, 1] },
       );
     }
   };
@@ -41,7 +41,7 @@ export default function TradeButton({ type, ...props }: TradeButtonProps) {
           scale: [0, 1],
           opacity: [0, 1],
         },
-        { duration: 0.4, ease: [0.4, 0, 0, 1] }
+        { duration: 0.4, ease: [0.4, 0, 0, 1] },
       );
     }
   };
@@ -86,14 +86,14 @@ export default function TradeButton({ type, ...props }: TradeButtonProps) {
       initial="initial"
       whileHover="hover"
       animate="initial"
-      className="bg-page-background relative rounded-lg hover:cursor-pointer aspect-square w-[32px] overflow-hidden flex items-center justify-center"
+      className="bg-elevation-button relative flex aspect-square w-[32px] items-center justify-center overflow-hidden rounded-lg hover:cursor-pointer"
       {...props}
     >
       <Image ref={iconRef} src={icon} alt={type} width={10} height={10} />
       <motion.p
         className={cn(
-          "text-[8px] font-extrabold tracking-[-0.06em]  absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 flex items-center justify-center gap-0",
-          type === "long" ? "text-[#25AB7A]" : "text-[#FC3970]"
+          "absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-0 text-[8px] font-extrabold tracking-[-0.06em]",
+          type === "long" ? "text-[#25AB7A]" : "text-[#FC3970]",
         )}
       >
         {characters.map((char, index) => (

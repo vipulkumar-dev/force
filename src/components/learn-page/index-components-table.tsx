@@ -54,22 +54,22 @@ const metricsData: MetricData[] = [
 
 export default function IndexComponentsTable() {
   return (
-    <div className="bg-white rounded-xl md:rounded-2xl border border-inactive overflow-hidden">
+    <div className="border-inactive overflow-hidden rounded-xl border bg-white md:rounded-2xl">
       {/* Wrapper for horizontal scroll on mobile */}
       <div className="overflow-x-auto">
         <div className="min-w-[600px]">
           {/* Header */}
-          <div className="w-full flex flex-row px-3 md:px-4 py-2.5 md:py-3 border-b border-inactive">
-            <div className="w-[50%] md:w-[70%] text-[11px] md:text-xs font-medium text-soft-400 tracking-[-1%]">
+          <div className="border-inactive flex w-full flex-row border-b px-3 py-2.5 md:px-4 md:py-3">
+            <div className="text-soft-400 w-[50%] text-[11px] font-medium tracking-[-1%] md:w-[70%] md:text-xs">
               Metric
             </div>
-            <div className="w-[17%] md:w-[10%] text-[11px] md:text-xs font-medium text-soft-400 tracking-[-1%]">
+            <div className="text-soft-400 w-[17%] text-[11px] font-medium tracking-[-1%] md:w-[10%] md:text-xs">
               Weight
             </div>
-            <div className="w-[17%] md:w-[10%] text-[11px] md:text-xs font-medium text-soft-400 tracking-[-1%]">
+            <div className="text-soft-400 w-[17%] text-[11px] font-medium tracking-[-1%] md:w-[10%] md:text-xs">
               Current
             </div>
-            <div className="w-[16%] md:w-[10%] text-[11px] md:text-xs font-medium text-soft-400 tracking-[-1%]">
+            <div className="text-soft-400 w-[16%] text-[11px] font-medium tracking-[-1%] md:w-[10%] md:text-xs">
               Trend
             </div>
           </div>
@@ -82,20 +82,20 @@ export default function IndexComponentsTable() {
               return (
                 <div
                   key={index}
-                  className="w-full flex flex-row px-3 md:px-4 py-3 md:py-4 hover:bg-active-hover transition-colors"
+                  className="hover:bg-active-hover flex w-full flex-row px-3 py-3 transition-colors md:px-4 md:py-4"
                 >
-                  <div className="w-[50%] md:w-[70%] text-[13px] md:text-sm text-main font-medium">
+                  <div className="text-text-primary w-[50%] text-[13px] font-medium md:w-[70%] md:text-sm">
                     {metric.metric}
                   </div>
-                  <div className="w-[17%] md:w-[10%] text-[13px] md:text-sm text-main font-medium">
+                  <div className="text-text-primary w-[17%] text-[13px] font-medium md:w-[10%] md:text-sm">
                     {metric.weight}
                   </div>
-                  <div className="w-[17%] md:w-[10%] text-[13px] md:text-sm text-main font-medium">
+                  <div className="text-text-primary w-[17%] text-[13px] font-medium md:w-[10%] md:text-sm">
                     {metric.current}
                   </div>
                   <div
                     className={cn(
-                      "w-[16%] md:w-[10%] text-[13px] md:text-sm font-medium flex flex-row gap-px items-center",
+                      "flex w-[16%] flex-row items-center gap-px text-[13px] font-medium md:w-[10%] md:text-sm",
                       isPositive ? "text-success" : "text-error",
                     )}
                   >

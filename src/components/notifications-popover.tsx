@@ -2,11 +2,7 @@
 
 import Image from "next/image";
 import { Bell, ChevronRight, Check } from "lucide-react";
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from "./ui/popover";
+import { Popover, PopoverTrigger, PopoverContent } from "./ui/popover";
 import { Button } from "./ui/button";
 
 export default function NotificationsPopover() {
@@ -17,9 +13,8 @@ export default function NotificationsPopover() {
       message: (
         <>
           Your Long position on{" "}
-          <span className="font-semibold">LeBron James ($50)</span>{" "}
-          was successfully opened at{" "}
-          <span className="font-semibold">$12.45</span>.
+          <span className="font-semibold">LeBron James ($50)</span> was
+          successfully opened at <span className="font-semibold">$12.45</span>.
         </>
       ),
       time: "Just now",
@@ -31,9 +26,8 @@ export default function NotificationsPopover() {
       message: (
         <>
           Your Long position on{" "}
-          <span className="font-semibold">LeBron James ($50)</span>{" "}
-          was successfully opened at{" "}
-          <span className="font-semibold">$12.45</span>.
+          <span className="font-semibold">LeBron James ($50)</span> was
+          successfully opened at <span className="font-semibold">$12.45</span>.
         </>
       ),
       time: "1 day ago",
@@ -44,9 +38,8 @@ export default function NotificationsPopover() {
       message: (
         <>
           Your Long position on{" "}
-          <span className="font-semibold">LeBron James ($50)</span>{" "}
-          was successfully opened at{" "}
-          <span className="font-semibold">$12.45</span>.
+          <span className="font-semibold">LeBron James ($50)</span> was
+          successfully opened at <span className="font-semibold">$12.45</span>.
         </>
       ),
       time: "1 day ago",
@@ -57,9 +50,8 @@ export default function NotificationsPopover() {
       message: (
         <>
           Your Long position on{" "}
-          <span className="font-semibold">LeBron James ($50)</span>{" "}
-          was successfully opened at{" "}
-          <span className="font-semibold">$12.45</span>.
+          <span className="font-semibold">LeBron James ($50)</span> was
+          successfully opened at <span className="font-semibold">$12.45</span>.
         </>
       ),
       time: "2 days ago",
@@ -69,17 +61,17 @@ export default function NotificationsPopover() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <div className="bg-nav-button rounded-lg p-2 cursor-pointer ">
-          <Bell className="text-main" width={18} height={18} />
+        <div className="bg-nav-button cursor-pointer rounded-lg p-2">
+          <Bell className="text-text-primary" width={18} height={18} />
         </div>
       </PopoverTrigger>
 
       <PopoverContent
         align="end"
-        className="w-[450px] p-0 rounded-xl shadow-xl border border-black/5 z-[200]"
+        className="z-[200] w-[450px] rounded-xl border border-black/5 p-0 shadow-xl"
       >
         {/* HEADER */}
-        <div className="flex items-center justify-between p-4 bg-white">
+        <div className="flex items-center justify-between bg-white p-4">
           <p className="font-semibold">Notifications</p>
 
           <div className="bg-nav-button rounded-lg p-2">
@@ -94,18 +86,11 @@ export default function NotificationsPopover() {
           {notifications.map((n, i) => (
             <div
               key={i}
-              className={`
-                flex gap-3 p-4 m-[10px] rounded-[14px]
-                ${n.unread ? "bg-gray-50" : "bg-white"}
-              `}
+              className={`m-[10px] flex gap-3 rounded-[14px] p-4 ${n.unread ? "bg-gray-50" : "bg-white"} `}
             >
               {/* ICON */}
               <div
-                className={`
-                  w-6 h-6 flex items-center justify-center rounded-md flex-shrink-0
-                  ${n.status === "success" && "bg-green-100 text-green-600"}
-                  ${n.status === "info" && "bg-gray-100 text-gray-500"}
-                `}
+                className={`flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md ${n.status === "success" && "bg-green-100 text-green-600"} ${n.status === "info" && "bg-gray-100 text-gray-500"} `}
               >
                 {n.status === "success" && <Check width={16} />}
                 {n.status === "info" && (
@@ -114,14 +99,14 @@ export default function NotificationsPopover() {
               </div>
 
               {/* TEXT */}
-              <div className="flex flex-col gap-1 flex-1 min-w-0">
-                <p className="font-semibold text-sm">{n.title}</p>
+              <div className="flex min-w-0 flex-1 flex-col gap-1">
+                <p className="text-sm font-semibold">{n.title}</p>
 
-                <p className="text-xs text-gray-500 leading-snug">
+                <p className="text-xs leading-snug text-gray-500">
                   {n.message}
                 </p>
 
-                <p className="text-[11px] text-gray-400 mt-1">{n.time}</p>
+                <p className="mt-1 text-[11px] text-gray-400">{n.time}</p>
               </div>
             </div>
           ))}

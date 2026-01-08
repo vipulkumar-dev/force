@@ -60,8 +60,8 @@ export default function AthletePage() {
 
   if (!player) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-page-background pt-[117px] px-4">
-        <h1 className="text-4xl font-bold text-main mb-4">404</h1>
+      <div className="bg-page-background flex min-h-screen flex-col items-center justify-center px-4 pt-[117px]">
+        <h1 className="text-text-primary mb-4 text-4xl font-bold">404</h1>
         <p className="text-soft-400 mb-8">Player not found</p>
         <Link href="/">
           <Button>Go Home</Button>
@@ -75,14 +75,14 @@ export default function AthletePage() {
   const handlePlaceOrder = (
     type: "long" | "short",
     orderSize: number,
-    leverage: number
+    leverage: number,
   ) => {
     console.log("Order placed:", { type, orderSize, leverage });
     // TODO: Implement actual order execution logic
     alert(
       `${type.toUpperCase()} order confirmed!\nOrder Size: $${orderSize.toFixed(
-        2
-      )}\nLeverage: ${leverage}x\nEntry Price: $${athleteData.price.toFixed(2)}`
+        2,
+      )}\nLeverage: ${leverage}x\nEntry Price: $${athleteData.price.toFixed(2)}`,
     );
   };
 
@@ -107,8 +107,8 @@ export default function AthletePage() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="w-full flex flex-col px-[16px] sm:px-[20px] md:px-[40px] bg-page-background justify-center pt-[117px]">
-            <div className="w-full flex flex-col lg:flex-row gap-[16px] md:gap-[24px] lg:gap-[16px] justify-center items-stretch">
+          <div className="bg-page-background flex w-full flex-col justify-center px-[16px] pt-[117px] sm:px-[20px] md:px-[40px]">
+            <div className="flex w-full flex-col items-stretch justify-center gap-[16px] md:gap-[24px] lg:flex-row lg:gap-[16px]">
               <AthleteBanner
                 name={athleteData.name}
                 team={athleteData.team}
@@ -127,7 +127,7 @@ export default function AthletePage() {
                 onFollow={handleFollow}
                 onNotify={handleNotify}
               />
-              <div className="w-full lg:w-[360px] flex flex-col min-h-0 pb-[20px] sm:pb-[24px] overflow-y-hidden hover:overflow-y-auto h-full">
+              <div className="flex h-full min-h-0 w-full flex-col overflow-y-hidden pb-[20px] hover:overflow-y-auto sm:pb-[24px] lg:w-[360px]">
                 <TradingPanel
                   athleteName={athleteData.name}
                   currentPrice={athleteData.price}
@@ -135,8 +135,8 @@ export default function AthletePage() {
                 />
               </div>
             </div>
-            <div className="w-full flex justify-center mb-[16px] px-[16px] sm:px-[20px] md:px-[24px] lg:px-[40px]">
-              <div className="max-w-[1276px] w-full">
+            <div className="mb-[16px] flex w-full justify-center px-[16px] sm:px-[20px] md:px-[24px] lg:px-[40px]">
+              <div className="w-full max-w-[1276px]">
                 <AthleteStatsCards
                   indexPrice={athleteData.indexPrice}
                   indexPriceChange={athleteData.indexPriceChange}
@@ -149,8 +149,8 @@ export default function AthletePage() {
                 />
               </div>
             </div>
-            <div className="w-full flex justify-center mb-10 px-[16px] sm:px-[20px] md:px-[24px] lg:px-[40px]">
-              <div className="max-w-[1276px] w-full flex flex-col gap-[16px] md:gap-[24px]">
+            <div className="mb-10 flex w-full justify-center px-[16px] sm:px-[20px] md:px-[24px] lg:px-[40px]">
+              <div className="flex w-full max-w-[1276px] flex-col gap-[16px] md:gap-[24px]">
                 <PriceChart />
                 <IndexWeights />
                 <ActivePositions />

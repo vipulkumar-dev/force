@@ -1,12 +1,11 @@
-import { X, Gift } from 'lucide-react'
-import React, { useState, useEffect } from 'react'
-import { DialogClose } from '@/components/ui/dialog'
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Slider } from '@/components/ui/slider'
-import Image from 'next/image'
+import { X, Gift } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { DialogClose } from "@/components/ui/dialog";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Slider } from "@/components/ui/slider";
+import Image from "next/image";
 
-const TradeDialog = ({type}: {type: string}) => {
-  
+const TradeDialog = ({ type }: { type: string }) => {
   const [orderType, setOrderType] = useState<"market" | "limit">("market");
   const [orderSize, setOrderSize] = useState<string>("0");
   const [leverage, setLeverage] = useState<number>(6);
@@ -55,45 +54,54 @@ const TradeDialog = ({type}: {type: string}) => {
     // Here you would typically send the order to your backend
   };
 
-
   return (
-    <div className='w-full'>
+    <div className="w-full">
       <div
         id="trading-panel"
-        className="backdrop-blur-[22px] bg-white flex flex-col w-full rounded-[20px] overflow-y-auto overscroll-contain [-ms-overflow-style:none]"
+        className="flex w-full flex-col overflow-y-auto overscroll-contain rounded-[20px] bg-white backdrop-blur-[22px] [-ms-overflow-style:none]"
       >
-        <div className='flex flex-row items-center justify-between px-[12px] sm:px-[16px] md:px-[20px] pt-[12px] sm:pt-[16px] md:pt-[20px]'>
-          <h4 className='text-[16px] leading-[100%] tracking-[-1%] font-semibold text-main'>{type.charAt(0).toUpperCase() + type.slice(1)}</h4>
+        <div className="flex flex-row items-center justify-between px-[12px] pt-[12px] sm:px-[16px] sm:pt-[16px] md:px-[20px] md:pt-[20px]">
+          <h4 className="text-text-primary text-[16px] leading-[100%] font-semibold tracking-[-1%]">
+            {type.charAt(0).toUpperCase() + type.slice(1)}
+          </h4>
           <DialogClose asChild>
-            <button className='text-soft-400 hover:cursor-pointer p-3'><X className='w-6 h-6' /></button>
+            <button className="text-soft-400 p-3 hover:cursor-pointer">
+              <X className="h-6 w-6" />
+            </button>
           </DialogClose>
         </div>
 
         {/* Content */}
-        <div className="flex flex-col gap-[16px] sm:gap-[20px] p-[12px] sm:p-[16px] md:p-[20px]">
+        <div className="flex flex-col gap-[16px] p-[12px] sm:gap-[20px] sm:p-[16px] md:p-[20px]">
           {/* Market/Limit Selection */}
           <div className="flex gap-[6px] sm:gap-[8px]">
             <button
               onClick={() => setOrderType("market")}
-              className={`h-[30px] sm:h-[32px] rounded-md  px-[12px] sm:px-[16px] py-[6px] sm:py-[8px] flex items-center gap-[4px] cursor-pointer ${orderType === "market"
-                  ? "bg-soft-500 border-main/7 text-main"
-                  : "bg-transparent text-sub-500"
-                }`}
+              className={`flex h-[30px] cursor-pointer items-center gap-[4px] rounded-md px-[12px] py-[6px] sm:h-[32px] sm:px-[16px] sm:py-[8px] ${
+                orderType === "market"
+                  ? "bg-soft-500 border-main/7 text-text-primary"
+                  : "text-sub-500 bg-transparent"
+              }`}
             >
-              <p className="font-medium text-[11px] sm:text-[12px] tracking-[-0.12px]">Market</p>
+              <p className="text-[11px] font-medium tracking-[-0.12px] sm:text-[12px]">
+                Market
+              </p>
             </button>
             <button
               onClick={() => setOrderType("limit")}
-              className={`h-[30px] sm:h-[32px] rounded-md  px-[12px] sm:px-[16px] py-[6px] sm:py-[8px] flex items-center gap-[4px] cursor-pointer ${orderType === "limit"
-                  ? "bg-soft-500 border-main/7 text-main"
-                  : "bg-transparent text-sub-500"
-                }`}
+              className={`flex h-[30px] cursor-pointer items-center gap-[4px] rounded-md px-[12px] py-[6px] sm:h-[32px] sm:px-[16px] sm:py-[8px] ${
+                orderType === "limit"
+                  ? "bg-soft-500 border-main/7 text-text-primary"
+                  : "text-sub-500 bg-transparent"
+              }`}
             >
-              <p className="font-medium text-[11px] sm:text-[12px] tracking-[-0.12px]">Limit</p>
+              <p className="text-[11px] font-medium tracking-[-0.12px] sm:text-[12px]">
+                Limit
+              </p>
             </button>
           </div>
-          <div className="relative flex flex-row gap-2 items-center py-2">
-            <div className="relative w-[40px] h-[40px]   rounded-full bg-dark-yellow overflow-hidden">
+          <div className="relative flex flex-row items-center gap-2 py-2">
+            <div className="bg-dark-yellow relative h-[40px] w-[40px] overflow-hidden rounded-full">
               <Image
                 src="/icons/athletes/logo.png"
                 alt="Logo"
@@ -101,29 +109,33 @@ const TradeDialog = ({type}: {type: string}) => {
                 className="object-cover object-top opacity-8 mix-blend-screen"
               />
               <Image
-                src='/icons/athletes/lebron-james.png'
-                alt='LeBron James'
+                src="/icons/athletes/lebron-james.png"
+                alt="LeBron James"
                 fill
                 className="object-cover object-top"
               />
             </div>
             <div>
-              <p className="text-main text-[14px] leading-[100%] tracking-[-2%] font-medium">LeBron James</p>
-              <p className="text-soft-400 text-[12px] leading-[100%] tracking-[-1%] font-medium">Los Angeles Lakers</p>
+              <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
+                LeBron James
+              </p>
+              <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+                Los Angeles Lakers
+              </p>
             </div>
           </div>
           {/* Order Size */}
-          <div className="flex flex-col w-full">
-            <div className="border-light-gray border-[0px_0px_1px] border-solid flex flex-col sm:flex-row gap-[8px] sm:gap-[16px] items-start sm:items-center px-0 py-[12px] sm:py-[12px]">
-              <div className="bg-white flex items-center justify-start w-full sm:flex-1 h-[44px] sm:h-[48px] leading-none px-[16px] sm:px-[20px] py-[10px] sm:py-[13px] rounded-[10px] text-[20px] sm:text-[24px] tracking-[-0.24px]">
-                <p className="font-medium text-[rgba(10,13,20,0.2)] mr-[3px]">
+          <div className="flex w-full flex-col">
+            <div className="border-light-gray flex flex-col items-start gap-[8px] border-[0px_0px_1px] border-solid px-0 py-[12px] sm:flex-row sm:items-center sm:gap-[16px] sm:py-[12px]">
+              <div className="flex h-[44px] w-full items-center justify-start rounded-[10px] bg-white px-[16px] py-[10px] text-[20px] leading-none tracking-[-0.24px] sm:h-[48px] sm:flex-1 sm:px-[20px] sm:py-[13px] sm:text-[24px]">
+                <p className="mr-[3px] font-medium text-[rgba(10,13,20,0.2)]">
                   $
                 </p>
                 <input
                   type="text"
                   value={orderSize}
                   onChange={(e) => handleOrderSizeChange(e.target.value)}
-                  className="font-semibold text-main bg-transparent outline-none w-auto text-left"
+                  className="text-text-primary w-auto bg-transparent text-left font-semibold outline-none"
                   placeholder="50"
                   style={{ width: `${Math.max(orderSize.length, 2)}ch` }}
                 />
@@ -131,14 +143,14 @@ const TradeDialog = ({type}: {type: string}) => {
             </div>
 
             {/* Leverage */}
-            <div className="flex flex-col w-full border-b border-light-gray py-3 sm:py-4 gap-3 sm:gap-4">
+            <div className="border-light-gray flex w-full flex-col gap-3 border-b py-3 sm:gap-4 sm:py-4">
               <div className="flex flex-row justify-between">
-                <p className="font-semibold text-[13px] sm:text-[14px] leading-[100%] tracking-[-1%] text-main">
+                <p className="text-text-primary text-[13px] leading-[100%] font-semibold tracking-[-1%] sm:text-[14px]">
                   Leverage
                 </p>
               </div>
-              <div className="flex flex-row gap-3 sm:gap-4 w-full items-center">
-                <div className="flex flex-col gap-3 sm:gap-3.5 flex-1 min-w-0">
+              <div className="flex w-full flex-row items-center gap-3 sm:gap-4">
+                <div className="flex min-w-0 flex-1 flex-col gap-3 sm:gap-3.5">
                   <Slider
                     value={[leverage]}
                     min={1}
@@ -160,67 +172,68 @@ const TradeDialog = ({type}: {type: string}) => {
                     onValueChange={(value) => setLeverage(value[0])}
                   />
                 </div>
-                <div className="flex flex-row items-center justify-center w-[44px] sm:w-[50px] h-9 sm:h-10 rounded-[10px] border border-main/7 py-2 sm:py-2.5 px-3 sm:px-4 gap-1 bg-white shrink-0">
-                  <p className="font-medium text-[13px] sm:text-[14px] leading-[100%] tracking-[-1%] text-main">
+                <div className="border-main/7 flex h-9 w-[44px] shrink-0 flex-row items-center justify-center gap-1 rounded-[10px] border bg-white px-3 py-2 sm:h-10 sm:w-[50px] sm:px-4 sm:py-2.5">
+                  <p className="text-text-primary text-[13px] leading-[100%] font-medium tracking-[-1%] sm:text-[14px]">
                     {leverage}x
                   </p>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col w-full border-b border-light-gray">
+            <div className="border-light-gray flex w-full flex-col border-b">
               {" "}
-              <div className="flex flex-col gap-4 py-4 w-full">
-                <div className="flex flex-row w-full justify-between items-center">
-                  <p className="text-[14px] leading-[100%] tracking-[-1%] text-soft-400">
+              <div className="flex w-full flex-col gap-4 py-4">
+                <div className="flex w-full flex-row items-center justify-between">
+                  <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
                     Side:
                   </p>
-                  <p className={`font-medium text-[14px] leading-[100%] tracking-[-1%] ${type === "long" ? "text-success" : "text-warning"}`}>
+                  <p
+                    className={`text-[14px] leading-[100%] font-medium tracking-[-1%] ${type === "long" ? "text-success" : "text-warning"}`}
+                  >
                     {type === "long" ? "Long" : "Short"}
                   </p>
                 </div>
-                <div className="flex flex-row w-full justify-between items-center">
-                  <p className="text-[14px] leading-[100%] tracking-[-1%] text-soft-400">
+                <div className="flex w-full flex-row items-center justify-between">
+                  <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
                     Entry Price:
                   </p>
-                  <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-main">
+                  <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
                     ${entryPrice.toFixed(2)}
                   </p>
                 </div>
-                <div className="flex flex-row w-full justify-between items-center">
-                  <p className="text-[14px] leading-[100%] tracking-[-1%] text-soft-400">
+                <div className="flex w-full flex-row items-center justify-between">
+                  <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
                     Order Size:
                   </p>
-                  <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-main">
+                  <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
                     ${orderSizeNum.toFixed(2)}
                   </p>
                 </div>
-                <div className="flex flex-row w-full justify-between items-center">
-                  <p className="text-[14px] leading-[100%] tracking-[-1%] text-soft-400">
+                <div className="flex w-full flex-row items-center justify-between">
+                  <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
                     Leverage:
                   </p>
-                  <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-main">
+                  <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
                     {leverage}x
                   </p>
                 </div>
-                <div className="flex flex-row w-full justify-between items-center">
-                  <p className="text-[14px] leading-[100%] tracking-[-1%] text-soft-400">
+                <div className="flex w-full flex-row items-center justify-between">
+                  <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
                     Est. Fees:
                   </p>
-                  <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-main">
+                  <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
                     ${estimatedFees.toFixed(2)}
                   </p>
                 </div>
-                <div className="flex flex-row w-full justify-between items-center">
-                  <p className="text-[14px] leading-[100%] tracking-[-1%] text-soft-400">
+                <div className="flex w-full flex-row items-center justify-between">
+                  <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
                     Liq. Price:
                   </p>
-                  <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-main">
+                  <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
                     ${liquidationPrice.toFixed(2)}
                   </p>
                 </div>
               </div>
             </div>
-
           </div>
 
           {/* Confirm Button */}
@@ -228,20 +241,20 @@ const TradeDialog = ({type}: {type: string}) => {
             <button
               onClick={handleConfirmOrder}
               disabled={orderSizeNum <= 0}
-              className="bg-main rounded-[8px] h-[38px] sm:h-[40px] px-[12px] sm:px-[16px] py-[8px] sm:py-[10px] flex items-center justify-center gap-[8px] relative shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.6)] disabled:opacity-50 disabled:cursor-not-allowed hover:bg-main/90 transition-colors cursor-pointer"
+              className="bg-main hover:bg-main/90 relative flex h-[38px] cursor-pointer items-center justify-center gap-[8px] rounded-[8px] px-[12px] py-[8px] shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.6)] transition-colors disabled:cursor-not-allowed disabled:opacity-50 sm:h-[40px] sm:px-[16px] sm:py-[10px]"
             >
-              <p className="font-medium text-[13px] sm:text-[14px] text-white text-center tracking-[-0.14px]">
+              <p className="text-center text-[13px] font-medium tracking-[-0.14px] text-white sm:text-[14px]">
                 Confirm {orderType === "market" ? "Market" : "Limit"} Order
               </p>
             </button>
-            <p className="font-normal text-[10px] sm:text-[11px] text-soft-400 text-center tracking-[-0.11px]">
+            <p className="text-soft-400 text-center text-[10px] font-normal tracking-[-0.11px] sm:text-[11px]">
               Order will execute immediately at the best available price.
             </p>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TradeDialog
+export default TradeDialog;

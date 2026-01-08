@@ -150,7 +150,7 @@ export default function AthleteRankingPage({
   const startIndex = (currentPage - 1) * itemsPerPage;
   const paginatedData = filteredData.slice(
     startIndex,
-    startIndex + itemsPerPage
+    startIndex + itemsPerPage,
   );
 
   // Reset to page 1 when filter changes
@@ -163,11 +163,11 @@ export default function AthleteRankingPage({
   const goPage = (n: number) => setCurrentPage(n);
 
   return (
-    <div className="flex flex-col w-[1020px] pb-6 overflow-y-auto overscroll-contain [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-      <div className="flex flex-col w-full pt-6 gap-5">
-        <div className="w-full flex flex-row gap-4 items-center">
+    <div className="flex w-[1020px] flex-col overflow-y-auto overscroll-contain pb-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="flex w-full flex-col gap-5 pt-6">
+        <div className="flex w-full flex-row items-center gap-4">
           <Button
-            className="flex flex-row w-8 h-8 rounded-[7px] items-center justify-center border border-main/7 bg-white gap-2 px-0 hover:bg-primary-foreground hover:cursor-pointer"
+            className="border-main/7 hover:bg-primary-foreground flex h-8 w-8 flex-row items-center justify-center gap-2 rounded-[7px] border bg-white px-0 hover:cursor-pointer"
             onClick={onBack}
           >
             <Image
@@ -178,11 +178,11 @@ export default function AthleteRankingPage({
             />
           </Button>
 
-          <p className="font-medium font-nohemi text-[20px] leading-[100%] tracking-[2%] text-main">
+          <p className="font-nohemi text-text-primary text-[20px] leading-[100%] font-medium tracking-[2%]">
             Athlete NBA Ranking
           </p>
         </div>
-        <div className="flex flex-row w-full items-center justify-between">
+        <div className="flex w-full flex-row items-center justify-between">
           <div className="flex flex-row gap-2">
             {filters.map((label) => {
               const isSelected = selectedFilter === label;
@@ -190,14 +190,14 @@ export default function AthleteRankingPage({
                 <Button
                   key={label}
                   onClick={() => setSelectedFilter(label)}
-                  className={`flex flex-row rounded-[100px] h-fit items-center justify-center py-2 px-4 gap-1 border transition-colors duration-200 ease-out hover:cursor-pointer ${
+                  className={`flex h-fit flex-row items-center justify-center gap-1 rounded-[100px] border px-4 py-2 transition-colors duration-200 ease-out hover:cursor-pointer ${
                     isSelected
                       ? "bg-main border-black/5"
-                      : "bg-white border-main/7 hover:bg-primary-foreground"
+                      : "border-main/7 hover:bg-primary-foreground bg-white"
                   }`}
                 >
                   <p
-                    className={`font-medium text-[12px] leading-[100%] tracking-[-1%] ${
+                    className={`text-[12px] leading-[100%] font-medium tracking-[-1%] ${
                       isSelected ? "text-white" : "text-sub-500"
                     }`}
                   >
@@ -208,7 +208,7 @@ export default function AthleteRankingPage({
             })}
           </div>
           <div className="flex flex-row gap-1.5">
-            <div className="flex flex-row items-center w-[280px] h-9 rounded-[7px] border border-black/5 py-1.5 pr-4 pl-2.5 gap-2.5 bg-white">
+            <div className="flex h-9 w-[280px] flex-row items-center gap-2.5 rounded-[7px] border border-black/5 bg-white py-1.5 pr-4 pl-2.5">
               <Search
                 width={12}
                 height={12}
@@ -219,10 +219,10 @@ export default function AthleteRankingPage({
                 type="text"
                 placeholder="Search Anything..."
                 aria-label="Search"
-                className="flex-1 h-[18px] bg-transparent border-0 outline-none px-0 text-[12px] leading-[100%] tracking-tight placeholder:text-disabled-300 text-[#0a0d14]"
+                className="placeholder:text-disabled-300 h-[18px] flex-1 border-0 bg-transparent px-0 text-[12px] leading-[100%] tracking-tight text-[#0a0d14] outline-none"
               />
             </div>
-            <Button className="flex flex-row items-center justify-center w-9 h-9 border border-main/7 px-0 gap-2.5 bg-white hover:bg-primary-foreground hover:cursor-pointer">
+            <Button className="border-main/7 hover:bg-primary-foreground flex h-9 w-9 flex-row items-center justify-center gap-2.5 border bg-white px-0 hover:cursor-pointer">
               <Image
                 src="/icons/filter-icon.svg"
                 alt="Filter Icon"
@@ -232,8 +232,8 @@ export default function AthleteRankingPage({
             </Button>
             <Popover>
               <PopoverTrigger asChild>
-                <Button className="flex flex-row items-center justify-center h-9 rounded-[7px] border border-main/7 px-4 py-2 gap-2 bg-white hover:bg-primary-foreground hover:cursor-pointer">
-                  <span className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-main">
+                <Button className="border-main/7 hover:bg-primary-foreground flex h-9 flex-row items-center justify-center gap-2 rounded-[7px] border bg-white px-4 py-2 hover:cursor-pointer">
+                  <span className="text-text-primary text-[12px] leading-[100%] font-medium tracking-[-1%]">
                     Last 24hr
                   </span>
                   <ChevronDown width={16} height={16} color="var(--main)" />
@@ -241,25 +241,25 @@ export default function AthleteRankingPage({
               </PopoverTrigger>
               <PopoverContent className="w-[200px] p-2">
                 <div className="flex flex-col gap-1">
-                  <Button className="w-full justify-start px-3 py-2 h-auto bg-white hover:bg-primary-foreground text-[12px] font-medium text-main">
+                  <Button className="hover:bg-primary-foreground text-text-primary h-auto w-full justify-start bg-white px-3 py-2 text-[12px] font-medium">
                     Last 24hr
                   </Button>
-                  <Button className="w-full justify-start px-3 py-2 h-auto bg-white hover:bg-primary-foreground text-[12px] font-medium text-sub-500">
+                  <Button className="hover:bg-primary-foreground text-sub-500 h-auto w-full justify-start bg-white px-3 py-2 text-[12px] font-medium">
                     Last 7 days
                   </Button>
-                  <Button className="w-full justify-start px-3 py-2 h-auto bg-white hover:bg-primary-foreground text-[12px] font-medium text-sub-500">
+                  <Button className="hover:bg-primary-foreground text-sub-500 h-auto w-full justify-start bg-white px-3 py-2 text-[12px] font-medium">
                     Last 30 days
                   </Button>
                 </div>
               </PopoverContent>
             </Popover>
-            <div className="flex flex-row h-9 w-fit rounded-[7px] border border-main/7 bg-white p-1 gap-1 items-center">
+            <div className="border-main/7 flex h-9 w-fit flex-row items-center gap-1 rounded-[7px] border bg-white p-1">
               <Button
                 onClick={() => setViewMode("list")}
-                className={`flex flex-row items-center justify-center w-7 h-7 gap-2.5 px-0 hover:cursor-pointer transition-colors duration-200 ${
+                className={`flex h-7 w-7 flex-row items-center justify-center gap-2.5 px-0 transition-colors duration-200 hover:cursor-pointer ${
                   viewMode === "list"
                     ? "bg-main rounded-[7px]"
-                    : "bg-white hover:bg-primary-foreground"
+                    : "hover:bg-primary-foreground bg-white"
                 }`}
               >
                 <Image
@@ -275,10 +275,10 @@ export default function AthleteRankingPage({
               </Button>
               <Button
                 onClick={() => setViewMode("grid")}
-                className={`flex flex-row items-center justify-center w-7 h-7 gap-2.5 px-0 hover:cursor-pointer transition-colors duration-200 ${
+                className={`flex h-7 w-7 flex-row items-center justify-center gap-2.5 px-0 transition-colors duration-200 hover:cursor-pointer ${
                   viewMode === "grid"
                     ? "bg-main rounded-[7px]"
-                    : "bg-white hover:bg-primary-foreground"
+                    : "hover:bg-primary-foreground bg-white"
                 }`}
               >
                 <Image
@@ -297,9 +297,9 @@ export default function AthleteRankingPage({
         </div>
       </div>
 
-      <div className="flex flex-col w-full mt-6 gap-5">
+      <div className="mt-6 flex w-full flex-col gap-5">
         {viewMode === "grid" ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 w-full">
+          <div className="grid w-full grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
             {paginatedData.map((athlete) => (
               <AthleteCard
                 key={athlete.id}
@@ -316,22 +316,22 @@ export default function AthleteRankingPage({
             ))}
           </div>
         ) : (
-          <div className="w-full flex flex-col gap-1">
-            <div className="flex flex-row w-full py-3 px-5 gap-8">
-              <div className="w-[4%] flex flex-col items-center"></div>
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[51%]">
+          <div className="flex w-full flex-col gap-1">
+            <div className="flex w-full flex-row gap-8 px-5 py-3">
+              <div className="flex w-[4%] flex-col items-center"></div>
+              <p className="text-soft-400 w-[51%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Athlete Name
               </p>
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[10.5%]">
+              <p className="text-soft-400 w-[10.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Current Price
               </p>
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[10.5%]">
+              <p className="text-soft-400 w-[10.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 24H Change
               </p>
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[10.5%]">
+              <p className="text-soft-400 w-[10.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 24H Volume
               </p>
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[13.5%]">
+              <p className="text-soft-400 w-[13.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Quick Trade
               </p>
             </div>
@@ -356,12 +356,12 @@ export default function AthleteRankingPage({
         )}
 
         {totalPages > 1 && (
-          <div className="flex w-full items-center justify-center mt-2">
+          <div className="mt-2 flex w-full items-center justify-center">
             <div className="flex flex-row items-center gap-5">
               <Button
                 onClick={goPrev}
                 disabled={currentPage === 1}
-                className="flex flex-row w-8 h-8 rounded-[7px] items-center justify-center border border-main/7 bg-white gap-2 px-0 hover:bg-primary-foreground hover:cursor-pointer disabled:opacity-40"
+                className="border-main/7 hover:bg-primary-foreground flex h-8 w-8 flex-row items-center justify-center gap-2 rounded-[7px] border bg-white px-0 hover:cursor-pointer disabled:opacity-40"
               >
                 <Image
                   src="/icons/arrow-left.svg"
@@ -379,14 +379,14 @@ export default function AthleteRankingPage({
                       <Button
                         key={`page-${n}`}
                         onClick={() => goPage(n)}
-                        className={`min-w-8 h-8 px-2 rounded-[7px] border transition-colors duration-200 ${
+                        className={`h-8 min-w-8 rounded-[7px] border px-2 transition-colors duration-200 ${
                           isActive
                             ? "bg-main border-black/5"
-                            : "bg-white border-main/7 hover:bg-primary-foreground"
+                            : "border-main/7 hover:bg-primary-foreground bg-white"
                         }`}
                       >
                         <span
-                          className={`text-[12px] font-medium leading-[100%] tracking-[-1%] ${
+                          className={`text-[12px] leading-[100%] font-medium tracking-[-1%] ${
                             isActive ? "text-white" : "text-sub-500"
                           }`}
                         >
@@ -394,14 +394,14 @@ export default function AthleteRankingPage({
                         </span>
                       </Button>
                     );
-                  }
+                  },
                 )}
               </div>
 
               <Button
                 onClick={goNext}
                 disabled={currentPage === totalPages}
-                className="flex flex-row w-8 h-8 rounded-[7px] items-center justify-center border border-main/7 bg-white gap-2 px-0 hover:bg-primary-foreground hover:cursor-pointer disabled:opacity-40"
+                className="border-main/7 hover:bg-primary-foreground flex h-8 w-8 flex-row items-center justify-center gap-2 rounded-[7px] border bg-white px-0 hover:cursor-pointer disabled:opacity-40"
               >
                 <Image
                   src="/icons/arrow-left.svg"

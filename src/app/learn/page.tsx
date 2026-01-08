@@ -12,11 +12,7 @@ import ArticleContent, {
 import AthleteUpdateCard from "@/components/learn-page/athlete-update-card";
 import IndexComponentsTable from "@/components/learn-page/index-components-table";
 import RelatedTopics from "@/components/learn-page/related-topics";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export default function LearnPage() {
   const [activeArticle, setActiveArticle] = useState("what-is-athlete-index");
@@ -35,9 +31,9 @@ export default function LearnPage() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="w-full flex flex-col lg:flex-row gap-[24px] lg:gap-[40px] px-[16px] md:px-[40px] bg-page-background justify-center pt-[117px]">
+        <div className="bg-page-background flex w-full flex-col justify-center gap-[24px] px-[16px] pt-[117px] md:px-[40px] lg:flex-row lg:gap-[40px]">
           {/* Left sidebar: fixed width on desktop, hidden on mobile */}
-          <div className="hidden lg:flex w-[280px] flex-col min-h-0 pb-[24px] overflow-y-hidden hover:overflow-y-auto overscroll-contain [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="hidden min-h-0 w-[280px] flex-col overflow-y-hidden overscroll-contain pb-[24px] [-ms-overflow-style:none] [scrollbar-width:none] hover:overflow-y-auto lg:flex [&::-webkit-scrollbar]:hidden">
             <LearnSidebar
               activeArticle={activeArticle}
               onArticleSelect={setActiveArticle}
@@ -45,17 +41,20 @@ export default function LearnPage() {
           </div>
 
           {/* Main content: scrollable */}
-          <div className="flex flex-col w-full lg:w-[1089px] min-h-0 p-[20px] md:p-[40px] mb-[24px] mt-0 md:mt-6 gap-6 md:gap-8 overflow-y-auto overscroll-contain [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden bg-white rounded-[12px] md:rounded-[20px]">
+          <div className="mt-0 mb-[24px] flex min-h-0 w-full flex-col gap-6 overflow-y-auto overscroll-contain rounded-[12px] bg-white p-[20px] [-ms-overflow-style:none] [scrollbar-width:none] md:mt-6 md:gap-8 md:rounded-[20px] md:p-[40px] lg:w-[1089px] [&::-webkit-scrollbar]:hidden">
             {/* Mobile menu button */}
-            <div className="lg:hidden flex justify-start mb-2">
+            <div className="mb-2 flex justify-start lg:hidden">
               <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                 <SheetTrigger asChild>
-                  <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-main bg-learn-gray rounded-lg hover:bg-learn-gray/80 transition-colors">
-                    <Menu className="w-5 h-5" />
+                  <button className="text-text-primary bg-learn-gray hover:bg-learn-gray/80 flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors">
+                    <Menu className="h-5 w-5" />
                     Browse Topics
                   </button>
                 </SheetTrigger>
-                <SheetContent side="left" className="w-[280px] p-0 bg-white overflow-y-auto">
+                <SheetContent
+                  side="left"
+                  className="w-[280px] overflow-y-auto bg-white p-0"
+                >
                   <div className="p-4">
                     <LearnSidebar
                       activeArticle={activeArticle}
@@ -92,7 +91,7 @@ export default function LearnPage() {
                 <IndexComponentsTable />
               </ArticleSection>
 
-              <div className="w-full h-0 border border-main/5"></div>
+              <div className="border-main/5 h-0 w-full border"></div>
 
               {/* Related Topics */}
               <RelatedTopics onTopicClick={setActiveArticle} />

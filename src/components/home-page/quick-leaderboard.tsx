@@ -65,39 +65,39 @@ export default function QuickLeaderboard() {
     v.startsWith("-") ? "text-base-red" : "text-dark-green";
 
   return (
-    <div className="flex flex-col w-full rounded-[10px] bg-white">
-      <Button className="flex flex-row w-full h-fit justify-between border-b border-light-gray px-[20px]! py-[20px] gap-[20px] bg-white hover:bg-primary-foreground hover:cursor-pointer">
-        <p className="font-nohemi font-medium text-[14px] leading-[100%] tracking-[2%] text-main">
+    <div className="flex w-full flex-col rounded-[10px] bg-white">
+      <Button className="border-light-gray hover:bg-primary-foreground flex h-fit w-full flex-row justify-between gap-[20px] border-b bg-white px-[20px]! py-[20px] hover:cursor-pointer">
+        <p className="font-nohemi text-text-primary text-[14px] leading-[100%] font-medium tracking-[2%]">
           Quick Leaderboard
         </p>
         <ChevronRight className="text-soft-400" width={14} height={14} />
       </Button>
-      <div className="flex flex-col p-[4px] w-full">
+      <div className="flex w-full flex-col p-[4px]">
         {/* Header row */}
-        <div className="hidden md:flex flex-row w-full">
-          <div className="w-[6%] flex flex-col py-[12px] px-[16px] gap-[24px]"></div>
-          <div className="w-[28%] flex flex-col py-[12px] px-[16px] gap-[24px]">
-            <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400">
+        <div className="hidden w-full flex-row md:flex">
+          <div className="flex w-[6%] flex-col gap-[24px] px-[16px] py-[12px]"></div>
+          <div className="flex w-[28%] flex-col gap-[24px] px-[16px] py-[12px]">
+            <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
               Trader
             </p>
           </div>
-          <div className="w-[16%] flex flex-col py-[12px] px-[16px] gap-[24px]">
-            <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400">
+          <div className="flex w-[16%] flex-col gap-[24px] px-[16px] py-[12px]">
+            <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
               24h PnL
             </p>
           </div>
-          <div className="w-[16%] flex flex-col py-[12px] px-[16px] gap-[24px]">
-            <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400">
+          <div className="flex w-[16%] flex-col gap-[24px] px-[16px] py-[12px]">
+            <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
               Total PnL
             </p>
           </div>
-          <div className="w-[18%] flex flex-col py-[12px] px-[16px] gap-[24px]">
-            <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400">
+          <div className="flex w-[18%] flex-col gap-[24px] px-[16px] py-[12px]">
+            <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
               Open Positions
             </p>
           </div>
-          <div className="w-[16%] flex flex-col py-[12px] px-[16px] gap-[24px]">
-            <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400">
+          <div className="flex w-[16%] flex-col gap-[24px] px-[16px] py-[12px]">
+            <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
               Win Rate
             </p>
           </div>
@@ -107,102 +107,102 @@ export default function QuickLeaderboard() {
         {entries.map((e) => (
           <div
             key={e.rank}
-            className="flex flex-col md:flex-row w-full gap-[8px] md:gap-0 border-t border-transparent hover:border-main hover:bg-primary-foreground transition-colors duration-200 ease-out"
+            className="hover:border-main hover:bg-primary-foreground flex w-full flex-col gap-[8px] border-t border-transparent transition-colors duration-200 ease-out md:flex-row md:gap-0"
           >
             {/* Mobile compact header + grid */}
-            <div className="md:hidden flex flex-col w-full px-[12px] py-[10px] gap-2 border-b border-light-gray">
+            <div className="border-light-gray flex w-full flex-col gap-2 border-b px-[12px] py-[10px] md:hidden">
               <div className="flex items-center gap-3">
-                <div className="flex flex-row max-w-[32px] border border-disabled-100 bg-white py-[6px] px-[8px] gap-[4px] rounded-[100px]">
-                  <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-sub-500">
+                <div className="border-disabled-100 flex max-w-[32px] flex-row gap-[4px] rounded-[100px] border bg-white px-[8px] py-[6px]">
+                  <p className="text-sub-500 text-[12px] leading-[100%] font-medium tracking-[-1%]">
                     #{e.rank}
                   </p>
                 </div>
                 <div
-                  className={`flex flex-row items-center justify-center w-[26px] h-[26px] rounded-[100px] gap-[10px] ${e.badgeBg}`}
+                  className={`flex h-[26px] w-[26px] flex-row items-center justify-center gap-[10px] rounded-[100px] ${e.badgeBg}`}
                 >
                   <p
-                    className={`font-semibold text-[12px] leading-[100%] tracking-[-1%] text-center ${e.badgeText}`}
+                    className={`text-center text-[12px] leading-[100%] font-semibold tracking-[-1%] ${e.badgeText}`}
                   >
                     {e.initials}
                   </p>
                 </div>
-                <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-main">
+                <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
                   {e.name}
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-x-4 gap-y-2">
                 <div>
-                  <p className="text-[11px] font-medium tracking-[-1%] text-soft-400">
+                  <p className="text-soft-400 text-[11px] font-medium tracking-[-1%]">
                     24h PnL
                   </p>
                   <p
                     className={`text-[12px] font-medium tracking-[-1%] ${changeColor(
-                      e.pnl24h
+                      e.pnl24h,
                     )}`}
                   >
                     {e.pnl24h}
                   </p>
                 </div>
                 <div>
-                  <p className="text-[11px] font-medium tracking-[-1%] text-soft-400">
+                  <p className="text-soft-400 text-[11px] font-medium tracking-[-1%]">
                     Total PnL
                   </p>
                   <p
                     className={`text-[12px] font-medium tracking-[-1%] ${changeColor(
-                      e.totalPnl
+                      e.totalPnl,
                     )}`}
                   >
                     {e.totalPnl}
                   </p>
                 </div>
                 <div>
-                  <p className="text-[11px] font-medium tracking-[-1%] text-soft-400">
+                  <p className="text-soft-400 text-[11px] font-medium tracking-[-1%]">
                     Open Positions
                   </p>
-                  <p className="text-[12px] font-medium tracking-[-1%] text-main">
+                  <p className="text-text-primary text-[12px] font-medium tracking-[-1%]">
                     {e.openPositions}
                   </p>
                 </div>
                 <div>
-                  <p className="text-[11px] font-medium tracking-[-1%] text-soft-400">
+                  <p className="text-soft-400 text-[11px] font-medium tracking-[-1%]">
                     Win Rate
                   </p>
-                  <p className="text-[12px] font-medium tracking-[-1%] text-main">
+                  <p className="text-text-primary text-[12px] font-medium tracking-[-1%]">
                     {e.winRate}
                   </p>
                 </div>
               </div>
             </div>
             {/* Rank */}
-            <div className="hidden md:flex w-[6%] flex-row py-[12px] pl-[16px] gap-[24px]">
-              <div className="flex flex-row max-w-[32px] border border-disabled-100 bg-white py-[6px] px-[8px] gap-[4px] rounded-[100px]">
-                <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-sub-500">
+            <div className="hidden w-[6%] flex-row gap-[24px] py-[12px] pl-[16px] md:flex">
+              <div className="border-disabled-100 flex max-w-[32px] flex-row gap-[4px] rounded-[100px] border bg-white px-[8px] py-[6px]">
+                <p className="text-sub-500 text-[12px] leading-[100%] font-medium tracking-[-1%]">
                   #{e.rank}
                 </p>
               </div>
             </div>
 
             {/* Trader */}
-            <div className="hidden md:flex flex-row items-center w-[28%] py-[12px] px-[16px] gap-[12px]">
+            <div className="hidden w-[28%] flex-row items-center gap-[12px] px-[16px] py-[12px] md:flex">
               <div
-                className={`flex flex-row items-center justify-center w-[26px] h-[26px] rounded-[100px] gap-[10px] ${e.badgeBg}`}
+                className={`flex h-[26px] w-[26px] flex-row items-center justify-center gap-[10px] rounded-[100px] ${e.badgeBg}`}
               >
                 <p
-                  className={`font-semibold text-[12px] leading-[100%] tracking-[-1%] text-center ${e.badgeText}`}
+                  className={`text-center text-[12px] leading-[100%] font-semibold tracking-[-1%] ${e.badgeText}`}
                 >
                   {e.initials}
                 </p>
               </div>
-              <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-main">
+              <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
                 {e.name}
               </p>
             </div>
 
             {/* 24h PnL */}
-            <div className="hidden md:flex w-[16%] flex-col py-[12px] px-[16px] gap-[24px] justify-center">
+            <div className="hidden w-[16%] flex-col justify-center gap-[24px] px-[16px] py-[12px] md:flex">
               <p
-                className={`font-medium text-[12px] leading-[100%] tracking-[-1%] ${changeColor(
-                  e.pnl24h
+                className={`text-[12px] leading-[100%] font-medium tracking-[-1%] ${changeColor(
+                  e.pnl24h,
                 )}`}
               >
                 {e.pnl24h}
@@ -210,10 +210,10 @@ export default function QuickLeaderboard() {
             </div>
 
             {/* Total PnL */}
-            <div className="hidden md:flex w-[16%] flex-col py-[12px] px-[16px] gap-[24px] justify-center">
+            <div className="hidden w-[16%] flex-col justify-center gap-[24px] px-[16px] py-[12px] md:flex">
               <p
-                className={`font-medium text-[12px] leading-[100%] tracking-[-1%] ${changeColor(
-                  e.totalPnl
+                className={`text-[12px] leading-[100%] font-medium tracking-[-1%] ${changeColor(
+                  e.totalPnl,
                 )}`}
               >
                 {e.totalPnl}
@@ -221,15 +221,15 @@ export default function QuickLeaderboard() {
             </div>
 
             {/* Open Positions */}
-            <div className="hidden md:flex w-[18%] flex flex-col py-[12px] px-[16px] gap-[24px] justify-center">
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-main">
+            <div className="flex hidden w-[18%] flex-col justify-center gap-[24px] px-[16px] py-[12px] md:flex">
+              <p className="text-text-primary text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 {e.openPositions}
               </p>
             </div>
 
             {/* Win Rate */}
-            <div className="hidden md:flex w-[16%] flex flex-col py-[12px] px-[16px] gap-[24px] justify-center">
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-main">
+            <div className="flex hidden w-[16%] flex-col justify-center gap-[24px] px-[16px] py-[12px] md:flex">
+              <p className="text-text-primary text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 {e.winRate}
               </p>
             </div>

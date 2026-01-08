@@ -42,25 +42,25 @@ const fixtures: FixtureCell[] = [
 
 export default function TodayFixturesSide() {
   return (
-    <div className="flex flex-col bg-white rounded-[10px] w-full">
-      <Button className="flex flex-row w-full h-fit justify-between border-b border-light-gray px-[20px]! py-[20px] gap-[20px] bg-white hover:bg-primary-foreground hover:cursor-pointer">
-        <p className="font-nohemi font-medium text-[14px] leading-[100%] tracking-[2%] text-main">
+    <div className="flex w-full flex-col rounded-[10px] bg-white">
+      <Button className="border-light-gray hover:bg-primary-foreground flex h-fit w-full flex-row justify-between gap-[20px] border-b bg-white px-[20px]! py-[20px] hover:cursor-pointer">
+        <p className="font-nohemi text-text-primary text-[14px] leading-[100%] font-medium tracking-[2%]">
           Today&apos;s Fixtures
         </p>
         <ChevronRight className="text-soft-400" width={14} height={14} />
       </Button>
-      <div className="flex flex-col w-full bg-white rounded-[10px]">
+      <div className="flex w-full flex-col rounded-[10px] bg-white">
         {fixtures.map((cell, colIdx) => (
           <div
             key={`cell-${colIdx}`}
-            className={`flex flex-col w-full ${
-              colIdx === 0 ? "border-r border-light-gray" : ""
+            className={`flex w-full flex-col ${
+              colIdx === 0 ? "border-light-gray border-r" : ""
             }`}
           >
-            <div className="flex flex-row border-b border-light-gray justify-between p-[20px] gap-[14px] w-full hover:bg-primary-foreground hover:cursor-pointer transition-colors duration-200 ease-out">
+            <div className="border-light-gray hover:bg-primary-foreground flex w-full flex-row justify-between gap-[14px] border-b p-[20px] transition-colors duration-200 ease-out hover:cursor-pointer">
               {/* Left team */}
-              <div className="flex flex-col gap-[10px] w-full max-w-[91px] items-center justify-center">
-                <div className="flex flex-col w-[32px] h-[32px] rounded-[7px] items-center justify-center gap-[6px] bg-main/3">
+              <div className="flex w-full max-w-[91px] flex-col items-center justify-center gap-[10px]">
+                <div className="bg-main/3 flex h-[32px] w-[32px] flex-col items-center justify-center gap-[6px] rounded-[7px]">
                   <Image
                     src={cell.left.iconSrc}
                     alt={cell.left.code}
@@ -68,47 +68,47 @@ export default function TodayFixturesSide() {
                     height={17}
                   />
                 </div>
-                <p className="font-medium text-[14px] leading-[100%] tracking-[-2%] text-main">
+                <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                   {cell.left.code}
                 </p>
               </div>
 
               {/* Arena and score */}
-              <div className="flex flex-col w-[90px] gap-[10px] items-center shrink-0">
-                <p className="font-semibold text-[11px] leading-[100%] tracking-[-1%] text-main">
+              <div className="flex w-[90px] shrink-0 flex-col items-center gap-[10px]">
+                <p className="text-text-primary text-[11px] leading-[100%] font-semibold tracking-[-1%]">
                   {cell.arena}
                 </p>
-                <div className="w-full flex flex-row justify-between items-center">
+                <div className="flex w-full flex-row items-center justify-between">
                   <p
-                    className={`font-semibold text-[16px] leading-[100%] tracking-[-2%] ${
+                    className={`text-[16px] leading-[100%] font-semibold tracking-[-2%] ${
                       cell.scoreLeft > cell.scoreRight
-                        ? "text-main"
+                        ? "text-text-primary"
                         : "text-soft-400"
                     }`}
                   >
                     {cell.scoreLeft}
                   </p>
-                  <p className="font-semibold text-[16px] leading-[100%] tracking-[-2%] text-main">
+                  <p className="text-text-primary text-[16px] leading-[100%] font-semibold tracking-[-2%]">
                     :
                   </p>
                   <p
-                    className={`font-semibold text-[16px] leading-[100%] tracking-[-2%] ${
+                    className={`text-[16px] leading-[100%] font-semibold tracking-[-2%] ${
                       cell.scoreLeft > cell.scoreRight
                         ? "text-soft-400"
-                        : "text-main"
+                        : "text-text-primary"
                     }`}
                   >
                     {cell.scoreRight}
                   </p>
                 </div>
-                <p className="text-[11px] leading-[140%] tracking-[-2%] text-soft-400">
+                <p className="text-soft-400 text-[11px] leading-[140%] tracking-[-2%]">
                   {cell.timeRange}
                 </p>
               </div>
 
               {/* Right team */}
-              <div className="flex flex-col gap-[10px] w-full max-w-[91px] items-center justify-center">
-                <div className="flex flex-col w-[32px] h-[32px] rounded-[7px] items-center justify-center gap-[6px] bg-main/3">
+              <div className="flex w-full max-w-[91px] flex-col items-center justify-center gap-[10px]">
+                <div className="bg-main/3 flex h-[32px] w-[32px] flex-col items-center justify-center gap-[6px] rounded-[7px]">
                   <Image
                     src={cell.right.iconSrc}
                     alt={cell.right.code}
@@ -116,7 +116,7 @@ export default function TodayFixturesSide() {
                     height={17}
                   />
                 </div>
-                <p className="font-medium text-[14px] leading-[100%] tracking-[-2%] text-main">
+                <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                   {cell.right.code}
                 </p>
               </div>

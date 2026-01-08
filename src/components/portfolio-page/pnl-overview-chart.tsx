@@ -16,7 +16,7 @@ import {
 type PnLOverviewChartProps = {
   data?: ChartDataPointT[];
   cumulativePnL?: number;
-}
+};
 
 type ChartDataPointT = {
   index: number;
@@ -25,7 +25,7 @@ type ChartDataPointT = {
   dateObj: Date;
   dailyPnL: number;
   cumulativePnL: number;
-}
+};
 
 type TimeRange = "1H" | "6H" | "1D" | "1W" | "1M" | "ALL";
 
@@ -41,7 +41,20 @@ interface TooltipProps {
 
 // Format date for tooltip: "12 Aug, 8:00 PM"
 const formatTooltipDate = (date: Date): string => {
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
   const day = date.getDate();
   const month = months[date.getMonth()];
   const hours = date.getHours();
@@ -57,33 +70,39 @@ const formatTooltipDate = (date: Date): string => {
 const CustomTooltip = ({ active, payload }: TooltipProps) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
-    const dailyPnLValue = payload.find((p) => p.dataKey === "dailyPnL")?.value ?? data.dailyPnL;
-    const cumulativePnLValue = payload.find((p) => p.dataKey === "cumulativePnL")?.value ?? data.cumulativePnL;
+    const dailyPnLValue =
+      payload.find((p) => p.dataKey === "dailyPnL")?.value ?? data.dailyPnL;
+    const cumulativePnLValue =
+      payload.find((p) => p.dataKey === "cumulativePnL")?.value ??
+      data.cumulativePnL;
     const isPositive = dailyPnLValue >= 0;
 
     return (
-      <div className="bg-[#262626]/80 rounded-lg py-2 px-3 shadow-lg">
-        <p className="text-white text-xs mb-2">
+      <div className="rounded-lg bg-[#262626]/80 px-3 py-2 shadow-lg">
+        <p className="mb-2 text-xs text-white">
           {formatTooltipDate(data.dateObj)}
         </p>
         <div className="space-y-1">
           {dailyPnLValue !== undefined && (
             <div className="flex items-center gap-2">
-              <div className={`w-3 h-3 rounded-full flex items-center justify-center ${isPositive ? "bg-[#2d9f75]" : "bg-[#df1c41]"
-                }`}>
-                <div className="w-1.5 h-1.5 rounded-full bg-white"></div>
+              <div
+                className={`flex h-3 w-3 items-center justify-center rounded-full ${
+                  isPositive ? "bg-[#2d9f75]" : "bg-[#df1c41]"
+                }`}
+              >
+                <div className="h-1.5 w-1.5 rounded-full bg-white"></div>
               </div>
-              <p className="text-white text-xs font-medium">
+              <p className="text-xs font-medium text-white">
                 Daily: {currencyFormatter.format(dailyPnLValue)}
               </p>
             </div>
           )}
           {cumulativePnLValue !== undefined && (
             <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-[#375DFB] flex items-center justify-center">
-                <div className="w-1.5 h-1.5 rounded-full bg-white"></div>
+              <div className="flex h-3 w-3 items-center justify-center rounded-full bg-[#375DFB]">
+                <div className="h-1.5 w-1.5 rounded-full bg-white"></div>
               </div>
-              <p className="text-white text-xs font-medium">
+              <p className="text-xs font-medium text-white">
                 Cumulative: {currencyFormatter.format(cumulativePnLValue)}
               </p>
             </div>
@@ -148,7 +167,10 @@ const generateMockData = (timeRange: TimeRange): ChartDataPointT[] => {
 
   // Determine label interval to show more labels (6-8 labels for better visibility)
   const numLabels = Math.min(8, Math.max(4, Math.floor(totalDataPoints / 3)));
-  const labelInterval = Math.max(1, Math.floor((totalDataPoints - 1) / numLabels));
+  const labelInterval = Math.max(
+    1,
+    Math.floor((totalDataPoints - 1) / numLabels),
+  );
 
   // Start cumulative PnL around 10K-15K, target range 10K-50K
   let cumulative = 10000 + Math.random() * 5000;
@@ -168,7 +190,7 @@ const generateMockData = (timeRange: TimeRange): ChartDataPointT[] => {
       }
     } else {
       currentDate = new Date(
-        startDate.getTime() + i * intervalMinutes * 60 * 1000
+        startDate.getTime() + i * intervalMinutes * 60 * 1000,
       );
     }
 
@@ -189,7 +211,11 @@ const generateMockData = (timeRange: TimeRange): ChartDataPointT[] => {
       if (i % labelInterval === 0 && i < totalDataPoints - 1) {
         dateLabel = dateString;
       }
-    } else if (timeRange === "1W" || timeRange === "1M" || timeRange === "ALL") {
+    } else if (
+      timeRange === "1W" ||
+      timeRange === "1M" ||
+      timeRange === "ALL"
+    ) {
       // For 1W, 1M, ALL: show MM/DD format (days only, no time)
       const month = currentDate.getMonth() + 1;
       const day = currentDate.getDate();
@@ -197,7 +223,20 @@ const generateMockData = (timeRange: TimeRange): ChartDataPointT[] => {
 
       // For ALL, show month abbreviation for better readability
       if (timeRange === "ALL") {
-        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const monthNames = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ];
         dateString = `${monthNames[currentDate.getMonth()]}`;
       }
 
@@ -214,11 +253,15 @@ const generateMockData = (timeRange: TimeRange): ChartDataPointT[] => {
 
     // Generate daily PnL with good mix of positive and negative
     // Target cumulative should trend within 10K-50K range
-    const targetCumulative = targetMin + progress * targetRange * (0.6 + Math.sin(progress * Math.PI * 2) * 0.2);
+    const targetCumulative =
+      targetMin +
+      progress * targetRange * (0.6 + Math.sin(progress * Math.PI * 2) * 0.2);
     const deviation = targetCumulative - cumulative;
 
     // Generate daily PnL that guides toward target but with natural variation
-    const baseChange = deviation / Math.max(1, totalDataPoints - i) * (1 + Math.random() * 0.4);
+    const baseChange =
+      (deviation / Math.max(1, totalDataPoints - i)) *
+      (1 + Math.random() * 0.4);
 
     // Add random variation - ensure we get both gains and losses
     // Make variation MORE dynamic for shorter timeframes to make bars more visible
@@ -319,7 +362,10 @@ export default function PnLOverviewChart({
     const domainMax = Math.ceil((maxValue + padding) / 5000) * 5000;
 
     // Generate ticks
-    const tickStep = Math.max(5000, Math.ceil((domainMax - domainMin) / 5 / 5000) * 5000);
+    const tickStep = Math.max(
+      5000,
+      Math.ceil((domainMax - domainMin) / 5 / 5000) * 5000,
+    );
     const ticks: number[] = [];
     for (let tick = domainMin; tick <= domainMax; tick += tickStep) {
       ticks.push(tick);
@@ -342,7 +388,9 @@ export default function PnLOverviewChart({
   // Calculate cumulative PnL from data if not provided
   const finalCumulativePnL =
     cumulativePnL ??
-    (chartData.length > 0 ? chartData[chartData.length - 1].cumulativePnL / 1000 : 12.5);
+    (chartData.length > 0
+      ? chartData[chartData.length - 1].cumulativePnL / 1000
+      : 12.5);
 
   // Custom bar color based on positive/negative value
   const getBarColor = (value: number) => {
@@ -379,57 +427,61 @@ export default function PnLOverviewChart({
   }, [chartData.length]);
 
   return (
-    <div className="bg-white rounded-[10px] flex flex-col w-full">
+    <div className="flex w-full flex-col rounded-[10px] bg-white">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between w-full p-[16px] md:p-5 gap-3 border-b border-light-gray">
+      <div className="border-light-gray flex w-full flex-col justify-between gap-3 border-b p-[16px] md:flex-row md:items-center md:p-5">
         {/* Title */}
-        <h2 className="font-nohemi font-medium text-[14px] text-main tracking-[0.28px] leading-none">
+        <h2 className="font-nohemi text-text-primary text-[14px] leading-none font-medium tracking-[0.28px]">
           PnL Overview
         </h2>
       </div>
 
-      <div className="flex flex-col w-full p-[16px] md:p-5 gap-5">
-        <div className="flex flex-row items-center justify-between w-full">
-          <div className="flex flex-wrap gap-x-[16px] md:gap-x-[20px] gap-y-[12px] items-center">
+      <div className="flex w-full flex-col gap-5 p-[16px] md:p-5">
+        <div className="flex w-full flex-row items-center justify-between">
+          <div className="flex flex-wrap items-center gap-x-[16px] gap-y-[12px] md:gap-x-[20px]">
             {/* Daily Profit */}
-            <div className="flex gap-[6px] items-center border border-2 border-soft-500 rounded-[8px] p-[10px]">
-              <div className="bg-dark-green rounded-full w-[6px] h-[6px]" />
-              <p className="font-medium text-[11px] md:text-[13px] text-main tracking-[-0.13px] leading-none whitespace-nowrap">
+            <div className="border-soft-500 flex items-center gap-[6px] rounded-[8px] border border-2 p-[10px]">
+              <div className="bg-dark-green h-[6px] w-[6px] rounded-full" />
+              <p className="text-text-primary text-[11px] leading-none font-medium tracking-[-0.13px] whitespace-nowrap md:text-[13px]">
                 Daily Profit
               </p>
             </div>
 
             {/* Daily Lost */}
-            <div className="flex gap-[6px] items-center border border-2 border-soft-500 rounded-[8px] p-[10px]">
-              <div className="bg-base-red rounded-full w-[6px] h-[6px]" />
-              <p className="font-medium text-[11px] md:text-[13px] text-main tracking-[-0.13px] leading-none whitespace-nowrap">
+            <div className="border-soft-500 flex items-center gap-[6px] rounded-[8px] border border-2 p-[10px]">
+              <div className="bg-base-red h-[6px] w-[6px] rounded-full" />
+              <p className="text-text-primary text-[11px] leading-none font-medium tracking-[-0.13px] whitespace-nowrap md:text-[13px]">
                 Daily Lost
               </p>
             </div>
 
             {/* Cumulative PNL */}
-            <div className="flex gap-[6px] items-center border border-2 border-soft-500 rounded-[8px] p-[6px]">
-              <div className="bg-base-blue rounded-full w-[6px] h-[6px]" />
-              <p className="font-medium text-[11px] md:text-[13px] text-main tracking-[-0.13px] leading-none whitespace-nowrap">
+            <div className="border-soft-500 flex items-center gap-[6px] rounded-[8px] border border-2 p-[6px]">
+              <div className="bg-base-blue h-[6px] w-[6px] rounded-full" />
+              <p className="text-text-primary text-[11px] leading-none font-medium tracking-[-0.13px] whitespace-nowrap md:text-[13px]">
                 Cumulative PNL
               </p>
-              <p className="text-dark-green">${finalCumulativePnL.toFixed(1)}K</p>
+              <p className="text-dark-green">
+                ${finalCumulativePnL.toFixed(1)}K
+              </p>
             </div>
           </div>
           {/* Time Range Selector */}
-          <div className="flex items-center overflow-x-auto -mx-[16px] px-[16px] md:mx-0 md:px-0">
+          <div className="-mx-[16px] flex items-center overflow-x-auto px-[16px] md:mx-0 md:px-0">
             {timeRanges.map((range) => (
               <button
                 key={range}
                 onClick={() => setTimeRange(range)}
-                className={`flex gap-[4px] items-center justify-center p-[7.5px] rounded-[100px] relative transition-colors cursor-pointer shrink-0 ${timeRange === range
+                className={`relative flex shrink-0 cursor-pointer items-center justify-center gap-[4px] rounded-[100px] p-[7.5px] transition-colors ${
+                  timeRange === range
                     ? "bg-soft-gray shadow-[0px_0.5px_1px_0px_inset_rgba(255,255,255,0.2),0px_4px_5px_0px_inset_rgba(255,255,255,0.05)]"
                     : "hover:bg-neutral-50"
-                  }`}
+                }`}
               >
                 <p
-                  className={`font-medium px-[3px] text-[13px] tracking-[-0.13px] leading-none ${timeRange === range ? "text-main" : "text-soft-400"
-                    }`}
+                  className={`px-[3px] text-[13px] leading-none font-medium tracking-[-0.13px] ${
+                    timeRange === range ? "text-text-primary" : "text-soft-400"
+                  }`}
                 >
                   {range}
                 </p>
@@ -439,7 +491,7 @@ export default function PnLOverviewChart({
         </div>
 
         {/* Chart */}
-        <div className="w-full h-[250px] md:h-[300px] -mx-[8px] md:mx-0">
+        <div className="-mx-[8px] h-[250px] w-full md:mx-0 md:h-[300px]">
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart
               data={chartData}
@@ -485,7 +537,13 @@ export default function PnLOverviewChart({
                     height?: number;
                     payload: ChartDataPointT;
                   };
-                  const { x = 0, y = 0, width = barSize, height = 0, payload } = barProps;
+                  const {
+                    x = 0,
+                    y = 0,
+                    width = barSize,
+                    height = 0,
+                    payload,
+                  } = barProps;
                   const color = getBarColor(payload.dailyPnL);
 
                   // Handle both positive and negative bars

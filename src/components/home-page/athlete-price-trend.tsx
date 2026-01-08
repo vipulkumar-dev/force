@@ -76,33 +76,33 @@ export default function AthletePriceTrend({
   };
 
   return (
-    <div className="w-full flex flex-col bg-white rounded-[10px]">
+    <div className="flex w-full flex-col rounded-[10px] bg-white">
       <Button
         onClick={() => onOpenPriceTrend?.()}
-        className="flex flex-col w-full h-auto border-b px-[20px]! py-[20px]! gap-[16px] border-light-gray bg-white hover:bg-primary-foreground hover:cursor-pointer"
+        className="border-light-gray hover:bg-primary-foreground flex h-auto w-full flex-col gap-[16px] border-b bg-white px-[20px]! py-[20px]! hover:cursor-pointer"
       >
-        <div className="flex flex-row justify-between w-full gap-[16px]">
-          <p className="font-nohemi font-medium text-[16px] leading-[100%] tracking-[2%] text-main">
+        <div className="flex w-full flex-row justify-between gap-[16px]">
+          <p className="font-nohemi text-text-primary text-[16px] leading-[100%] font-medium tracking-[2%]">
             Athlete Price trend
           </p>
           <ChevronRight className="text-soft-400" width={14} height={14} />
         </div>
 
-        <div className="flex flex-row gap-[8px] w-full">
+        <div className="flex w-full flex-row gap-[8px]">
           {filters.map((label) => {
             const isSelected = selectedFilter === label;
             return (
               <Button
                 key={label}
                 onClick={(e) => onFilterClick(e, label)}
-                className={`flex flex-row rounded-[100px] h-fit items-center justify-center py-[6px] px-[10px] gap-[4px] border transition-colors duration-200 ease-out hover:cursor-pointer ${
+                className={`flex h-fit flex-row items-center justify-center gap-[4px] rounded-[100px] border px-[10px] py-[6px] transition-colors duration-200 ease-out hover:cursor-pointer ${
                   isSelected
                     ? "bg-main border-black/5"
-                    : "bg-white border-main/7 hover:bg-primary-foreground"
+                    : "border-main/7 hover:bg-primary-foreground bg-white"
                 }`}
               >
                 <p
-                  className={`font-medium text-[12px] leading-[100%] tracking-[-1%] ${
+                  className={`text-[12px] leading-[100%] font-medium tracking-[-1%] ${
                     isSelected ? "text-white" : "text-sub-500"
                   }`}
                 >
@@ -114,35 +114,35 @@ export default function AthletePriceTrend({
         </div>
       </Button>
 
-      <div className="flex flex-col w-full">
+      <div className="flex w-full flex-col">
         {trendRows.map((row, idx) => (
           <div
             key={idx}
             onClick={() => router.push(`/athlete/${row.id}`)}
-            className="flex flex-row border-b border-light-gray py-[16px] px-[20px] gap-[10px] w-full border-t border-transparent hover:bg-primary-foreground hover:cursor-pointer transition-colors duration-200 ease-out"
+            className="border-light-gray hover:bg-primary-foreground flex w-full flex-row gap-[10px] border-t border-b border-transparent px-[20px] py-[16px] transition-colors duration-200 ease-out hover:cursor-pointer"
           >
             <Image
               src={row.iconSrc}
               alt={row.name}
               width={40}
               height={40}
-              className="rounded-[6px] max-h-[40px] max-w-[40px]"
+              className="max-h-[40px] max-w-[40px] rounded-[6px]"
             />
-            <div className="flex flex-col gap-[8px] justify-center">
-              <p className="font-medium text-[14px] leading-[100%] tracking-[-2%] text-main text-nowrap">
+            <div className="flex flex-col justify-center gap-[8px]">
+              <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%] text-nowrap">
                 {row.name}
               </p>
-              <p className="text-[12px] leading-[100%] tracking-[-1%] text-soft-400 text-nowrap">
+              <p className="text-soft-400 text-[12px] leading-[100%] tracking-[-1%] text-nowrap">
                 {row.team}
               </p>
             </div>
-            <div className="flex flex-col gap-[8px] items-end w-full justify-center">
-              <p className="font-medium text-[14px] leading-[100%] tracking-[-1%] text-right text-main">
+            <div className="flex w-full flex-col items-end justify-center gap-[8px]">
+              <p className="text-text-primary text-right text-[14px] leading-[100%] font-medium tracking-[-1%]">
                 {row.price}
               </p>
               <p
-                className={`font-medium text-[12px] leading-[100%] tracking-[-1%] text-right ${changeClass(
-                  row.change
+                className={`text-right text-[12px] leading-[100%] font-medium tracking-[-1%] ${changeClass(
+                  row.change,
                 )}`}
               >
                 {row.change}

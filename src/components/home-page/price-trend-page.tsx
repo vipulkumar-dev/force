@@ -142,7 +142,7 @@ export default function PriceTrendPage({
     const check = () =>
       setIsMobile(
         typeof window !== "undefined" &&
-          window.matchMedia("(max-width: 768px)").matches
+          window.matchMedia("(max-width: 768px)").matches,
       );
     check();
     window.addEventListener("resize", check);
@@ -163,7 +163,7 @@ export default function PriceTrendPage({
   const startIndex = (currentPage - 1) * itemsPerPage;
   const paginatedData = filteredData.slice(
     startIndex,
-    startIndex + itemsPerPage
+    startIndex + itemsPerPage,
   );
 
   // Reset to page 1 when filter changes
@@ -179,14 +179,14 @@ export default function PriceTrendPage({
     <div
       className={`flex flex-col ${
         onDiscover ? "w-full" : "w-full md:w-[1020px]"
-      } pb-6 overflow-hidden md:overflow-y-auto overscroll-contain [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden`}
+      } overflow-hidden overscroll-contain pb-6 [-ms-overflow-style:none] [scrollbar-width:none] md:overflow-y-auto [&::-webkit-scrollbar]:hidden`}
     >
-      <div className="flex flex-col w-full pt-6 gap-5">
+      <div className="flex w-full flex-col gap-5 pt-6">
         {!onDiscover && (
-          <div className="w-full flex flex-row items-center justify-between gap-2 sm:gap-4">
+          <div className="flex w-full flex-row items-center justify-between gap-2 sm:gap-4">
             <Button
               lip="on"
-              className="flex flex-row w-8 h-8 rounded-[7px] items-center justify-center border border-main/7 bg-white gap-2 px-0 hover:bg-primary-foreground hover:cursor-pointer"
+              className="border-main/7 hover:bg-primary-foreground flex h-8 w-8 flex-row items-center justify-center gap-2 rounded-[7px] border bg-white px-0 hover:cursor-pointer"
               onClick={onBack}
             >
               <Image
@@ -197,11 +197,11 @@ export default function PriceTrendPage({
               />
             </Button>
 
-            <p className="font-medium font-nohemi text-[18px] sm:text-[20px] leading-[110%] tracking-[1%] text-main">
+            <p className="font-nohemi text-text-primary text-[18px] leading-[110%] font-medium tracking-[1%] sm:text-[20px]">
               Find More Athlete
             </p>
             {isMobile && (
-              <div className="flex flex-row items-center w-[160px] sm:w-[200px] h-9 rounded-[7px] border border-black/5 py-1 pr-3 pl-2 gap-2 bg-white">
+              <div className="flex h-9 w-[160px] flex-row items-center gap-2 rounded-[7px] border border-black/5 bg-white py-1 pr-3 pl-2 sm:w-[200px]">
                 <Search
                   width={12}
                   height={12}
@@ -212,32 +212,32 @@ export default function PriceTrendPage({
                   type="text"
                   placeholder="Search Anything..."
                   aria-label="Search"
-                  className="flex-1 h-[18px] bg-transparent border-0 outline-none px-0 text-[12px] leading-[100%] tracking-tight placeholder:text-disabled-300 text-[#0a0d14]"
+                  className="placeholder:text-disabled-300 h-[18px] flex-1 border-0 bg-transparent px-0 text-[12px] leading-[100%] tracking-tight text-[#0a0d14] outline-none"
                 />
               </div>
             )}
           </div>
         )}
         <div
-          className={`flex flex-row w-full items-center ${
+          className={`flex w-full flex-row items-center ${
             isMobile ? "justify-center" : "justify-between"
           }`}
         >
-          <div className="flex flex-row flex-wrap w-full justify-center md:justify-start gap-2">
+          <div className="flex w-full flex-row flex-wrap justify-center gap-2 md:justify-start">
             {filters.map((label) => {
               const isSelected = selectedFilter === label;
               return (
                 <Button
                   key={label}
                   onClick={() => setSelectedFilter(label)}
-                  className={`flex flex-row rounded-[100px] h-fit items-center justify-center py-2 px-4 gap-1 border transition-colors duration-200 ease-out hover:cursor-pointer ${
+                  className={`flex h-fit flex-row items-center justify-center gap-1 rounded-[100px] border px-4 py-2 transition-colors duration-200 ease-out hover:cursor-pointer ${
                     isSelected
                       ? "bg-main border-black/5"
-                      : "bg-white border-main/7 hover:bg-primary-foreground"
+                      : "border-main/7 hover:bg-primary-foreground bg-white"
                   }`}
                 >
                   <p
-                    className={`font-medium text-[12px] leading-[100%] tracking-[-1%] ${
+                    className={`text-[12px] leading-[100%] font-medium tracking-[-1%] ${
                       isSelected ? "text-white" : "text-sub-500"
                     }`}
                   >
@@ -250,7 +250,7 @@ export default function PriceTrendPage({
           {!isMobile && (
             <div className="flex flex-row gap-1.5">
               {!onDiscover && (
-                <div className="flex flex-row items-center w-[280px] h-9 rounded-[7px] border border-black/5 py-1.5 pr-4 pl-2.5 gap-2.5 bg-white">
+                <div className="flex h-9 w-[280px] flex-row items-center gap-2.5 rounded-[7px] border border-black/5 bg-white py-1.5 pr-4 pl-2.5">
                   <Search
                     width={12}
                     height={12}
@@ -261,13 +261,13 @@ export default function PriceTrendPage({
                     type="text"
                     placeholder="Search Anything..."
                     aria-label="Search"
-                    className="flex-1 h-[18px] bg-transparent border-0 outline-none px-0 text-[12px] leading-[100%] tracking-tight placeholder:text-disabled-300 text-[#0a0d14]"
+                    className="placeholder:text-disabled-300 h-[18px] flex-1 border-0 bg-transparent px-0 text-[12px] leading-[100%] tracking-tight text-[#0a0d14] outline-none"
                   />
                 </div>
               )}
               <Button
                 lip="on"
-                className="flex flex-row items-center justify-center w-9 h-9 border border-main/7 px-0 gap-2.5 bg-white hover:bg-primary-foreground hover:cursor-pointer"
+                className="border-main/7 hover:bg-primary-foreground flex h-9 w-9 flex-row items-center justify-center gap-2.5 border bg-white px-0 hover:cursor-pointer"
               >
                 <Image
                   src="/icons/filter-icon.svg"
@@ -276,14 +276,14 @@ export default function PriceTrendPage({
                   height={16}
                 />
               </Button>
-              <div className="flex flex-row h-9 w-fit rounded-[7px] border border-main/7 bg-white p-1 gap-1 items-center relative overflow-visible after:content-[''] after:absolute after:inset-0 after:rounded-[inherit] after:pointer-events-none after:shadow-[0_3px_0_0_rgba(10,13,20,0.06),inset_0_-2px_0_0_rgba(255,255,255,0.18)]">
+              <div className="border-main/7 relative flex h-9 w-fit flex-row items-center gap-1 overflow-visible rounded-[7px] border bg-white p-1 after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:shadow-[0_3px_0_0_rgba(10,13,20,0.06),inset_0_-2px_0_0_rgba(255,255,255,0.18)] after:content-['']">
                 <Button
                   disabled={isMobile}
                   onClick={() => setViewMode("list")}
-                  className={`flex flex-row items-center justify-center w-7 h-7 gap-2.5 px-0 hover:cursor-pointer transition-colors duration-200 ${
+                  className={`flex h-7 w-7 flex-row items-center justify-center gap-2.5 px-0 transition-colors duration-200 hover:cursor-pointer ${
                     viewMode === "list"
                       ? "bg-main rounded-[7px]"
-                      : "bg-white hover:bg-primary-foreground"
+                      : "hover:bg-primary-foreground bg-white"
                   }`}
                 >
                   <Image
@@ -299,10 +299,10 @@ export default function PriceTrendPage({
                 </Button>
                 <Button
                   onClick={() => setViewMode("grid")}
-                  className={`flex flex-row items-center justify-center w-7 h-7 gap-2.5 px-0 hover:cursor-pointer transition-colors duration-200 ${
+                  className={`flex h-7 w-7 flex-row items-center justify-center gap-2.5 px-0 transition-colors duration-200 hover:cursor-pointer ${
                     viewMode === "grid"
                       ? "bg-main rounded-[7px]"
-                      : "bg-white hover:bg-primary-foreground"
+                      : "hover:bg-primary-foreground bg-white"
                   }`}
                 >
                   <Image
@@ -322,12 +322,12 @@ export default function PriceTrendPage({
         </div>
       </div>
 
-      <div className="flex flex-col w-full mt-6 gap-5">
+      <div className="mt-6 flex w-full flex-col gap-5">
         {effectiveViewMode === "grid" ? (
           <div
             className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 ${
               onDiscover && "xl:grid-cols-5"
-            } gap-2.5 w-full justify-items-center`}
+            } w-full justify-items-center gap-2.5`}
           >
             {paginatedData.map((athlete) => (
               <AthleteCard
@@ -345,21 +345,21 @@ export default function PriceTrendPage({
             ))}
           </div>
         ) : (
-          <div className="w-full flex flex-col gap-1">
-            <div className="flex flex-row w-full py-3 px-5 gap-8">
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[55%]">
+          <div className="flex w-full flex-col gap-1">
+            <div className="flex w-full flex-row gap-8 px-5 py-3">
+              <p className="text-soft-400 w-[55%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Athlete Name
               </p>
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[10.5%]">
+              <p className="text-soft-400 w-[10.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Current Price
               </p>
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[10.5%]">
+              <p className="text-soft-400 w-[10.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 24H Change
               </p>
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[10.5%]">
+              <p className="text-soft-400 w-[10.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 24H Volume
               </p>
-              <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400 w-[13.5%]">
+              <p className="text-soft-400 w-[13.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Quick Trade
               </p>
             </div>
@@ -383,13 +383,13 @@ export default function PriceTrendPage({
         )}
 
         {totalPages > 1 && (
-          <div className="flex w-full items-center justify-center mt-2">
+          <div className="mt-2 flex w-full items-center justify-center">
             <div className="flex flex-row items-center gap-5">
               <Button
                 lip="on"
                 onClick={goPrev}
                 disabled={currentPage === 1}
-                className="flex flex-row w-8 h-8 rounded-[7px] items-center justify-center border border-main/7 bg-white gap-2 px-0 hover:bg-primary-foreground hover:cursor-pointer disabled:opacity-40"
+                className="border-main/7 hover:bg-primary-foreground flex h-8 w-8 flex-row items-center justify-center gap-2 rounded-[7px] border bg-white px-0 hover:cursor-pointer disabled:opacity-40"
               >
                 <Image
                   src="/icons/arrow-left.svg"
@@ -409,14 +409,14 @@ export default function PriceTrendPage({
                           lip="on"
                           key={`page-${n}`}
                           onClick={() => goPage(n)}
-                          className={`min-w-8 h-8 px-2 rounded-[7px] border transition-colors duration-200 ${
+                          className={`h-8 min-w-8 rounded-[7px] border px-2 transition-colors duration-200 ${
                             isActive
                               ? "bg-main border-black/5"
-                              : "bg-white border-main/7 hover:bg-primary-foreground"
+                              : "border-main/7 hover:bg-primary-foreground bg-white"
                           }`}
                         >
                           <span
-                            className={`text-[12px] font-medium leading-[100%] tracking-[-1%] ${
+                            className={`text-[12px] leading-[100%] font-medium tracking-[-1%] ${
                               isActive ? "text-white" : "text-sub-500"
                             }`}
                           >
@@ -424,7 +424,7 @@ export default function PriceTrendPage({
                           </span>
                         </Button>
                       );
-                    }
+                    },
                   )}
                 </div>
               )}
@@ -433,7 +433,7 @@ export default function PriceTrendPage({
                 lip="on"
                 onClick={goNext}
                 disabled={currentPage === totalPages}
-                className="flex flex-row w-8 h-8 rounded-[7px] items-center justify-center border border-main/7 bg-white gap-2 px-0 hover:bg-primary-foreground hover:cursor-pointer disabled:opacity-40"
+                className="border-main/7 hover:bg-primary-foreground flex h-8 w-8 flex-row items-center justify-center gap-2 rounded-[7px] border bg-white px-0 hover:cursor-pointer disabled:opacity-40"
               >
                 <Image
                   src="/icons/arrow-left.svg"

@@ -29,29 +29,29 @@ export default function GameCard({
   volume,
 }: GameCardProps) {
   return (
-    <div className="relative w-[356px] h-auto rounded-lg overflow-hidden bg-white mr-4">
+    <div className="bg-elevation-card relative mr-4 h-auto w-[356px] overflow-hidden rounded-lg">
       <div className="relative">
         <Image
           src={image}
-          className="w-full h-auto"
+          className="h-auto w-full"
           alt="NBA Game"
           width={356}
           height={200}
         />
-        <div className="absolute flex flex-row items-center justify-center gap-2 top-2 left-2 bg-gray-600 text-white px-2 py-1 rounded-lg text-xs">
-          <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+        <div className="absolute top-2 left-2 flex flex-row items-center justify-center gap-2 rounded-lg bg-gray-600 px-2 py-1 text-xs text-white">
+          <div className="h-2 w-2 rounded-full bg-green-500"></div>
           Live
         </div>
       </div>
       <div className="flex flex-row items-center justify-between gap-2 px-4 py-2">
-        <p className="text-md font-bold text-main">{team1.score}</p>
+        <p className="text-md text-text-primary font-bold">{team1.score}</p>
         <div className="flex flex-row items-center justify-start gap-2">
           <Image src={team1.icon} alt={team1.name} width={20} height={20} />
-          <p className="text-xs font-bold text-muted-foreground">
+          <p className="text-muted-foreground text-xs font-bold">
             {team1.name}
           </p>
         </div>
-        <span className="flex flex-row items-center font-medium gap-2 text-xs">
+        <span className="text-text-primary flex flex-row items-center gap-2 text-xs font-medium">
           {team1.price}{" "}
           <p
             className={
@@ -76,14 +76,14 @@ export default function GameCard({
         </div>
       </div>
       <div className="flex flex-row items-center justify-between gap-2 px-4">
-        <p className="text-md font-bold text-main">{team2.score}</p>
+        <p className="text-md text-text-primary font-bold">{team2.score}</p>
         <div className="flex flex-row items-center justify-start gap-1">
           <Image src={team2.icon} alt={team2.name} width={20} height={20} />
-          <p className="text-xs font-bold text-muted-foreground">
+          <p className="text-muted-foreground text-xs font-bold">
             {team2.name}
           </p>
         </div>
-        <span className="flex flex-row items-center font-medium gap-2 text-xs">
+        <span className="text-text-primary flex flex-row items-center gap-2 text-xs font-medium">
           {team2.price}{" "}
           <p
             className={
@@ -101,8 +101,8 @@ export default function GameCard({
       </div>
 
       <div className="flex flex-row items-center justify-between gap-2 px-4 pt-2 pb-4">
-        <h6 className="text-xs font-500 text-muted-foreground">{status}</h6>
-        <h6 className="text-xs font-500 text-muted-foreground">{volume}</h6>
+        <h6 className="font-500 text-muted-foreground text-xs">{status}</h6>
+        <h6 className="font-500 text-muted-foreground text-xs">{volume}</h6>
       </div>
     </div>
   );

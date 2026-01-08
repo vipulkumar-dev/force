@@ -294,7 +294,7 @@ export default function ClientHeader() {
         className="fixed top-0 right-0 left-0 z-[101] h-fit bg-white"
       >
         <div className="w-full">
-          <div className="bg-bg-secondary w-full border-b border-black/5">
+          <div className="bg-bg-secondary w-full border-b">
             <div className="mx-auto w-full max-w-[1440px]">
               <div className="flex h-[64px] w-full flex-row items-center justify-between px-[16px] py-[14px] sm:px-[24px] md:px-[32px] xl:px-[40px]">
                 <div className="flex flex-row items-center gap-[16px]">
@@ -367,9 +367,9 @@ export default function ClientHeader() {
                       aria-label="Toggle dark mode"
                     >
                       {darkMode ? (
-                        <Sun className="text-main h-[18px] w-[18px]" />
+                        <Sun className="text-text-primary h-[18px] w-[18px]" />
                       ) : (
-                        <Moon className="text-main h-[18px] w-[18px]" />
+                        <Moon className="text-text-primary h-[18px] w-[18px]" />
                       )}
                     </Button>
                     <NotificationsPopover />
@@ -386,12 +386,12 @@ export default function ClientHeader() {
                               className="bg-page-background h-[32px] w-[32px] cursor-pointer rounded-lg"
                               aria-label="Account"
                             >
-                              <User className="text-main h-[18px] w-[18px]" />
+                              <User className="text-text-primary h-[18px] w-[18px]" />
                             </Button>
                           </DialogTrigger>
                           <DialogContent className="z-[200] w-[400px] max-w-[90vw] rounded-2xl p-6">
                             <div className="flex flex-col items-center gap-4">
-                              <h2 className="text-main text-xl font-semibold">
+                              <h2 className="text-text-primary text-xl font-semibold">
                                 Account
                               </h2>
                               <div className="flex rounded-full bg-black p-4">
@@ -404,7 +404,7 @@ export default function ClientHeader() {
                               </div>
                               <div className="flex w-full flex-col gap-6">
                                 <div className="flex flex-col gap-2">
-                                  <h4 className="text-main text-sm font-semibold">
+                                  <h4 className="text-text-primary text-sm font-semibold">
                                     Username
                                   </h4>
                                   <input
@@ -414,7 +414,7 @@ export default function ClientHeader() {
                                   />
                                 </div>
                                 <button className="bg-page-background hover:bg-primary-foreground w-full rounded-lg p-4 text-left transition-colors">
-                                  <p className="text-main text-center text-sm font-semibold">
+                                  <p className="text-text-primary text-center text-sm font-semibold">
                                     Disconnect Wallet
                                   </p>
                                 </button>
@@ -457,7 +457,7 @@ export default function ClientHeader() {
                     className="h-[32px] w-[32px] rounded-lg bg-page-background"
                     aria-label="Toggle dark mode"
                   >
-                  <User className="w-[18px] h-[18px] text-main" />
+                  <User className="w-[18px] h-[18px] text-text-primary" />
                   </Button> */}
                   </div>
 
@@ -467,7 +467,7 @@ export default function ClientHeader() {
                   >
                     <SheetTrigger asChild>
                       <Button className="border-main/7 hover:bg-primary-foreground flex h-[32px] w-[32px] items-center justify-center rounded-[7px] border bg-white lg:hidden">
-                        <Menu className="text-main h-[18px] w-[18px]" />
+                        <Menu className="text-text-primary h-[18px] w-[18px]" />
                       </Button>
                     </SheetTrigger>
                     <SheetContent
@@ -483,7 +483,7 @@ export default function ClientHeader() {
                               onOpenChange={setWalletDialogOpen}
                             >
                               <DialogTrigger asChild>
-                                <button className="text-main font-nohemi text-left text-[18px] leading-none">
+                                <button className="text-text-primary font-nohemi text-left text-[18px] leading-none">
                                   Connect Wallet
                                 </button>
                               </DialogTrigger>
@@ -507,12 +507,12 @@ export default function ClientHeader() {
                                 />
                               </DialogContent>
                             </Dialog>
-                            <p className="text-main font-nohemi text-[18px] leading-none">
+                            <p className="text-text-primary font-nohemi text-[18px] leading-none">
                               Notifications
                             </p>
                             <button
                               onClick={toggleDarkMode}
-                              className="text-main font-nohemi flex flex-row items-center gap-2 text-left text-[18px] leading-none"
+                              className="text-text-primary font-nohemi flex flex-row items-center gap-2 text-left text-[18px] leading-none"
                             >
                               {darkMode ? (
                                 <>
@@ -539,9 +539,9 @@ export default function ClientHeader() {
                               aria-label="Toggle dark mode"
                             >
                               {darkMode ? (
-                                <Sun className="text-main h-[18px] w-[18px]" />
+                                <Sun className="text-text-primary h-[18px] w-[18px]" />
                               ) : (
-                                <Moon className="text-main h-[18px] w-[18px]" />
+                                <Moon className="text-text-primary h-[18px] w-[18px]" />
                               )}
                             </Button>
                           </div>
@@ -555,7 +555,7 @@ export default function ClientHeader() {
                                 href={item.href}
                                 onClick={() => setMobileSheetOpen(false)}
                                 className={`hover:bg-primary-foreground rounded-[8px] px-3 py-2 transition-colors ${
-                                  active ? "text-main" : "text-soft-400"
+                                  active ? "text-text-primary" : "text-soft-400"
                                 }`}
                               >
                                 {item.label}
@@ -572,7 +572,7 @@ export default function ClientHeader() {
           </div>
 
           {/* Toolbar + Infinite ticker (second row) */}
-          <div className="bg-bg-secondary w-full border-b border-black/5">
+          <div className="bg-bg-secondary w-full border-b">
             <div
               id="athlete-ticker-header"
               className={`relative mx-auto flex h-fit max-w-[1440px] flex-row px-10 ${
@@ -594,7 +594,7 @@ export default function ClientHeader() {
                     height={20}
                     className="rounded-1 flex-shrink-0"
                   />
-                  <span className="text-[13px] font-medium text-main whitespace-nowrap">
+                  <span className="text-[13px] font-medium text-text-primary whitespace-nowrap">
                     {selectedTeam.label}
                   </span>
                   <ChevronDown size={14} className="text-soft-400 flex-shrink-0" />
@@ -622,7 +622,7 @@ export default function ClientHeader() {
                           height={20}
                           className="rounded-[4px]"
                         />
-                        <span className="text-[13px] text-main">
+                        <span className="text-[13px] text-text-primary">
                           {opt.label}
                         </span>
                       </button>
@@ -680,7 +680,7 @@ export default function ClientHeader() {
                                     height={20}
                                     className="rounded-[4px]"
                                   />
-                                  <span className="text-main text-[13px]">
+                                  <span className="text-text-primary text-[13px]">
                                     {opt.label}
                                   </span>
                                 </button>
@@ -693,8 +693,11 @@ export default function ClientHeader() {
                       <Popover>
                         <PopoverTrigger asChild>
                           <Button className="border-main/7 hover:bg-primary-foreground flex h-fit items-center gap-2 rounded-[100px] border bg-white px-3">
-                            <CalendarIcon size={14} className="text-main" />
-                            <span className="text-main text-[13px] font-medium">
+                            <CalendarIcon
+                              size={14}
+                              className="text-text-primary"
+                            />
+                            <span className="text-text-primary text-[13px] font-medium">
                               {formatShortDate(selectedDate)}
                             </span>
                             <ChevronDown size={14} className="text-soft-400" />

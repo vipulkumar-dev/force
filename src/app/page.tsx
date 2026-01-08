@@ -104,7 +104,9 @@ export default function Page() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.dispatchEvent(
-        new CustomEvent("selectedLeague", { detail: { id: selectedLeague.id } })
+        new CustomEvent("selectedLeague", {
+          detail: { id: selectedLeague.id },
+        }),
       );
     }
   }, [selectedLeague]);
@@ -121,7 +123,7 @@ export default function Page() {
       window.dispatchEvent(
         new CustomEvent("priceTrendPage", {
           detail: { visible: showPriceTrendPage },
-        })
+        }),
       );
     }
   }, [showPriceTrendPage]);
@@ -139,21 +141,21 @@ export default function Page() {
             showPriceTrendPage ? "pt-[163px]" : "pt-[117px]"
           } min-h-0 overflow-hidden`}
         >
-          <div className="w-full max-w-[1440px] mx-auto flex flex-col xl:flex-row gap-[24px] sm:gap-[32px] xl:gap-[40px] px-[16px] sm:px-[24px] xl:px-[40px]">
+          <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-[24px] px-[16px] sm:gap-[32px] sm:px-[24px] xl:flex-row xl:gap-[40px] xl:px-[40px]">
             {!showPriceTrendPage ? (
               <>
-                <div className="flex flex-col w-full min-h-0 pt-[24px] xl:pt-[40px] pb-[24px] gap-[24px] overflow-visible xl:overflow-y-auto overscroll-contain xl:[-ms-overflow-style:none] xl:[scrollbar-width:none] xl:[&::-webkit-scrollbar]:hidden">
+                <div className="flex min-h-0 w-full flex-col gap-[24px] overflow-visible overscroll-contain pt-[24px] pb-[24px] xl:overflow-y-auto xl:pt-[40px] xl:[-ms-overflow-style:none] xl:[scrollbar-width:none] xl:[&::-webkit-scrollbar]:hidden">
                   <TodayGames />
-                  <div className=" w-full h-[0.5px] px-2 bg-black/5"></div>
+                  <div className="bg-border h-[0.5px] w-full px-2"></div>
                   <Trending />
-                  <div className=" w-full h-[0.5px] px-2 bg-black/5"></div>
+                  <div className="bg-border h-[0.5px] w-full px-2"></div>
                   <PriceTrendChart />
                 </div>
               </>
             ) : (
               <>
                 <PriceTrendPage onBack={() => setShowPriceTrendPage(false)} />
-                <div className="w-full xl:w-[300px] flex flex-col pt-6 gap-6 pb-[24px] md:pb-0">
+                <div className="flex w-full flex-col gap-6 pt-6 pb-[24px] md:pb-0 xl:w-[300px]">
                   <TodayFixturesSide />
                   <UpcomingMatchesSide />
                 </div>

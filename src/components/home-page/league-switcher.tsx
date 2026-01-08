@@ -27,7 +27,7 @@ export default function LeagueSwitcher({
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          className={`flex flex-row h-[28px] w-[150px] rounded-lg items-center justify-between bg-page-background my-2 px-[12px] hover:bg-primary-foreground hover:cursor-pointer ${
+          className={`bg-page-background hover:bg-primary-foreground my-2 flex h-[28px] w-[150px] flex-row items-center justify-between rounded-lg px-[12px] hover:cursor-pointer ${
             className ?? ""
           }`}
         >
@@ -39,7 +39,7 @@ export default function LeagueSwitcher({
               height={18}
               className="rounded-1"
             />
-            <span className="text-[13px] font-medium text-main">
+            <span className="text-text-primary text-[13px] font-medium">
               {selected.label}
             </span>
           </div>
@@ -49,9 +49,9 @@ export default function LeagueSwitcher({
       <PopoverContent
         align="start"
         side="bottom"
-        className="w-[220px] p-2 bg-white"
+        className="w-[220px] bg-white p-2"
       >
-        <div className="flex flex-col max-h-[300px] overflow-auto">
+        <div className="flex max-h-[300px] flex-col overflow-auto">
           {options.map((opt, index) => {
             const active = opt.id === selected.id;
             const isFirstOption = index === 0;
@@ -61,7 +61,7 @@ export default function LeagueSwitcher({
                 <PopoverClose asChild key={opt.id}>
                   <button
                     onClick={() => onChange(opt)}
-                    className={`flex items-center gap-3 w-full text-left px-2 py-2 rounded-md hover:bg-primary-foreground ${
+                    className={`hover:bg-primary-foreground flex w-full items-center gap-3 rounded-md px-2 py-2 text-left ${
                       active ? "bg-primary-foreground" : ""
                     }`}
                   >
@@ -72,7 +72,9 @@ export default function LeagueSwitcher({
                       height={20}
                       className="rounded-[4px]"
                     />
-                    <span className="text-[13px] text-main">{opt.label}</span>
+                    <span className="text-text-primary text-[13px]">
+                      {opt.label}
+                    </span>
                   </button>
                 </PopoverClose>
               );
@@ -82,7 +84,7 @@ export default function LeagueSwitcher({
               <button
                 key={opt.id}
                 disabled
-                className="flex items-center gap-3 w-full text-left px-2 py-2 rounded-md blur-[6px] opacity-60 cursor-not-allowed"
+                className="flex w-full cursor-not-allowed items-center gap-3 rounded-md px-2 py-2 text-left opacity-60 blur-[6px]"
               >
                 <Image
                   src={opt.icon}
@@ -91,7 +93,9 @@ export default function LeagueSwitcher({
                   height={20}
                   className="rounded-[4px]"
                 />
-                <span className="text-[13px] text-main">{opt.label}</span>
+                <span className="text-text-primary text-[13px]">
+                  {opt.label}
+                </span>
               </button>
             );
           })}

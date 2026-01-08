@@ -93,6 +93,7 @@
   --font-jakarta: var(--font-plus-jakarta);
   --font-lexend-deca: var(--font-lexend-deca);
   --font-nohemi: var(--font-nohemi);
+  --color-bg-primary: var(--bg-primary);
 }
 
 :root {
@@ -150,7 +151,7 @@
   --light-yellow: #fbdfb1;
   --soft-gray: #eceef0;
   --learn-gray: #e5e5e5;
-  --base-pink: #C777FF
+  --base-pink: #c777ff;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -180,6 +181,11 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --bg-primary: #f0f0f0;
+}
+
+.dark {
+  --bg-primary: #101012;
 }
 
 @layer base {

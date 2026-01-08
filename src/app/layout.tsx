@@ -5,6 +5,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import ClientHeader from "@/components/app-header";
 import AppFooter from "@/components/app-footer";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -81,13 +82,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${interSans.variable} ${interDisplay.variable} ${plusJakartaSans.variable} ${lexendDeca.variable} ${nohemi.variable} antialiased pb-[80px] bg-page-background`}
+        className={`${interSans.variable} ${interDisplay.variable} ${plusJakartaSans.variable} ${lexendDeca.variable} ${nohemi.variable} antialiased pb-[80px] bg-bg-primary`}
       >
-        <ClientHeader />
-        {children}
-        <AppFooter />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ClientHeader />
+          {children}
+          <AppFooter />
+        </ThemeProvider>
       </body>
     </html>
   );

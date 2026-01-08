@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 import { Popover, PopoverTrigger, PopoverContent } from "./ui/popover";
 import NotificationsPopover from "./notifications-popover";
 import WalletPopover from "./wallet-popover";
@@ -84,7 +85,7 @@ export default function ClientHeader() {
           .__athleteRankingPageVisible;
       }
       return false;
-    }
+    },
   );
 
   useEffect(() => {
@@ -126,7 +127,7 @@ export default function ClientHeader() {
   ];
   const [selectedTeam, setSelectedTeam] = useState(teamOptions[0]);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(
-    new Date()
+    new Date(),
   );
 
   const formatShortDate = (d?: Date) =>
@@ -146,48 +147,17 @@ export default function ClientHeader() {
     return false;
   });
 
-
   const [walletDialogOpen, setWalletDialogOpen] = useState(false);
   const [mobileSheetOpen, setMobileSheetOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    if (typeof window !== "undefined") {
-      return document.documentElement.classList.contains("dark");
-    }
-    return false;
-  });
+  const { theme, setTheme } = useTheme();
+  const darkMode = theme === "dark";
 
   const toggleDarkMode = () => {
-    const newDarkMode = !darkMode;
-    setDarkMode(newDarkMode);
-    if (typeof window !== "undefined") {
-      if (newDarkMode) {
-        document.documentElement.classList.add("dark");
-        localStorage.setItem("theme", "dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-        localStorage.setItem("theme", "light");
-      }
-    }
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   const [accountDialogOpen, setAccountDialogOpen] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const savedTheme = localStorage.getItem("theme");
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const shouldBeDark = savedTheme === "dark" || (!savedTheme && prefersDark);
-      
-      if (shouldBeDark) {
-        document.documentElement.classList.add("dark");
-        setDarkMode(true);
-      } else {
-        document.documentElement.classList.remove("dark");
-        setDarkMode(false);
-      }
-    }
-  }, []);
 
   // Ticker data
   const tickerItems = [
@@ -254,7 +224,7 @@ export default function ClientHeader() {
         matchedPhrase = true;
         if (m.index > lastIndex) {
           fragPhrase.appendChild(
-            document.createTextNode(text.slice(lastIndex, m.index))
+            document.createTextNode(text.slice(lastIndex, m.index)),
           );
         }
         const span = document.createElement("span");
@@ -268,7 +238,7 @@ export default function ClientHeader() {
       if (matchedPhrase) {
         if (lastIndex < text.length) {
           fragPhrase.appendChild(
-            document.createTextNode(text.slice(lastIndex))
+            document.createTextNode(text.slice(lastIndex)),
           );
         }
         node.parentNode?.replaceChild(fragPhrase, node);
@@ -286,7 +256,7 @@ export default function ClientHeader() {
         anyToken = true;
         if (t.index > lastIndex) {
           fragTokens.appendChild(
-            document.createTextNode(text.slice(lastIndex, t.index))
+            document.createTextNode(text.slice(lastIndex, t.index)),
           );
         }
         const span = document.createElement("span");
@@ -313,18 +283,18 @@ export default function ClientHeader() {
   return (
     <AnimatePresence>
       {/* {showHeader && ( */}
-        <motion.header
-          id="app-header"
-          key="app-header"
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -12 }}
-          transition={{ duration: 0.4 }}
-          className="fixed top-0 left-0 right-0 z-[101] h-fit bg-white"
-        >
-          <div className="w-full max-w-[1440px] mx-auto">
-            <div className="flex flex-row w-full h-[64px] border-b border-black/5 py-[14px] px-[16px] sm:px-[24px] md:px-[32px] xl:px-[40px] bg-white items-center justify-between">
-            <div className="flex flex-row gap-[16px] items-center">
+      <motion.header
+        id="app-header"
+        key="app-header"
+        initial={{ opacity: 0, y: -12 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -12 }}
+        transition={{ duration: 0.4 }}
+        className="fixed top-0 right-0 left-0 z-[101] h-fit bg-white"
+      >
+        <div className="mx-auto w-full max-w-[1440px]">
+          <div className="flex h-[64px] w-full flex-row items-center justify-between border-b border-black/5 bg-white px-[16px] py-[14px] sm:px-[24px] md:px-[32px] xl:px-[40px]">
+            <div className="flex flex-row items-center gap-[16px]">
               <Link href="/" aria-label="Home">
                 <Image
                   src="/FORCE.svg"
@@ -333,9 +303,9 @@ export default function ClientHeader() {
                   height={31}
                 />
               </Link>
-              <div className="h-[12px] border border-black/5 hidden lg:block"></div>
+              <div className="hidden h-[12px] border border-black/5 lg:block"></div>
 
-              <div className="hidden lg:flex flex-row gap-[8px] items-center">
+              <div className="hidden flex-row items-center gap-[8px] lg:flex">
                 {navItems.map((item) => {
                   const active = pathname === item.href;
                   return (
@@ -348,7 +318,7 @@ export default function ClientHeader() {
                     >
                       <Link href={item.href}>
                         <p
-                          className={`text-[14px] leading-[100%] tracking-tight font-medium ${
+                          className={`text-[14px] leading-[100%] font-medium tracking-tight ${
                             active ? "text-main" : "text-soft-400"
                           }`}
                         >
@@ -362,9 +332,9 @@ export default function ClientHeader() {
             </div>
 
             {/* Right side */}
-            <div className="flex flex-row gap-[12px] items-center">
+            <div className="flex flex-row items-center gap-[12px]">
               <div className="flex flex-row items-center gap-[10px]">
-                <div className="flex flex-row items-center w-[160px] sm:w-[220px] h-[32px] rounded-[7px] py-[6px] pr-[12px] pl-[10px] gap-[10px] bg-page-background">
+                <div className="bg-page-background flex h-[32px] w-[160px] flex-row items-center gap-[10px] rounded-[7px] py-[6px] pr-[12px] pl-[10px] sm:w-[220px]">
                   <Search
                     width={12}
                     height={12}
@@ -377,97 +347,112 @@ export default function ClientHeader() {
                     aria-label="Search"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="flex-1 h-[18px] bg-transparent border-0 outline-none px-0 text-[12px] leading-[100%] tracking-tight placeholder:text-disabled-300 text-[#0a0d14]"
+                    className="placeholder:text-disabled-300 h-[18px] flex-1 border-0 bg-transparent px-0 text-[12px] leading-[100%] tracking-tight text-[#0a0d14] outline-none"
                   />
                 </div>
-                {
-                  walletConnected ? (
-                    <>
+                {walletConnected ? (
+                  <>
                     <WalletPopover />
                   </>
-                  ) : (<></>
-                  )
-                }
+                ) : (
+                  <></>
+                )}
               </div>
-              <div className="hidden lg:flex flex-row items-center gap-[10px]">
-              </div>
-              <div className="hidden lg:block h-[12px] border border-black/5"></div>
-              <div className="hidden lg:flex flex-row items-center gap-2">
-              <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={toggleDarkMode}
-                    className="h-[32px] w-[32px] rounded-lg bg-page-background"
-                    aria-label="Toggle dark mode"
-                  >
-                    {darkMode ? (
-                      <Sun className="w-[18px] h-[18px] text-main" />
-                    ) : (
-                      <Moon className="w-[18px] h-[18px] text-main" />
-                    )}
-                  </Button>
-                  <NotificationsPopover />
-                  {
-                  walletConnected ? (
-                    <>
-                    <Dialog open={accountDialogOpen} onOpenChange={setAccountDialogOpen}>
+              <div className="hidden flex-row items-center gap-[10px] lg:flex"></div>
+              <div className="hidden h-[12px] border border-black/5 lg:block"></div>
+              <div className="hidden flex-row items-center gap-2 lg:flex">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={toggleDarkMode}
+                  className="bg-page-background h-[32px] w-[32px] rounded-lg"
+                  aria-label="Toggle dark mode"
+                >
+                  {darkMode ? (
+                    <Sun className="text-main h-[18px] w-[18px]" />
+                  ) : (
+                    <Moon className="text-main h-[18px] w-[18px]" />
+                  )}
+                </Button>
+                <NotificationsPopover />
+                {walletConnected ? (
+                  <>
+                    <Dialog
+                      open={accountDialogOpen}
+                      onOpenChange={setAccountDialogOpen}
+                    >
                       <DialogTrigger asChild>
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="h-[32px] w-[32px] rounded-lg bg-page-background cursor-pointer"
+                          className="bg-page-background h-[32px] w-[32px] cursor-pointer rounded-lg"
                           aria-label="Account"
                         >
-                          <User className="w-[18px] h-[18px] text-main" />
+                          <User className="text-main h-[18px] w-[18px]" />
                         </Button>
                       </DialogTrigger>
-                      <DialogContent className="w-[400px] max-w-[90vw] p-6 z-[200] rounded-2xl">
+                      <DialogContent className="z-[200] w-[400px] max-w-[90vw] rounded-2xl p-6">
                         <div className="flex flex-col items-center gap-4">
-                          <h2 className="text-xl font-semibold text-main">Account</h2>
+                          <h2 className="text-main text-xl font-semibold">
+                            Account
+                          </h2>
                           <div className="flex rounded-full bg-black p-4">
-                            <Image src="/icons/wallet2.svg" alt="Wallet" width={40} height={40} />
+                            <Image
+                              src="/icons/wallet2.svg"
+                              alt="Wallet"
+                              width={40}
+                              height={40}
+                            />
                           </div>
-                          <div className="w-full flex flex-col gap-6">
+                          <div className="flex w-full flex-col gap-6">
                             <div className="flex flex-col gap-2">
-                              <h4 className="text-sm font-semibold text-main">Username</h4>
-                              <input type="text" placeholder="Username" className="w-full p-3 rounded-lg bg-page-background hover:bg-primary-foreground text-left transition-colors" />
+                              <h4 className="text-main text-sm font-semibold">
+                                Username
+                              </h4>
+                              <input
+                                type="text"
+                                placeholder="Username"
+                                className="bg-page-background hover:bg-primary-foreground w-full rounded-lg p-3 text-left transition-colors"
+                              />
                             </div>
-                            <button className="w-full p-4 rounded-lg bg-page-background hover:bg-primary-foreground text-left transition-colors">
-                              <p className="text-sm text-center font-semibold text-main">Disconnect Wallet</p>
+                            <button className="bg-page-background hover:bg-primary-foreground w-full rounded-lg p-4 text-left transition-colors">
+                              <p className="text-main text-center text-sm font-semibold">
+                                Disconnect Wallet
+                              </p>
                             </button>
                           </div>
                         </div>
                       </DialogContent>
                     </Dialog>
                   </>
-                  ) : (
-                    <Dialog open={walletDialogOpen} onOpenChange={setWalletDialogOpen}>
-                      <DialogTrigger asChild>
-                        <div className="flex flex-row items-center bg-page-background rounded-lg p-2 hover:cursor-pointer">
-                          <span className="ml-2 text-[12px] font-medium text-muted-foreground">
-                            Connect your wallet
-                          </span>
-                        </div>
-                      </DialogTrigger>
-                      <DialogContent
-                        className="w-[422px] max-w-[90vw] p-6 z-[200] rounded-2xl"
-                      >
-                        <div className="flex flex-col items-center gap-6">
-                          <WalletConnectScreen
-                            onWalletChosen={(id) => {
-                              setWalletConnected(true);
-                              if (typeof window !== "undefined") {
-                                localStorage.setItem("walletConnected", "1");
-                              }
-                              setWalletDialogOpen(false);
-                            }}
-                          />
-                        </div>
-                      </DialogContent>
-                    </Dialog>
-                  )
-                }
-                  {/* <Button
+                ) : (
+                  <Dialog
+                    open={walletDialogOpen}
+                    onOpenChange={setWalletDialogOpen}
+                  >
+                    <DialogTrigger asChild>
+                      <div className="bg-page-background flex flex-row items-center rounded-lg p-2 hover:cursor-pointer">
+                        <span className="text-muted-foreground ml-2 text-[12px] font-medium">
+                          Connect your wallet
+                        </span>
+                      </div>
+                    </DialogTrigger>
+                    <DialogContent className="z-[200] w-[422px] max-w-[90vw] rounded-2xl p-6">
+                      <div className="flex flex-col items-center gap-6">
+                        <WalletConnectScreen
+                          onWalletChosen={(id) => {
+                            setWalletConnected(true);
+                            if (typeof window !== "undefined") {
+                              localStorage.setItem("walletConnected", "1");
+                            }
+                            setWalletDialogOpen(false);
+                          }}
+                        />
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                )}
+                {/* <Button
                     variant="ghost"
                     size="icon"
                     // onClick={toggleDarkMode}
@@ -476,14 +461,12 @@ export default function ClientHeader() {
                   >
                   <User className="w-[18px] h-[18px] text-main" />
                   </Button> */}
-                </div>
-              
-              
+              </div>
 
               <Sheet open={mobileSheetOpen} onOpenChange={setMobileSheetOpen}>
                 <SheetTrigger asChild>
-                  <Button className="lg:hidden flex items-center justify-center h-[32px] w-[32px] rounded-[7px] border border-main/7 bg-white hover:bg-primary-foreground">
-                    <Menu className="w-[18px] h-[18px] text-main" />
+                  <Button className="border-main/7 hover:bg-primary-foreground flex h-[32px] w-[32px] items-center justify-center rounded-[7px] border bg-white lg:hidden">
+                    <Menu className="text-main h-[18px] w-[18px]" />
                   </Button>
                 </SheetTrigger>
                 <SheetContent
@@ -499,13 +482,13 @@ export default function ClientHeader() {
                           onOpenChange={setWalletDialogOpen}
                         >
                           <DialogTrigger asChild>
-                            <button className="text-main font-nohemi text-[18px] leading-none text-left">
+                            <button className="text-main font-nohemi text-left text-[18px] leading-none">
                               Connect Wallet
                             </button>
                           </DialogTrigger>
                           <DialogContent
                             fullscreen
-                            className="overflow-auto z-[200]"
+                            className="z-[200] overflow-auto"
                             showCloseButton={true}
                           >
                             <WalletConnectScreen
@@ -525,41 +508,41 @@ export default function ClientHeader() {
                         </p>
                         <button
                           onClick={toggleDarkMode}
-                          className="flex flex-row items-center gap-2 text-main font-nohemi text-[18px] leading-none text-left"
+                          className="text-main font-nohemi flex flex-row items-center gap-2 text-left text-[18px] leading-none"
                         >
                           {darkMode ? (
                             <>
-                              <Sun className="w-[18px] h-[18px]" />
+                              <Sun className="h-[18px] w-[18px]" />
                               Light Mode
                             </>
                           ) : (
                             <>
-                              <Moon className="w-[18px] h-[18px]" />
+                              <Moon className="h-[18px] w-[18px]" />
                               Dark Mode
                             </>
                           )}
                         </button>
                       </div>
                     ) : (
-                      <div className="flex flex-col md:flex-row items-stretch md:items-center gap-2 md:gap-3">
+                      <div className="flex flex-col items-stretch gap-2 md:flex-row md:items-center md:gap-3">
                         <WalletPopover />
                         <NotificationsPopover />
                         <Button
                           variant="ghost"
                           size="icon"
                           onClick={toggleDarkMode}
-                          className="h-[32px] w-[32px] rounded-[7px] border border-main/7 bg-white hover:bg-primary-foreground"
+                          className="border-main/7 hover:bg-primary-foreground h-[32px] w-[32px] rounded-[7px] border bg-white"
                           aria-label="Toggle dark mode"
                         >
                           {darkMode ? (
-                            <Sun className="w-[18px] h-[18px] text-main" />
+                            <Sun className="text-main h-[18px] w-[18px]" />
                           ) : (
-                            <Moon className="w-[18px] h-[18px] text-main" />
+                            <Moon className="text-main h-[18px] w-[18px]" />
                           )}
                         </Button>
                       </div>
                     )}
-                    <div className="flex flex-col border-t border-light-gray mt-2 pt-4">
+                    <div className="border-light-gray mt-2 flex flex-col border-t pt-4">
                       {navItems.map((item) => {
                         const active = pathname === item.href;
                         return (
@@ -567,7 +550,7 @@ export default function ClientHeader() {
                             key={item.href}
                             href={item.href}
                             onClick={() => setMobileSheetOpen(false)}
-                            className={`rounded-[8px] px-3 py-2 transition-colors hover:bg-primary-foreground ${
+                            className={`hover:bg-primary-foreground rounded-[8px] px-3 py-2 transition-colors ${
                               active ? "text-main" : "text-soft-400"
                             }`}
                           >
@@ -583,19 +566,19 @@ export default function ClientHeader() {
           </div>
 
           {/* Toolbar + Infinite ticker (second row) */}
-            <div
-              id="athlete-ticker-header"
-              className={`relative h-fit bg-white px-10 flex flex-row${
+          <div
+            id="athlete-ticker-header"
+            className={`relative flex h-fit bg-white px-10 flex-row${
               priceTrendActive || showAthleteRankingPage
                 ? "py-[8.22px]"
                 : "py-5"
-            } gap-3 border-b border-black/5 overflow-hidden`}
+            } gap-3 overflow-hidden border-b border-black/5`}
           >
             <LeagueSwitcher
-                    selected={selectedLeague}
-                    options={leagueOptions}
-                    onChange={setSelectedLeague}
-                  />
+              selected={selectedLeague}
+              options={leagueOptions}
+              onChange={setSelectedLeague}
+            />
             {/* <Popover>
               <PopoverTrigger asChild>
                 <button className="flex flex-row bg-page-background items-center gap-2 hover:opacity-80 p-2 my-2 rounded-lg transition-opacity cursor-pointer whitespace-nowrap flex-shrink-0">
@@ -646,10 +629,10 @@ export default function ClientHeader() {
 
             <div className="flex items-center gap-3">
               {(priceTrendActive || showAthleteRankingPage) && (
-                <div className="flex flex-col md:flex-row w-full md:w-auto gap-2 md:gap-3">
+                <div className="flex w-full flex-col gap-2 md:w-auto md:flex-row md:gap-3">
                   <Popover>
                     <PopoverTrigger asChild>
-                      <Button className="h-fit px-3 rounded-[100px] border border-main/7 bg-white hover:bg-primary-foreground flex items-center gap-2">
+                      <Button className="border-main/7 hover:bg-primary-foreground flex h-fit items-center gap-2 rounded-[100px] border bg-white px-3">
                         <Image
                           src={selectedTeam.icon}
                           alt={selectedTeam.label}
@@ -657,7 +640,7 @@ export default function ClientHeader() {
                           height={18}
                           className="rounded-1"
                         />
-                        <span className="text-[13px] font-medium text-main">
+                        <span className="text-main text-[13px] font-medium">
                           {selectedTeam.label}
                         </span>
                         <ChevronDown size={14} className="text-soft-400" />
@@ -665,16 +648,16 @@ export default function ClientHeader() {
                     </PopoverTrigger>
                     <PopoverContent
                       align="start"
-                      className="w-[220px] p-2 bg-white"
+                      className="w-[220px] bg-white p-2"
                     >
-                      <div className="flex flex-col max-h-[300px] overflow-auto">
+                      <div className="flex max-h-[300px] flex-col overflow-auto">
                         {teamOptions.map((opt) => {
                           const active = opt.id === selectedTeam.id;
                           return (
                             <button
                               key={opt.id}
                               onClick={() => setSelectedTeam(opt)}
-                              className={`flex items-center gap-3 w-full text-left px-2 py-2 rounded-md hover:bg-primary-foreground ${
+                              className={`hover:bg-primary-foreground flex w-full items-center gap-3 rounded-md px-2 py-2 text-left ${
                                 active ? "bg-primary-foreground" : ""
                               }`}
                             >
@@ -685,7 +668,7 @@ export default function ClientHeader() {
                                 height={20}
                                 className="rounded-[4px]"
                               />
-                              <span className="text-[13px] text-main">
+                              <span className="text-main text-[13px]">
                                 {opt.label}
                               </span>
                             </button>
@@ -697,15 +680,15 @@ export default function ClientHeader() {
 
                   <Popover>
                     <PopoverTrigger asChild>
-                      <Button className="h-fit px-3 rounded-[100px] border border-main/7 bg-white hover:bg-primary-foreground flex items-center gap-2">
+                      <Button className="border-main/7 hover:bg-primary-foreground flex h-fit items-center gap-2 rounded-[100px] border bg-white px-3">
                         <CalendarIcon size={14} className="text-main" />
-                        <span className="text-[13px] font-medium text-main">
+                        <span className="text-main text-[13px] font-medium">
                           {formatShortDate(selectedDate)}
                         </span>
                         <ChevronDown size={14} className="text-soft-400" />
                       </Button>
                     </PopoverTrigger>
-                    <PopoverContent align="start" className="p-3 bg-white">
+                    <PopoverContent align="start" className="bg-white p-3">
                       <Calendar
                         mode="single"
                         selected={selectedDate}
@@ -715,27 +698,23 @@ export default function ClientHeader() {
                     </PopoverContent>
                   </Popover>
 
-                  <div className="hidden md:block h-[20px] border border-black/5 mx-[4px]" />
+                  <div className="mx-[4px] hidden h-[20px] border border-black/5 md:block" />
                 </div>
               )}
 
               {/* Infinite scroller with fading edges (mask applied only here) */}
-              <div
-                className="relative w-full md:flex-1 overflow-hidden
-                           md:[mask-image:linear-gradient(to_right,transparent,black_40px,black_calc(100%-40px),transparent)]
-                           md:[-webkit-mask-image:linear-gradient(to_right,transparent,black_40px,black_calc(100%-40px),transparent)]"
-              >
-                <div className="ticker-track whitespace-nowrap flex w-full will-change-transform">
+              <div className="relative w-full overflow-hidden md:flex-1 md:[mask-image:linear-gradient(to_right,transparent,black_40px,black_calc(100%-40px),transparent)] md:[-webkit-mask-image:linear-gradient(to_right,transparent,black_40px,black_calc(100%-40px),transparent)]">
+                <div className="ticker-track flex w-full whitespace-nowrap will-change-transform">
                   {tickerItems.map((item, idx) => (
                     <span
                       key={`t1-${idx}`}
-                      className="flex items-center gap-[8px] mr-[24px]"
+                      className="mr-[24px] flex items-center gap-[8px]"
                     >
-                      <span className="font-medium text-[13px] leading-[100%] tracking-tight text-main">
+                      <span className="text-main text-[13px] leading-[100%] font-medium tracking-tight">
                         {item.name}
                       </span>
                       <span
-                        className={`font-medium text-[13px] leading-[100%] tracking-tight ${
+                        className={`text-[13px] leading-[100%] font-medium tracking-tight ${
                           item.change >= 0
                             ? "text-light-green"
                             : "text-neon-pink"
@@ -748,13 +727,13 @@ export default function ClientHeader() {
                   {tickerItems.map((item, idx) => (
                     <span
                       key={`t2-${idx}`}
-                      className="flex items-center gap-[8px] mr-[24px]"
+                      className="mr-[24px] flex items-center gap-[8px]"
                     >
-                      <span className="font-medium text-[13px] leading-[100%] tracking-tight text-main">
+                      <span className="text-main text-[13px] leading-[100%] font-medium tracking-tight">
                         {item.name}
                       </span>
                       <span
-                        className={`font-medium text-[13px] leading-[100%] tracking-tight ${
+                        className={`text-[13px] leading-[100%] font-medium tracking-tight ${
                           item.change >= 0
                             ? "text-light-green"
                             : "text-neon-pink"
@@ -768,9 +747,8 @@ export default function ClientHeader() {
               </div>
             </div>
           </div>
-          </div>
-        </motion.header>
-      
+        </div>
+      </motion.header>
     </AnimatePresence>
   );
 }

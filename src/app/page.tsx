@@ -128,29 +128,27 @@ export default function Page() {
 
   return (
     <AnimatePresence>
-        <motion.div
-          key="home"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+      <motion.div
+        key="home"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div
+          className={`w-full ${
+            showPriceTrendPage ? "pt-[163px]" : "pt-[117px]"
+          } min-h-0 overflow-hidden`}
         >
-          <div
-            className={`w-full bg-page-background ${
-              showPriceTrendPage ? "pt-[163px]" : "pt-[117px]"
-            } min-h-0 overflow-hidden`}
-          >
-            <div className="w-full max-w-[1440px] mx-auto flex flex-col xl:flex-row gap-[24px] sm:gap-[32px] xl:gap-[40px] px-[16px] sm:px-[24px] xl:px-[40px]">
+          <div className="w-full max-w-[1440px] mx-auto flex flex-col xl:flex-row gap-[24px] sm:gap-[32px] xl:gap-[40px] px-[16px] sm:px-[24px] xl:px-[40px]">
             {!showPriceTrendPage ? (
               <>
-              <div className="flex flex-col w-full min-h-0 pt-[24px] xl:pt-[40px] pb-[24px] gap-[24px] overflow-visible xl:overflow-y-auto overscroll-contain xl:[-ms-overflow-style:none] xl:[scrollbar-width:none] xl:[&::-webkit-scrollbar]:hidden">
-              <TodayGames/>
-              <div className=" w-full h-[0.5px] px-2 bg-black/5">
-              </div>
-              <Trending/>
-              <div className=" w-full h-[0.5px] px-2 bg-black/5">
-              </div>
-              <PriceTrendChart/>
-              </div>
+                <div className="flex flex-col w-full min-h-0 pt-[24px] xl:pt-[40px] pb-[24px] gap-[24px] overflow-visible xl:overflow-y-auto overscroll-contain xl:[-ms-overflow-style:none] xl:[scrollbar-width:none] xl:[&::-webkit-scrollbar]:hidden">
+                  <TodayGames />
+                  <div className=" w-full h-[0.5px] px-2 bg-black/5"></div>
+                  <Trending />
+                  <div className=" w-full h-[0.5px] px-2 bg-black/5"></div>
+                  <PriceTrendChart />
+                </div>
               </>
             ) : (
               <>
@@ -161,9 +159,9 @@ export default function Page() {
                 </div>
               </>
             )}
-            </div>
           </div>
-        </motion.div>
+        </div>
+      </motion.div>
     </AnimatePresence>
   );
 }

@@ -572,20 +572,19 @@ export default function ClientHeader() {
           </div>
 
           {/* Toolbar + Infinite ticker (second row) */}
-          <div
-            id="athlete-ticker-header"
-            className={`relative mx-auto flex h-fit max-w-[1440px] bg-white px-10 flex-row${
-              priceTrendActive || showAthleteRankingPage
-                ? "py-[8.22px]"
-                : "py-5"
-            } gap-3 overflow-hidden border-b border-black/5`}
-          >
-            <LeagueSwitcher
-              selected={selectedLeague}
-              options={leagueOptions}
-              onChange={setSelectedLeague}
-            />
-            {/* <Popover>
+          <div className="bg-bg-secondary w-full border-b border-black/5">
+            <div
+              id="athlete-ticker-header"
+              className={`relative mx-auto flex h-fit max-w-[1440px] flex-row px-10 ${
+                priceTrendActive || showAthleteRankingPage ? "py-0" : "py-0"
+              } gap-3 overflow-hidden`}
+            >
+              <LeagueSwitcher
+                selected={selectedLeague}
+                options={leagueOptions}
+                onChange={setSelectedLeague}
+              />
+              {/* <Popover>
               <PopoverTrigger asChild>
                 <button className="flex flex-row bg-page-background items-center gap-2 hover:opacity-80 p-2 my-2 rounded-lg transition-opacity cursor-pointer whitespace-nowrap flex-shrink-0">
                   <Image
@@ -633,129 +632,130 @@ export default function ClientHeader() {
               </PopoverContent>
             </Popover> */}
 
-            <div
-              className="flex w-full flex-row overflow-hidden"
-              style={{
-                maskImage:
-                  "linear-gradient(to right, transparent, black 40px, black calc(100% - 100px), transparent)",
-              }}
-            >
-              <div className="flex shrink-0 items-center gap-3">
-                {(priceTrendActive || showAthleteRankingPage) && (
-                  <div className="flex w-full flex-col gap-2 md:w-auto md:flex-row md:gap-3">
-                    <Popover>
-                      <PopoverTrigger asChild>
-                        <Button className="border-main/7 hover:bg-primary-foreground flex h-fit items-center gap-2 rounded-[100px] border bg-white px-3">
-                          <Image
-                            src={selectedTeam.icon}
-                            alt={selectedTeam.label}
-                            width={18}
-                            height={18}
-                            className="rounded-1"
+              <div
+                className="flex w-full flex-row overflow-hidden"
+                style={{
+                  maskImage:
+                    "linear-gradient(to right, transparent, black 40px, black calc(100% - 100px), transparent)",
+                }}
+              >
+                <div className="flex shrink-0 items-center gap-3">
+                  {(priceTrendActive || showAthleteRankingPage) && (
+                    <div className="flex w-full flex-col gap-2 md:w-auto md:flex-row md:gap-3">
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <Button className="border-main/7 hover:bg-primary-foreground flex h-fit items-center gap-2 rounded-[100px] border bg-white px-3">
+                            <Image
+                              src={selectedTeam.icon}
+                              alt={selectedTeam.label}
+                              width={18}
+                              height={18}
+                              className="rounded-1"
+                            />
+                            <span className="text-text-secondary text-[13px] font-medium">
+                              {selectedTeam.label}
+                            </span>
+                            <ChevronDown size={14} className="text-soft-400" />
+                          </Button>
+                        </PopoverTrigger>
+                        <PopoverContent
+                          align="start"
+                          className="w-[220px] bg-white p-2"
+                        >
+                          <div className="flex max-h-[300px] flex-col overflow-auto">
+                            {teamOptions.map((opt) => {
+                              const active = opt.id === selectedTeam.id;
+                              return (
+                                <button
+                                  key={opt.id}
+                                  onClick={() => setSelectedTeam(opt)}
+                                  className={`hover:bg-primary-foreground flex w-full items-center gap-3 rounded-md px-2 py-2 text-left ${
+                                    active ? "bg-primary-foreground" : ""
+                                  }`}
+                                >
+                                  <Image
+                                    src={opt.icon}
+                                    alt={opt.label}
+                                    width={20}
+                                    height={20}
+                                    className="rounded-[4px]"
+                                  />
+                                  <span className="text-main text-[13px]">
+                                    {opt.label}
+                                  </span>
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </PopoverContent>
+                      </Popover>
+
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <Button className="border-main/7 hover:bg-primary-foreground flex h-fit items-center gap-2 rounded-[100px] border bg-white px-3">
+                            <CalendarIcon size={14} className="text-main" />
+                            <span className="text-main text-[13px] font-medium">
+                              {formatShortDate(selectedDate)}
+                            </span>
+                            <ChevronDown size={14} className="text-soft-400" />
+                          </Button>
+                        </PopoverTrigger>
+                        <PopoverContent align="start" className="bg-white p-3">
+                          <Calendar
+                            mode="single"
+                            selected={selectedDate}
+                            onSelect={setSelectedDate}
+                            className="rounded-md bg-white"
                           />
-                          <span className="text-main text-[13px] font-medium">
-                            {selectedTeam.label}
-                          </span>
-                          <ChevronDown size={14} className="text-soft-400" />
-                        </Button>
-                      </PopoverTrigger>
-                      <PopoverContent
-                        align="start"
-                        className="w-[220px] bg-white p-2"
-                      >
-                        <div className="flex max-h-[300px] flex-col overflow-auto">
-                          {teamOptions.map((opt) => {
-                            const active = opt.id === selectedTeam.id;
-                            return (
-                              <button
-                                key={opt.id}
-                                onClick={() => setSelectedTeam(opt)}
-                                className={`hover:bg-primary-foreground flex w-full items-center gap-3 rounded-md px-2 py-2 text-left ${
-                                  active ? "bg-primary-foreground" : ""
-                                }`}
-                              >
-                                <Image
-                                  src={opt.icon}
-                                  alt={opt.label}
-                                  width={20}
-                                  height={20}
-                                  className="rounded-[4px]"
-                                />
-                                <span className="text-main text-[13px]">
-                                  {opt.label}
-                                </span>
-                              </button>
-                            );
-                          })}
-                        </div>
-                      </PopoverContent>
-                    </Popover>
+                        </PopoverContent>
+                      </Popover>
 
-                    <Popover>
-                      <PopoverTrigger asChild>
-                        <Button className="border-main/7 hover:bg-primary-foreground flex h-fit items-center gap-2 rounded-[100px] border bg-white px-3">
-                          <CalendarIcon size={14} className="text-main" />
-                          <span className="text-main text-[13px] font-medium">
-                            {formatShortDate(selectedDate)}
-                          </span>
-                          <ChevronDown size={14} className="text-soft-400" />
-                        </Button>
-                      </PopoverTrigger>
-                      <PopoverContent align="start" className="bg-white p-3">
-                        <Calendar
-                          mode="single"
-                          selected={selectedDate}
-                          onSelect={setSelectedDate}
-                          className="rounded-md bg-white"
-                        />
-                      </PopoverContent>
-                    </Popover>
+                      <div className="mx-[4px] hidden h-[20px] border border-black/5 md:block" />
+                    </div>
+                  )}
 
-                    <div className="mx-[4px] hidden h-[20px] border border-black/5 md:block" />
-                  </div>
-                )}
-
-                {/* Infinite scroller with fading edges (mask applied only here) */}
-                <div className="relative w-full overflow-hidden md:flex-1 md:[mask-image:linear-gradient(to_right,transparent,black_40px,black_calc(100%-40px),transparent)] md:[-webkit-mask-image:linear-gradient(to_right,transparent,black_40px,black_calc(100%-40px),transparent)]">
-                  <div className="ticker-track flex w-full whitespace-nowrap will-change-transform">
-                    {tickerItems.map((item, idx) => (
-                      <span
-                        key={`t1-${idx}`}
-                        className="mr-[24px] flex items-center gap-[8px]"
-                      >
-                        <span className="text-main text-[13px] leading-[100%] font-medium tracking-tight">
-                          {item.name}
-                        </span>
+                  {/* Infinite scroller with fading edges (mask applied only here) */}
+                  <div className="relative w-full overflow-hidden md:flex-1 md:[mask-image:linear-gradient(to_right,transparent,black_40px,black_calc(100%-40px),transparent)] md:[-webkit-mask-image:linear-gradient(to_right,transparent,black_40px,black_calc(100%-40px),transparent)]">
+                    <div className="ticker-track flex w-full whitespace-nowrap will-change-transform">
+                      {tickerItems.map((item, idx) => (
                         <span
-                          className={`text-[13px] leading-[100%] font-medium tracking-tight ${
-                            item.change >= 0
-                              ? "text-light-green"
-                              : "text-neon-pink"
-                          }`}
+                          key={`t1-${idx}`}
+                          className="mr-[24px] flex items-center gap-[8px]"
                         >
-                          {formatChange(item.change)}
+                          <span className="text-text-secondary text-[13px] leading-[100%] font-medium tracking-tight">
+                            {item.name}
+                          </span>
+                          <span
+                            className={`text-[13px] leading-[100%] font-medium tracking-tight ${
+                              item.change >= 0
+                                ? "text-light-green"
+                                : "text-neon-pink"
+                            }`}
+                          >
+                            {formatChange(item.change)}
+                          </span>
                         </span>
-                      </span>
-                    ))}
-                    {tickerItems.map((item, idx) => (
-                      <span
-                        key={`t2-${idx}`}
-                        className="mr-[24px] flex items-center gap-[8px]"
-                      >
-                        <span className="text-main text-[13px] leading-[100%] font-medium tracking-tight">
-                          {item.name}
-                        </span>
+                      ))}
+                      {tickerItems.map((item, idx) => (
                         <span
-                          className={`text-[13px] leading-[100%] font-medium tracking-tight ${
-                            item.change >= 0
-                              ? "text-light-green"
-                              : "text-neon-pink"
-                          }`}
+                          key={`t2-${idx}`}
+                          className="mr-[24px] flex items-center gap-[8px]"
                         >
-                          {formatChange(item.change)}
+                          <span className="text-text-secondary text-[13px] leading-[100%] font-medium tracking-tight">
+                            {item.name}
+                          </span>
+                          <span
+                            className={`text-[13px] leading-[100%] font-medium tracking-tight ${
+                              item.change >= 0
+                                ? "text-light-green"
+                                : "text-neon-pink"
+                            }`}
+                          >
+                            {formatChange(item.change)}
+                          </span>
                         </span>
-                      </span>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>

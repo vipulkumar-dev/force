@@ -1,10 +1,14 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import { animate } from "motion";
-import { motion } from "motion/react";
+import { motion, HTMLMotionProps } from "motion/react";
 import { cn } from "@/lib/utils";
 
-export default function TradeButton({ type }: { type: "long" | "short" }) {
+interface TradeButtonProps extends Omit<HTMLMotionProps<"button">, "type"> {
+  type: "long" | "short";
+}
+
+export default function TradeButton({ type, ...props }: TradeButtonProps) {
   const icon =
     type === "long" ? "/icons/game/long.svg" : "/icons/game/short.svg";
   const iconRef = useRef<HTMLImageElement>(null);
@@ -82,7 +86,8 @@ export default function TradeButton({ type }: { type: "long" | "short" }) {
       initial="initial"
       whileHover="hover"
       animate="initial"
-      className="bg-page-background relative rounded-lg hover:cursor-pointer p-3 overflow-hidden"
+      className="bg-page-background relative rounded-lg hover:cursor-pointer aspect-square w-[32px] overflow-hidden flex items-center justify-center"
+      {...props}
     >
       <Image ref={iconRef} src={icon} alt={type} width={10} height={10} />
       <motion.p

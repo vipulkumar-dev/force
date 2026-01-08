@@ -62,7 +62,7 @@ export default function GameCard({
             {team1.change}%
           </p>
         </span>
-        <div className="flex flex-row items-center justify-end gap-2">
+        <div className="flex flex-row items-center justify-end gap-1">
           <TradeButton type="long" />
           {/* <button className="bg-page-background rounded-lg hover:cursor-pointer p-3">
             <Image
@@ -94,23 +94,9 @@ export default function GameCard({
             {team2.change}%
           </p>
         </span>
-        <div className="flex flex-row items-center justify-end gap-2">
-          <button className="bg-page-background rounded-lg hover:cursor-pointer p-3">
-            <Image
-              src="/icons/game/long.svg"
-              alt="Long"
-              width={10}
-              height={10}
-            />
-          </button>
-          <button className="bg-page-background rounded-lg hover:cursor-pointer p-3">
-            <Image
-              src="/icons/game/short.svg"
-              alt="Short"
-              width={10}
-              height={10}
-            />
-          </button>
+        <div className="flex flex-row items-center justify-end gap-1">
+          <TradeButton type="long" />
+          <TradeButton type="short" />
         </div>
       </div>
 

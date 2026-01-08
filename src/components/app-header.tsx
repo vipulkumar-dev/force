@@ -332,12 +332,11 @@ export default function ClientHeader() {
                 {/* Right side */}
                 <div className="flex flex-row items-center gap-[12px]">
                   <div className="flex flex-row items-center gap-[10px]">
-                    <div className="bg-page-background flex h-[32px] w-[160px] flex-row items-center gap-[10px] rounded-[7px] py-[6px] pr-[12px] pl-[10px] sm:w-[220px]">
+                    <div className="bg-elevation-button flex h-[32px] w-[160px] flex-row items-center gap-[10px] rounded-[7px] py-[6px] pr-[12px] pl-[10px] sm:w-[220px]">
                       <Search
                         width={12}
                         height={12}
-                        color="var(--main)"
-                        className="shrink-0"
+                        className="text-text-primary shrink-0"
                       />
                       <input
                         type="text"
@@ -363,7 +362,7 @@ export default function ClientHeader() {
                       variant="ghost"
                       size="icon"
                       onClick={toggleDarkMode}
-                      className="bg-page-background h-[32px] w-[32px] rounded-lg"
+                      className="bg-elevation-button hover:bg-elevation-button! h-[32px] w-[32px] cursor-pointer rounded-lg"
                       aria-label="Toggle dark mode"
                     >
                       {darkMode ? (
@@ -383,7 +382,7 @@ export default function ClientHeader() {
                             <Button
                               variant="ghost"
                               size="icon"
-                              className="bg-page-background h-[32px] w-[32px] cursor-pointer rounded-lg"
+                              className="bg-elevation-button hover:bg-elevation-button! h-[32px] w-[32px] cursor-pointer rounded-lg"
                               aria-label="Account"
                             >
                               <User className="text-text-primary h-[18px] w-[18px]" />
@@ -429,8 +428,8 @@ export default function ClientHeader() {
                         onOpenChange={setWalletDialogOpen}
                       >
                         <DialogTrigger asChild>
-                          <div className="bg-page-background flex flex-row items-center rounded-lg p-2 hover:cursor-pointer">
-                            <span className="text-muted-foreground ml-2 text-[12px] font-medium">
+                          <div className="bg-elevation-button flex flex-row items-center rounded-lg p-2 hover:cursor-pointer">
+                            <span className="text-text-primary text-[12px] font-medium">
                               Connect your wallet
                             </span>
                           </div>

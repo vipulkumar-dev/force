@@ -27,7 +27,7 @@ export default function LeagueSwitcher({
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          className={`bg-page-background hover:bg-primary-foreground my-2 flex h-[28px] w-[150px] flex-row items-center justify-between rounded-lg px-[12px] hover:cursor-pointer ${
+          className={`bg-elevation-button hover:bg-elevation-button! my-2 flex h-[28px] w-[150px] flex-row items-center justify-between rounded-lg px-[12px] hover:cursor-pointer ${
             className ?? ""
           }`}
         >

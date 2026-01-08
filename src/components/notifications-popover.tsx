@@ -61,7 +61,7 @@ export default function NotificationsPopover() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <div className="bg-nav-button cursor-pointer rounded-lg p-2">
+        <div className="bg-elevation-button cursor-pointer rounded-lg p-2">
           <Bell className="text-text-primary" width={18} height={18} />
         </div>
       </PopoverTrigger>

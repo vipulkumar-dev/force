@@ -96,7 +96,7 @@ export default function TeamBanner({
       </div>
 
       {/* Team Info Section */}
-      <div className="mt-auto mb-[24px] flex shrink-0 flex-col gap-4 px-[16px] sm:mb-[32px] sm:flex-row sm:items-center sm:justify-between sm:px-[20px] md:mb-[44px] md:px-[24px] lg:flex-1 lg:px-[30px]">
+      <div className="mt-auto mb-[24px] flex shrink-0 flex-col gap-4 px-[16px] sm:mb-[32px] sm:flex-row sm:items-end sm:justify-between sm:px-[20px] md:mb-[44px] md:px-[24px] lg:flex-1 lg:px-[30px]">
         <div className="flex flex-col">
           <h1 className="text-text-primary text-[24px] leading-[100%] font-medium tracking-[-2%] sm:text-[28px] md:text-[32px]">
             {name}

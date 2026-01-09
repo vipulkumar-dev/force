@@ -39,8 +39,8 @@ export default function TeamBanner({
       <div
         className="relative flex h-[300px] w-full shrink-0 items-center justify-center overflow-hidden rounded-t-[20px] sm:h-[350px] md:h-[400px] lg:h-auto lg:min-h-[400px] lg:flex-1 lg:rounded-md"
         style={{
-          background: `linear-gradient(0deg, ${bgColor}, ${bgColor}),
-                    linear-gradient(180deg, rgba(16, 16, 18, 0.35) 0%, rgba(16, 16, 18, 0) 100%)`,
+          background:
+            "linear-gradient(180deg, rgba(16, 16, 18, 0.35) 0%, rgba(16, 16, 18, 0) 100%), #AFAFBC",
         }}
       >
         {/* Team Logo */}

@@ -35,7 +35,7 @@ export default function TeamBanner({
   onNotify,
 }: TeamBannerProps) {
   return (
-    <div className="flex h-full flex-1 flex-col overflow-hidden rounded-[20px] bg-white lg:max-w-[900px]">
+    <div className="flex h-full flex-1 flex-col overflow-hidden rounded-[20px] bg-white">
       <div
         className="relative flex h-[300px] w-full shrink-0 items-center justify-center overflow-hidden rounded-t-[20px] sm:h-[350px] md:h-[400px] lg:h-auto lg:min-h-[400px] lg:flex-1 lg:rounded-md"
         style={{
@@ -79,13 +79,13 @@ export default function TeamBanner({
           {isLive && <div className="h-6 w-px bg-white/20"></div>}
           <Button
             onClick={onFollow}
-            className="text-text-primary hidden h-8 w-auto rounded-lg border-none bg-white px-2 text-[12px] font-medium hover:cursor-pointer sm:inline-flex sm:px-3 sm:text-[14px]"
+            className="text-text-primary hover:text-primary hidden h-8 w-auto rounded-lg border-none bg-white px-2 text-[12px] font-medium hover:cursor-pointer hover:bg-white sm:inline-flex sm:px-3 sm:text-[14px]"
           >
             Follow
           </Button>
           <Button
             onClick={onNotify}
-            className="text-text-primary h-8 w-8 rounded-lg border-none bg-white hover:cursor-pointer"
+            className="text-text-primary hover:text-primary h-8 w-8 rounded-lg border-none bg-white hover:cursor-pointer hover:bg-white"
           >
             <BellPlus className="text-text-primary h-4 w-4" />
           </Button>

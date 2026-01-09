@@ -66,20 +66,18 @@ export default function AthleteStatsCards({
   marketIndexChange,
 }: AthleteStatsCardsProps) {
   return (
-    <div className="flex w-full flex-col gap-[12px] sm:gap-[16px] lg:flex-row lg:gap-[16px]">
-      <div className="flex w-full flex-col gap-[12px] sm:flex-row sm:gap-[16px] md:gap-[24px] lg:w-[900px]">
-        <StatCard
-          label="League Rank"
-          value={`#${leagueRank}`}
-          change={leagueRankChange}
-        />
-        <StatCard
-          label="Performance"
-          value={`${performance.toFixed(1)}%`}
-          change={performanceChange}
-        />
-      </div>
-      <div className="flex w-full flex-shrink-0 flex-col gap-[24px] rounded-[14px] bg-white p-[16px] sm:gap-[32px] sm:p-[18px] md:gap-[46px] md:p-[20px] lg:w-[360px]">
+    <div className="flex w-full flex-col flex-wrap gap-[12px] sm:gap-[16px] lg:flex-row lg:gap-[16px]">
+      <StatCard
+        label="League Rank"
+        value={`#${leagueRank}`}
+        change={leagueRankChange}
+      />
+      <StatCard
+        label="Performance"
+        value={`${performance.toFixed(1)}%`}
+        change={performanceChange}
+      />
+      <div className="flex flex-1 flex-col gap-[24px] rounded-[14px] bg-white p-[16px] sm:gap-[32px] sm:p-[18px] md:gap-[46px] md:p-[20px] lg:w-[360px]">
         <p className="text-soft-400 text-[12px] font-medium sm:text-[14px]">
           Narrative Multiple
         </p>

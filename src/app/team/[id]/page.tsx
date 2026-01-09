@@ -94,7 +94,7 @@ export default function TeamPage() {
       >
         <div className="bg-page-background min-h-screen w-full pt-[117px]">
           {/* Main Content */}
-          <div className="mx-auto w-full max-w-[1440px] px-4 py-4 md:px-6">
+          <div className="mx-auto w-full max-w-[1400px] px-4 py-4 md:px-6">
             <div className="flex flex-col gap-4 lg:flex-row">
               {/* Left: Team Card */}
               <div className="flex w-full flex-1 flex-col gap-4">
@@ -125,7 +125,7 @@ export default function TeamPage() {
 
                 {/* Stats Cards */}
                 <div className="flex w-full justify-center">
-                  <div className="w-full max-w-[1276px]">
+                  <div className="w-full">
                     <AthleteStatsCards
                       indexPrice={teamStats.indexPrice}
                       indexPriceChange={teamStats.indexPriceChange}
@@ -141,7 +141,7 @@ export default function TeamPage() {
 
                 {/* Chart Section */}
                 <div className="flex w-full justify-center">
-                  <div className="w-full max-w-[1276px]">
+                  <div className="w-full">
                     <PriceChart />
                   </div>
                 </div>

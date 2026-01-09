@@ -37,7 +37,7 @@ export default function TeamBanner({
   return (
     <div className="flex h-full flex-1 flex-col overflow-hidden rounded-[20px] bg-white">
       <div
-        className="relative flex h-[300px] w-full shrink-0 items-center justify-center overflow-hidden rounded-t-[20px] sm:h-[350px] md:h-[400px] lg:h-auto lg:min-h-[400px] lg:flex-1 lg:rounded-md"
+        className="relative flex h-[300px] w-full flex-1 shrink-0 items-center justify-center overflow-hidden rounded-t-[20px] sm:h-[350px] md:h-[400px] lg:h-auto lg:min-h-[400px] lg:flex-1 lg:rounded-md"
         style={{
           background:
             "linear-gradient(180deg, rgba(16, 16, 18, 0.35) 0%, rgba(16, 16, 18, 0) 100%), #AFAFBC",
@@ -96,7 +96,7 @@ export default function TeamBanner({
       </div>
 
       {/* Team Info Section */}
-      <div className="mt-auto mb-[24px] flex shrink-0 flex-col gap-4 px-[16px] sm:mb-[32px] sm:flex-row sm:items-end sm:justify-between sm:px-[20px] md:mb-[44px] md:px-[24px] lg:flex-1 lg:px-[30px]">
+      <div className="mb-[24px] flex shrink-0 flex-col gap-4 px-[16px] sm:mb-[32px] sm:flex-row sm:items-end sm:justify-between sm:px-[20px] md:mb-[44px] md:px-[24px] lg:px-[30px]">
         <div className="flex flex-col">
           <h1 className="text-text-primary text-[24px] leading-[100%] font-medium tracking-[-2%] sm:text-[28px] md:text-[32px]">
             {name}

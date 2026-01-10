@@ -296,10 +296,10 @@ export default function ClientHeader() {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -12 }}
         transition={{ duration: 0.4 }}
-        className="fixed top-0 right-0 left-0 z-[101] h-fit bg-white"
+        className="fixed top-0 right-0 left-0 z-[101] h-fit"
       >
-        <div className="w-full">
-          <div className="bg-bg-secondary w-full border-b">
+        <div className="w-full border-b">
+          <div className="bg-bg-secondary w-full">
             <div className="mx-auto w-full max-w-[1400px] border-x">
               <div className="px-global flex h-[58px] w-full flex-row items-center justify-between py-[14px]">
                 <div className="flex flex-row items-center gap-[24px]">
@@ -632,10 +632,10 @@ export default function ClientHeader() {
           </div>
 
           {/* Toolbar + Infinite ticker (second row) */}
-          <div className="bg-bg-secondary w-full border-b">
+          <div className="bg-bg-secondary w-full">
             <div
               id="athlete-ticker-header"
-              className={`px-global relative mx-auto flex h-fit max-w-[1400px] flex-row border-x ${
+              className={`px-global relative mx-auto flex h-fit max-w-[1400px] flex-row border-x border-t ${
                 priceTrendActive || showAthleteRankingPage ? "py-0" : "py-0"
               } gap-3 overflow-hidden`}
             >

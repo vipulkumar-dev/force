@@ -111,7 +111,7 @@ const trendingItems: TrendingData[] = [
 
 export default function TodayGames() {
   return (
-    <div>
+    <div className="px-global">
       <h3 className="text-text-secondary m-0 mb-2 p-0 text-[14px] font-semibold">
         Trending
       </h3>

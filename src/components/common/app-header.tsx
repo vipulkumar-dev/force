@@ -298,7 +298,7 @@ export default function ClientHeader() {
         transition={{ duration: 0.4 }}
         className="fixed top-0 right-0 left-0 z-[101] h-fit"
       >
-        <div className="w-full border-b">
+        <div className="border-border-secondary dark:border-border w-full border-b">
           <div className="bg-bg-secondary w-full">
             <div className="mx-auto w-full max-w-[1400px] border-x">
               <div className="px-global flex h-[58px] w-full flex-row items-center justify-between py-[14px]">

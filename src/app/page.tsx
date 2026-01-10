@@ -141,14 +141,14 @@ export default function Page() {
             showPriceTrendPage ? "pt-[163px]" : "pt-[104px]"
           } min-h-0 overflow-hidden`}
         >
-          <div className="border-border-secondary px-global mx-auto flex w-full max-w-[1400px] flex-col gap-[24px] overflow-hidden border-x sm:gap-[32px] xl:flex-row xl:gap-[40px]">
+          <div className="border-border-secondary dark:border-border mx-auto flex w-full max-w-[1400px] flex-col gap-[24px] overflow-hidden border-x sm:gap-[32px] xl:flex-row xl:gap-[40px]">
             {!showPriceTrendPage ? (
               <>
                 <div className="flex min-h-0 w-full flex-col gap-[20px] pt-[20px] pb-[20px] xl:pt-[20px]">
                   <TodayGames />
-                  <div className="h-[0.5px] w-full bg-[#EAEBEC] px-2 dark:bg-[#2C2C33]"></div>
+                  <div className="dark:bg-border bg-border-secondary h-px w-full max-w-[1400px]"></div>
                   <Trending />
-                  <div className="h-[0.5px] w-full bg-[#EAEBEC] px-2 dark:bg-[#2C2C33]"></div>
+                  <div className="dark:bg-border bg-border-secondary h-px w-full max-w-[1400px]"></div>
                   <PriceTrendChart />
                 </div>
               </>

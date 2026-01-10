@@ -156,7 +156,7 @@ export default function PriceTrendChart() {
   ];
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="px-global flex flex-col gap-4">
       <div className="flex w-full flex-row items-center justify-between">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="flex h-auto flex-row items-center gap-[16px] bg-transparent p-0">
@@ -360,10 +360,12 @@ export default function PriceTrendChart() {
                         </p>
                       </div>
                     </TableCell>
-                    <TableCell className="px-4 py-3">
+                    <TableCell className="text-text-primary px-4 py-3">
                       {athlete.performance}%
                     </TableCell>
-                    <TableCell className="px-4 py-3">#{athlete.rank}</TableCell>
+                    <TableCell className="text-text-primary px-4 py-3">
+                      #{athlete.rank}
+                    </TableCell>
                     <TableCell
                       className={`w-[1%] rounded-tr-[14px] rounded-br-[14px] px-4 py-3`}
                     >

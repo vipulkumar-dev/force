@@ -43,8 +43,9 @@ export default function GameCard({
           Live
         </div>
       </div>
-      <div className="flex flex-col gap-1 py-2">
-        <div className="flex flex-row items-center justify-between gap-2 px-4">
+      <div className="grid grid-cols-[auto_auto_auto_1fr] gap-x-3 gap-y-1 px-4 py-2">
+        {/* Team 1 Row */}
+        <div className="contents">
           <p className="text-text-primary text-[20px] font-semibold">
             {team1.score}
           </p>
@@ -54,7 +55,7 @@ export default function GameCard({
               {team1.name}
             </p>
           </div>
-          <span className="text-text-primary flex flex-row items-center gap-2 text-xs font-medium">
+          <span className="text-text-primary flex flex-row items-center gap-2 text-xs font-medium whitespace-nowrap">
             {team1.price}{" "}
             <p
               className={
@@ -67,28 +68,22 @@ export default function GameCard({
           </span>
           <div className="flex flex-row items-center justify-end gap-1">
             <TradeButton type="long" />
-            {/* <button className="bg-page-background rounded-lg hover:cursor-pointer p-3">
-            <Image
-              src="/icons/game/short.svg"
-              alt="Short"
-              width={10}
-              height={10}
-            />
-          </button> */}
             <TradeButton type="short" />
           </div>
         </div>
-        <div className="flex flex-row items-center justify-between gap-2 px-4">
+
+        {/* Team 2 Row */}
+        <div className="contents">
           <p className="text-text-primary text-[20px] font-semibold">
             {team2.score}
           </p>
-          <div className="flex flex-row items-center justify-start gap-1">
+          <div className="flex flex-row items-center justify-start gap-2">
             <Image src={team2.icon} alt={team2.name} width={20} height={20} />
             <p className="text-muted-foreground text-xs font-bold">
               {team2.name}
             </p>
           </div>
-          <span className="text-text-primary flex flex-row items-center gap-2 text-xs font-medium">
+          <span className="text-text-primary flex flex-row items-center gap-2 text-xs font-medium whitespace-nowrap">
             {team2.price}{" "}
             <p
               className={

@@ -97,7 +97,7 @@ export default function TradeButton({
       )}
       {...props}
     >
-      <Image ref={iconRef} src={icon} alt={type} width={10} height={10} />
+      <Image ref={iconRef} src={icon} alt={type} width={9} height={9} />
       <motion.p
         className={cn(
           "absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-0 text-[8px] font-extrabold tracking-[-0.02em]",

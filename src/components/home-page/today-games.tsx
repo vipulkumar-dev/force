@@ -5,6 +5,7 @@ import GameCard from "./game-card";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import HideExtra from "../common/hide-extra";
 
 interface GameData {
   id: string;
@@ -131,26 +132,28 @@ export default function TodayGames() {
       <h3 className="text-text-secondary m-0 mb-2 p-0 text-[14px] font-semibold">
         Todays Games
       </h3>
-      <Swiper
-        spaceBetween={8}
-        slidesPerView="auto"
-        navigation
-        className="pb-4!"
-      >
-        {games.map((game) => (
-          <SwiperSlide key={game.id} className="w-auto!">
-            <Link href={"/live/game-1"}>
-              <GameCard
-                image={game.image}
-                team1={game.team1}
-                team2={game.team2}
-                status={game.status}
-                volume={game.volume}
-              />
-            </Link>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <HideExtra>
+        <Swiper
+          spaceBetween={8}
+          slidesPerView="auto"
+          navigation
+          className="overflow-visible! pb-4!"
+        >
+          {games.map((game) => (
+            <SwiperSlide key={game.id} className="w-auto!">
+              <Link href={"/live/game-1"}>
+                <GameCard
+                  image={game.image}
+                  team1={game.team1}
+                  team2={game.team2}
+                  status={game.status}
+                  volume={game.volume}
+                />
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </HideExtra>
     </div>
   );
 }

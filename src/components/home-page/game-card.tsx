@@ -43,15 +43,15 @@ export default function GameCard({
           Live
         </div>
       </div>
-      <div className="grid grid-cols-[auto_auto_auto_1fr] gap-x-3 gap-y-1 px-4 py-2">
+      <div className="grid grid-cols-[auto_auto_auto_1fr] gap-x-3.5 gap-y-1 px-4 py-2">
         {/* Team 1 Row */}
         <div className="contents">
           <p className="text-text-primary text-[20px] font-semibold">
             {team1.score}
           </p>
           <div className="flex flex-row items-center justify-start gap-2">
-            <Image src={team1.icon} alt={team1.name} width={20} height={20} />
-            <p className="text-muted-foreground text-xs font-bold">
+            <Image src={team1.icon} alt={team1.name} width={18} height={18} />
+            <p className="text-text-secondary text-xs font-semibold">
               {team1.name}
             </p>
           </div>
@@ -78,8 +78,8 @@ export default function GameCard({
             {team2.score}
           </p>
           <div className="flex flex-row items-center justify-start gap-2">
-            <Image src={team2.icon} alt={team2.name} width={20} height={20} />
-            <p className="text-muted-foreground text-xs font-bold">
+            <Image src={team2.icon} alt={team2.name} width={18} height={18} />
+            <p className="text-text-secondary text-xs font-semibold">
               {team2.name}
             </p>
           </div>

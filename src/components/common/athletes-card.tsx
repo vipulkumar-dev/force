@@ -24,23 +24,27 @@ export default function AthletesCard({
   const [openTradeDialog, setOpenTradeDialog] = useState(false);
   const [tradeType, setTradeType] = useState<string>("long");
   return (
-    <div className="bg-elevation-card relative mr-4 flex h-auto w-[170px] flex-col items-center justify-center overflow-hidden rounded-[14px] pt-[24px] pr-[20px] pb-[20px] pl-[20px]">
-      <div className="bg-league-card text-text-secondary absolute top-2 right-2 flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
-        <Image src="/icons/game/f.svg" alt="Long" width={8} height={10} />
+    <div className="bg-elevation-card relative flex h-auto flex-col items-center justify-center overflow-hidden rounded-[14px] pt-[24px] pr-[20px] pb-[20px] pl-[20px]">
+      <div className="bg-elevation-button text-text-secondary absolute top-2 right-2 flex flex-row items-center justify-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium">
+        <Image src="/icons/game/f.svg" alt="Long" width={7} height={8} />
         {percentage}%
       </div>
       <Image
         src={image}
-        className="rounded-full object-cover object-top"
+        className="bg-bg-primary h-10 w-10 shrink-0 rounded-full object-cover object-top"
         alt={name}
         width={40}
         height={40}
       />
-      <span className="text-text-primary max-w-[100%] truncate text-sm font-semibold">
-        {name}
-      </span>
-      <p className="text-text-secondary text-xs font-medium">{abbreviation}</p>
-      <span className="flex flex-row items-center justify-center gap-2">
+      <div className="flex flex-col items-center justify-center pt-2">
+        <span className="text-text-primary max-w-[100%] truncate text-sm font-semibold">
+          {name}
+        </span>
+        <p className="text-text-secondary text-xs font-medium">
+          {abbreviation}
+        </p>
+      </div>
+      <span className="flex flex-row items-center justify-center gap-1 pt-1.5 font-medium">
         <p className="text-text-primary text-xs">{price}</p>
         <p
           className={`text-xs ${
@@ -51,7 +55,7 @@ export default function AthletesCard({
           {change}%
         </p>
       </span>
-      <div className="flex flex-row items-center justify-between gap-1 px-2 pt-3">
+      <div className="flex flex-row items-center justify-between gap-1 pt-2.5">
         <TradeButton
           onClick={() => {
             setOpenTradeDialog(true);

@@ -102,6 +102,8 @@
   --color-elevation-card: var(--elevation-card);
   --color-elevation-button: var(--elevation-button);
   --color-border-secondary: var(--border-secondary);
+  --padding-global: var(--padding-global);
+  --padding-section-md: var(--padding-section-md);
 }
 
 :root {
@@ -215,19 +217,19 @@
 
 @variant sm {
   :root {
-    --padding-global: 2rem;
+    --padding-global: 1rem;
     --padding-section-md: 2rem;
   }
 }
 @variant md {
   :root {
-    --padding-global: 2.5rem;
+    --padding-global: 1.25rem;
     --padding-section-md: 2.25rem;
   }
 }
 @variant lg {
   :root {
-    --padding-global: max(4vw, 2.5rem);
+    --padding-global: 1.5rem;
     --padding-section-md: 3.25rem;
   }
 }

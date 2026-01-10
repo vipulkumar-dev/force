@@ -300,8 +300,8 @@ export default function ClientHeader() {
       >
         <div className="w-full">
           <div className="bg-bg-secondary w-full border-b">
-            <div className="mx-auto w-full max-w-[1440px] border-x">
-              <div className="flex h-[58px] w-full flex-row items-center justify-between px-[16px] py-[14px] sm:px-[24px] md:px-[32px] xl:px-[40px]">
+            <div className="mx-auto w-full max-w-[1400px] border-x">
+              <div className="px-global flex h-[58px] w-full flex-row items-center justify-between py-[14px]">
                 <div className="flex flex-row items-center gap-[24px]">
                   <Link href="/" aria-label="Home">
                     <Logo className="text-text-primary w-[75px]" />
@@ -635,7 +635,7 @@ export default function ClientHeader() {
           <div className="bg-bg-secondary w-full border-b">
             <div
               id="athlete-ticker-header"
-              className={`relative mx-auto flex h-fit max-w-[1440px] flex-row border-x px-10 ${
+              className={`px-global relative mx-auto flex h-fit max-w-[1400px] flex-row border-x ${
                 priceTrendActive || showAthleteRankingPage ? "py-0" : "py-0"
               } gap-3 overflow-hidden`}
             >

@@ -1,5 +1,7 @@
+"use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { Dialog, DialogContent } from "../ui/dialog";
 import TradeDialog from "../trade/trade_dialog";
 import TradeButton from "./trade-button";
@@ -22,10 +24,39 @@ export default function AthletesCard({
   change,
   percentage = 80,
 }: AthletesCardProps) {
+  const router = useRouter();
   const [openTradeDialog, setOpenTradeDialog] = useState(false);
   const [tradeType, setTradeType] = useState<string>("long");
+  const [tradeButtonClicked, setTradeButtonClicked] = useState(false);
+
+  const handleCardClick = () => {
+    if (!tradeButtonClicked) {
+      router.push(`/athlete/${name.toLowerCase().replace(/\s+/g, "-")}`);
+    }
+    setTradeButtonClicked(false);
+  };
+
+  const handleTradeClick = (type: "long" | "short") => {
+    setTradeButtonClicked(true);
+    setOpenTradeDialog(true);
+    setTradeType(type);
+  };
+
+  const handleDialogClose = (open: boolean) => {
+    setOpenTradeDialog(open);
+    if (!open) {
+      // Reset the flag after a brief delay to prevent navigation
+      setTimeout(() => {
+        setTradeButtonClicked(false);
+      }, 100);
+    }
+  };
+
   return (
-    <div className="bg-elevation-card relative flex h-auto flex-col items-center justify-center overflow-hidden rounded-[14px] pt-[24px] pr-[20px] pb-[20px] pl-[20px]">
+    <div
+      onClick={handleCardClick}
+      className="bg-elevation-card relative flex h-auto cursor-pointer flex-col items-center justify-center overflow-hidden rounded-[14px] pt-[24px] pr-[20px] pb-[20px] pl-[20px]"
+    >
       <FTag percentage={percentage} className="absolute top-2 right-2" />
       <Image
         src={image}
@@ -53,25 +84,30 @@ export default function AthletesCard({
           {change}%
         </p>
       </span>
-      <div className="flex flex-row items-center justify-between gap-1 pt-2.5">
+      <div
+        className="flex flex-row items-center justify-between gap-1 pt-2.5"
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
         <TradeButton
-          onClick={() => {
-            setOpenTradeDialog(true);
-            setTradeType("long");
+          onClick={(e) => {
+            e.stopPropagation();
+            handleTradeClick("long");
           }}
           type="long"
           className="md:w-[63px]"
         />
         <TradeButton
-          onClick={() => {
-            setOpenTradeDialog(true);
-            setTradeType("short");
+          onClick={(e) => {
+            e.stopPropagation();
+            handleTradeClick("short");
           }}
           type="short"
           className="md:w-[63px]"
         />
       </div>
-      <Dialog open={openTradeDialog} onOpenChange={setOpenTradeDialog}>
+      <Dialog open={openTradeDialog} onOpenChange={handleDialogClose}>
         <DialogContent showCloseButton={false} className="p-0">
           <TradeDialog type={tradeType} />
         </DialogContent>

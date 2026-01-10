@@ -315,8 +315,10 @@ export default function ClientHeader() {
                           key={item.href}
                           asChild
                           className={`${baseBtn} ${
-                            active ? "bg-bg-tertiary!" : "bg-transparent!"
-                          } h-[28px] rounded-lg px-[12px] py-[8px]`}
+                            active
+                              ? "bg-bg-tertiary! mx-[8px] px-[12px]"
+                              : "bg-transparent!"
+                          } h-[28px] rounded-lg px-[8px] py-[8px]`}
                         >
                           <Link href={item.href}>
                             <p

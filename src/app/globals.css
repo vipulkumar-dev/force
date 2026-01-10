@@ -87,7 +87,8 @@
   --color-soft-gray: var(--soft-gray);
   --color-learn-gray: #e5e5e5;
   /* Typography - Font Families */
-  --font-sans: var(--font-inter-sans);
+  --font-sans: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
   --font-inter: var(--font-inter-sans);
   --font-display: var(--font-inter-display);
   --font-jakarta: var(--font-plus-jakarta);

@@ -29,6 +29,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import WalletConnectScreen from "@/components/wallet-connect-modal";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import Logo from "@/image/FORCE.svg";
+import Ticker from "./header/ticker";
 
 export default function ClientHeader() {
   // Use current route to style active tab
@@ -721,45 +722,9 @@ export default function ClientHeader() {
 
                   {/* Infinite scroller with fading edges (mask applied only here) */}
                   <div className="relative w-full overflow-hidden md:flex-1 md:[mask-image:linear-gradient(to_right,transparent,black_40px,black_calc(100%-40px),transparent)] md:[-webkit-mask-image:linear-gradient(to_right,transparent,black_40px,black_calc(100%-40px),transparent)]">
-                    <div className="ticker-track flex w-full whitespace-nowrap will-change-transform">
-                      {tickerItems.map((item, idx) => (
-                        <span
-                          key={`t1-${idx}`}
-                          className="mr-[24px] flex items-center gap-[8px]"
-                        >
-                          <span className="text-text-secondary text-[13px] leading-[100%] font-medium tracking-tight">
-                            {item.name}
-                          </span>
-                          <span
-                            className={`text-[13px] leading-[100%] font-medium tracking-tight ${
-                              item.change >= 0
-                                ? "text-light-green"
-                                : "text-neon-pink"
-                            }`}
-                          >
-                            {formatChange(item.change)}
-                          </span>
-                        </span>
-                      ))}
-                      {tickerItems.map((item, idx) => (
-                        <span
-                          key={`t2-${idx}`}
-                          className="mr-[24px] flex items-center gap-[8px]"
-                        >
-                          <span className="text-text-secondary text-[13px] leading-[100%] font-medium tracking-tight">
-                            {item.name}
-                          </span>
-                          <span
-                            className={`text-[13px] leading-[100%] font-medium tracking-tight ${
-                              item.change >= 0
-                                ? "text-light-green"
-                                : "text-neon-pink"
-                            }`}
-                          >
-                            {formatChange(item.change)}
-                          </span>
-                        </span>
-                      ))}
+                    <div className="flex w-full whitespace-nowrap will-change-transform">
+                      <Ticker />
+                      <Ticker />
                     </div>
                   </div>
                 </div>

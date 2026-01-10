@@ -100,7 +100,7 @@ export default function TradeButton({
       <Image ref={iconRef} src={icon} alt={type} width={10} height={10} />
       <motion.p
         className={cn(
-          "absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-0 text-[8px] font-extrabold tracking-[-0.06em]",
+          "absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-0 text-[8px] font-extrabold tracking-[-0.02em]",
           type === "long" ? "text-[#25AB7A]" : "text-[#FC3970]",
         )}
       >

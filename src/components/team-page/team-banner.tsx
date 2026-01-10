@@ -50,7 +50,7 @@ export default function TeamBanner({
             alt={name}
             width={327}
             height={202}
-            className="object-contain"
+            className="h-auto object-contain"
           />
         </div>
 

@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import TradeButton from "../trade-button";
+import TradeButton from "../common/trade-button";
 interface GameCardProps {
   image?: string;
   team1: {

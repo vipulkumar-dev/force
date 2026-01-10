@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
-import { Button } from "./ui/button";
-import LeagueSwitcher from "./home-page/league-switcher";
+import { Button } from "@/components/ui/button";
+import LeagueSwitcher from "@/components/home-page/league-switcher";
 import {
   Search,
   ChevronDown,
@@ -17,13 +17,17 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
-import { Popover, PopoverTrigger, PopoverContent } from "./ui/popover";
-import NotificationsPopover from "./notifications-popover";
-import WalletPopover from "./wallet-popover";
-import { Calendar } from "./ui/calendar";
-import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
-import WalletConnectScreen from "./wallet-connect-modal";
-import { Sheet, SheetTrigger, SheetContent } from "./ui/sheet";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
+import NotificationsPopover from "@/components/notifications-popover";
+import WalletPopover from "@/components/wallet-popover";
+import { Calendar } from "@/components/ui/calendar";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import WalletConnectScreen from "@/components/wallet-connect-modal";
+import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import Logo from "@/image/FORCE.svg";
 
 export default function ClientHeader() {

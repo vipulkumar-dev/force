@@ -49,54 +49,31 @@ export default function LeagueSwitcher({
       <PopoverContent
         align="start"
         side="bottom"
-        className="w-[220px] bg-white p-2"
+        className="bg-elevation-card w-[220px] p-2"
       >
         <div className="flex max-h-[300px] flex-col overflow-auto">
           {options.map((opt, index) => {
             const active = opt.id === selected.id;
-            const isFirstOption = index === 0;
-
-            if (isFirstOption) {
-              return (
-                <PopoverClose asChild key={opt.id}>
-                  <button
-                    onClick={() => onChange(opt)}
-                    className={`hover:bg-primary-foreground flex w-full items-center gap-3 rounded-md px-2 py-2 text-left ${
-                      active ? "bg-primary-foreground" : ""
-                    }`}
-                  >
-                    <Image
-                      src={opt.icon}
-                      alt={opt.label}
-                      width={20}
-                      height={20}
-                      className="rounded-[4px]"
-                    />
-                    <span className="text-text-primary text-[13px]">
-                      {opt.label}
-                    </span>
-                  </button>
-                </PopoverClose>
-              );
-            }
-
             return (
-              <button
-                key={opt.id}
-                disabled
-                className="flex w-full cursor-not-allowed items-center gap-3 rounded-md px-2 py-2 text-left opacity-60 blur-[6px]"
-              >
-                <Image
-                  src={opt.icon}
-                  alt={opt.label}
-                  width={20}
-                  height={20}
-                  className="rounded-[4px]"
-                />
-                <span className="text-text-primary text-[13px]">
-                  {opt.label}
-                </span>
-              </button>
+              <PopoverClose asChild key={opt.id}>
+                <button
+                  onClick={() => onChange(opt)}
+                  className={`hover:bg-elevation-button flex w-full cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-left ${
+                    active ? "bg-elevation-button" : ""
+                  }`}
+                >
+                  <Image
+                    src={opt.icon}
+                    alt={opt.label}
+                    width={20}
+                    height={20}
+                    className="rounded-[4px]"
+                  />
+                  <span className="text-text-primary text-[13px]">
+                    {opt.label}
+                  </span>
+                </button>
+              </PopoverClose>
             );
           })}
         </div>

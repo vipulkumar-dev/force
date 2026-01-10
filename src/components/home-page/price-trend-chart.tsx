@@ -14,10 +14,10 @@ import {
 } from "@/components/ui/table";
 import Image from "next/image";
 import { Button } from "../ui/button";
-import TrendingCard from "./trending-card";
+import TrendingCard from "../common/athletes-card";
 import TradeDialog from "../trade/trade_dialog";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import TradeButton from "../trade-button";
+import TradeButton from "../common/trade-button";
 
 interface AthleteData {
   id: string;
@@ -250,7 +250,10 @@ export default function PriceTrendChart() {
                   >
                     <TableCell className="rounded-tl-[14px] rounded-bl-[14px] px-4 py-3 font-medium">
                       <div className="relative flex flex-row items-center gap-2">
-                        <div className="bg-dark-yellow relative h-8 w-8 overflow-hidden rounded-full">
+                        <Link
+                          href={`/athlete/${athlete.name.toLowerCase().replace(/\s+/g, "-")}`}
+                          className="bg-dark-yellow relative h-8 w-8 overflow-hidden rounded-full"
+                        >
                           <Image
                             src="/icons/athletes/logo.png"
                             alt="Logo"
@@ -263,7 +266,7 @@ export default function PriceTrendChart() {
                             fill
                             className="object-cover object-top"
                           />
-                        </div>
+                        </Link>
                         <div>
                           <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                             {athlete.name}

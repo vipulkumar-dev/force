@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Dialog, DialogContent } from "../ui/dialog";
 import TradeDialog from "../trade/trade_dialog";
-import TradeButton from "../trade-button";
-interface TrendingCardProps {
+import TradeButton from "./trade-button";
+interface AthletesCardProps {
   id: string;
   image?: string;
   name: string;
@@ -13,14 +13,14 @@ interface TrendingCardProps {
   percentage?: number;
 }
 
-export default function TrendingCard({
+export default function AthletesCard({
   image = "/icons/athletes/lebron-james.png",
   name,
   abbreviation,
   price,
   change,
   percentage = 80,
-}: TrendingCardProps) {
+}: AthletesCardProps) {
   const [openTradeDialog, setOpenTradeDialog] = useState(false);
   const [tradeType, setTradeType] = useState<string>("long");
   return (

@@ -22,7 +22,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import Image from "next/image";
-import TrendingCard from "@/components/home-page/trending-card";
+import AthletesCard from "@/components/common/athletes-card";
 export default function DiscoverPage() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const trendingRows = [
@@ -493,7 +493,7 @@ export default function DiscoverPage() {
                   <div className="flex flex-row gap-4 overflow-x-auto overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                     {athletesData.map((athlete) => (
                       <div key={athlete.id} className="flex-shrink-0">
-                        <TrendingCard
+                        <AthletesCard
                           id={athlete.id}
                           image={athlete.image}
                           name={athlete.name}

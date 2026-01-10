@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans, Lexend_Deca } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import ClientHeader from "@/components/app-header";
-import AppFooter from "@/components/app-footer";
+import ClientHeader from "@/components/common/app-header";
+import AppFooter from "@/components/common/app-footer";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const interSans = Inter({
@@ -84,7 +84,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${interSans.variable} ${interDisplay.variable} ${plusJakartaSans.variable} ${lexendDeca.variable} ${nohemi.variable} antialiased pb-[80px] bg-bg-primary`}
+        className={`${interSans.variable} ${interDisplay.variable} ${plusJakartaSans.variable} ${lexendDeca.variable} ${nohemi.variable} bg-bg-primary pb-[80px] antialiased`}
       >
         <ThemeProvider
           attribute="class"

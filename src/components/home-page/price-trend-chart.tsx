@@ -19,108 +19,29 @@ import TradeDialog from "../trade/trade_dialog";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import TradeButton from "../common/trade-button";
 import FTag from "../common/f-tag";
+import {
+  getRandomExtendedAthletes,
+  type ExtendedAthleteData,
+} from "@/lib/data/athletes-bank";
 
-interface AthleteData {
-  id: string;
-  image?: string;
-  name: string;
-  abbreviation: string;
-  team: string;
-  price: string;
-  change: number;
-  percentage?: number;
+// Use ExtendedAthleteData as the interface
+interface AthleteData extends ExtendedAthleteData {
   volume: string;
   volumeChange: number;
   performance: number;
   rank: number;
 }
 
-const athletesData: AthleteData[] = [
-  {
-    id: "1",
-    image: "/icons/athletes/lebron-james.png",
-    name: "LeBron James",
-    abbreviation: "LAA",
-    team: "Los Angeles Lakers",
-    price: "$102.3",
-    change: 3.27,
-    percentage: 80,
-    volume: "$321.6k",
-    volumeChange: 3.27,
-    performance: 86,
-    rank: 31,
-  },
-  {
-    id: "2",
-    image: "/icons/athletes/stephen-curry.png",
-    name: "Stephen Curry",
-    abbreviation: "GSW",
-    team: "Golden State Warriors",
-    price: "$98.5",
-    change: -1.26,
-    percentage: 75,
-    volume: "$245.3k",
-    volumeChange: -1.26,
-    performance: 82,
-    rank: 28,
-  },
-  {
-    id: "3",
-    image: "/icons/athletes/kevin-durant.png",
-    name: "Kevin Durant",
-    abbreviation: "PHX",
-    team: "Phoenix Suns",
-    price: "$105.2",
-    change: 2.15,
-    percentage: 85,
-    volume: "$412.8k",
-    volumeChange: 2.15,
-    performance: 89,
-    rank: 15,
-  },
-  {
-    id: "4",
-    image: "/icons/athletes/luka-doncic.png",
-    name: "Luka Doncic",
-    abbreviation: "DAL",
-    team: "Dallas Mavericks",
-    price: "$108.9",
-    change: -0.89,
-    percentage: 78,
-    volume: "$389.2k",
-    volumeChange: -0.89,
-    performance: 91,
-    rank: 12,
-  },
-  {
-    id: "5",
-    image: "/icons/athletes/jayson-tatum.png",
-    name: "Jayson Tatum",
-    abbreviation: "BOS",
-    team: "Boston Celtics",
-    price: "$99.7",
-    change: 2.45,
-    percentage: 88,
-    volume: "$356.4k",
-    volumeChange: 2.45,
-    performance: 87,
-    rank: 22,
-  },
-  {
-    id: "6",
-    image: "/icons/athletes/g-antetokounmpo.png",
-    name: "Giannis Antetokounmpo",
-    abbreviation: "MIL",
-    team: "Milwaukee Bucks",
-    price: "$112.4",
-    change: 4.12,
-    percentage: 92,
-    volume: "$478.5k",
-    volumeChange: 4.12,
-    performance: 94,
-    rank: 8,
-  },
-];
+// Get random athletes from the data bank
+const athletesData: AthleteData[] = getRandomExtendedAthletes(6, false).map(
+  (athlete) => ({
+    ...athlete,
+    volume: athlete.volume || "$300k",
+    volumeChange: athlete.volumeChange || 0,
+    performance: athlete.performance || 85,
+    rank: athlete.rank || 25,
+  }),
+);
 
 export default function PriceTrendChart() {
   const [activeTab, setActiveTab] = useState("athletes");
@@ -297,7 +218,7 @@ export default function PriceTrendChart() {
                     <TableCell className="w-[1%] rounded-tl-[14px] rounded-bl-[14px] px-4 py-3">
                       <div className="relative flex w-fit flex-row items-center gap-2 font-medium">
                         <Link
-                          href={`/athlete/${athlete.name.toLowerCase().replace(/\s+/g, "-")}`}
+                          href={`/athlete/${athlete.id}`}
                           className="bg-dark-yellow relative h-8 w-8 overflow-hidden rounded-full"
                         >
                           <Image

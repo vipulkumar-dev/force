@@ -9,11 +9,12 @@ import ActivePositions from "@/components/athlete-page/active-positions";
 import TradingPanel from "@/components/athlete-page/trading-panel";
 import PriceChart from "@/components/athlete-page/price-chart";
 import { getPlayerById, type Player } from "@/lib/data/teams-and-players";
+import { getAthleteById, type BaseAthlete } from "@/lib/data/athletes-bank";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 // Mock data generator - In production, this would come from an API
-const getAthleteData = (player: Player) => ({
+const getAthleteDataFromPlayer = (player: Player) => ({
   id: player.id,
   name: player.name,
   team: player.teamName,
@@ -52,13 +53,53 @@ const getAthleteData = (player: Player) => ({
   volume: 500,
 });
 
+// Mock data generator from athlete bank
+const getAthleteDataFromBank = (athlete: BaseAthlete) => ({
+  id: athlete.id,
+  name: athlete.name,
+  team: athlete.team,
+  teamId: athlete.teamId,
+  bgColor: athlete.bgColor || "bg-dark-yellow",
+  league: "NBA",
+  position: athlete.position || "Forward",
+  imageUrl: athlete.image,
+  teamImageUrl: "/images/teams/lakers-logo.svg", // Default, would come from teams data
+  price: 44.25, // These would come from API
+  priceChange: 1.75,
+  priceChangePercent: 4.12,
+  isLive: false,
+  nextGameTime: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString(),
+  eloScore: 102.3,
+  percentile: 91,
+  indexPrice: 12.45,
+  indexPriceChange: 3.0,
+  performance: 80.6,
+  performanceChange: 31,
+  leagueRank: 27,
+  leagueRankChange: 3.0,
+  marketIndex: 1.8,
+  marketIndexChange: 31,
+  marketIndexName: "VIBX",
+  chartIndexValue: 31.5,
+  chartMarketValue: 32.5,
+  chartChange24h: 2.4,
+  chartVolume: "12.5K",
+  chartOpenInterest: "12.5K",
+  chartFunding: -0.03,
+  chartEarningToday: 3.27,
+  chartRouteName: "Partner",
+  volume: 500,
+});
+
 export default function AthletePage() {
   const params = useParams();
   const athleteId = params.id as string;
 
+  // Try to get from athletes bank first, then fall back to teams-and-players
+  const athlete = getAthleteById(athleteId);
   const player = getPlayerById(athleteId);
 
-  if (!player) {
+  if (!athlete && !player) {
     return (
       <div className="bg-page-background flex min-h-screen flex-col items-center justify-center px-4 pt-[117px]">
         <h1 className="text-text-primary mb-4 text-4xl font-bold">404</h1>
@@ -70,7 +111,9 @@ export default function AthletePage() {
     );
   }
 
-  const athleteData = getAthleteData(player);
+  const athleteData = athlete
+    ? getAthleteDataFromBank(athlete)
+    : getAthleteDataFromPlayer(player!);
 
   const handlePlaceOrder = (
     type: "long" | "short",

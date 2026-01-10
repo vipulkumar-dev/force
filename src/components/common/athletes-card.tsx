@@ -17,6 +17,7 @@ interface AthletesCardProps {
 }
 
 export default function AthletesCard({
+  id,
   image = "/icons/athletes/lebron-james.png",
   name,
   abbreviation,
@@ -31,7 +32,7 @@ export default function AthletesCard({
 
   const handleCardClick = () => {
     if (!tradeButtonClicked) {
-      router.push(`/athlete/${name.toLowerCase().replace(/\s+/g, "-")}`);
+      router.push(`/athlete/${id}`);
     }
     setTradeButtonClicked(false);
   };

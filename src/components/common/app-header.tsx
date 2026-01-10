@@ -300,14 +300,13 @@ export default function ClientHeader() {
         <div className="w-full">
           <div className="bg-bg-secondary w-full border-b">
             <div className="mx-auto w-full max-w-[1440px]">
-              <div className="flex h-[64px] w-full flex-row items-center justify-between px-[16px] py-[14px] sm:px-[24px] md:px-[32px] xl:px-[40px]">
-                <div className="flex flex-row items-center gap-[16px]">
+              <div className="flex h-[60px] w-full flex-row items-center justify-between px-[16px] py-[14px] sm:px-[24px] md:px-[32px] xl:px-[40px]">
+                <div className="flex flex-row items-center gap-[24px]">
                   <Link href="/" aria-label="Home">
-                    <Logo className="text-text-primary w-[100px]" />
+                    <Logo className="text-text-primary w-[66px]" />
                   </Link>
-                  <div className="hidden h-[12px] border border-black/5 lg:block"></div>
 
-                  <div className="hidden flex-row items-center gap-[8px] lg:flex">
+                  <div className="hidden flex-row items-center gap-[4px] lg:flex">
                     {navItems.map((item) => {
                       const active = pathname === item.href;
                       return (
@@ -316,11 +315,11 @@ export default function ClientHeader() {
                           asChild
                           className={`${baseBtn} ${
                             active ? "bg-bg-tertiary!" : "bg-transparent!"
-                          } rounded-lg`}
+                          } h-[28px] rounded-lg px-[12px] py-[8px]`}
                         >
                           <Link href={item.href}>
                             <p
-                              className={`text-[14px] leading-[100%] font-medium tracking-tight ${
+                              className={`text-[12px] leading-[100%] font-medium tracking-tight ${
                                 active ? "text-text-primary" : "text-soft-400"
                               }`}
                             >

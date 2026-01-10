@@ -4,6 +4,7 @@ import React from "react";
 import GameCard from "./game-card";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Mousewheel } from "swiper/modules";
 import "swiper/css";
 
 interface GameData {
@@ -132,9 +133,14 @@ export default function TodayGames() {
         Todays Games
       </h3>
       <Swiper
+        modules={[Mousewheel]}
         spaceBetween={8}
         slidesPerView="auto"
-        navigation
+        mousewheel={{
+          forceToAxis: true, // vertical wheel → horizontal
+          releaseOnEdges: true,
+          sensitivity: 1,
+        }}
         className="overflow-visible! pb-4!"
       >
         {games.map((game) => (

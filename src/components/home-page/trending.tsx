@@ -3,6 +3,7 @@
 import React from "react";
 import AthletesCard from "../common/athletes-card";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Mousewheel } from "swiper/modules";
 import "swiper/css";
 import HideExtra from "../common/hide-extra";
 
@@ -117,9 +118,14 @@ export default function TodayGames() {
       </h3>
       <HideExtra>
         <Swiper
+          modules={[Mousewheel]}
           spaceBetween={8}
           slidesPerView="auto"
-          navigation
+          mousewheel={{
+            forceToAxis: true, // vertical wheel → horizontal
+            releaseOnEdges: true,
+            sensitivity: 1,
+          }}
           className="overflow-visible! pb-4!"
         >
           {trendingItems.map((item) => (

@@ -7,22 +7,22 @@ interface HideExtraProps {
 export default function HideExtra({ children }: HideExtraProps) {
   return (
     <div className="relative">
-      <div
+      {/* <div
         style={{
           background:
-            "linear-gradient(90deg, var(--bg-primary) 0%, var(--bg-primary) calc(100% - 0px), transparent 100%)",
+            "linear-gradient(90deg, var(--bg-primary) 0%, var(--bg-primary) calc(100% - 0px),  transparent 100%)",
         }}
         className="absolute top-0 left-0 z-10 h-full w-screen translate-x-[-100%]"
-      ></div>
+      ></div> */}
 
       {children}
-      <div
+      {/* <div
         style={{
           background:
             "linear-gradient(270deg, var(--bg-primary) 0%, var(--bg-primary) calc(100% - 0px), transparent 100%)",
         }}
         className="absolute top-0 right-0 z-10 h-full w-screen translate-x-[100%]"
-      ></div>
+      ></div> */}
     </div>
   );
 }

@@ -141,7 +141,7 @@ export default function Page() {
             showPriceTrendPage ? "pt-[163px]" : "pt-[104px]"
           } min-h-0 overflow-hidden`}
         >
-          <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-[24px] px-[16px] sm:gap-[32px] sm:px-[24px] xl:flex-row xl:gap-[40px] xl:px-[40px]">
+          <div className="border-border-secondary mx-auto flex w-full max-w-[1440px] flex-col gap-[24px] overflow-hidden border-x px-[16px] sm:gap-[32px] sm:px-[24px] xl:flex-row xl:gap-[40px] xl:px-[40px]">
             {!showPriceTrendPage ? (
               <>
                 <div className="flex min-h-0 w-full flex-col gap-[20px] pt-[20px] pb-[20px] xl:pt-[20px]">

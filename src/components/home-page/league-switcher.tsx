@@ -27,7 +27,7 @@ export default function LeagueSwitcher({
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          className={`bg-elevation-button hover:bg-elevation-button! my-2 flex h-[28px] w-[150px] flex-row items-center justify-between rounded-lg px-[12px] hover:cursor-pointer ${
+          className={`bg-elevation-button hover:bg-elevation-button! my-2 flex h-[28px] flex-row items-center justify-between rounded-lg !px-[8px] hover:cursor-pointer ${
             className ?? ""
           }`}
         >
@@ -35,15 +35,15 @@ export default function LeagueSwitcher({
             <Image
               src={selected.icon}
               alt={selected.label}
-              width={18}
-              height={18}
+              width={15}
+              height={15}
               className="rounded-1"
             />
-            <span className="text-text-primary text-[13px] font-medium">
+            <span className="text-text-primary text-[12px] font-medium">
               {selected.label}
             </span>
           </div>
-          <ChevronDown size={14} className="text-soft-400" />
+          <ChevronDown size={12} className="text-soft-400" />
         </Button>
       </PopoverTrigger>
       <PopoverContent

@@ -232,8 +232,3 @@
 .ticker-track {
   animation: ticker 30s linear infinite;
 }
-@media (max-width: 768px) {
-  .ticker-track {
-    animation-duration: 12s;
-  }
-}

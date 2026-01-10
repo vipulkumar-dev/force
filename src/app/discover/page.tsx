@@ -490,7 +490,7 @@ export default function DiscoverPage() {
                 </div>
               ) : (
                 <div className="w-full overflow-x-auto">
-                  <div className="flex flex-row gap-4 overflow-x-auto overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                  <div className="flex flex-row gap-1 overflow-x-auto overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                     {athletesData.map((athlete) => (
                       <div key={athlete.id} className="flex-shrink-0">
                         <AthletesCard

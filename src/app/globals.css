@@ -101,6 +101,7 @@
   --color-text-secondary: var(--text-secondary);
   --color-elevation-card: var(--elevation-card);
   --color-elevation-button: var(--elevation-button);
+  --color-border-secondary: var(--border-secondary);
 }
 
 :root {
@@ -195,10 +196,21 @@
   --text-secondary: #7e7e8c;
   --elevation-card: #ffffff;
   --elevation-button: #f7f7f7;
-  --border-secondary: #f7f7f7;
+  --border-secondary: #eaebec;
   --max-width-global: 76.25rem;
   --padding-global: 1rem;
   --padding-section-md: 2rem;
+}
+.dark {
+  --bg-primary: #101012;
+  --bg-secondary: #16161a;
+  --bg-tertiary: #1f1f24;
+  --text-primary: #ffffff;
+  --text-secondary: #7e7e8c;
+  --elevation-card: #16161a;
+  --elevation-button: #1f1f24;
+  --border: #1f1f24;
+  --border-secondary: #2c2c33;
 }
 
 @variant sm {
@@ -218,18 +230,6 @@
     --padding-global: max(4vw, 2.5rem);
     --padding-section-md: 3.25rem;
   }
-}
-
-.dark {
-  --bg-primary: #101012;
-  --bg-secondary: #16161a;
-  --bg-tertiary: #1f1f24;
-  --text-primary: #ffffff;
-  --text-secondary: #7e7e8c;
-  --elevation-card: #16161a;
-  --elevation-button: #1f1f24;
-  --border: #1f1f24;
-  --border-secondary: #1f1f24;
 }
 
 @layer base {

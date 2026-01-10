@@ -65,7 +65,7 @@ const TradeDialog = ({ type }: { type: string }) => {
             {type.charAt(0).toUpperCase() + type.slice(1)}
           </h4>
           <DialogClose asChild>
-            <button className="text-soft-400 p-3 hover:cursor-pointer">
+            <button className="text-text-secondary p-3 hover:cursor-pointer">
               <X className="h-6 w-6" />
             </button>
           </DialogClose>
@@ -119,7 +119,7 @@ const TradeDialog = ({ type }: { type: string }) => {
               <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                 LeBron James
               </p>
-              <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Los Angeles Lakers
               </p>
             </div>
@@ -183,7 +183,7 @@ const TradeDialog = ({ type }: { type: string }) => {
               {" "}
               <div className="flex w-full flex-col gap-4 py-4">
                 <div className="flex w-full flex-row items-center justify-between">
-                  <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                  <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                     Side:
                   </p>
                   <p
@@ -193,7 +193,7 @@ const TradeDialog = ({ type }: { type: string }) => {
                   </p>
                 </div>
                 <div className="flex w-full flex-row items-center justify-between">
-                  <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                  <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                     Entry Price:
                   </p>
                   <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -201,7 +201,7 @@ const TradeDialog = ({ type }: { type: string }) => {
                   </p>
                 </div>
                 <div className="flex w-full flex-row items-center justify-between">
-                  <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                  <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                     Order Size:
                   </p>
                   <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -209,7 +209,7 @@ const TradeDialog = ({ type }: { type: string }) => {
                   </p>
                 </div>
                 <div className="flex w-full flex-row items-center justify-between">
-                  <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                  <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                     Leverage:
                   </p>
                   <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -217,7 +217,7 @@ const TradeDialog = ({ type }: { type: string }) => {
                   </p>
                 </div>
                 <div className="flex w-full flex-row items-center justify-between">
-                  <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                  <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                     Est. Fees:
                   </p>
                   <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -225,7 +225,7 @@ const TradeDialog = ({ type }: { type: string }) => {
                   </p>
                 </div>
                 <div className="flex w-full flex-row items-center justify-between">
-                  <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                  <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                     Liq. Price:
                   </p>
                   <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -247,7 +247,7 @@ const TradeDialog = ({ type }: { type: string }) => {
                 Confirm {orderType === "market" ? "Market" : "Limit"} Order
               </p>
             </button>
-            <p className="text-soft-400 text-center text-[10px] font-normal tracking-[-0.11px] sm:text-[11px]">
+            <p className="text-text-secondary text-center text-[10px] font-normal tracking-[-0.11px] sm:text-[11px]">
               Order will execute immediately at the best available price.
             </p>
           </div>

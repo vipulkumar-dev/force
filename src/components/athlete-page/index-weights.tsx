@@ -166,7 +166,7 @@ export default function IndexWeights({
                     <TableCell className="rounded-tl-[14px] rounded-bl-[14px] bg-white px-4 py-3">
                       {metric.metric}
                     </TableCell>
-                    <TableCell className="text-soft-400 font-mediumxs bg-white px-4 py-3">
+                    <TableCell className="text-text-secondary font-mediumxs bg-white px-4 py-3">
                       {metric.description}
                     </TableCell>
                     <TableCell className="bg-white px-4 py-3">
@@ -211,13 +211,13 @@ export default function IndexWeights({
                                     key={index}
                                     className="flex flex-col gap-1"
                                   >
-                                    <span className="text-soft-400 flex flex-row text-[12px] leading-none font-medium tracking-[0.28px]">
+                                    <span className="text-text-secondary flex flex-row text-[12px] leading-none font-medium tracking-[0.28px]">
                                       {item.metric}:{" "}
                                       <p className="text-text-primary">
                                         {item.metricValue}
                                       </p>
                                     </span>
-                                    <span className="text-soft-400 text-[12px] leading-none font-medium tracking-[0.28px]">
+                                    <span className="text-text-secondary text-[12px] leading-none font-medium tracking-[0.28px]">
                                       {item.description}
                                     </span>
                                   </div>
@@ -247,7 +247,7 @@ export default function IndexWeights({
     //         Index Weights
     //       </p>
     //     </div>
-    //     <p className="font-medium text-[11px] sm:text-[12px] text-soft-400 tracking-[-0.12px] leading-none">
+    //     <p className="font-medium text-[11px] sm:text-[12px] text-text-secondary tracking-[-0.12px] leading-none">
     //       {isExpanded ? "Hide" : "Show"}
     //     </p>
     //     {isExpanded ? (
@@ -280,7 +280,7 @@ export default function IndexWeights({
     //             <p className="font-medium text-[11px] md:text-[12px] text-text-primary tracking-[-0.12px] leading-none w-[150px] md:w-[180px]">
     //               {item.metric}
     //             </p>
-    //             <p className="flex-1 min-w-[200px] font-medium text-[11px] md:text-[12px] text-soft-400 tracking-[-0.12px] leading-[1.1]">
+    //             <p className="flex-1 min-w-[200px] font-medium text-[11px] md:text-[12px] text-text-secondary tracking-[-0.12px] leading-[1.1]">
     //               {item.description}
     //             </p>
     //             <p className="font-medium text-[11px] md:text-[12px] text-text-primary tracking-[-0.12px] leading-none w-[60px] md:w-[72px]">

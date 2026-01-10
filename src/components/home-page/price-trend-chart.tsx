@@ -271,11 +271,11 @@ export default function PriceTrendChart() {
                           <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                             {athlete.name}
                           </p>
-                          <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+                          <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
                             {athlete.team}
                           </p>
                         </div>
-                        <div className="bg-league-card text-soft-400 flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
+                        <div className="bg-league-card text-text-secondary flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
                           <Image
                             src="/icons/game/f.svg"
                             alt="Flag"

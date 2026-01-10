@@ -31,7 +31,7 @@ export default function MissedMomentsRow({
           <p className="text-text-primary max-w-[220px] truncate text-[14px] leading-[140%] font-semibold tracking-[-2%] sm:max-w-[443px]">
             {title}
           </p>
-          <p className="text-soft-400 max-w-[220px] truncate overflow-hidden text-[12px] leading-[140%] tracking-[-1%] whitespace-nowrap sm:max-w-[443px]">
+          <p className="text-text-secondary max-w-[220px] truncate overflow-hidden text-[12px] leading-[140%] tracking-[-1%] whitespace-nowrap sm:max-w-[443px]">
             {description}
           </p>
         </div>
@@ -39,14 +39,14 @@ export default function MissedMomentsRow({
           <p className="text-text-primary max-w-[120px] truncate text-[12px] leading-[100%] font-medium tracking-[-1%] sm:max-w-[180px]">
             {volume}
           </p>
-          <p className="text-soft-400 text-[12px] font-medium">•</p>
+          <p className="text-text-secondary text-[12px] font-medium">•</p>
           <p className="text-text-primary max-w-[120px] truncate text-[12px] leading-[100%] font-medium tracking-[-1%] sm:max-w-[180px]">
             {percentage}
           </p>
         </div>
       </div>
       <div className="flex flex-row">
-        <p className="text-soft-400 max-w-[80px] truncate text-[11px] leading-[100%] tracking-[-1%] text-nowrap">
+        <p className="text-text-secondary max-w-[80px] truncate text-[11px] leading-[100%] tracking-[-1%] text-nowrap">
           {timeAgo}
         </p>
       </div>

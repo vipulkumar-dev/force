@@ -231,7 +231,7 @@ export default function OpenPositionsTable({
                 <TableCell className="mx-2 w-[1%] rounded-r-[14px] bg-white px-4 py-3 text-[12px] font-medium">
                   <div className="flex justify-end">
                     <button className="rounded-[6px] p-[8px] transition-colors hover:bg-gray-50">
-                      <MoreVertical className="text-soft-400 h-[16px] w-[16px]" />
+                      <MoreVertical className="text-text-secondary h-[16px] w-[16px]" />
                     </button>
                   </div>
                 </TableCell>

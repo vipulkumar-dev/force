@@ -15,25 +15,25 @@ export default function AppFooter() {
             <Logo className="text-text-primary w-[80px]" />
             <a
               href="#"
-              className="text-soft-400 hover:text-text-primary text-[12px] font-medium"
+              className="text-text-secondary hover:text-text-primary text-[12px] font-medium"
             >
               Privacy
             </a>
             <a
               href="#"
-              className="text-soft-400 hover:text-text-primary text-[12px] font-medium"
+              className="text-text-secondary hover:text-text-primary text-[12px] font-medium"
             >
               Terms of Use
             </a>
             <Link
               href="/learn"
-              className="text-soft-400 hover:text-text-primary text-[12px] font-medium"
+              className="text-text-secondary hover:text-text-primary text-[12px] font-medium"
             >
               Learn
             </Link>
             <a
               href="#"
-              className="text-soft-400 hover:text-text-primary text-[12px] font-medium"
+              className="text-text-secondary hover:text-text-primary text-[12px] font-medium"
             >
               Careers
             </a>

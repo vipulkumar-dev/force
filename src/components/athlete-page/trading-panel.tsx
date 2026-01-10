@@ -68,7 +68,7 @@ export default function TradingPanel({
             className={`flex h-full flex-1 cursor-pointer flex-col items-center justify-center gap-[14px] px-[12px] sm:px-[16px] md:px-[19px] ${
               activeTab === "long"
                 ? "border-active-hover text-text-primary border-b text-[13px] font-semibold tracking-[-0.14px] sm:text-[14px]"
-                : "text-soft-400 text-[13px] font-medium tracking-[-0.14px] sm:text-[14px]"
+                : "text-text-secondary text-[13px] font-medium tracking-[-0.14px] sm:text-[14px]"
             }`}
           >
             Long
@@ -78,7 +78,7 @@ export default function TradingPanel({
             className={`flex h-full flex-1 cursor-pointer flex-col items-center justify-center gap-[14px] px-[12px] sm:px-[16px] md:px-[19px] ${
               activeTab === "short"
                 ? "border-active-hover text-text-primary border-b text-[13px] font-semibold tracking-[-0.14px] sm:text-[14px]"
-                : "text-soft-400 text-[13px] font-medium tracking-[-0.14px] sm:text-[14px]"
+                : "text-text-secondary text-[13px] font-medium tracking-[-0.14px] sm:text-[14px]"
             }`}
           >
             Short
@@ -175,7 +175,7 @@ export default function TradingPanel({
             {" "}
             <div className="flex w-full flex-col gap-4 py-4">
               <div className="flex w-full flex-row items-center justify-between">
-                <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                   Side:
                 </p>
                 <p
@@ -185,7 +185,7 @@ export default function TradingPanel({
                 </p>
               </div>
               <div className="flex w-full flex-row items-center justify-between">
-                <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                   Entry Price:
                 </p>
                 <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -193,7 +193,7 @@ export default function TradingPanel({
                 </p>
               </div>
               <div className="flex w-full flex-row items-center justify-between">
-                <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                   Order Size:
                 </p>
                 <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -201,7 +201,7 @@ export default function TradingPanel({
                 </p>
               </div>
               <div className="flex w-full flex-row items-center justify-between">
-                <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                   Leverage:
                 </p>
                 <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -209,7 +209,7 @@ export default function TradingPanel({
                 </p>
               </div>
               <div className="flex w-full flex-row items-center justify-between">
-                <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                   Est. Fees:
                 </p>
                 <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -217,7 +217,7 @@ export default function TradingPanel({
                 </p>
               </div>
               <div className="flex w-full flex-row items-center justify-between">
-                <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                   Liq. Price:
                 </p>
                 <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -249,7 +249,7 @@ export default function TradingPanel({
               Confirm {orderType === "market" ? "Market" : "Limit"} Order
             </p>
           </button>
-          <p className="text-soft-400 text-center text-[10px] font-normal tracking-[-0.11px] sm:text-[11px]">
+          <p className="text-text-secondary text-center text-[10px] font-normal tracking-[-0.11px] sm:text-[11px]">
             Order will execute immediately at the best available price.
           </p>
         </div>

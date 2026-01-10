@@ -70,34 +70,34 @@ export default function QuickLeaderboard() {
         <p className="font-nohemi text-text-primary text-[14px] leading-[100%] font-medium tracking-[2%]">
           Quick Leaderboard
         </p>
-        <ChevronRight className="text-soft-400" width={14} height={14} />
+        <ChevronRight className="text-text-secondary" width={14} height={14} />
       </Button>
       <div className="flex w-full flex-col p-[4px]">
         {/* Header row */}
         <div className="hidden w-full flex-row md:flex">
           <div className="flex w-[6%] flex-col gap-[24px] px-[16px] py-[12px]"></div>
           <div className="flex w-[28%] flex-col gap-[24px] px-[16px] py-[12px]">
-            <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+            <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
               Trader
             </p>
           </div>
           <div className="flex w-[16%] flex-col gap-[24px] px-[16px] py-[12px]">
-            <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+            <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
               24h PnL
             </p>
           </div>
           <div className="flex w-[16%] flex-col gap-[24px] px-[16px] py-[12px]">
-            <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+            <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
               Total PnL
             </p>
           </div>
           <div className="flex w-[18%] flex-col gap-[24px] px-[16px] py-[12px]">
-            <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+            <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
               Open Positions
             </p>
           </div>
           <div className="flex w-[16%] flex-col gap-[24px] px-[16px] py-[12px]">
-            <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+            <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
               Win Rate
             </p>
           </div>
@@ -132,7 +132,7 @@ export default function QuickLeaderboard() {
               </div>
               <div className="grid grid-cols-2 gap-x-4 gap-y-2">
                 <div>
-                  <p className="text-soft-400 text-[11px] font-medium tracking-[-1%]">
+                  <p className="text-text-secondary text-[11px] font-medium tracking-[-1%]">
                     24h PnL
                   </p>
                   <p
@@ -144,7 +144,7 @@ export default function QuickLeaderboard() {
                   </p>
                 </div>
                 <div>
-                  <p className="text-soft-400 text-[11px] font-medium tracking-[-1%]">
+                  <p className="text-text-secondary text-[11px] font-medium tracking-[-1%]">
                     Total PnL
                   </p>
                   <p
@@ -156,7 +156,7 @@ export default function QuickLeaderboard() {
                   </p>
                 </div>
                 <div>
-                  <p className="text-soft-400 text-[11px] font-medium tracking-[-1%]">
+                  <p className="text-text-secondary text-[11px] font-medium tracking-[-1%]">
                     Open Positions
                   </p>
                   <p className="text-text-primary text-[12px] font-medium tracking-[-1%]">
@@ -164,7 +164,7 @@ export default function QuickLeaderboard() {
                   </p>
                 </div>
                 <div>
-                  <p className="text-soft-400 text-[11px] font-medium tracking-[-1%]">
+                  <p className="text-text-secondary text-[11px] font-medium tracking-[-1%]">
                     Win Rate
                   </p>
                   <p className="text-text-primary text-[12px] font-medium tracking-[-1%]">

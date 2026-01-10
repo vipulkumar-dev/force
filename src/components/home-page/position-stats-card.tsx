@@ -103,7 +103,7 @@ function StatCard({ stat, index }: StatCardProps) {
   return (
     <div className="flex items-center justify-between gap-x-3 rounded-lg bg-[#0A0D14]/2 px-4 py-3">
       <div className="flex flex-col gap-y-2.5">
-        <p className="text-soft-400 text-xs font-medium">{stat.title}</p>
+        <p className="text-text-secondary text-xs font-medium">{stat.title}</p>
         <p className="font-nohemi font-medium">{stat.formatter(stat.value)}</p>
       </div>
 
@@ -148,7 +148,9 @@ export default function PositionStatsCard() {
                 </p>
               </div>
 
-              <p className="text-soft-400 text-xs font-medium">REP: 248</p>
+              <p className="text-text-secondary text-xs font-medium">
+                REP: 248
+              </p>
             </div>
           </div>
         </div>

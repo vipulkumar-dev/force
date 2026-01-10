@@ -11,7 +11,7 @@ export default function StatCard({
 }) {
   return (
     <div className="flex h-[100px] w-full flex-col justify-between rounded-[10px] bg-white p-4">
-      <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+      <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
         {title}
       </p>
       <div className="flex w-full flex-row items-center justify-between">

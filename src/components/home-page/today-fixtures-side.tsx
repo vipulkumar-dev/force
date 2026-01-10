@@ -47,7 +47,7 @@ export default function TodayFixturesSide() {
         <p className="font-nohemi text-text-primary text-[14px] leading-[100%] font-medium tracking-[2%]">
           Today&apos;s Fixtures
         </p>
-        <ChevronRight className="text-soft-400" width={14} height={14} />
+        <ChevronRight className="text-text-secondary" width={14} height={14} />
       </Button>
       <div className="flex w-full flex-col rounded-[10px] bg-white">
         {fixtures.map((cell, colIdx) => (
@@ -83,7 +83,7 @@ export default function TodayFixturesSide() {
                     className={`text-[16px] leading-[100%] font-semibold tracking-[-2%] ${
                       cell.scoreLeft > cell.scoreRight
                         ? "text-text-primary"
-                        : "text-soft-400"
+                        : "text-text-secondary"
                     }`}
                   >
                     {cell.scoreLeft}
@@ -94,14 +94,14 @@ export default function TodayFixturesSide() {
                   <p
                     className={`text-[16px] leading-[100%] font-semibold tracking-[-2%] ${
                       cell.scoreLeft > cell.scoreRight
-                        ? "text-soft-400"
+                        ? "text-text-secondary"
                         : "text-text-primary"
                     }`}
                   >
                     {cell.scoreRight}
                   </p>
                 </div>
-                <p className="text-soft-400 text-[11px] leading-[140%] tracking-[-2%]">
+                <p className="text-text-secondary text-[11px] leading-[140%] tracking-[-2%]">
                   {cell.timeRange}
                 </p>
               </div>

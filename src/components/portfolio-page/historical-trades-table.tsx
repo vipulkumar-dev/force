@@ -205,9 +205,11 @@ export default function HistoricalTradesTable({
                       <span className="text-text-primary">
                         {trade.athleteName}
                       </span>
-                      <span className="text-soft-400">({trade.league})</span>
+                      <span className="text-text-secondary">
+                        ({trade.league})
+                      </span>
                     </span>
-                    <div className="bg-league-card text-soft-400 flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
+                    <div className="bg-league-card text-text-secondary flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
                       <Image
                         src="/icons/game/f.svg"
                         alt="Flag"
@@ -264,7 +266,7 @@ export default function HistoricalTradesTable({
                 <TableCell className="mx-2 w-[1%] rounded-r-[14px] bg-white px-4 py-3 text-[12px] font-medium">
                   <div className="flex justify-end">
                     <button className="rounded-[6px] p-[8px] transition-colors hover:bg-gray-50">
-                      <MoreVertical className="text-soft-400 h-[16px] w-[16px]" />
+                      <MoreVertical className="text-text-secondary h-[16px] w-[16px]" />
                     </button>
                   </div>
                 </TableCell>
@@ -316,37 +318,37 @@ export default function HistoricalTradesTable({
     //     {/* Table Header */}
     //     <div className="flex items-center px-[4px] min-w-[1300px]">
     //       <div className="flex items-center px-[16px] py-[12px] w-[100px]">
-    //         <p className="font-medium text-[12px] text-soft-400 tracking-[-0.12px] leading-none">
+    //         <p className="font-medium text-[12px] text-text-secondary tracking-[-0.12px] leading-none">
     //           Date
     //         </p>
     //       </div>
     //       <div className="flex items-center px-[16px] py-[12px] w-[396px]">
-    //         <p className="font-medium text-[12px] text-soft-400 tracking-[-0.12px] leading-none">
+    //         <p className="font-medium text-[12px] text-text-secondary tracking-[-0.12px] leading-none">
     //           Athlete Name
     //         </p>
     //       </div>
     //       <div className="flex items-center px-[16px] py-[12px] w-[160px]">
-    //         <p className="font-medium text-[12px] text-soft-400 tracking-[-0.12px] leading-none">
+    //         <p className="font-medium text-[12px] text-text-secondary tracking-[-0.12px] leading-none">
     //           Side
     //         </p>
     //       </div>
     //       <div className="flex items-center px-[16px] py-[12px] w-[160px]">
-    //         <p className="font-medium text-[12px] text-soft-400 tracking-[-0.12px] leading-none">
+    //         <p className="font-medium text-[12px] text-text-secondary tracking-[-0.12px] leading-none">
     //           Size
     //         </p>
     //       </div>
     //       <div className="flex items-center px-[16px] py-[12px] w-[160px]">
-    //         <p className="font-medium text-[12px] text-soft-400 tracking-[-0.12px] leading-none">
+    //         <p className="font-medium text-[12px] text-text-secondary tracking-[-0.12px] leading-none">
     //           Entry/$
     //         </p>
     //       </div>
     //       <div className="flex items-center px-[16px] py-[12px] w-[160px]">
-    //         <p className="font-medium text-[12px] text-soft-400 tracking-[-0.12px] leading-none">
+    //         <p className="font-medium text-[12px] text-text-secondary tracking-[-0.12px] leading-none">
     //           Exit/$
     //         </p>
     //       </div>
     //       <div className="flex items-center px-[16px] py-[12px] w-[160px]">
-    //         <p className="font-medium text-[12px] text-soft-400 tracking-[-0.12px] leading-none">
+    //         <p className="font-medium text-[12px] text-text-secondary tracking-[-0.12px] leading-none">
     //           PnL (Realized)
     //         </p>
     //       </div>
@@ -440,7 +442,7 @@ export default function HistoricalTradesTable({
     //         {/* Menu */}
     //         <div className="flex items-center justify-center w-[56px]">
     //           <button className="p-[8px] hover:bg-gray-50 rounded-[6px] transition-colors">
-    //             <MoreVertical className="w-[16px] h-[16px] text-soft-400" />
+    //             <MoreVertical className="w-[16px] h-[16px] text-text-secondary" />
     //           </button>
     //         </div>
     //       </div>

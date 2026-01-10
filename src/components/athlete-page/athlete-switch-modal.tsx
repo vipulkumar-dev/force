@@ -126,7 +126,7 @@ function AthleteRow({
           <p className="text-text-primary w-full truncate text-[13px] leading-none font-medium tracking-[-0.28px] md:text-[14px]">
             {athlete.name}
           </p>
-          <p className="text-soft-400 w-full truncate text-[11px] leading-none font-normal tracking-[-0.12px] md:text-[12px]">
+          <p className="text-text-secondary w-full truncate text-[11px] leading-none font-normal tracking-[-0.12px] md:text-[12px]">
             {athlete.team}
           </p>
         </div>
@@ -224,7 +224,7 @@ export default function AthleteSwitchModal({
               <div className="flex w-full items-center gap-[16px]">
                 <div className="h-[36px] flex-1 rounded-[8px] border border-[rgba(10,13,20,0.07)] bg-white">
                   <div className="flex h-[36px] items-center gap-[10px] px-[12px] py-[6px] md:px-[16px]">
-                    <Search className="text-soft-400 h-[14px] w-[14px] shrink-0 md:h-[16px] md:w-[16px]" />
+                    <Search className="text-text-secondary h-[14px] w-[14px] shrink-0 md:h-[16px] md:w-[16px]" />
                     <input
                       type="text"
                       placeholder="Search player or team..."
@@ -247,25 +247,25 @@ export default function AthleteSwitchModal({
                 <TabsList className="flex h-[48px] w-full min-w-fit gap-0 rounded-none bg-transparent p-0 px-[12px] md:px-[20px]">
                   <TabsTrigger
                     value="nba"
-                    className="data-[state=active]:border-main data-[state=active]:text-text-primary text-soft-400 h-full flex-1 shrink-0 rounded-none border-b-[1px] border-transparent px-[12px] text-[12px] leading-none font-semibold tracking-[-0.14px] whitespace-nowrap after:hidden md:flex-1 md:px-[19px] md:text-[14px]"
+                    className="data-[state=active]:border-main data-[state=active]:text-text-primary text-text-secondary h-full flex-1 shrink-0 rounded-none border-b-[1px] border-transparent px-[12px] text-[12px] leading-none font-semibold tracking-[-0.14px] whitespace-nowrap after:hidden md:flex-1 md:px-[19px] md:text-[14px]"
                   >
                     NBA
                   </TabsTrigger>
                   <TabsTrigger
                     value="soccer"
-                    className="data-[state=active]:border-main data-[state=active]:text-text-primary text-soft-400 h-full flex-1 shrink-0 rounded-none border-b-[1px] border-transparent px-[12px] text-[12px] leading-none font-medium tracking-[-0.14px] whitespace-nowrap after:hidden md:flex-1 md:px-[19px] md:text-[14px]"
+                    className="data-[state=active]:border-main data-[state=active]:text-text-primary text-text-secondary h-full flex-1 shrink-0 rounded-none border-b-[1px] border-transparent px-[12px] text-[12px] leading-none font-medium tracking-[-0.14px] whitespace-nowrap after:hidden md:flex-1 md:px-[19px] md:text-[14px]"
                   >
                     Soccer
                   </TabsTrigger>
                   <TabsTrigger
                     value="esports"
-                    className="data-[state=active]:border-main data-[state=active]:text-text-primary text-soft-400 h-full flex-1 shrink-0 rounded-none border-b-[1px] border-transparent px-[12px] text-[12px] leading-none font-medium tracking-[-0.14px] whitespace-nowrap after:hidden md:flex-1 md:px-[19px] md:text-[14px]"
+                    className="data-[state=active]:border-main data-[state=active]:text-text-primary text-text-secondary h-full flex-1 shrink-0 rounded-none border-b-[1px] border-transparent px-[12px] text-[12px] leading-none font-medium tracking-[-0.14px] whitespace-nowrap after:hidden md:flex-1 md:px-[19px] md:text-[14px]"
                   >
                     Esports
                   </TabsTrigger>
                   <TabsTrigger
                     value="coming-soon"
-                    className="data-[state=active]:border-main data-[state=active]:text-text-primary text-soft-400 h-full flex-1 shrink-0 rounded-none border-b-[1px] border-transparent px-[12px] text-[12px] leading-none font-medium tracking-[-0.14px] whitespace-nowrap after:hidden md:flex-1 md:px-[19px] md:text-[14px]"
+                    className="data-[state=active]:border-main data-[state=active]:text-text-primary text-text-secondary h-full flex-1 shrink-0 rounded-none border-b-[1px] border-transparent px-[12px] text-[12px] leading-none font-medium tracking-[-0.14px] whitespace-nowrap after:hidden md:flex-1 md:px-[19px] md:text-[14px]"
                   >
                     Coming Soon
                   </TabsTrigger>

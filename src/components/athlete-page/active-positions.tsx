@@ -100,7 +100,7 @@ export default function ActivePositions({
       case "yellow":
         return "text-base-yellow";
       default:
-        return "text-soft-400";
+        return "text-text-secondary";
     }
   };
 
@@ -159,12 +159,12 @@ export default function ActivePositions({
                       <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                         LeBron James
                       </p>
-                      <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+                      <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
                         Long 3x .{" "}
                         <span className="text-light-green">Healthy</span>
                       </p>
                     </div>
-                    <div className="bg-league-card text-soft-400 flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
+                    <div className="bg-league-card text-text-secondary flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
                       <Image
                         src="/icons/game/f.svg"
                         alt="Flag"
@@ -180,7 +180,7 @@ export default function ActivePositions({
                     <span>
                       $72.14 <span className="text-light-green">(+14.1%)</span>
                     </span>
-                    <span className="text-soft-400">
+                    <span className="text-text-secondary">
                       Funding <span className="text-light-green">1.50%</span>
                     </span>
                   </div>
@@ -249,7 +249,7 @@ export default function ActivePositions({
     //             <p className="font-medium text-[12px] md:text-[14px] text-text-primary tracking-[-0.14px] leading-none">
     //               {position.athleteName}
     //             </p>
-    //             <p className="font-medium text-[10px] md:text-[12px] text-soft-400 tracking-[-0.12px] leading-none">
+    //             <p className="font-medium text-[10px] md:text-[12px] text-text-secondary tracking-[-0.12px] leading-none">
     //               {position.positionType} {position.leverage}× ·{" "}
     //               <span className={getStatusColor(position.statusColor)}>
     //                 {position.status}
@@ -303,7 +303,7 @@ export default function ActivePositions({
     //           {/* Close */}
     //           <button
     //             onClick={() => onClose?.(position)}
-    //             className="flex-1 min-w-[60px] font-medium text-[10px] md:text-[12px] text-soft-400 tracking-[-0.12px] leading-none hover:text-text-primary transition-colors cursor-pointer"
+    //             className="flex-1 min-w-[60px] font-medium text-[10px] md:text-[12px] text-text-secondary tracking-[-0.12px] leading-none hover:text-text-primary transition-colors cursor-pointer"
     //           >
     //             Close
     //           </button>

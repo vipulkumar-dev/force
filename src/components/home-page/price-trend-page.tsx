@@ -347,19 +347,19 @@ export default function PriceTrendPage({
         ) : (
           <div className="flex w-full flex-col gap-1">
             <div className="flex w-full flex-row gap-8 px-5 py-3">
-              <p className="text-soft-400 w-[55%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary w-[55%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Athlete Name
               </p>
-              <p className="text-soft-400 w-[10.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary w-[10.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Current Price
               </p>
-              <p className="text-soft-400 w-[10.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary w-[10.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 24H Change
               </p>
-              <p className="text-soft-400 w-[10.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary w-[10.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 24H Volume
               </p>
-              <p className="text-soft-400 w-[13.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary w-[13.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Quick Trade
               </p>
             </div>

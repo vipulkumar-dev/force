@@ -45,7 +45,7 @@ export default function TrendingNowRow({
           <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%] text-nowrap">
             {athleteName}
           </p>
-          <p className="text-soft-400 text-[12px] leading-[100%] tracking-[-1%] text-nowrap">
+          <p className="text-text-secondary text-[12px] leading-[100%] tracking-[-1%] text-nowrap">
             {athleteTeam}
           </p>
         </div>

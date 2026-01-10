@@ -88,7 +88,7 @@ export default function AthleteCard({
             <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%] text-nowrap">
               {athleteName}
             </p>
-            <p className="text-soft-400 text-[12px] leading-[100%] tracking-[-1%] text-nowrap">
+            <p className="text-text-secondary text-[12px] leading-[100%] tracking-[-1%] text-nowrap">
               {team}
             </p>
           </div>
@@ -186,7 +186,7 @@ export default function AthleteCard({
           <p className="text-text-primary truncate text-[14px] leading-[100%] font-medium tracking-[-2%] sm:text-[14px]">
             {athleteName}
           </p>
-          <p className="text-soft-400 truncate text-[12px] leading-[100%] tracking-[-1%]">
+          <p className="text-text-secondary truncate text-[12px] leading-[100%] tracking-[-1%]">
             {team}
           </p>
         </div>

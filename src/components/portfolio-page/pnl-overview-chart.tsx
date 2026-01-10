@@ -480,7 +480,9 @@ export default function PnLOverviewChart({
               >
                 <p
                   className={`px-[3px] text-[13px] leading-none font-medium tracking-[-0.13px] ${
-                    timeRange === range ? "text-text-primary" : "text-soft-400"
+                    timeRange === range
+                      ? "text-text-primary"
+                      : "text-text-secondary"
                   }`}
                 >
                   {range}

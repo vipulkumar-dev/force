@@ -45,7 +45,7 @@ function TabsTrigger({
         // Base: text-like tab, no pill/shadow
         "relative inline-flex items-center justify-center gap-1.5 rounded-none bg-transparent px-2 py-1 text-sm font-medium whitespace-nowrap",
         // Text colors: unselected soft, selected main
-        "text-soft-400 data-[state=active]:text-text-primary",
+        "text-text-secondary data-[state=active]:text-text-primary",
         // Underline: animate in/out using scale-x for smooth movement
         "after:bg-main border-b border-transparent after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:origin-left after:scale-x-0 data-[state=active]:after:scale-x-100",
         // Transitions

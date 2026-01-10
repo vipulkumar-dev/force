@@ -39,10 +39,10 @@ export default function WalletPopover() {
       >
         <PopoverClose asChild>
           <Button className="hover:bg-primary-foreground flex h-fit w-full flex-row justify-between gap-[20px] rounded-t-[10px] rounded-b-none bg-white py-[20px] hover:cursor-pointer">
-            <p className="font-nohemi text-soft-400 text-[14px] leading-[100%] font-medium tracking-[2%]">
+            <p className="font-nohemi text-text-secondary text-[14px] leading-[100%] font-medium tracking-[2%]">
               My Wallet
             </p>
-            <X className="text-soft-400" width={14} height={14} />
+            <X className="text-text-secondary" width={14} height={14} />
           </Button>
         </PopoverClose>
 
@@ -72,7 +72,7 @@ export default function WalletPopover() {
               <h5 className="text-success text-[12px] leading-[140%] font-medium tracking-[-1%]">
                 +$189.03
               </h5>
-              <div className="text-soft-400 bg-success rounded-[4px] p-1 text-[12px] leading-[100%] font-medium tracking-[-1%] text-white">
+              <div className="text-text-secondary bg-success rounded-[4px] p-1 text-[12px] leading-[100%] font-medium tracking-[-1%] text-white">
                 +3.27%
               </div>
             </div>
@@ -84,7 +84,7 @@ export default function WalletPopover() {
               className="bg-soft-500 text-text-primary flex h-[80px] flex-col items-center justify-center gap-[8px] rounded-[8px] px-[16px] hover:cursor-pointer"
             >
               <Plus className="text-text-primary" width={20} height={20} />
-              <p className="text-soft-400 text-[14px] leading-[140%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary text-[14px] leading-[140%] font-medium tracking-[-1%]">
                 Add Funds
               </p>
             </Button>
@@ -93,7 +93,7 @@ export default function WalletPopover() {
               className="bg-soft-500 text-text-primary flex h-[80px] flex-col items-center justify-center gap-[8px] rounded-[8px] px-[16px] hover:cursor-pointer"
             >
               <ArrowDown className="text-text-primary" width={20} height={20} />
-              <p className="text-soft-400 text-[14px] leading-[140%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary text-[14px] leading-[140%] font-medium tracking-[-1%]">
                 Withdraw
               </p>
             </Button>
@@ -102,7 +102,7 @@ export default function WalletPopover() {
               className="bg-soft-500 text-text-primary flex h-[80px] flex-col items-center justify-center gap-[8px] rounded-[8px] px-[16px] hover:cursor-pointer"
             >
               <ArrowUp className="text-text-primary" width={20} height={20} />
-              <p className="text-soft-400 text-[14px] leading-[140%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary text-[14px] leading-[140%] font-medium tracking-[-1%]">
                 Transfer
               </p>
             </Button>

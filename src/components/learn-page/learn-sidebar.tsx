@@ -142,7 +142,7 @@ export default function LearnSidebar({
 
       {/* Search bar */}
       <div className="relative">
-        <Search className="text-soft-400 absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
+        <Search className="text-text-secondary absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
         <Input
           type="text"
           placeholder="Search topic..."
@@ -166,7 +166,7 @@ export default function LearnSidebar({
                 className={cn(
                   "font-inter text-disabled-300 flex items-center justify-between px-4 text-[11px] font-semibold tracking-[0.66px] uppercase",
                   hasItems &&
-                    "hover:text-soft-400 cursor-pointer transition-colors",
+                    "hover:text-text-secondary cursor-pointer transition-colors",
                 )}
               >
                 <span>{section.title}</span>

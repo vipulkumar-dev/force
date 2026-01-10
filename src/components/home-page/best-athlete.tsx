@@ -75,32 +75,32 @@ export default function BestAthlete() {
         <p className="font-nohemi text-text-primary text-[14px] leading-[100%] font-medium tracking-[2%]">
           Best Athletes to Trade
         </p>
-        <ChevronRight className="text-soft-400" width={14} height={14} />
+        <ChevronRight className="text-text-secondary" width={14} height={14} />
       </Button>
       <div className="flex w-full flex-col p-[4px]">
         <div className="hidden w-full flex-row md:flex">
           <div className="w-[30%] gap-[24px] px-[16px] py-[12px]">
-            <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+            <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
               Athlete Name
             </p>
           </div>
           <div className="w-[17%] gap-[24px] px-[16px] py-[12px]">
-            <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+            <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
               Current Price
             </p>
           </div>
           <div className="w-[17%] gap-[24px] px-[16px] py-[12px]">
-            <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+            <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
               24h Change
             </p>
           </div>
           <div className="w-[17%] gap-[24px] px-[16px] py-[12px]">
-            <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+            <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
               24h Volume
             </p>
           </div>
           <div className="w-[21%] gap-[24px] px-[16px] py-[12px]">
-            <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+            <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
               Quick Trade
             </p>
           </div>
@@ -130,7 +130,7 @@ export default function BestAthlete() {
                     <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                       {row.name}
                     </p>
-                    <p className="text-soft-400 text-[12px] leading-[100%] tracking-[-1%]">
+                    <p className="text-text-secondary text-[12px] leading-[100%] tracking-[-1%]">
                       {row.team}
                     </p>
                   </div>
@@ -169,14 +169,14 @@ export default function BestAthlete() {
                 <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                   {row.name}
                 </p>
-                <p className="text-soft-400 text-[12px] leading-[100%] tracking-[-1%]">
+                <p className="text-text-secondary text-[12px] leading-[100%] tracking-[-1%]">
                   {row.team}
                 </p>
               </div>
             </div>
 
             <div className="hidden w-full flex-col gap-[6px] px-[16px] py-[12px] md:flex md:w-[17%] md:flex-row md:gap-[16px]">
-              <p className="text-soft-400 text-[11px] leading-[100%] font-medium tracking-[-1%] md:hidden">
+              <p className="text-text-secondary text-[11px] leading-[100%] font-medium tracking-[-1%] md:hidden">
                 Current Price
               </p>
               <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
@@ -185,7 +185,7 @@ export default function BestAthlete() {
             </div>
 
             <div className="hidden w-full flex-col gap-[6px] px-[16px] py-[12px] md:flex md:w-[17%] md:flex-row md:gap-[16px]">
-              <p className="text-soft-400 text-[11px] leading-[100%] font-medium tracking-[-1%] md:hidden">
+              <p className="text-text-secondary text-[11px] leading-[100%] font-medium tracking-[-1%] md:hidden">
                 24h Change
               </p>
               <p
@@ -198,7 +198,7 @@ export default function BestAthlete() {
             </div>
 
             <div className="hidden w-full flex-col gap-[6px] px-[16px] py-[12px] md:flex md:w-[17%] md:flex-row md:gap-[16px]">
-              <p className="text-soft-400 text-[11px] leading-[100%] font-medium tracking-[-1%] md:hidden">
+              <p className="text-text-secondary text-[11px] leading-[100%] font-medium tracking-[-1%] md:hidden">
                 24h Volume
               </p>
               <p

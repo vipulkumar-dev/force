@@ -166,12 +166,12 @@ export default function AthleteBanner({
           <h1 className="text-text-primary text-[24px] leading-[100%] font-medium tracking-[-2%] sm:text-[28px] md:text-[32px]">
             {name}
           </h1>
-          <h2 className="text-soft-400 mt-1 text-[18px] leading-[100%] font-medium tracking-[-2%] sm:text-[20px] md:text-[24px] lg:text-[32px]">
+          <h2 className="text-text-secondary mt-1 text-[18px] leading-[100%] font-medium tracking-[-2%] sm:text-[20px] md:text-[24px] lg:text-[32px]">
             {team} ({league})
           </h2>
         </div>
         <div className="flex flex-col items-start sm:items-end">
-          <p className="text-soft-400 mb-1 text-[12px] sm:text-[14px]">
+          <p className="text-text-secondary mb-1 text-[12px] sm:text-[14px]">
             Index Price:
           </p>
           <span className="flex flex-row items-center gap-1">
@@ -323,7 +323,7 @@ export default function AthleteBanner({
     //           <p className="font-nohemi text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px] text-text-primary font-medium leading-[100%]">
     //             {name}
     //           </p>
-    //           <p className="text-[14px] sm:text-[14px] md:text-[15px] lg:text-[16px] text-soft-400 tracking-[-1%] leading-[100%]">
+    //           <p className="text-[14px] sm:text-[14px] md:text-[15px] lg:text-[16px] text-text-secondary tracking-[-1%] leading-[100%]">
     //             {team} ({league})
     //           </p>
     //         </div>
@@ -349,7 +349,7 @@ export default function AthleteBanner({
     //           {!isLive && nextGameTime && (
     //             <div className="bg-white border border-[rgba(10,13,20,0.07)] rounded-[7px] shrink-0">
     //               <div className="flex gap-[8px] sm:gap-[10px] items-center px-[12px] sm:px-[16px] py-[6px] sm:py-[6px]">
-    //                 <p className="font-medium text-[11px] sm:text-[12px] text-soft-400 tracking-[-0.12px] whitespace-nowrap">
+    //                 <p className="font-medium text-[11px] sm:text-[12px] text-text-secondary tracking-[-0.12px] whitespace-nowrap">
     //                   Will play
     //                 </p>
     //                 <div className="flex gap-[4px] sm:gap-[4px] items-center">

@@ -49,7 +49,7 @@ export default function TeamPage() {
     return (
       <div className="bg-page-background flex min-h-screen flex-col items-center justify-center px-4 pt-[117px]">
         <h1 className="text-text-primary mb-4 text-4xl font-bold">404</h1>
-        <p className="text-soft-400 mb-8">Team not found</p>
+        <p className="text-text-secondary mb-8">Team not found</p>
         <Link href="/">
           <button className="bg-main rounded-lg px-4 py-2 text-white">
             Go Home
@@ -164,7 +164,7 @@ export default function TeamPage() {
                               playerFilter ===
                               filter.toLowerCase().replace(" ", "")
                                 ? "bg-page-background text-text-primary"
-                                : "text-soft-400"
+                                : "text-text-secondary"
                             }`}
                           >
                             {filter}
@@ -174,16 +174,16 @@ export default function TeamPage() {
                     </div>
                     <div className="flex items-center gap-10">
                       <div className="flex h-8 items-center gap-1 rounded-full bg-[#F7F7F7] px-3">
-                        <Search className="text-soft-400 h-[15px] w-[15px]" />
+                        <Search className="text-text-secondary h-[15px] w-[15px]" />
                         <input
                           type="text"
                           placeholder="Search player"
-                          className="text-soft-400 w-[150px] bg-transparent text-[12px] font-medium outline-none"
+                          className="text-text-secondary w-[150px] bg-transparent text-[12px] font-medium outline-none"
                         />
                       </div>
                       <div className="flex items-center gap-2">
                         <button className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#F7F7F7]">
-                          <Filter className="text-soft-400 h-4 w-4" />
+                          <Filter className="text-text-secondary h-4 w-4" />
                         </button>
                         <div className="flex h-8 items-center rounded-lg border border-[#EAEBEC]">
                           <button
@@ -213,32 +213,32 @@ export default function TeamPage() {
                       {/* Table Header Row */}
                       <div className="flex items-center gap-5 px-3 py-2.5">
                         <div className="w-[320px]">
-                          <span className="text-soft-400 text-[11px] font-medium">
+                          <span className="text-text-secondary text-[11px] font-medium">
                             Player
                           </span>
                         </div>
                         <div className="w-[160px]">
-                          <span className="text-soft-400 text-[11px] font-medium">
+                          <span className="text-text-secondary text-[11px] font-medium">
                             Chart
                           </span>
                         </div>
                         <div className="flex-1">
-                          <span className="text-soft-400 text-[11px] font-medium">
+                          <span className="text-text-secondary text-[11px] font-medium">
                             Price
                           </span>
                         </div>
                         <div className="flex-1">
-                          <span className="text-soft-400 text-[11px] font-medium">
+                          <span className="text-text-secondary text-[11px] font-medium">
                             Volume
                           </span>
                         </div>
                         <div className="w-[140px]">
-                          <span className="text-soft-400 text-[11px] font-medium">
+                          <span className="text-text-secondary text-[11px] font-medium">
                             Performance
                           </span>
                         </div>
                         <div className="w-[68px]">
-                          <span className="text-soft-400 text-[11px] font-medium">
+                          <span className="text-text-secondary text-[11px] font-medium">
                             Actions
                           </span>
                         </div>
@@ -264,10 +264,10 @@ export default function TeamPage() {
                                 </span>
                               </div>
                               <div className="flex items-center gap-1 rounded-full bg-[#F7F7F7] px-2 py-1">
-                                <span className="text-soft-400 text-[12px] font-medium">
+                                <span className="text-text-secondary text-[12px] font-medium">
                                   F
                                 </span>
-                                <span className="text-soft-400 text-[12px] font-medium">
+                                <span className="text-text-secondary text-[12px] font-medium">
                                   80%
                                 </span>
                               </div>
@@ -325,9 +325,9 @@ export default function TeamPage() {
                   {/* Pagination */}
                   <div className="flex items-center justify-between p-4">
                     <div className="flex items-center gap-1 text-[12px] font-medium">
-                      <span className="text-soft-400">Showing</span>
+                      <span className="text-text-secondary">Showing</span>
                       <span className="text-text-primary">1-10</span>
-                      <span className="text-soft-400">of</span>
+                      <span className="text-text-secondary">of</span>
                       <span className="text-text-primary">32</span>
                     </div>
                     <div className="flex items-center gap-1">
@@ -344,7 +344,7 @@ export default function TeamPage() {
                             className={`w-7 rounded-lg px-2 py-2 text-[12px] font-medium ${
                               currentPage === page
                                 ? "text-text-primary bg-[#F7F7F7]"
-                                : "text-soft-400"
+                                : "text-text-secondary"
                             }`}
                           >
                             {page}

@@ -54,18 +54,18 @@ export default function BalancePopover() {
               My Wallet
             </p>
           </div>
-          <X className="text-soft-400" width={14} height={14} />
+          <X className="text-text-secondary" width={14} height={14} />
         </Button>
 
         <div className="flex w-full flex-col gap-[20px] rounded-[10px] bg-white p-[20px]">
           <div className="flex w-full flex-col items-center gap-[10px]">
-            <p className="text-soft-400 text-[12px] leading-[130%] tracking-[-1%]">
+            <p className="text-text-secondary text-[12px] leading-[130%] tracking-[-1%]">
               Current Balance
             </p>
             <p className="text-text-primary text-[24px] leading-[100%] font-semibold tracking-[-2%]">
               0
             </p>
-            <p className="text-soft-400 text-[12px] leading-[130%] tracking-[-1%]">
+            <p className="text-text-secondary text-[12px] leading-[130%] tracking-[-1%]">
               1 coin = 1 USD
             </p>
           </div>

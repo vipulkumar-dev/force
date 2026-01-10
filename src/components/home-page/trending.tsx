@@ -44,7 +44,9 @@ const trendingItems: TrendingData[] = [
 export default function TodayGames() {
   return (
     <div>
-      <h3 className="text-md text-soft-400 m-0 mb-2 p-0 font-bold">Trending</h3>
+      <h3 className="text-md text-text-secondary m-0 mb-2 p-0 font-bold">
+        Trending
+      </h3>
       <div className="m-0 flex flex-row overflow-x-auto overflow-y-hidden p-0 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {trendingItems.map((item) => (
           <div key={item.id} className="shrink-0">

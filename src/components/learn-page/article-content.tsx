@@ -53,7 +53,7 @@ interface ArticleParagraphProps {
 
 export function ArticleParagraph({ children }: ArticleParagraphProps) {
   return (
-    <p className="font-inter text-soft-400 text-[15px] leading-[150%] tracking-[-0.15px]">
+    <p className="font-inter text-text-secondary text-[15px] leading-[150%] tracking-[-0.15px]">
       {children}
     </p>
   );
@@ -66,10 +66,10 @@ interface ArticleExampleProps {
 export function ArticleExample({ children }: ArticleExampleProps) {
   return (
     <div className="flex flex-col gap-1">
-      <span className="font-inter text-soft-400 text-[15px] leading-[150%] tracking-[-0.15px]">
+      <span className="font-inter text-text-secondary text-[15px] leading-[150%] tracking-[-0.15px]">
         Example:
       </span>
-      <p className="font-inter text-soft-400 text-[15px] leading-[150%] tracking-[-0.15px]">
+      <p className="font-inter text-text-secondary text-[15px] leading-[150%] tracking-[-0.15px]">
         {children}
       </p>
     </div>

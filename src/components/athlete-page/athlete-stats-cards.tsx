@@ -23,7 +23,7 @@ function StatCard({ label, value, change }: StatCardProps) {
 
   return (
     <div className="flex flex-1 flex-col gap-[24px] rounded-[14px] bg-white p-[16px] sm:gap-[32px] sm:p-[18px] md:gap-[46px] md:p-[20px]">
-      <p className="text-soft-400 text-[12px] font-medium sm:text-[14px]">
+      <p className="text-text-secondary text-[12px] font-medium sm:text-[14px]">
         {label}
       </p>
       <span className="flex flex-row items-center gap-1">
@@ -78,7 +78,7 @@ export default function AthleteStatsCards({
         change={performanceChange}
       />
       <div className="flex flex-1 flex-col gap-[24px] rounded-[14px] bg-white p-[16px] sm:gap-[32px] sm:p-[18px] md:gap-[46px] md:p-[20px] lg:w-[360px]">
-        <p className="text-soft-400 text-[12px] font-medium sm:text-[14px]">
+        <p className="text-text-secondary text-[12px] font-medium sm:text-[14px]">
           Narrative Multiple
         </p>
         <span className="flex flex-row items-center gap-1">

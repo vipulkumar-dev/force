@@ -349,9 +349,9 @@ export default function ClientHeader() {
                         <path
                           d="M11.875 11.875L8.125 8.125M0.625 5C0.625 5.57453 0.738163 6.14344 0.958027 6.67424C1.17789 7.20504 1.50015 7.68734 1.90641 8.09359C2.31266 8.49985 2.79496 8.82211 3.32576 9.04197C3.85656 9.26184 4.42547 9.375 5 9.375C5.57453 9.375 6.14344 9.26184 6.67424 9.04197C7.20504 8.82211 7.68734 8.49985 8.09359 8.09359C8.49985 7.68734 8.82211 7.20504 9.04197 6.67424C9.26184 6.14344 9.375 5.57453 9.375 5C9.375 4.42547 9.26184 3.85656 9.04197 3.32576C8.82211 2.79496 8.49985 2.31266 8.09359 1.90641C7.68734 1.50015 7.20504 1.17789 6.67424 0.958027C6.14344 0.738163 5.57453 0.625 5 0.625C4.42547 0.625 3.85656 0.738163 3.32576 0.958027C2.79496 1.17789 2.31266 1.50015 1.90641 1.90641C1.50015 2.31266 1.17789 2.79496 0.958027 3.32576C0.738163 3.85656 0.625 4.42547 0.625 5Z"
                           stroke="#7E7E8C"
-                          stroke-width="1.25"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.25"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
 
@@ -406,9 +406,9 @@ export default function ClientHeader() {
                           <path
                             d="M3 12H4M12 3V4M20 12H21M12 20V21M5.6 5.6L6.3 6.3M18.4 5.6L17.7 6.3M17.7 17.7L18.4 18.4M6.3 17.7L5.6 18.4M8 12C8 13.0609 8.42143 14.0783 9.17157 14.8284C9.92172 15.5786 10.9391 16 12 16C13.0609 16 14.0783 15.5786 14.8284 14.8284C15.5786 14.0783 16 13.0609 16 12C16 10.9391 15.5786 9.92172 14.8284 9.17157C14.0783 8.42143 13.0609 8 12 8C10.9391 8 9.92172 8.42143 9.17157 9.17157C8.42143 9.92172 8 10.9391 8 12Z"
                             stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                           />
                         </svg>
                       ) : (
@@ -423,9 +423,9 @@ export default function ClientHeader() {
                           <path
                             d="M7.5006 1.87496C7.5831 1.87496 7.66497 1.87496 7.74622 1.87496C6.94331 2.62103 6.42721 3.62487 6.28765 4.71198C6.14809 5.79909 6.39388 6.90073 6.98231 7.82542C7.57073 8.75011 8.46458 9.43937 9.50847 9.77338C10.5524 10.1074 11.6803 10.0651 12.6962 9.65371C12.3054 10.594 11.6667 11.4106 10.8482 12.0164C10.0297 12.6221 9.06212 12.9944 8.04866 13.0933C7.0352 13.1923 6.01388 13.0143 5.09365 12.5783C4.17342 12.1424 3.38879 11.4648 2.82346 10.6178C2.25814 9.7709 1.93332 8.78639 1.88365 7.76932C1.83398 6.75225 2.06133 5.74077 2.54145 4.84279C3.02157 3.9448 3.73645 3.19398 4.60982 2.67042C5.4832 2.14687 6.48232 1.87021 7.5006 1.86996V1.87496Z"
                             stroke="currentColor"
-                            stroke-width="1.25"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeWidth="1.25"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                           />
                         </svg>
                       )}
@@ -613,7 +613,9 @@ export default function ClientHeader() {
                                 href={item.href}
                                 onClick={() => setMobileSheetOpen(false)}
                                 className={`hover:bg-primary-foreground rounded-[8px] px-3 py-2 transition-colors ${
-                                  active ? "text-text-primary" : "text-soft-400"
+                                  active
+                                    ? "text-text-primary"
+                                    : "text-text-secondary"
                                 }`}
                               >
                                 {item.label}
@@ -655,7 +657,7 @@ export default function ClientHeader() {
                   <span className="text-[13px] font-medium text-text-primary whitespace-nowrap">
                     {selectedTeam.label}
                   </span>
-                  <ChevronDown size={14} className="text-soft-400 flex-shrink-0" />
+                  <ChevronDown size={14} className="text-text-secondary flex-shrink-0" />
                 </button>
               </PopoverTrigger>
               <PopoverContent
@@ -713,7 +715,10 @@ export default function ClientHeader() {
                             <span className="text-text-secondary text-[13px] font-medium">
                               {selectedTeam.label}
                             </span>
-                            <ChevronDown size={14} className="text-soft-400" />
+                            <ChevronDown
+                              size={14}
+                              className="text-text-secondary"
+                            />
                           </Button>
                         </PopoverTrigger>
                         <PopoverContent
@@ -758,7 +763,10 @@ export default function ClientHeader() {
                             <span className="text-text-primary text-[13px] font-medium">
                               {formatShortDate(selectedDate)}
                             </span>
-                            <ChevronDown size={14} className="text-soft-400" />
+                            <ChevronDown
+                              size={14}
+                              className="text-text-secondary"
+                            />
                           </Button>
                         </PopoverTrigger>
                         <PopoverContent align="start" className="bg-white p-3">

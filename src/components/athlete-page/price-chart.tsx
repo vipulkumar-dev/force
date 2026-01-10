@@ -671,7 +671,7 @@ export default function PriceChart({
                 className={`flex h-full cursor-pointer flex-col items-start justify-center gap-[14px] px-[10px] sm:px-[15px] md:px-[19px] ${
                   activeTab === tab
                     ? "border-soft-500 text-text-primary border-b text-[12px] leading-none font-medium tracking-[-0.14px] sm:text-[13px] md:text-[14px]"
-                    : "text-soft-400 text-[12px] leading-none font-medium tracking-[-0.14px] sm:text-[13px] md:text-[14px]"
+                    : "text-text-secondary text-[12px] leading-none font-medium tracking-[-0.14px] sm:text-[13px] md:text-[14px]"
                 }`}
               >
                 {tab}
@@ -754,7 +754,7 @@ export default function PriceChart({
                     className={`px-[2px] text-[11px] leading-none font-medium tracking-[-0.13px] sm:px-[3px] sm:text-[12px] md:text-[13px] ${
                       timeRange === range
                         ? "text-text-primary"
-                        : "text-soft-400"
+                        : "text-text-secondary"
                     }`}
                   >
                     {range}
@@ -778,7 +778,7 @@ export default function PriceChart({
             </div>
             {/* Volume */}
             <div className="border-soft-500 flex items-center gap-[3px] rounded-md border border-solid bg-white px-[8px] py-[6px] sm:gap-[4px] sm:px-[10px] sm:py-[7.5px]">
-              <p className="text-soft-400 text-[11px] leading-none font-normal tracking-[-0.13px] sm:text-[13px]">
+              <p className="text-text-secondary text-[11px] leading-none font-normal tracking-[-0.13px] sm:text-[13px]">
                 Vol
               </p>
               <p className="text-text-primary text-[11px] leading-none font-bold tracking-[-0.13px] sm:text-[13px]">
@@ -787,7 +787,7 @@ export default function PriceChart({
             </div>
             {/* Funding */}
             <div className="border-soft-500 flex items-center gap-[3px] rounded-md border border-solid bg-white px-[8px] py-[6px] sm:gap-[4px] sm:px-[10px] sm:py-[2px]">
-              <p className="text-soft-400 text-[11px] leading-none font-normal tracking-[-0.13px] sm:text-[13px]">
+              <p className="text-text-secondary text-[11px] leading-none font-normal tracking-[-0.13px] sm:text-[13px]">
                 Funding
               </p>
               <p
@@ -800,7 +800,7 @@ export default function PriceChart({
             {/* Route */}
             <div className="border-soft-500 flex items-center gap-[3px] rounded-md border border-solid bg-white px-[8px] py-[6px] sm:gap-[4px] sm:px-[10px] sm:py-[7.5px]">
               <Info className="text-text-primary h-[11px] w-[11px] sm:h-[13px] sm:w-[13px]" />
-              <p className="text-soft-400 text-[11px] leading-none font-normal tracking-[-0.13px] sm:text-[13px]">
+              <p className="text-text-secondary text-[11px] leading-none font-normal tracking-[-0.13px] sm:text-[13px]">
                 Route:
               </p>
               <p className="text-text-primary text-[11px] leading-none font-normal tracking-[-0.13px] sm:text-[13px]">
@@ -1115,7 +1115,7 @@ export default function PriceChart({
                     className={`text-center text-[10px] leading-none font-normal tracking-[-0.12px] transition-colors sm:text-[11px] md:text-[12px] ${
                       isActive
                         ? "text-text-primary font-medium"
-                        : "text-soft-400"
+                        : "text-text-secondary"
                     }`}
                   >
                     {point.timeLabel}
@@ -1139,7 +1139,7 @@ export default function PriceChart({
                     className={`flex h-full min-h-px min-w-px grow cursor-pointer flex-col items-center justify-center gap-[14px] p-2 ${
                       activeQuarter === quarter
                         ? "bg-soft-500 text-text-primary rounded-md text-[12px] leading-none font-semibold tracking-[-0.14px] sm:text-[12px] md:text-[12px]"
-                        : "text-soft-400 text-[12px] leading-none font-medium tracking-[-0.14px] sm:text-[12px] md:text-[12px]"
+                        : "text-text-secondary text-[12px] leading-none font-medium tracking-[-0.14px] sm:text-[12px] md:text-[12px]"
                     }`}
                   >
                     {quarter}
@@ -1190,7 +1190,7 @@ export default function PriceChart({
                                 <p className="text-nowrap whitespace-pre">
                                   {play.play}
                                 </p>
-                                <p className="text-soft-400 text-xs text-nowrap whitespace-pre">
+                                <p className="text-text-secondary text-xs text-nowrap whitespace-pre">
                                   ({play.playUpdate})
                                 </p>
                               </span>

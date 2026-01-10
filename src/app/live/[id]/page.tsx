@@ -108,7 +108,7 @@ export default function LivePage() {
             <div className="flex flex-col items-center justify-center">
               <div className="flex flex-row items-center justify-center gap-10">
                 <div className="flex flex-row items-center justify-center gap-1">
-                  <h4 className="text-soft-400 text-[16px] font-bold font-medium">
+                  <h4 className="text-text-secondary text-[16px] font-bold font-medium">
                     Lakers
                   </h4>
                   <Image
@@ -164,7 +164,7 @@ export default function LivePage() {
                     height={32}
                   />
 
-                  <h4 className="text-soft-400 text-[16px] font-bold font-medium">
+                  <h4 className="text-text-secondary text-[16px] font-bold font-medium">
                     Warriors
                   </h4>
                 </div>
@@ -202,7 +202,7 @@ export default function LivePage() {
           <div className="bg-soft-500 h-[1px] w-full"></div>
           <div className="my-[20px] flex w-full flex-row items-center justify-evenly gap-[24px]">
             <div>
-              <h1 className="text-soft-400 text-[12px] font-bold font-medium">
+              <h1 className="text-text-secondary text-[12px] font-bold font-medium">
                 Total Volume
               </h1>
               <p className="text-text-primary text-[14px] font-bold font-semibold">
@@ -210,7 +210,7 @@ export default function LivePage() {
               </p>
             </div>
             <div>
-              <h1 className="text-soft-400 text-[12px] font-bold font-medium">
+              <h1 className="text-text-secondary text-[12px] font-bold font-medium">
                 Spread
               </h1>
               <p className="text-text-primary text-[14px] font-bold font-semibold">
@@ -218,7 +218,7 @@ export default function LivePage() {
               </p>
             </div>
             <div>
-              <h1 className="text-soft-400 text-[12px] font-bold font-medium">
+              <h1 className="text-text-secondary text-[12px] font-bold font-medium">
                 Projected Final
               </h1>
               <p className="text-text-primary text-[14px] font-bold font-semibold">
@@ -232,7 +232,7 @@ export default function LivePage() {
               {tabs.map((tab) => (
                 <button
                   key={tab.value}
-                  className={`text-[12px] font-bold font-medium ${activeTab === tab.value ? "text-text-primary" : "text-soft-400"}`}
+                  className={`text-[12px] font-bold font-medium ${activeTab === tab.value ? "text-text-primary" : "text-text-secondary"}`}
                   onClick={() => setActiveTab(tab.value)}
                 >
                   {tab.label}
@@ -273,7 +273,7 @@ export default function LivePage() {
 
                           {/* Quarter Label */}
                           <div className="flex min-w-[70px] shrink-0 items-center justify-center gap-2">
-                            <span className="text-soft-400 text-sm font-medium">
+                            <span className="text-text-secondary text-sm font-medium">
                               {quarter.quarter}
                             </span>
                             {quarter.isCurrent && (
@@ -494,11 +494,11 @@ export default function LivePage() {
                                 <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                                   LeBron James
                                 </p>
-                                <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+                                <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
                                   Los Angeles Lakers
                                 </p>
                               </div>
-                              <div className="bg-league-card text-soft-400 flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
+                              <div className="bg-league-card text-text-secondary flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
                                 <Image
                                   src="/icons/game/f.svg"
                                   alt="Flag"
@@ -615,11 +615,11 @@ export default function LivePage() {
                                 <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                                   LeBron James
                                 </p>
-                                <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+                                <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
                                   Los Angeles Lakers
                                 </p>
                               </div>
-                              <div className="bg-league-card text-soft-400 flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
+                              <div className="bg-league-card text-text-secondary flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
                                 <Image
                                   src="/icons/game/f.svg"
                                   alt="Flag"
@@ -736,11 +736,11 @@ export default function LivePage() {
                                 <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                                   LeBron James
                                 </p>
-                                <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+                                <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
                                   Los Angeles Lakers
                                 </p>
                               </div>
-                              <div className="bg-league-card text-soft-400 flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
+                              <div className="bg-league-card text-text-secondary flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
                                 <Image
                                   src="/icons/game/f.svg"
                                   alt="Flag"
@@ -857,11 +857,11 @@ export default function LivePage() {
                                 <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                                   LeBron James
                                 </p>
-                                <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+                                <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
                                   Los Angeles Lakers
                                 </p>
                               </div>
-                              <div className="bg-league-card text-soft-400 flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
+                              <div className="bg-league-card text-text-secondary flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
                                 <Image
                                   src="/icons/game/f.svg"
                                   alt="Flag"
@@ -978,11 +978,11 @@ export default function LivePage() {
                                 <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                                   LeBron James
                                 </p>
-                                <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+                                <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
                                   Los Angeles Lakers
                                 </p>
                               </div>
-                              <div className="bg-league-card text-soft-400 flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
+                              <div className="bg-league-card text-text-secondary flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
                                 <Image
                                   src="/icons/game/f.svg"
                                   alt="Flag"
@@ -1099,11 +1099,11 @@ export default function LivePage() {
                                 <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                                   LeBron James
                                 </p>
-                                <p className="text-soft-400 text-[12px] leading-[100%] font-medium tracking-[-1%]">
+                                <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
                                   Los Angeles Lakers
                                 </p>
                               </div>
-                              <div className="bg-league-card text-soft-400 flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
+                              <div className="bg-league-card text-text-secondary flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
                                 <Image
                                   src="/icons/game/f.svg"
                                   alt="Flag"

@@ -191,25 +191,25 @@ export default function PerformanceBreakdownPage({
           <div className="flex w-full flex-col rounded-[10px] bg-white">
             {/* Table Header */}
             <div className="border-light-gray flex w-full flex-row gap-4 border-b px-5 py-3">
-              <p className="text-soft-400 w-[8%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary w-[8%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Rank
               </p>
-              <p className="text-soft-400 w-[25%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary w-[25%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Team
               </p>
-              <p className="text-soft-400 w-[12%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary w-[12%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 24H Volume
               </p>
-              <p className="text-soft-400 w-[12%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary w-[12%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Total Trades
               </p>
-              <p className="text-soft-400 w-[13%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary w-[13%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Avg Trade Size
               </p>
-              <p className="text-soft-400 w-[12%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary w-[12%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Top Traders
               </p>
-              <p className="text-soft-400 w-[12%] text-right text-[12px] leading-[100%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary w-[12%] text-right text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 24H Change
               </p>
             </div>
@@ -239,7 +239,7 @@ export default function PerformanceBreakdownPage({
                     <p className="text-text-primary text-[13px] leading-[100%] font-medium tracking-[-1%]">
                       {team.name}
                     </p>
-                    <p className="text-soft-400 text-[11px] leading-[100%] font-medium tracking-[-1%]">
+                    <p className="text-text-secondary text-[11px] leading-[100%] font-medium tracking-[-1%]">
                       {team.league}
                     </p>
                   </div>
@@ -280,22 +280,22 @@ export default function PerformanceBreakdownPage({
           <div className="flex w-full flex-col rounded-[10px] bg-white">
             {/* Table Header */}
             <div className="border-light-gray flex w-full flex-row gap-4 border-b px-5 py-3">
-              <p className="text-soft-400 w-[8%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary w-[8%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Rank
               </p>
-              <p className="text-soft-400 w-[27%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary w-[27%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Athlete
               </p>
-              <p className="text-soft-400 w-[13%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary w-[13%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 24H Volume
               </p>
-              <p className="text-soft-400 w-[13%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary w-[13%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Total Trades
               </p>
-              <p className="text-soft-400 w-[13%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary w-[13%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Avg Trade Size
               </p>
-              <p className="text-soft-400 w-[13%] text-right text-[12px] leading-[100%] font-medium tracking-[-1%]">
+              <p className="text-text-secondary w-[13%] text-right text-[12px] leading-[100%] font-medium tracking-[-1%]">
                 Price Change
               </p>
             </div>
@@ -332,7 +332,7 @@ export default function PerformanceBreakdownPage({
                     <p className="text-text-primary text-[13px] leading-[100%] font-medium tracking-[-1%]">
                       {athlete.name}
                     </p>
-                    <p className="text-soft-400 text-[11px] leading-[100%] font-medium tracking-[-1%]">
+                    <p className="text-text-secondary text-[11px] leading-[100%] font-medium tracking-[-1%]">
                       {athlete.team}
                     </p>
                   </div>

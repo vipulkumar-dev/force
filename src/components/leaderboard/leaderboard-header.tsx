@@ -1,34 +1,34 @@
 export default function LeaderboardHeader() {
   return (
-    <div className="flex flex-row w-full min-w-[370px]">
-      <div className="hidden md:flex md:w-[5%] flex-row py-3 px-4 gap-6"></div>
-      <div className="w-[60%] md:w-[27%] flex flex-row py-3 px-4 gap-6 items-center">
-        <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400">
+    <div className="flex w-full min-w-[370px] flex-row">
+      <div className="hidden flex-row gap-6 px-4 py-3 md:flex md:w-[5%]"></div>
+      <div className="flex w-[60%] flex-row items-center gap-6 px-4 py-3 md:w-[27%]">
+        <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
           Trader
         </p>
       </div>
-      <div className="w-[20%] md:w-[14%] flex flex-row py-3 px-4 gap-6 items-center">
-        <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400">
+      <div className="flex w-[20%] flex-row items-center gap-6 px-4 py-3 md:w-[14%]">
+        <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
           24H PnL
         </p>
       </div>
-      <div className="hidden md:flex md:w-[14%] flex-row py-3 px-4 gap-6 items-center">
-        <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400">
+      <div className="hidden flex-row items-center gap-6 px-4 py-3 md:flex md:w-[14%]">
+        <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
           Total PnL
         </p>
       </div>
-      <div className="hidden md:flex md:w-[14%] flex-row py-3 px-4 gap-6 items-center">
-        <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400">
+      <div className="hidden flex-row items-center gap-6 px-4 py-3 md:flex md:w-[14%]">
+        <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
           Open Positions
         </p>
       </div>
-      <div className="w-[20%] md:w-[10%] flex flex-row py-3 px-4 gap-6 items-center">
-        <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400">
+      <div className="flex w-[20%] flex-row items-center gap-6 px-4 py-3 md:w-[10%]">
+        <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
           Win Rate
         </p>
       </div>
-      <div className="hidden md:flex md:w-[16%] flex-row py-3 px-4 gap-6 items-center">
-        <p className="font-medium text-[12px] leading-[100%] tracking-[-1%] text-soft-400">
+      <div className="hidden flex-row items-center gap-6 px-4 py-3 md:flex md:w-[16%]">
+        <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
           Index Focus
         </p>
       </div>

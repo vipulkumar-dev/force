@@ -31,7 +31,7 @@ export default function LeaderboardTableCard({
         <p className="font-nohemi text-text-primary text-[14px] leading-[100%] font-medium tracking-[2%]">
           Leaderboard Table
         </p>
-        <ChevronRight className="text-soft-400" width={14} height={14} />
+        <ChevronRight className="text-text-secondary" width={14} height={14} />
       </Button>
       <div className="flex w-full flex-col overflow-x-auto px-2 pb-2">
         <LeaderboardHeader />

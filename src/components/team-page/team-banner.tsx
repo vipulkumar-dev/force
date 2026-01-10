@@ -101,12 +101,12 @@ export default function TeamBanner({
           <h1 className="text-text-primary text-[24px] leading-[100%] font-medium tracking-[-2%] sm:text-[28px] md:text-[32px]">
             {name}
           </h1>
-          <h2 className="text-soft-400 mt-1 text-[18px] leading-[100%] font-medium tracking-[-2%] sm:text-[20px] md:text-[24px] lg:text-[32px]">
+          <h2 className="text-text-secondary mt-1 text-[18px] leading-[100%] font-medium tracking-[-2%] sm:text-[20px] md:text-[24px] lg:text-[32px]">
             {league}
           </h2>
         </div>
         <div className="flex flex-col items-start sm:items-end">
-          <p className="text-soft-400 mb-1 text-[12px] sm:text-[14px]">
+          <p className="text-text-secondary mb-1 text-[12px] sm:text-[14px]">
             Index Price:
           </p>
           <span className="flex flex-row items-center gap-1">

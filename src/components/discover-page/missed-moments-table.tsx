@@ -43,7 +43,11 @@ export default function MissedMomentsTable({
           <p className="font-nohemi text-text-primary text-[14px] leading-[100%] font-medium tracking-[2%]">
             Moments You Missed
           </p>
-          <ChevronRight className="text-soft-400" width={14} height={14} />
+          <ChevronRight
+            className="text-text-secondary"
+            width={14}
+            height={14}
+          />
         </a>
       </Button>
       <div className="grid w-full grid-cols-1 md:grid-cols-2">

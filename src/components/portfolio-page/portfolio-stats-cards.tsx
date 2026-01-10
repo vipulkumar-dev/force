@@ -16,7 +16,7 @@ function StatCard({ label, value, change, changeLabel }: StatCardProps) {
     <div className="bg-page-background flex h-[90px] min-w-[150px] flex-1 flex-col justify-between rounded-[10px] p-[14px] md:h-[100px] md:min-w-0 md:p-[16px]">
       {/* Label */}
       <div className="flex flex-col justify-center">
-        <p className="text-soft-400 text-[11px] leading-none font-medium tracking-[-0.12px] md:text-[12px]">
+        <p className="text-text-secondary text-[11px] leading-none font-medium tracking-[-0.12px] md:text-[12px]">
           {label}
         </p>
       </div>
@@ -87,7 +87,7 @@ export default function PortfolioStatsCards({
 
   return (
     <div className="flex w-full flex-col items-start gap-[12px] rounded-[20px] bg-white p-[20px] md:gap-[24px] md:p-[24px]">
-      <h5 className="text-soft-400 text-[12px] font-medium md:text-[14px]">
+      <h5 className="text-text-secondary text-[12px] font-medium md:text-[14px]">
         Total Balance:
       </h5>
       <div className="flex flex-row items-center gap-1">

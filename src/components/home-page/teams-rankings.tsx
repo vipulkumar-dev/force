@@ -49,7 +49,11 @@ export default function TeamsRankings() {
           <p className="font-nohemi text-text-primary text-[16px] leading-[100%] font-medium tracking-[2%]">
             NBA Teams Ranking
           </p>
-          <ChevronRight className="text-soft-400" width={14} height={14} />
+          <ChevronRight
+            className="text-text-secondary"
+            width={14}
+            height={14}
+          />
         </div>
       </Button>
 

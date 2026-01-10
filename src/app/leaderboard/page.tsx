@@ -296,7 +296,7 @@ export default function LeaderboardPage() {
                         </span>
                         <ChevronDown
                           size={14}
-                          className="text-soft-400 shrink-0"
+                          className="text-text-secondary shrink-0"
                         />
                       </Button>
                     </PopoverTrigger>
@@ -334,7 +334,7 @@ export default function LeaderboardPage() {
                         </span>
                         <ChevronDown
                           size={14}
-                          className="text-soft-400 shrink-0"
+                          className="text-text-secondary shrink-0"
                         />
                       </Button>
                     </PopoverTrigger>

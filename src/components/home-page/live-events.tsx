@@ -17,7 +17,7 @@ export default function LiveEvents({ eventRows }: { eventRows: EventRow[] }) {
         <p className="font-nohemi text-text-primary text-[14px] leading-[100%] font-medium tracking-[2%]">
           Live Events
         </p>
-        <ChevronRight className="text-soft-400" width={14} height={14} />
+        <ChevronRight className="text-text-secondary" width={14} height={14} />
       </Button>
       <div className="flex w-full flex-col items-center gap-[20px] p-[20px]">
         <div className="flex w-full flex-col gap-[16px] md:flex-row md:gap-[32px]">
@@ -26,7 +26,7 @@ export default function LiveEvents({ eventRows }: { eventRows: EventRow[] }) {
               <p className="text-text-primary text-end text-[14px] leading-[100%] font-semibold tracking-[-2%]">
                 LAL
               </p>
-              <p className="text-soft-400 text-end text-[11px] leading-[100%] tracking-[-1%]">
+              <p className="text-text-secondary text-end text-[11px] leading-[100%] tracking-[-1%]">
                 Los Angeles Lakers (NBA)
               </p>
             </div>
@@ -44,7 +44,7 @@ export default function LiveEvents({ eventRows }: { eventRows: EventRow[] }) {
             <p className="text-text-primary text-center text-[12px] leading-[140%] font-medium tracking-[-2%]">
               Oct 23 - Now on the Match
             </p>
-            <p className="text-soft-400 text-center text-[11px] leading-[100%] tracking-[-1%]">
+            <p className="text-text-secondary text-center text-[11px] leading-[100%] tracking-[-1%]">
               Crypt Arena
             </p>
           </div>
@@ -62,7 +62,7 @@ export default function LiveEvents({ eventRows }: { eventRows: EventRow[] }) {
               <p className="text-text-primary text-[14px] leading-[100%] font-semibold tracking-[-2%]">
                 GSW
               </p>
-              <p className="text-soft-400 text-[11px] leading-[100%] tracking-[-1%]">
+              <p className="text-text-secondary text-[11px] leading-[100%] tracking-[-1%]">
                 Golden State Warriors (NBA)
               </p>
             </div>
@@ -78,16 +78,16 @@ export default function LiveEvents({ eventRows }: { eventRows: EventRow[] }) {
         />
         <div className="flex w-full flex-col px-[4px] pb-[4px]">
           <div className="hidden w-full flex-row gap-[16px] px-[16px] py-[12px] md:flex">
-            <p className="text-soft-400 w-[17.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
+            <p className="text-text-secondary w-[17.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
               Time
             </p>
-            <p className="text-soft-400 w-[49.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
+            <p className="text-text-secondary w-[49.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
               Play
             </p>
-            <p className="text-soft-400 w-[16.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
+            <p className="text-text-secondary w-[16.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
               DET
             </p>
-            <p className="text-soft-400 w-[16.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
+            <p className="text-text-secondary w-[16.5%] text-[12px] leading-[100%] font-medium tracking-[-1%]">
               CLE
             </p>
           </div>

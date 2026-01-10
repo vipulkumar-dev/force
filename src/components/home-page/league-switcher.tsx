@@ -43,7 +43,7 @@ export default function LeagueSwitcher({
               {selected.label}
             </span>
           </div>
-          <ChevronDown size={12} className="text-soft-400" />
+          <ChevronDown size={12} className="text-text-secondary" />
         </Button>
       </PopoverTrigger>
       <PopoverContent

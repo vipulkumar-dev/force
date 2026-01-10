@@ -60,16 +60,16 @@ export default function IndexComponentsTable() {
         <div className="min-w-[600px]">
           {/* Header */}
           <div className="border-inactive flex w-full flex-row border-b px-3 py-2.5 md:px-4 md:py-3">
-            <div className="text-soft-400 w-[50%] text-[11px] font-medium tracking-[-1%] md:w-[70%] md:text-xs">
+            <div className="text-text-secondary w-[50%] text-[11px] font-medium tracking-[-1%] md:w-[70%] md:text-xs">
               Metric
             </div>
-            <div className="text-soft-400 w-[17%] text-[11px] font-medium tracking-[-1%] md:w-[10%] md:text-xs">
+            <div className="text-text-secondary w-[17%] text-[11px] font-medium tracking-[-1%] md:w-[10%] md:text-xs">
               Weight
             </div>
-            <div className="text-soft-400 w-[17%] text-[11px] font-medium tracking-[-1%] md:w-[10%] md:text-xs">
+            <div className="text-text-secondary w-[17%] text-[11px] font-medium tracking-[-1%] md:w-[10%] md:text-xs">
               Current
             </div>
-            <div className="text-soft-400 w-[16%] text-[11px] font-medium tracking-[-1%] md:w-[10%] md:text-xs">
+            <div className="text-text-secondary w-[16%] text-[11px] font-medium tracking-[-1%] md:w-[10%] md:text-xs">
               Trend
             </div>
           </div>

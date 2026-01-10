@@ -72,9 +72,9 @@ export default function AthleteUpdateCard() {
           <h3 className="font-nohemi text-text-primary text-[15px] leading-[100%] font-medium tracking-[1%] md:text-[16px]">
             Athlete Update
           </h3>
-          <button className="font-inter text-soft-400 hover:text-text-primary flex cursor-pointer items-center gap-1 text-[11px] leading-[100%] tracking-[1%] transition-colors md:text-[12px]">
+          <button className="font-inter text-text-secondary hover:text-text-primary flex cursor-pointer items-center gap-1 text-[11px] leading-[100%] tracking-[1%] transition-colors md:text-[12px]">
             Explore
-            <ChevronRight className="text-soft-400 h-[13px] w-[13px] md:h-[14px] md:w-[14px]" />
+            <ChevronRight className="text-text-secondary h-[13px] w-[13px] md:h-[14px] md:w-[14px]" />
           </button>
         </div>
 
@@ -110,7 +110,7 @@ export default function AthleteUpdateCard() {
                     <span className="font-inter text-text-primary text-[14px] leading-[14px] font-medium tracking-[-0.14px] md:text-[14px] lg:text-[15px] lg:leading-[15px] lg:tracking-[-0.15px]">
                       {athlete.name}
                     </span>
-                    <span className="font-inter text-soft-400 text-[12px] leading-[12px] font-normal md:text-[12px] lg:text-[13px] lg:leading-[13px]">
+                    <span className="font-inter text-text-secondary text-[12px] leading-[12px] font-normal md:text-[12px] lg:text-[13px] lg:leading-[13px]">
                       {athlete.team} ({athlete.league})
                     </span>
                   </div>
@@ -136,7 +136,7 @@ export default function AthleteUpdateCard() {
                     <span className="text-[10px] leading-[10px] tracking-[-0.1px] md:text-[10px] lg:text-[11px] lg:leading-[11px] lg:tracking-[-0.11px]">
                       🏅
                     </span>
-                    <span className="font-inter text-soft-400 text-[10px] leading-[10px] whitespace-nowrap md:text-[10px] lg:text-[11px] lg:leading-[11px]">
+                    <span className="font-inter text-text-secondary text-[10px] leading-[10px] whitespace-nowrap md:text-[10px] lg:text-[11px] lg:leading-[11px]">
                       {athlete.percentile}st Percentile
                     </span>
                   </div>

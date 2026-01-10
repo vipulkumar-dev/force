@@ -42,7 +42,7 @@ export default function MarketModal({ type }: { type: string }) {
           <p className="font-nohemi text-text-primary text-[14px] leading-[100%] font-medium tracking-[2%]">
             {type === "long" ? "Long" : "Short"}
           </p>
-          <X className="text-soft-400" width={14} height={14} />
+          <X className="text-text-secondary" width={14} height={14} />
         </Button>
       </DialogClose>
       <div className="flex w-full flex-col gap-5 px-4 py-4 sm:px-6 sm:py-5">
@@ -75,7 +75,7 @@ export default function MarketModal({ type }: { type: string }) {
           <div className="border-light-gray flex w-full flex-row justify-end gap-4 border-b py-4">
             <div className="flex w-full flex-row items-center gap-2">
               <div className="flex w-[87px] flex-row items-center gap-2">
-                <p className="text-soft-400 text-[14px] leading-[100%] font-medium tracking-[-1%] text-nowrap">
+                <p className="text-text-secondary text-[14px] leading-[100%] font-medium tracking-[-1%] text-nowrap">
                   Order size
                 </p>
               </div>
@@ -144,7 +144,7 @@ export default function MarketModal({ type }: { type: string }) {
                 <AccordionContent>
                   <div className="flex w-full flex-col gap-4">
                     <div className="flex w-full flex-row items-center justify-between">
-                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                      <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                         Side:
                       </p>
                       <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -152,7 +152,7 @@ export default function MarketModal({ type }: { type: string }) {
                       </p>
                     </div>
                     <div className="flex w-full flex-row items-center justify-between">
-                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                      <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                         Entry Price:
                       </p>
                       <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -160,7 +160,7 @@ export default function MarketModal({ type }: { type: string }) {
                       </p>
                     </div>
                     <div className="flex w-full flex-row items-center justify-between">
-                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                      <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                         Order Size:
                       </p>
                       <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -168,7 +168,7 @@ export default function MarketModal({ type }: { type: string }) {
                       </p>
                     </div>
                     <div className="flex w-full flex-row items-center justify-between">
-                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                      <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                         Leverage:
                       </p>
                       <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -176,7 +176,7 @@ export default function MarketModal({ type }: { type: string }) {
                       </p>
                     </div>
                     <div className="flex w-full flex-row items-center justify-between">
-                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                      <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                         Est. Fees:
                       </p>
                       <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -184,7 +184,7 @@ export default function MarketModal({ type }: { type: string }) {
                       </p>
                     </div>
                     <div className="flex w-full flex-row items-center justify-between">
-                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                      <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                         Liq. Price:
                       </p>
                       <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -208,7 +208,7 @@ export default function MarketModal({ type }: { type: string }) {
                 <AccordionContent>
                   <div className="flex w-full flex-col gap-4">
                     <div className="flex w-full flex-row items-center justify-between">
-                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                      <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                         Side:
                       </p>
                       <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -216,7 +216,7 @@ export default function MarketModal({ type }: { type: string }) {
                       </p>
                     </div>
                     <div className="flex w-full flex-row items-center justify-between">
-                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                      <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                         Entry Price:
                       </p>
                       <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -224,7 +224,7 @@ export default function MarketModal({ type }: { type: string }) {
                       </p>
                     </div>
                     <div className="flex w-full flex-row items-center justify-between">
-                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                      <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                         Order Size:
                       </p>
                       <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -232,7 +232,7 @@ export default function MarketModal({ type }: { type: string }) {
                       </p>
                     </div>
                     <div className="flex w-full flex-row items-center justify-between">
-                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                      <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                         Leverage:
                       </p>
                       <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -240,7 +240,7 @@ export default function MarketModal({ type }: { type: string }) {
                       </p>
                     </div>
                     <div className="flex w-full flex-row items-center justify-between">
-                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                      <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                         Est. Fees:
                       </p>
                       <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -248,7 +248,7 @@ export default function MarketModal({ type }: { type: string }) {
                       </p>
                     </div>
                     <div className="flex w-full flex-row items-center justify-between">
-                      <p className="text-soft-400 text-[14px] leading-[100%] tracking-[-1%]">
+                      <p className="text-text-secondary text-[14px] leading-[100%] tracking-[-1%]">
                         Liq. Price:
                       </p>
                       <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-1%]">
@@ -274,7 +274,7 @@ export default function MarketModal({ type }: { type: string }) {
           <Button className="bg-main flex h-10 w-full flex-row items-center justify-center gap-2 rounded-lg px-4 py-2.5 hover:cursor-pointer">
             <p>Confirm Market Order</p>
           </Button>
-          <p className="text-soft-400 w-full text-center text-[11px] leading-[100%] tracking-[-1%]">
+          <p className="text-text-secondary w-full text-center text-[11px] leading-[100%] tracking-[-1%]">
             Order will execute immediately at the best available price.
           </p>
         </div>

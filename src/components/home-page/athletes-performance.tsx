@@ -62,7 +62,11 @@ export default function AthletesPerformance() {
           <p className="font-nohemi text-text-primary text-[16px] leading-[100%] font-medium tracking-[2%]">
             Athletes Performance
           </p>
-          <ChevronRight className="text-soft-400" width={14} height={14} />
+          <ChevronRight
+            className="text-text-secondary"
+            width={14}
+            height={14}
+          />
         </div>
 
         {/* Selectable chips */}
@@ -107,7 +111,7 @@ export default function AthletesPerformance() {
               <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%] text-nowrap">
                 {row.name}
               </p>
-              <p className="text-soft-400 text-[12px] leading-[100%] tracking-[-1%] text-nowrap">
+              <p className="text-text-secondary text-[12px] leading-[100%] tracking-[-1%] text-nowrap">
                 {row.team}
               </p>
             </div>

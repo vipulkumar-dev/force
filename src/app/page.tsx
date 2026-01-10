@@ -138,13 +138,13 @@ export default function Page() {
       >
         <div
           className={`w-full ${
-            showPriceTrendPage ? "pt-[163px]" : "pt-[117px]"
+            showPriceTrendPage ? "pt-[163px]" : "pt-[104px]"
           } min-h-0 overflow-hidden`}
         >
           <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-[24px] px-[16px] sm:gap-[32px] sm:px-[24px] xl:flex-row xl:gap-[40px] xl:px-[40px]">
             {!showPriceTrendPage ? (
               <>
-                <div className="flex min-h-0 w-full flex-col gap-[24px] overflow-visible overscroll-contain pt-[24px] pb-[24px] xl:overflow-y-auto xl:pt-[40px] xl:[-ms-overflow-style:none] xl:[scrollbar-width:none] xl:[&::-webkit-scrollbar]:hidden">
+                <div className="flex min-h-0 w-full flex-col gap-[24px] overflow-visible overscroll-contain pt-[24px] pb-[24px] xl:overflow-y-auto xl:pt-[20px] xl:[-ms-overflow-style:none] xl:[scrollbar-width:none] xl:[&::-webkit-scrollbar]:hidden">
                   <TodayGames />
                   <div className="h-[0.5px] w-full bg-[#EAEBEC] px-2 dark:bg-[#2C2C33]"></div>
                   <Trending />

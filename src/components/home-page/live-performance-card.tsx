@@ -118,7 +118,11 @@ export default function LivePerformanceCard() {
           <p className="font-nohemi text-text-primary text-sm leading-[100%] font-medium tracking-[2%]">
             Live Performance
           </p>
-          <ChevronRight className="text-soft-400" width={14} height={14} />
+          <ChevronRight
+            className="text-text-secondary"
+            width={14}
+            height={14}
+          />
         </Link>
       </Button>
 
@@ -152,14 +156,16 @@ export default function LivePerformanceCard() {
 
             <div className="flex gap-5">
               <div className="space-y-2.5">
-                <p className="text-soft-400 text-[11px] font-medium">Price</p>
+                <p className="text-text-secondary text-[11px] font-medium">
+                  Price
+                </p>
                 <p className="text-text-primary text-sm font-semibold">
                   {currencyFormatter.format(currentPlayer.price)}
                 </p>
               </div>
 
               <div className="space-y-2.5">
-                <p className="text-soft-400 text-[11px] font-medium">
+                <p className="text-text-secondary text-[11px] font-medium">
                   24H Change
                 </p>
                 <p
@@ -175,7 +181,7 @@ export default function LivePerformanceCard() {
               </div>
 
               <div className="space-y-2.5">
-                <p className="text-soft-400 text-[11px] font-medium">
+                <p className="text-text-secondary text-[11px] font-medium">
                   24H Volume
                 </p>
                 <p className="text-text-primary text-sm font-semibold">
@@ -219,7 +225,7 @@ export default function LivePerformanceCard() {
             </Dialog>
 
             <div className="space-y-1 text-[11px]">
-              <p className="text-soft-400 line-clamp-2 font-light">
+              <p className="text-text-secondary line-clamp-2 font-light">
                 <span className="text-text-primary font-semibold">News: </span>
                 {currentPlayer.news}
               </p>
@@ -254,7 +260,7 @@ export default function LivePerformanceCard() {
                     className={`cursor-pointer rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
                       timeRange === range
                         ? "bg-soft-gray text-text-primary"
-                        : "text-soft-400 hover:text-text-primary"
+                        : "text-text-secondary hover:text-text-primary"
                     }`}
                   >
                     {range}
@@ -276,7 +282,7 @@ export default function LivePerformanceCard() {
               <ChevronLeft className="group-hover:text-text-primary aspect-auto w-3.5 text-[#989A9E]" />
             </button>
 
-            <p className="text-soft-400 text-[11px]">
+            <p className="text-text-secondary text-[11px]">
               {currentPlayer.priceTrendLabel}
             </p>
           </div>
@@ -296,7 +302,9 @@ export default function LivePerformanceCard() {
           </div>
 
           <div className="flex items-center gap-x-4">
-            <p className="text-soft-400 text-[11px]">{nextPlayer.name} Price</p>
+            <p className="text-text-secondary text-[11px]">
+              {nextPlayer.name} Price
+            </p>
 
             <button
               onClick={handleNext}

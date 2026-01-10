@@ -196,6 +196,28 @@
   --elevation-card: #ffffff;
   --elevation-button: #f7f7f7;
   --border-secondary: #f7f7f7;
+  --max-width-global: 76.25rem;
+  --padding-global: 1rem;
+  --padding-section-md: 2rem;
+}
+
+@variant sm {
+  :root {
+    --padding-global: 2rem;
+    --padding-section-md: 2rem;
+  }
+}
+@variant md {
+  :root {
+    --padding-global: 2.5rem;
+    --padding-section-md: 2.25rem;
+  }
+}
+@variant lg {
+  :root {
+    --padding-global: max(4vw, 2.5rem);
+    --padding-section-md: 3.25rem;
+  }
 }
 
 .dark {
@@ -216,6 +238,33 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  h1,
+  .h1-style {
+    @apply text-soft-400 text-2xl font-semibold;
+  }
+  h2,
+  .h2-style {
+    @apply text-soft-400 text-xl font-semibold;
+  }
+  h3,
+  .h3-style {
+    @apply text-soft-400 text-lg font-semibold;
+  }
+  h4,
+  .h4-style {
+    @apply text-soft-400 text-base font-semibold;
+  }
+  h5,
+  .h5-style {
+    @apply text-soft-400 text-sm font-semibold;
+  }
+  h6,
+  .h6-style {
+    @apply text-soft-400 text-xs font-semibold;
   }
 }
 

@@ -156,14 +156,14 @@ export default function PriceTrendChart() {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex w-full flex-row items-center justify-between px-2">
+      <div className="flex w-full flex-row items-center justify-between">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="flex h-auto flex-row items-center gap-[8px] bg-transparent p-0">
+          <TabsList className="flex h-auto flex-row items-center gap-[16px] bg-transparent p-0">
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.value}
                 value={tab.value}
-                className="data-[state=active]:text-text-primary cursor-pointer px-2 py-0 text-[14px] leading-[100%] font-semibold after:hidden data-[state=active]:shadow-none"
+                className="data-[state=active]:text-text-primary cursor-pointer px-0 py-0 text-[14px] leading-[100%] font-semibold after:hidden data-[state=active]:shadow-none"
               >
                 {tab.label}
               </TabsTrigger>

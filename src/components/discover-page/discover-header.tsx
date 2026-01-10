@@ -60,14 +60,14 @@ export default function DiscoverHeader({
   ];
   return (
     <div className="flex w-full flex-col gap-3">
-      <div className="flex w-full flex-row items-center justify-between px-2">
+      <div className="flex w-full flex-row items-center justify-between">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="flex h-auto flex-row items-center gap-[8px] bg-transparent p-0">
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.value}
                 value={tab.value}
-                className="data-[state=active]:text-text-primary px-2 py-0 text-[14px] leading-[100%] font-semibold after:hidden data-[state=active]:shadow-none"
+                className="data-[state=active]:text-text-primary py-0 text-[14px] leading-[100%] font-medium after:hidden data-[state=active]:shadow-none"
               >
                 {tab.label}
               </TabsTrigger>

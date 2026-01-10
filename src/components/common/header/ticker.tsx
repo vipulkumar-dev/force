@@ -16,11 +16,11 @@ const formatChange = (n: number) => `${n > 0 ? "+" : ""}${n}%`;
 
 export default function Ticker() {
   return (
-    <>
+    <div className="ticker-track flex shrink-0 whitespace-nowrap will-change-transform">
       {tickerItems.map((item, idx) => (
         <span
           key={`t2-${idx}`}
-          className="ticker-track text-text-secondary mr-[24px] flex items-center gap-[8px] font-mono text-[11px] leading-[100%] font-medium tracking-[-0.05em]"
+          className="text-text-secondary mr-[24px] flex items-center gap-[8px] font-mono text-[11px] leading-[100%] font-medium tracking-[-0.05em]"
         >
           <span>{item.name}</span>
           <span
@@ -32,6 +32,6 @@ export default function Ticker() {
           </span>
         </span>
       ))}
-    </>
+    </div>
   );
 }

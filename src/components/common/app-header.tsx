@@ -642,7 +642,7 @@ export default function ClientHeader() {
                     "linear-gradient(to right, transparent, black 40px, black calc(100% - 100px), transparent)",
                 }}
               >
-                <div className="flex shrink-0 items-center gap-3">
+                <div className="flex w-full items-center gap-3">
                   {(priceTrendActive || showAthleteRankingPage) && (
                     <div className="flex w-full flex-col gap-2 md:w-auto md:flex-row md:gap-3">
                       <Popover>
@@ -721,8 +721,9 @@ export default function ClientHeader() {
                   )}
 
                   {/* Infinite scroller with fading edges (mask applied only here) */}
-                  <div className="relative w-full overflow-hidden md:flex-1 md:[mask-image:linear-gradient(to_right,transparent,black_40px,black_calc(100%-40px),transparent)] md:[-webkit-mask-image:linear-gradient(to_right,transparent,black_40px,black_calc(100%-40px),transparent)]">
-                    <div className="flex w-full whitespace-nowrap will-change-transform">
+                  <div className="relative w-full">
+                    <div className="flex w-full items-center justify-start">
+                      <Ticker />
                       <Ticker />
                       <Ticker />
                     </div>

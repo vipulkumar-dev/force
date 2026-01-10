@@ -18,6 +18,7 @@ import TrendingCard from "../common/athletes-card";
 import TradeDialog from "../trade/trade_dialog";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import TradeButton from "../common/trade-button";
+import FTag from "../common/f-tag";
 
 interface AthleteData {
   id: string;
@@ -317,15 +318,7 @@ export default function PriceTrendChart() {
                             {athlete.team}
                           </p>
                         </div>
-                        <div className="bg-league-card text-text-secondary flex flex-row items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-medium">
-                          <Image
-                            src="/icons/game/f.svg"
-                            alt="Flag"
-                            width={8}
-                            height={10}
-                          />
-                          <span>{athlete.percentage}%</span>
-                        </div>
+                        <FTag percentage={athlete.percentage} />
                       </div>
                     </TableCell>
                     <TableCell className="px-4 py-3">

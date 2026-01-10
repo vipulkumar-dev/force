@@ -3,10 +3,10 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface FTagProps {
-  percentage: number;
+  percentage?: number;
   className?: string;
 }
-export default function FTag({ percentage, className }: FTagProps) {
+export default function FTag({ percentage = 80, className }: FTagProps) {
   return (
     <div
       className={cn(

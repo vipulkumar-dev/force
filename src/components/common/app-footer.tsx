@@ -8,7 +8,7 @@ import Logo from "@/image/FORCE.svg";
 import Image from "next/image";
 export default function AppFooter() {
   return (
-    <footer className="bg-bg-secondary fixed right-0 bottom-0 left-0 z-40 h-[80px] w-full border-t border-black/5">
+    <footer className="bg-bg-secondary fixed right-0 bottom-0 left-0 z-40 h-[64px] w-full border-t border-black/5">
       <div className="mx-auto h-full w-full max-w-[1440px]">
         <div className="flex h-full flex-col items-center justify-between gap-4 px-[16px] sm:px-[24px] md:flex-row md:gap-5 md:px-[32px] xl:px-[40px]">
           <div className="flex w-full flex-wrap items-center justify-center gap-3 text-center sm:gap-4 md:w-auto md:justify-start md:gap-5 md:text-left">

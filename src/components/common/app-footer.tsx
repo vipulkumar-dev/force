@@ -11,48 +11,44 @@ export default function AppFooter() {
     <footer className="bg-bg-secondary border-border-secondary dark:border-border fixed right-0 bottom-0 left-0 z-40 w-full border-t">
       <div className="mx-auto h-full w-full max-w-[1400px] border-x">
         <div className="px-global flex h-full flex-col items-center justify-between gap-4 py-4 md:flex-row md:gap-5">
-          <div className="flex w-full flex-wrap items-center justify-center gap-3 text-center sm:gap-4 md:w-auto md:justify-start md:gap-5 md:text-left">
+          <div className="flex w-full flex-wrap items-center justify-center gap-3 text-center sm:gap-4 md:w-auto md:justify-start md:gap-6 md:text-left">
             <Logo className="text-text-primary w-[80px]" />
-            <a
-              href="#"
-              className="text-text-secondary hover:text-text-primary text-[12px] font-medium"
-            >
-              Privacy
-            </a>
-            <a
-              href="#"
-              className="text-text-secondary hover:text-text-primary text-[12px] font-medium"
-            >
-              Terms of Use
-            </a>
-            <Link
-              href="/learn"
-              className="text-text-secondary hover:text-text-primary text-[12px] font-medium"
-            >
-              Learn
-            </Link>
-            <a
-              href="#"
-              className="text-text-secondary hover:text-text-primary text-[12px] font-medium"
-            >
-              Careers
-            </a>
+            <div className="flex flex-row items-center gap-4.5">
+              <a
+                href="#"
+                className="text-text-secondary hover:text-text-primary text-[12px] font-medium"
+              >
+                Privacy
+              </a>
+              <a
+                href="#"
+                className="text-text-secondary hover:text-text-primary text-[12px] font-medium"
+              >
+                Terms of Use
+              </a>
+              <Link
+                href="/learn"
+                className="text-text-secondary hover:text-text-primary text-[12px] font-medium"
+              >
+                Learn
+              </Link>
+              <a
+                href="#"
+                className="text-text-secondary hover:text-text-primary text-[12px] font-medium"
+              >
+                Careers
+              </a>
+            </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <Link href="mailto:info@force.xyz">
-              <Button
-                lip="on"
-                className="border-main/7 bg-elevation-button hover:bg-primary-foreground flex h-[32px] w-[32px] items-center justify-center rounded-[7px] border hover:cursor-pointer"
-              >
+              <Button className="border-border-secondary bg-elevation-button hover:bg-primary-foreground flex h-[32px] w-[32px] items-center justify-center rounded-[7px] border hover:cursor-pointer">
                 <AtSign className="text-text-primary h-[16px] w-[16px]" />
               </Button>
             </Link>
             <Link href="https://x.com/forcexyzhq" target="_blank">
-              <Button
-                lip="on"
-                className="border-main/7 bg-elevation-button hover:bg-primary-foreground flex h-[32px] w-[32px] items-center justify-center rounded-[7px] border hover:cursor-pointer"
-              >
+              <Button className="border-border-secondary bg-elevation-button hover:bg-primary-foreground flex h-[32px] w-[32px] items-center justify-center rounded-[7px] border hover:cursor-pointer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"

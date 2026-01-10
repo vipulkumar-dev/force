@@ -205,7 +205,7 @@ export default function PriceTrendChart() {
       </div>
       {viewMode === "list" ? (
         <div className="w-full overflow-x-auto">
-          <Table className="w-full table-auto border-separate border-spacing-y-2">
+          <Table className="w-full table-auto border-separate border-spacing-y-1">
             <TableHeader>
               <TableRow className="border-0">
                 <TableHead className="text-muted-foreground border-0 px-4 py-3 text-[12px] leading-[100%] font-medium tracking-[-1%] whitespace-nowrap">
@@ -325,25 +325,9 @@ export default function PriceTrendChart() {
                     </TableCell>
                     <TableCell className="px-4 py-3">#{athlete.rank}</TableCell>
                     <TableCell
-                      className={`${
-                        isLastRow ? "w-[1%] px-2" : "px-4"
-                      } rounded-tr-[14px] rounded-br-[14px] py-3`}
+                      className={`w-[1%] rounded-tr-[14px] rounded-br-[14px] px-4 py-3`}
                     >
-                      <div
-                        className={`flex flex-row items-center gap-2 ${
-                          isLastRow ? "shrink-0" : ""
-                        }`}
-                      >
-                        {/* <button onClick={() => {setOpenTradeDialog(true); setTradeType("long")}} className='bg-page-background rounded-lg hover:cursor-pointer p-3 flex items-center justify-center'>
-                                                    <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
-                                                        <path d="M6.875 0.625L0.625 6.875M6.875 0.625H1.25M6.875 0.625V6.25" stroke="#25AB7A" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
-                                                    </svg>  
-                                                </button>
-                                                <button onClick={() => {setOpenTradeDialog(true); setTradeType("short")}} className='bg-page-background rounded-lg hover:cursor-pointer p-3 flex items-center justify-center'>
-                                                    <svg width="6" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
-                                                        <path d="M0.625 0.625L6.875 6.875M6.875 6.875V1.25M6.875 6.875H1.25" stroke="#E13F5E" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
-                                                    </svg>
-                                                </button> */}
+                      <div className={`flex flex-row items-center gap-1`}>
                         <TradeButton
                           onClick={() => {
                             setOpenTradeDialog(true);

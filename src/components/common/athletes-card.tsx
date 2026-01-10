@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Dialog, DialogContent } from "../ui/dialog";
 import TradeDialog from "../trade/trade_dialog";
 import TradeButton from "./trade-button";
+import FTag from "./f-tag";
 interface AthletesCardProps {
   id: string;
   image?: string;
@@ -25,10 +26,7 @@ export default function AthletesCard({
   const [tradeType, setTradeType] = useState<string>("long");
   return (
     <div className="bg-elevation-card relative flex h-auto flex-col items-center justify-center overflow-hidden rounded-[14px] pt-[24px] pr-[20px] pb-[20px] pl-[20px]">
-      <div className="bg-elevation-button text-text-secondary absolute top-2 right-2 flex flex-row items-center justify-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium">
-        <Image src="/icons/game/f.svg" alt="Long" width={7} height={8} />
-        {percentage}%
-      </div>
+      <FTag percentage={percentage} className="absolute top-2 right-2" />
       <Image
         src={image}
         className="bg-bg-primary h-10 w-10 shrink-0 rounded-full object-cover object-top"

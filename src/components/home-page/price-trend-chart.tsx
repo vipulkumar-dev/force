@@ -313,7 +313,7 @@ export default function PriceTrendChart() {
                             className="object-cover object-top"
                           />
                         </Link>
-                        <div className="flex flex-col gap-0.5">
+                        <div className="flex flex-col gap-0.75">
                           <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                             {athlete.name}
                           </p>
@@ -335,7 +335,7 @@ export default function PriceTrendChart() {
                       />
                     </TableCell>
                     <TableCell className="px-4 py-3">
-                      <div className="flex flex-col gap-0.5">
+                      <div className="flex flex-col gap-0.75">
                         <p className="text-text-primary text-[12px] leading-[100%] font-medium tracking-[-2%]">
                           {athlete.price}
                         </p>
@@ -348,7 +348,7 @@ export default function PriceTrendChart() {
                       </div>
                     </TableCell>
                     <TableCell className="px-4 py-3">
-                      <div className="flex flex-col gap-0.5">
+                      <div className="flex flex-col gap-0.75">
                         <p className="text-text-primary text-[12px] leading-[100%] font-medium tracking-[-2%]">
                           {athlete.volume}
                         </p>

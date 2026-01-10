@@ -254,6 +254,9 @@ export default function PriceTrendChart() {
                 <TableHead className="text-muted-foreground border-0 px-4 py-3 text-[12px] leading-[100%] font-medium tracking-[-1%] whitespace-nowrap">
                   Player
                 </TableHead>
+                <TableHead className="text-muted-foreground border-0 px-4 py-3 text-[12px] leading-[100%] font-medium tracking-[-1%] whitespace-nowrap">
+                  {/* F Tag */}
+                </TableHead>
                 <TableHead className="text-muted-foreground border-0 px-4 py-3 text-[12px] leading-[100%] tracking-[-1%] whitespace-nowrap">
                   Chart
                 </TableHead>
@@ -289,10 +292,10 @@ export default function PriceTrendChart() {
                 return (
                   <TableRow
                     key={athlete.id}
-                    className="bg-elevation-card hover:bg-elevation-card mb-2 rounded-[14px] border-0 transition-colors duration-200 ease-out hover:cursor-pointer"
+                    className="bg-elevation-card hover:bg-elevation-card mb-2 overflow-hidden rounded-[14px] border-0 transition-colors duration-200 ease-out hover:cursor-pointer"
                   >
-                    <TableCell className="rounded-tl-[14px] rounded-bl-[14px] px-4 py-3 font-medium">
-                      <div className="relative flex flex-row items-center gap-2">
+                    <TableCell className="w-min rounded-tl-[14px] rounded-bl-[14px] px-4 py-3">
+                      <div className="relative flex w-fit flex-row items-center gap-2 font-medium">
                         <Link
                           href={`/athlete/${athlete.name.toLowerCase().replace(/\s+/g, "-")}`}
                           className="bg-dark-yellow relative h-8 w-8 overflow-hidden rounded-full"
@@ -310,7 +313,7 @@ export default function PriceTrendChart() {
                             className="object-cover object-top"
                           />
                         </Link>
-                        <div>
+                        <div className="flex flex-col gap-0.5">
                           <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
                             {athlete.name}
                           </p>
@@ -318,10 +321,12 @@ export default function PriceTrendChart() {
                             {athlete.team}
                           </p>
                         </div>
-                        <FTag percentage={athlete.percentage} />
                       </div>
                     </TableCell>
-                    <TableCell className="px-4 py-3">
+                    <TableCell className="min-w-[100px] px-4 py-3">
+                      <FTag percentage={athlete.percentage} className="w-fit" />
+                    </TableCell>
+                    <TableCell className="min-w-[150px] px-4 py-3">
                       <Image
                         src="/icons/game/chart.png"
                         alt="Chart"
@@ -329,8 +334,8 @@ export default function PriceTrendChart() {
                         height={25}
                       />
                     </TableCell>
-                    <TableCell className="px-4 py-3">
-                      <div>
+                    <TableCell className="min-w-[150px] px-4 py-3">
+                      <div className="flex flex-col gap-0.5">
                         <p className="text-text-primary text-[12px] leading-[100%] font-medium tracking-[-2%]">
                           {athlete.price}
                         </p>
@@ -342,8 +347,8 @@ export default function PriceTrendChart() {
                         </p>
                       </div>
                     </TableCell>
-                    <TableCell className="px-4 py-3">
-                      <div>
+                    <TableCell className="min-w-[100px] px-4 py-3">
+                      <div className="flex flex-col gap-0.5">
                         <p className="text-text-primary text-[12px] leading-[100%] font-medium tracking-[-2%]">
                           {athlete.volume}
                         </p>
@@ -355,10 +360,12 @@ export default function PriceTrendChart() {
                         </p>
                       </div>
                     </TableCell>
-                    <TableCell className="px-4 py-3">
+                    <TableCell className="min-w-[100px] px-4 py-3">
                       {athlete.performance}%
                     </TableCell>
-                    <TableCell className="px-4 py-3">#{athlete.rank}</TableCell>
+                    <TableCell className="min-w-[100px] px-4 py-3">
+                      #{athlete.rank}
+                    </TableCell>
                     <TableCell
                       className={`w-[1%] rounded-tr-[14px] rounded-br-[14px] px-4 py-3`}
                     >

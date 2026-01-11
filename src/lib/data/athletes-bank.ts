@@ -66,7 +66,7 @@ export const ATHLETES_BANK: BaseAthlete[] = [
   },
   {
     id: "giannis-antetokounmpo",
-    name: "Giannis Antetokounmpo",
+    name: "Giannis Antetok",
     image: "/icons/athletes/g-antetokounmpo.png",
     team: "Milwaukee Bucks",
     abbreviation: "MIL",

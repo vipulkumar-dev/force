@@ -29,8 +29,8 @@ export default function TodayGames() {
           }}
           className="overflow-visible! pb-4!"
         >
-          {trendingItems.map((item) => (
-            <SwiperSlide key={item.id} className="w-auto!">
+          {trendingItems.map((item, index) => (
+            <SwiperSlide key={item.id + index} className="w-auto!">
               <AthletesCard
                 id={item.id}
                 image={item.image}

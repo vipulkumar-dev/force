@@ -2,27 +2,21 @@
 
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Link from "next/link";
 import {
   Table,
   TableBody,
-  TableCaption,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import Image from "next/image";
-import { Button } from "../ui/button";
 import TrendingCard from "../common/athletes-card";
 import TradeDialog from "../trade/trade_dialog";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import TradeButton from "../common/trade-button";
-import FTag from "../common/f-tag";
 import {
   getRandomExtendedAthletes,
   type ExtendedAthleteData,
 } from "@/lib/data/athletes-bank";
+import AthleteTableRow from "./athlete-table-row";
 
 // Use ExtendedAthleteData as the interface
 interface AthleteData extends ExtendedAthleteData {
@@ -199,117 +193,16 @@ export default function PriceTrendChart() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {athletesData.map((athlete, index) => {
-                const isLastRow = index === athletesData.length - 1;
-                const changeColor =
-                  athlete.change >= 0 ? "text-light-green" : "text-red-500";
-                const volumeChangeColor =
-                  athlete.volumeChange >= 0
-                    ? "text-light-green"
-                    : "text-red-500";
-                const changeSign = athlete.change >= 0 ? "+" : "";
-                const volumeChangeSign = athlete.volumeChange >= 0 ? "+" : "";
-
-                return (
-                  <TableRow
-                    key={athlete.id}
-                    className="bg-elevation-card hover:bg-elevation-card mb-2 overflow-hidden rounded-[14px] border-0 transition-colors duration-200 ease-out hover:cursor-pointer"
-                  >
-                    <TableCell className="w-[1%] rounded-tl-[14px] rounded-bl-[14px] px-4 py-3">
-                      <div className="relative flex w-fit flex-row items-center gap-2 font-medium">
-                        <Link
-                          href={`/athlete/${athlete.id}`}
-                          className="bg-dark-yellow relative h-8 w-8 overflow-hidden rounded-full"
-                        >
-                          <Image
-                            src="/icons/athletes/logo.png"
-                            alt="Logo"
-                            fill
-                            className="object-cover object-top opacity-8 mix-blend-screen"
-                          />
-                          <Image
-                            src={athlete.image || "/icons/athletes/logo.png"}
-                            alt={athlete.name}
-                            fill
-                            className="object-cover object-top"
-                          />
-                        </Link>
-                        <div className="flex flex-col gap-0.75">
-                          <p className="text-text-primary text-[14px] leading-[100%] font-medium tracking-[-2%]">
-                            {athlete.name}
-                          </p>
-                          <p className="text-text-secondary text-[12px] leading-[100%] font-medium tracking-[-1%]">
-                            {athlete.team}
-                          </p>
-                        </div>
-                      </div>
-                    </TableCell>
-                    <TableCell className="px-4 py-3">
-                      <FTag percentage={athlete.percentage} className="w-fit" />
-                    </TableCell>
-                    <TableCell className="px-4 py-3">
-                      <Image
-                        src="/icons/game/chart.png"
-                        alt="Chart"
-                        width={100}
-                        height={25}
-                      />
-                    </TableCell>
-                    <TableCell className="px-4 py-3">
-                      <div className="flex flex-col gap-0.75">
-                        <p className="text-text-primary text-[12px] leading-[100%] font-medium tracking-[-2%]">
-                          {athlete.price}
-                        </p>
-                        <p
-                          className={`${changeColor} text-[12px] leading-[100%] font-medium tracking-[-1%]`}
-                        >
-                          {changeSign}
-                          {athlete.change.toFixed(2)}%
-                        </p>
-                      </div>
-                    </TableCell>
-                    <TableCell className="px-4 py-3">
-                      <div className="flex flex-col gap-0.75">
-                        <p className="text-text-primary text-[12px] leading-[100%] font-medium tracking-[-2%]">
-                          {athlete.volume}
-                        </p>
-                        <p
-                          className={`${volumeChangeColor} text-[12px] leading-[100%] font-medium tracking-[-1%]`}
-                        >
-                          {volumeChangeSign}
-                          {athlete.volumeChange.toFixed(2)}%
-                        </p>
-                      </div>
-                    </TableCell>
-                    <TableCell className="text-text-primary px-4 py-3">
-                      {athlete.performance}%
-                    </TableCell>
-                    <TableCell className="text-text-primary px-4 py-3">
-                      #{athlete.rank}
-                    </TableCell>
-                    <TableCell
-                      className={`w-[1%] rounded-tr-[14px] rounded-br-[14px] px-4 py-3`}
-                    >
-                      <div className={`flex flex-row items-center gap-1`}>
-                        <TradeButton
-                          onClick={() => {
-                            setOpenTradeDialog(true);
-                            setTradeType("long");
-                          }}
-                          type={"long"}
-                        />
-                        <TradeButton
-                          onClick={() => {
-                            setOpenTradeDialog(true);
-                            setTradeType("short");
-                          }}
-                          type={"short"}
-                        />
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
+              {athletesData.map((athlete) => (
+                <AthleteTableRow
+                  key={athlete.id}
+                  athlete={athlete}
+                  onTradeClick={(type) => {
+                    setOpenTradeDialog(true);
+                    setTradeType(type);
+                  }}
+                />
+              ))}
             </TableBody>
           </Table>
         </div>

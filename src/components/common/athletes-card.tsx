@@ -97,7 +97,7 @@ export default function AthletesCard({
             handleTradeClick("long");
           }}
           type="long"
-          className="md:w-[63px]"
+          className="w-[63px]"
         />
         <TradeButton
           onClick={(e) => {
@@ -105,7 +105,7 @@ export default function AthletesCard({
             handleTradeClick("short");
           }}
           type="short"
-          className="md:w-[63px]"
+          className="w-[63px]"
         />
       </div>
       <Dialog open={openTradeDialog} onOpenChange={handleDialogClose}>

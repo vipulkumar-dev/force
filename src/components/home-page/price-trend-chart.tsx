@@ -71,10 +71,10 @@ export default function PriceTrendChart() {
   ];
 
   return (
-    <div className="px-global flex flex-col gap-4">
-      <div className="flex w-full flex-row items-center justify-between">
+    <div className="flex flex-col gap-0 sm:gap-4">
+      <div className="px-global flex w-full flex-col items-start justify-start gap-6 sm:flex-row sm:justify-between sm:gap-2">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="flex h-auto flex-row items-center gap-[16px] bg-transparent p-0">
+          <TabsList className="flex h-auto flex-row flex-wrap items-center justify-start gap-[16px] gap-y-1 bg-transparent p-0">
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.value}
